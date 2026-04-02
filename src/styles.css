@@ -691,8 +691,11 @@ img {
   line-height: 1.4;
 }
 
-.contact-link:hover {
-  text-decoration: underline;
+.contact-link:hover,
+.contact-link:visited,
+.contact-link:active {
+  color: var(--brown);
+  text-decoration: none;
 }
 }
 .header-inner {
