@@ -1,0 +1,278 @@
+import { useMemo, useState } from 'react';
+
+export default function App() {
+  const [page, setPage] = useState('home');
+
+  const menu = useMemo(
+    () => ({
+      tacos: [
+        { name: 'Carne Asada', desc: 'steak, onion, salsa roja' },
+        { name: 'Carnitas', desc: 'pork, salsa verde, pico' },
+        { name: 'Pollo Asado', desc: 'chicken, chipotle crema' },
+        { name: 'Al Pastor', desc: 'pork, pineapple, chilli' },
+        {
+          name: 'Quesabirria',
+          desc: 'slow-cooked brisket, Mexican cheese, rich dipping gravy',
+        },
+        { name: 'Mushroom', desc: 'grilled mushroom, salsa verde' },
+      ],
+      quesadillas: [
+        { name: 'Chicken', desc: 'cheese, chicken, salsa' },
+        { name: 'Veg', desc: 'cheese, mushroom, peppers' },
+        {
+          name: 'Vegan',
+          desc: 'roasted corn, red peppers, onion, bean purée',
+        },
+      ],
+      ceviche: [
+        { name: 'Classic', desc: 'fish, lime, chilli, onion' },
+        { name: 'Tuna', desc: 'tuna, citrus, herbs' },
+      ],
+      drinks: [
+        { name: 'Agua Fresca', desc: 'lime / hibiscus' },
+        { name: 'Jarritos', desc: 'mango / lime' },
+        { name: 'Beer', desc: 'local + imported' },
+      ],
+    }),
+    []
+  );
+
+  const visitInfo = [
+    { label: 'Launching', value: 'London — coming soon' },
+    { label: 'Best for', value: 'Walk-ins, tacos, drinks, all day bites' },
+    { label: 'Follow', value: '@benditosldn' },
+  ];
+
+  const galleryItems = [
+    {
+      title: 'Birria',
+      alt: 'Slow-cooked birria tacos',
+      src: 'https://www.dropbox.com/scl/fi/h2fvqq9qoxkw2fglqcxig/a_digital_photograph_showcases_two_beef_birria_tac.png?rlkey=160t4r9gz3r2nwq6h1ugnn8yh&st=gayadk32&raw=1',
+    },
+    {
+      title: 'Fish Taco',
+      alt: 'Crispy fish taco',
+      src: 'https://www.dropbox.com/scl/fi/u8xau043f7fqofxqhjkz9/benditos_taco_cream_watermark_fresh.png?rlkey=kkf1vy0kw8vp1gyywbkbjq2fk&st=fzwc4rhm&raw=1',
+    },
+    {
+      title: 'Tuna Tostada',
+      alt: 'Tuna tostada',
+      src: 'https://www.dropbox.com/scl/fi/h2936480f05rtdn1sirvo/tuna_tostada_cream_watermark_v2.png?rlkey=oj3ccj6xdfs0zhrak542xanar&st=lc4ojexd&raw=1',
+    },
+  ];
+
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'menu', label: 'Menu' },
+    { id: 'visit', label: 'Visit' },
+    { id: 'contact', label: 'Contact' },
+  ];
+
+  return (
+    <div className="site-shell">
+      <header className="site-header">
+        <div className="container header-inner">
+          <button onClick={() => setPage('home')} className="brand-button">
+            BENDITOS
+          </button>
+          <nav className="nav-desktop">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setPage(item.id)}
+                className={page === item.id ? 'nav-link active' : 'nav-link'}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        {page === 'home' && (
+          <HomePage setPage={setPage} galleryItems={galleryItems} />
+        )}
+        {page === 'menu' && <MenuPage />}
+        {page === 'visit' && <VisitPage visitInfo={visitInfo} />}
+        {page === 'contact' && <ContactPage />}
+      </main>
+
+      <footer className="site-footer">
+        <div className="container footer-inner">
+          <p>© Benditos</p>
+          <p>Latin street food. Big flavours. Good times.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function HomePage({ setPage, galleryItems }) {
+  return (
+    <>
+      <section className="hero-background-section">
+        <div className="hero-background-overlay"></div>
+
+        <div className="container hero-background-content">
+          <p className="eyebrow hero-eyebrow">Latin Street Food</p>
+
+          <h1 className="hero-title hero-title-large">
+            Big flavours.
+            <br />
+            Good times.
+          </h1>
+
+          <p className="hero-copy hero-copy-light">
+            Bold Latin American street food, cold drinks, and all-day bites worth coming back for.
+          </p>
+
+          <div className="button-row">
+            <button onClick={() => setPage('menu')} className="btn btn-primary">
+              View Menu
+            </button>
+            <button
+              onClick={() => setPage('visit')}
+              className="btn btn-secondary btn-secondary-light"
+            >
+              Follow the Launch
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="container page-section">
+        <div className="intro-block">
+          <h2 className="section-title">Three shots. One mood.</h2>
+        </div>
+
+        <div className="visit-grid">
+          {galleryItems.slice(0, 3).map((item) => (
+            <div key={item.title} className="visit-card image-card">
+              <img src={item.src} alt={item.alt} className="gallery-image" />
+              <div className="image-label">
+                <h3>{item.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="container about-section">
+        <div className="about-lead">
+          <p className="eyebrow">About</p>
+          <h2 className="section-title">Come hungry. Leave happy.</h2>
+        </div>
+
+        <div className="about-grid">
+          {[
+            {
+              title: 'Fire',
+              text: 'Big flavour, plenty of char, and the kind of food that grabs you straight away.',
+            },
+            {
+              title: 'Citrus',
+              text: 'Fresh, bright flavour running through tacos, slaws, and ceviches.',
+            },
+            {
+              title: 'Smoke',
+              text: 'Warm, deep flavour that keeps everything rich, bold, and properly moreish.',
+            },
+          ].map((item) => (
+            <div key={item.title} className="info-card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+function MenuPage() {
+  return (
+    <section className="container page-section menu-page-editorial">
+      <div className="menu-hero-image-wrap">
+        <img
+          src="https://www.dropbox.com/scl/fi/0a9e7h6gjhqpi489xt2fj/birriaceviche.png?rlkey=9mh8ew59rqvynqn8dk026z3ri&st=68e49qqq&raw=1"
+          alt="Birria tacos and ceviche platter"
+          className="menu-hero-image menu-hero-image-cinematic"
+        />
+      </div>
+
+      <div className="menu-intro editorial-intro">
+        <p className="eyebrow">Menu</p>
+        <h2 className="section-title menu-title-large">What we’re serving.</h2>
+        <p className="intro-copy menu-intro-copy">
+          Bold, fresh, fire-led food built for sharing, grabbing, and coming back for.
+        </p>
+      </div>
+
+      <div className="menu-headings-only">
+        <div className="menu-heading-block">Tacos</div>
+        <div className="menu-heading-block">Quesadillas</div>
+        <div className="menu-heading-block">Ceviches</div>
+        <div className="menu-heading-block">Tostadas</div>
+        <div className="menu-heading-block">Fresh Juices</div>
+        <div className="menu-heading-block">Drinks</div>
+      </div>
+    </section>
+  );
+}
+
+function VisitPage({ visitInfo }) {
+  return (
+    <section className="container page-section">
+      <div className="intro-block">
+        <p className="eyebrow">Visit</p>
+        <h2 className="section-title">Catch us when we land.</h2>
+        <p className="intro-copy">
+          Benditos is made for all-day bites, cold drinks, and dropping in
+          whenever the craving hits. Follow along and be first to know when we
+          open.
+        </p>
+      </div>
+
+      <div className="visit-grid">
+        {visitInfo.map((item) => (
+          <div key={item.label} className="visit-card">
+            <p className="eyebrow">{item.label}</p>
+            <h3>{item.value}</h3>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ContactPage() {
+  return (
+    <section className="container page-section">
+      <div className="contact-block">
+        <div>
+          <p className="eyebrow eyebrow-light">Contact</p>
+          <h2 className="contact-title">London — coming soon.</h2>
+          <p className="contact-copy">
+            Follow along, watch the food, and be first to know when Benditos
+            lands in London.
+          </p>
+        </div>
+        <div className="contact-card">
+          <div className="contact-item">
+            <strong>Instagram</strong>
+            <span>@benditosldn</span>
+          </div>
+          <div className="contact-item">
+            <strong>Email</strong>
+            <span>hello@benditosldn.com</span>
+          </div>
+          <div className="contact-item">
+            <strong>Location</strong>
+            <span>London, UK</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
