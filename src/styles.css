@@ -558,7 +558,7 @@ img {
     border-radius: 1.5rem;
     width: min(1120px, calc(100% - 32px));
     margin-top: 20px;
-    background-position: center;
+    background-position: center 35%;
   }
   
   .hero-background-content {
@@ -566,11 +566,11 @@ img {
     max-width: 240px;
   }
 
-  .hero-title-large {
-    font-size: 1.7rem;
-    max-width: 6ch;
-    margin-bottom: 8px;
-  }
+ .hero-title-large {
+  font-size: 1.7rem;
+  max-width: 6ch;
+  margin-bottom: 8px;
+}
   .hero-copy-light {
     font-size: 0.8rem;
     line-height: 1.35;
