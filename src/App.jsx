@@ -220,22 +220,25 @@ function ContactPage() {
             lands in London.
           </p>
         </div>
+
         <div className="contact-card">
-        <div className="contact-item">
-        <strong>Instagram</strong>
-        <a    
-        href="https://www.instagram.com/benditosldn/"
-        target="_blank"
-        rel="noreferrer"
-        className="contact-link"
-  >
-    @benditosldn
-  </a>
-</div>
+          <div className="contact-item">
+            <strong>Instagram</strong>
+            <a
+              href="https://www.instagram.com/benditosldn/"
+              target="_blank"
+              rel="noreferrer"
+              className="contact-link"
+            >
+              @benditosldn
+            </a>
+          </div>
+
           <div className="contact-item">
             <strong>Email</strong>
             <span>hello@benditosldn.com</span>
           </div>
+
           <div className="contact-item">
             <strong>Location</strong>
             <span>London, UK</span>
