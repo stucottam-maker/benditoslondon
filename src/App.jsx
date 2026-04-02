@@ -222,12 +222,12 @@ function ContactPage() {
         </div>
         <div className="contact-card">
         <div className="contact-item">
-  <strong>Instagram</strong>
-  <a
-    href="https://www.instagram.com/benditosldn/"
-    target="_blank"
-    rel="noreferrer"
-    className="contact-link"
+        <strong>Instagram</strong>
+        <a    
+        href="https://www.instagram.com/benditosldn/"
+        target="_blank"
+        rel="noreferrer"
+        className="contact-link"
   >
     @benditosldn
   </a>
