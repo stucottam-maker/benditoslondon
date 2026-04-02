@@ -126,7 +126,7 @@ img {
 }
 
 .section-title {
-  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
   line-height: 0.95;
 }
 
@@ -149,7 +149,7 @@ img {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  padding-top: 24px;
+  padding-top: 20px;
 }
 
 .btn {
@@ -183,9 +183,9 @@ img {
 
 .hero-background-section {
   position: relative;
-  min-height: 260px;
+  height: 320px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   background-image: url("https://www.dropbox.com/scl/fi/2ezrxh2g8zsrn2fey1elc/benditos_steak_clean_text_watermark.png?rlkey=zd06mhfa3uj9r7d5erm4m03l9&st=xccme536&raw=1");
   background-size: cover;
   background-position: center;
@@ -201,9 +201,9 @@ img {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(31, 19, 13, 0.74) 0%,
-    rgba(31, 19, 13, 0.52) 38%,
-    rgba(31, 19, 13, 0.22) 100%
+    rgba(31, 19, 13, 0.88) 0%,
+    rgba(31, 19, 13, 0.56) 40%,
+    rgba(31, 19, 13, 0.18) 100%
   );
 }
 
@@ -211,8 +211,8 @@ img {
   position: relative;
   z-index: 1;
   color: #f7ebdd;
-  padding: 48px 56px;
-  max-width: 760px;
+  padding: 30px 28px 22px;
+  max-width: 430px;
 }
 
 .hero-eyebrow {
@@ -221,27 +221,28 @@ img {
 
 .hero-title-large {
   color: #f7ebdd;
-  font-size: clamp(3.2rem, 8vw, 6rem);
+  font-size: clamp(1.8rem, 3.6vw, 3rem);
   line-height: 0.9;
   font-weight: 900;
   letter-spacing: -0.08em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+  max-width: 6ch;
 }
 
 .hero-copy-light {
   color: rgba(247, 235, 221, 0.92);
-  max-width: 34rem;
-  font-size: 1.08rem;
-  line-height: 1.6;
-  margin-bottom: 8px;
+  max-width: 22rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin-bottom: 2px;
 }
 
 /* Generic sections */
 
 .page-section,
 .about-section {
-  padding: 72px 0;
+  padding: 56px 0;
   border-top: 1px solid rgba(217, 74, 30, 0.1);
 }
 
@@ -329,11 +330,6 @@ img {
   );
 }
 
-.image-label .eyebrow {
-  color: rgba(247, 235, 221, 0.75);
-  margin-bottom: 6px;
-}
-
 .image-label h3 {
   color: #f7ebdd;
   font-size: 1.15rem;
@@ -345,35 +341,56 @@ img {
   padding-top: 56px;
 }
 
-.menu-hero-image-wrap {
-  margin-bottom: 32px;
-}
-
-.menu-hero-image {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  display: block;
+.menu-hero-banner {
+  position: relative;
+  min-height: 260px;
   border-radius: 2rem;
-}
-
-.menu-hero-image-cinematic {
-  object-position: center;
+  overflow: hidden;
+  margin-bottom: 28px;
+  background-image: url("https://www.dropbox.com/scl/fi/0a9e7h6gjhqpi489xt2fj/birriaceviche.png?rlkey=9mh8ew59rqvynqn8dk026z3ri&st=68e49qqq&raw=1");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
   box-shadow: 0 12px 32px rgba(31, 19, 13, 0.12);
 }
 
-.editorial-intro {
-  max-width: 760px;
-  margin-bottom: 52px;
+.menu-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 19, 13, 0.82) 0%,
+    rgba(31, 19, 13, 0.48) 42%,
+    rgba(31, 19, 13, 0.18) 100%
+  );
 }
 
-.menu-title-large {
-  margin-bottom: 16px;
+.menu-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 42px 36px 32px;
+  max-width: 560px;
 }
 
-.menu-intro-copy {
-  max-width: 36rem;
-  font-size: 1.08rem;
+.menu-hero-eyebrow {
+  color: rgba(247, 235, 221, 0.82);
+}
+
+.menu-hero-title {
+  color: #f7ebdd;
+  margin-bottom: 8px;
+  max-width: 9ch;
+  line-height: 0.9;
+  font-size: clamp(1.7rem, 3.2vw, 2.7rem);
+}
+
+.menu-hero-copy {
+  color: rgba(247, 235, 221, 0.9);
+  max-width: 28rem;
+  line-height: 1.45;
+  font-size: 0.9rem;
 }
 
 .menu-headings-only {
@@ -391,6 +408,10 @@ img {
   color: var(--orange);
   padding: 22px 0 16px;
   border-bottom: 1px solid rgba(217, 74, 30, 0.14);
+}
+
+.menu-heading-block:nth-child(5) {
+  font-size: clamp(1.7rem, 3.2vw, 2.8rem);
 }
 
 /* Contact */
@@ -500,35 +521,50 @@ img {
   }
 
   .hero-background-section {
-    min-height: 220px;
+    height: 210px;
     border-radius: 1.5rem;
     width: min(1120px, calc(100% - 32px));
     margin-top: 20px;
-    background-position: center;
   }
 
   .hero-background-content {
-    padding: 32px 28px;
+    padding: 18px 20px;
+    max-width: 320px;
   }
 
   .hero-title-large {
-    font-size: 2.7rem;
+    font-size: 2rem;
+    max-width: 6ch;
+    margin-bottom: 8px;
   }
 
   .hero-copy-light {
-    font-size: 0.98rem;
+    font-size: 0.85rem;
   }
 
   .menu-page-editorial {
     padding-top: 40px;
   }
 
-  .menu-hero-image {
-    height: 180px;
+  .menu-hero-banner {
+    min-height: 180px;
     border-radius: 1.5rem;
+    margin-bottom: 28px;
+  }
+
+  .menu-hero-content {
+    padding: 24px 22px;
+  }
+
+  .menu-hero-copy {
+    font-size: 0.95rem;
   }
 
   .menu-heading-block {
     font-size: 2.4rem;
+  }
+
+  .menu-heading-block:nth-child(5) {
+    font-size: 2rem;
   }
 }

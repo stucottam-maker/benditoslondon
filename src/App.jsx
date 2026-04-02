@@ -1,41 +1,7 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 export default function App() {
   const [page, setPage] = useState('home');
-
-  const menu = useMemo(
-    () => ({
-      tacos: [
-        { name: 'Carne Asada', desc: 'steak, onion, salsa roja' },
-        { name: 'Carnitas', desc: 'pork, salsa verde, pico' },
-        { name: 'Pollo Asado', desc: 'chicken, chipotle crema' },
-        { name: 'Al Pastor', desc: 'pork, pineapple, chilli' },
-        {
-          name: 'Quesabirria',
-          desc: 'slow-cooked brisket, Mexican cheese, rich dipping gravy',
-        },
-        { name: 'Mushroom', desc: 'grilled mushroom, salsa verde' },
-      ],
-      quesadillas: [
-        { name: 'Chicken', desc: 'cheese, chicken, salsa' },
-        { name: 'Veg', desc: 'cheese, mushroom, peppers' },
-        {
-          name: 'Vegan',
-          desc: 'roasted corn, red peppers, onion, bean purée',
-        },
-      ],
-      ceviche: [
-        { name: 'Classic', desc: 'fish, lime, chilli, onion' },
-        { name: 'Tuna', desc: 'tuna, citrus, herbs' },
-      ],
-      drinks: [
-        { name: 'Agua Fresca', desc: 'lime / hibiscus' },
-        { name: 'Jarritos', desc: 'mango / lime' },
-        { name: 'Beer', desc: 'local + imported' },
-      ],
-    }),
-    []
-  );
 
   const visitInfo = [
     { label: 'Launching', value: 'London — coming soon' },
@@ -114,7 +80,7 @@ function HomePage({ setPage, galleryItems }) {
       <section className="hero-background-section">
         <div className="hero-background-overlay"></div>
 
-        <div className="container hero-background-content">
+        <div className="hero-background-content">
           <p className="eyebrow hero-eyebrow">Latin Street Food</p>
 
           <h1 className="hero-title hero-title-large">
@@ -193,21 +159,17 @@ function HomePage({ setPage, galleryItems }) {
 function MenuPage() {
   return (
     <section className="container page-section menu-page-editorial">
-      <div className="menu-hero-image-wrap">
-        <img
-          src="https://www.dropbox.com/scl/fi/0a9e7h6gjhqpi489xt2fj/birriaceviche.png?rlkey=9mh8ew59rqvynqn8dk026z3ri&st=68e49qqq&raw=1"
-          alt="Birria tacos and ceviche platter"
-          className="menu-hero-image menu-hero-image-cinematic"
-        />
-      </div>
+      <section className="menu-hero-banner">
+        <div className="menu-hero-overlay"></div>
 
-      <div className="menu-intro editorial-intro">
-        <p className="eyebrow">Menu</p>
-        <h2 className="section-title menu-title-large">What we’re serving.</h2>
-        <p className="intro-copy menu-intro-copy">
-          Bold, fresh, fire-led food built for sharing, grabbing, and coming back for.
-        </p>
-      </div>
+        <div className="menu-hero-content">
+          <p className="eyebrow menu-hero-eyebrow">Menu</p>
+          <h2 className="section-title menu-hero-title">What we’re serving.</h2>
+          <p className="menu-hero-copy">
+            Bold, fresh, fire-led food built for sharing, grabbing, and coming back for.
+          </p>
+        </div>
+      </section>
 
       <div className="menu-headings-only">
         <div className="menu-heading-block">Tacos</div>
