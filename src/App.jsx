@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export default function App() {
   const [page, setPage] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const visitInfo = [
     { label: 'Launching', value: 'London — coming soon' },
@@ -39,18 +40,33 @@ export default function App() {
     { id: 'contact', label: 'Contact' },
   ];
 
+  const handleNavigate = (target) => {
+    setPage(target);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="site-shell">
       <header className="site-header">
         <div className="container header-inner">
-          <button onClick={() => setPage('home')} className="brand-button">
+          <button onClick={() => handleNavigate('home')} className="brand-button">
             BENDITOS
           </button>
+
+          <button
+            className="mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle menu"
+          >
+            Menu
+          </button>
+
           <nav className="nav-desktop">
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => setPage(item.id)}
+                onClick={() => handleNavigate(item.id)}
                 className={page === item.id ? 'nav-link active' : 'nav-link'}
               >
                 {item.label}
@@ -58,6 +74,20 @@ export default function App() {
             ))}
           </nav>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="mobile-menu-panel">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavigate(item.id)}
+                className={page === item.id ? 'mobile-menu-link active' : 'mobile-menu-link'}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
       </header>
 
       <main>
@@ -201,7 +231,7 @@ function VisitPage({ visitInfo }) {
         </p>
       </div>
 
-      <div className="visit-grid">
+      <div className="visit-grid visit-info-grid">
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
             <p className="eyebrow">{item.label}</p>
