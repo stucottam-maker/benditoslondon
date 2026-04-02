@@ -273,6 +273,7 @@ function ContactPage() {
             <strong>Email</strong>
             <span>hello@benditosldn.com</span>
           </div>
+        
 
           <div className="contact-item">
             <strong>Location</strong>
