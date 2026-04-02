@@ -25,6 +25,11 @@ export default function App() {
       alt: 'Tuna tostada',
       src: 'https://www.dropbox.com/scl/fi/h2936480f05rtdn1sirvo/tuna_tostada_cream_watermark_v2.png?rlkey=oj3ccj6xdfs0zhrak542xanar&st=lc4ojexd&raw=1',
     },
+    {
+      title: 'Ceviche',
+      alt: 'Fresh ceviche',
+      src: 'https://www.dropbox.com/scl/fi/ga1m334fs5bjee8ewka43/pexels-nano-erdozain-120534369-28448397.jpg?rlkey=31nxg80db5rf7hlz29u39v33a&st=9oi9xb4s&raw=1',
+    },
   ];
 
   const navItems = [
@@ -109,11 +114,11 @@ function HomePage({ setPage, galleryItems }) {
 
       <section className="container page-section">
         <div className="intro-block">
-          <h2 className="section-title">Three shots. One mood.</h2>
+          <h2 className="section-title">Four favourites. One mood.</h2>
         </div>
 
         <div className="visit-grid">
-          {galleryItems.slice(0, 3).map((item) => (
+          {galleryItems.slice(0, 4).map((item) => (
             <div key={item.title} className="visit-card image-card">
               <img src={item.src} alt={item.alt} className="gallery-image" />
               <div className="image-label">
