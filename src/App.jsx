@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export default function App() {
   const [page, setPage] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const visitInfo = [
     { label: 'Launching', value: 'London — coming soon' },
@@ -25,6 +26,11 @@ export default function App() {
       alt: 'Tuna tostada',
       src: 'https://www.dropbox.com/scl/fi/h2936480f05rtdn1sirvo/tuna_tostada_cream_watermark_v2.png?rlkey=oj3ccj6xdfs0zhrak542xanar&st=lc4ojexd&raw=1',
     },
+    {
+      title: 'Ceviche',
+      alt: 'Fresh ceviche',
+      src: 'https://www.dropbox.com/scl/fi/ga1m334fs5bjee8ewka43/pexels-nano-erdozain-120534369-28448397.jpg?rlkey=31nxg80db5rf7hlz29u39v33a&st=9oi9xb4s&raw=1',
+    },
   ];
 
   const navItems = [
@@ -34,18 +40,33 @@ export default function App() {
     { id: 'contact', label: 'Contact' },
   ];
 
+  const handleNavigate = (target) => {
+    setPage(target);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="site-shell">
       <header className="site-header">
         <div className="container header-inner">
-          <button onClick={() => setPage('home')} className="brand-button">
+          <button onClick={() => handleNavigate('home')} className="brand-button">
             BENDITOS
           </button>
+
+          <button
+            className="mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle menu"
+          >
+            Menu
+          </button>
+
           <nav className="nav-desktop">
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => setPage(item.id)}
+                onClick={() => handleNavigate(item.id)}
                 className={page === item.id ? 'nav-link active' : 'nav-link'}
               >
                 {item.label}
@@ -53,6 +74,20 @@ export default function App() {
             ))}
           </nav>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="mobile-menu-panel">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavigate(item.id)}
+                className={page === item.id ? 'mobile-menu-link active' : 'mobile-menu-link'}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
       </header>
 
       <main>
@@ -109,11 +144,11 @@ function HomePage({ setPage, galleryItems }) {
 
       <section className="container page-section">
         <div className="intro-block">
-          <h2 className="section-title">Three shots. One mood.</h2>
+          <h2 className="section-title">Four favourites. One mood.</h2>
         </div>
 
         <div className="visit-grid">
-          {galleryItems.slice(0, 3).map((item) => (
+          {galleryItems.slice(0, 4).map((item) => (
             <div key={item.title} className="visit-card image-card">
               <img src={item.src} alt={item.alt} className="gallery-image" />
               <div className="image-label">
@@ -196,7 +231,7 @@ function VisitPage({ visitInfo }) {
         </p>
       </div>
 
-      <div className="visit-grid">
+      <div className="visit-grid visit-info-grid">
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
             <p className="eyebrow">{item.label}</p>
