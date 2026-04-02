@@ -569,9 +569,8 @@ img {
   .hero-title-large {
     font-size: 1.7rem;
     max-width: 6ch;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
-
   .hero-copy-light {
     font-size: 0.8rem;
     line-height: 1.35;
