@@ -655,6 +655,7 @@ img {
 }
 
 .nav-link {
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
 }
