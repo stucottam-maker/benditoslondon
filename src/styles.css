@@ -650,12 +650,12 @@ img {
 
 .nav-desktop {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .nav-link {
   font-size: 1.75rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.4em;
   font-weight: 700;
 }
