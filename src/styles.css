@@ -619,9 +619,12 @@ img {
   }
 
   .menu-heading-block:nth-child(5) {
-    font-size: 1.65rem;
+    font-size: clamp(1.7rem, 3.2vw, 2.8rem);
   }
-
+  
+  .menu-heading-block:nth-child(6) {
+    font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+  }
   .image-card {
     border-radius: 1.25rem;
   }
