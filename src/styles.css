@@ -641,6 +641,8 @@ img {
   .contact-link {
     color: var(--brown);
     text-decoration: none;
+    font-size: 1.08rem;
+    line-height: inherit;
   }
   
   .contact-link:hover {
