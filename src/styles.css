@@ -547,7 +547,7 @@ img {
   }
 
   .section-title {
-    font-size: clamp(1.6rem, 8vw, 2.3rem);
+    font-size: clamp(1.4rem, 6vw, 2rem);
     line-height: 0.95;
   }
 
@@ -559,15 +559,14 @@ img {
   }
 
   .hero-background-content {
-    padding: 22px 18px 18px;
-    max-width: 250px;
+    padding: 20px 18px 16px;
+    max-width: 220px;
   }
 
   .hero-title-large {
-    font-size: 1.9rem;
-    line-height: 0.9;
-    margin-bottom: 8px;
+    font-size: 1.7rem;
     max-width: 6ch;
+    margin-bottom: 6px;
   }
 
   .hero-copy-light {
