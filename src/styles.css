@@ -47,7 +47,7 @@ h3 {
 
 img {
   max-width: 100%;
-  height: auto;
+  display: block;
 }
 
 .site-shell {
@@ -65,9 +65,9 @@ img {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(238, 215, 190, 0.9);
+  background: rgba(238, 215, 190, 0.92);
   border-bottom: 1px solid rgba(217, 74, 30, 0.12);
 }
 
@@ -137,11 +137,10 @@ img {
   font-size: clamp(3.25rem, 8vw, 6.5rem);
   line-height: 0.9;
   letter-spacing: -0.08em;
-  margin-bottom: 24px;
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.95;
 }
 
@@ -196,9 +195,9 @@ img {
 
 /* Home hero */
 
-.hero-background-section {
+.hero-section {
   position: relative;
-  height: 300px;
+  height: 330px;
   display: flex;
   align-items: flex-end;
   background-image: url("https://www.dropbox.com/scl/fi/2ezrxh2g8zsrn2fey1elc/benditos_steak_clean_text_watermark.png?rlkey=zd06mhfa3uj9r7d5erm4m03l9&st=xccme536&raw=1");
@@ -211,7 +210,7 @@ img {
   width: min(1120px, calc(100% - 40px));
 }
 
-.hero-background-overlay {
+.hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -222,12 +221,12 @@ img {
   );
 }
 
-.hero-background-content {
+.hero-content {
   position: relative;
   z-index: 1;
   color: #f7ebdd;
-  padding: 42px 36px 24px;
-  max-width: 400px;
+  padding: 56px 36px 28px;
+  max-width: 410px;
 }
 
 .hero-eyebrow {
@@ -236,7 +235,7 @@ img {
 
 .hero-title-large {
   color: #f7ebdd;
-  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   line-height: 0.9;
   font-weight: 900;
   letter-spacing: -0.08em;
@@ -250,7 +249,6 @@ img {
   max-width: 22rem;
   font-size: 0.82rem;
   line-height: 1.4;
-  margin-bottom: 2px;
 }
 
 /* Generic sections */
@@ -269,7 +267,51 @@ img {
 
 .intro-block {
   max-width: 46rem;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
+}
+
+/* Gallery */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 1.5rem;
+  background: var(--cream-light);
+  box-shadow: 0 8px 28px rgba(31, 19, 13, 0.04);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 14px;
+  background: linear-gradient(
+    to top,
+    rgba(31, 19, 13, 0.75),
+    rgba(31, 19, 13, 0.08),
+    transparent
+  );
+}
+
+.image-label h3 {
+  color: #f7ebdd;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 /* About cards */
@@ -298,62 +340,9 @@ img {
   margin-bottom: 12px;
 }
 
-/* Feed / imagery */
-
-.visit-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.visit-card {
-  background: var(--cream-light);
-  border: 1px solid rgba(217, 74, 30, 0.1);
-  padding: 32px;
-  box-shadow: 0 8px 28px rgba(31, 19, 13, 0.04);
-}
-
-.visit-card h3 {
-  font-size: 2rem;
-}
-
-.image-card {
-  overflow: hidden;
-  padding: 0;
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 1.5rem;
-}
-
-.gallery-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.image-label {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 12px 14px;
-  background: linear-gradient(
-    to top,
-    rgba(31, 19, 13, 0.75),
-    rgba(31, 19, 13, 0.08),
-    transparent
-  );
-}
-
-.image-label h3 {
-  color: #f7ebdd;
-  font-size: 1rem;
-}
-
 /* Menu page */
 
-.menu-page-editorial {
+.menu-page {
   padding-top: 56px;
 }
 
@@ -426,9 +415,27 @@ img {
   border-bottom: 1px solid rgba(217, 74, 30, 0.14);
 }
 
-.menu-heading-block:nth-child(5),
-.menu-heading-block:nth-child(6) {
+.menu-heading-small {
   font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+}
+
+/* Visit */
+
+.visit-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.visit-card {
+  background: var(--cream-light);
+  border: 1px solid rgba(217, 74, 30, 0.1);
+  padding: 32px;
+  box-shadow: 0 8px 28px rgba(31, 19, 13, 0.04);
+}
+
+.visit-card h3 {
+  font-size: 2rem;
 }
 
 /* Contact */
@@ -513,14 +520,11 @@ img {
 
 @media (max-width: 980px) {
   .about-section,
-  .contact-block {
-    grid-template-columns: 1fr;
-  }
-
+  .contact-block,
+  .visit-info-grid,
   .about-grid,
-  .visit-grid,
-  .menu-headings-only,
-  .visit-info-grid {
+  .gallery-grid,
+  .menu-headings-only {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -537,20 +541,12 @@ img {
     max-width: 100%;
   }
 
-  .site-shell {
-    overflow-x: hidden;
-  }
-
   .header-inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
     padding: 14px 0;
   }
 
   .brand-button {
-    font-size: 2.1rem;
+    font-size: 2.05rem;
   }
 
   .nav-desktop {
@@ -561,24 +557,28 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 9px 15px;
+    padding: 10px 16px;
     border: 1px solid rgba(217, 74, 30, 0.24);
     border-radius: 999px;
     color: var(--orange);
-    background: rgba(247, 235, 221, 0.78);
+    background: rgba(247, 235, 221, 0.82);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     box-shadow: 0 6px 18px rgba(31, 19, 13, 0.06);
   }
 
   .mobile-menu-panel {
-    display: grid;
-    gap: 8px;
-    padding: 0 12px 14px;
+    display: block;
     background: rgba(238, 215, 190, 0.97);
     border-bottom: 1px solid rgba(217, 74, 30, 0.12);
+  }
+
+  .mobile-menu-panel-inner {
+    display: grid;
+    gap: 8px;
+    padding: 0 0 14px;
   }
 
   .mobile-menu-link {
@@ -597,21 +597,21 @@ img {
     color: var(--orange);
   }
 
-  .hero-background-section {
+  .hero-section {
     width: calc(100% - 24px);
-    height: 250px;
+    height: 270px;
     margin: 18px auto 0;
     border-radius: 1.25rem;
-    background-position: center 40%;
+    background-position: center 42%;
   }
 
-  .hero-background-content {
+  .hero-content {
     max-width: 210px;
-    padding: 28px 20px 18px;
+    padding: 36px 20px 18px;
   }
 
   .hero-title-large {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
     line-height: 0.9;
     margin-bottom: 8px;
     max-width: 5.5ch;
@@ -649,7 +649,7 @@ img {
     line-height: 0.95;
   }
 
-  .visit-grid,
+  .gallery-grid,
   .about-grid,
   .menu-headings-only,
   .visit-info-grid {
@@ -657,7 +657,7 @@ img {
     gap: 16px;
   }
 
-  .image-card,
+  .gallery-card,
   .visit-card,
   .info-card,
   .contact-card {
@@ -670,11 +670,14 @@ img {
     padding: 18px;
   }
 
+  .gallery-card {
+    aspect-ratio: 1 / 1;
+  }
+
   .gallery-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
   }
 
   .image-label {
@@ -685,7 +688,7 @@ img {
     font-size: 1rem;
   }
 
-  .menu-page-editorial {
+  .menu-page {
     padding-top: 24px;
   }
 
@@ -718,8 +721,7 @@ img {
     padding: 14px 0 10px;
   }
 
-  .menu-heading-block:nth-child(5),
-  .menu-heading-block:nth-child(6) {
+  .menu-heading-small {
     font-size: 1.7rem;
   }
 
