@@ -197,10 +197,10 @@ img {
 
 .hero-section {
   position: relative;
-  height: 300px;
+  height: 350px;
   display: flex;
   align-items: flex-end;
-  background-image: url("https://www.dropbox.com/scl/fi/pfbief0jrrr2bw5rd7bz7/hero-tacos-1.jpg?rlkey=yv6mmvsfher4sfdhf6xato35m&st=vlfqz2a4&raw=1");
+  background-image: url("https://www.dropbox.com/scl/fi/oploj47wjdzxx4ka3zdf4/hero-image-no-banana.png?rlkey=0oz45uglle7tg3b6idb39lxhp&st=8pmd57rw&raw=1");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -614,7 +614,7 @@ img {
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     line-height: 0.9;
     margin-bottom: 8px;
-    max-width: 5.8ch;
+    max-width: 5.5ch;
   }
 
   .hero-copy-light {
