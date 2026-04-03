@@ -249,7 +249,6 @@ function VisitPage({ visitInfo }) {
     </section>
   );
 }
-}
 
 function ContactPage() {
   return (
