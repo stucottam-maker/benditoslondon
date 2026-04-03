@@ -599,7 +599,7 @@ img {
 
   .hero-section {
     width: calc(100% - 24px);
-    height: 270px;
+    height: 380px;
     margin: 18px auto 0;
     border-radius: 1.25rem;
     background-position: center 42%;
@@ -607,14 +607,14 @@ img {
 
   .hero-content {
     max-width: 210px;
-    padding: 36px 20px 18px;
+    padding: 70px 36px 30px;
   }
 
   .hero-title-large {
-    font-size: 1.55rem;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
     line-height: 0.9;
     margin-bottom: 8px;
-    max-width: 5.5ch;
+    max-width: 5.8ch;
   }
 
   .hero-copy-light {
