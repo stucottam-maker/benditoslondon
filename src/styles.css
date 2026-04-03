@@ -197,10 +197,10 @@ img {
 
 .hero-section {
   position: relative;
-  height: 350px;
+  height: 330px;
   display: flex;
   align-items: flex-end;
-  background-image: url("https://www.dropbox.com/scl/fi/2ezrxh2g8zsrn2fey1elc/benditos_steak_clean_text_watermark.png?rlkey=zd06mhfa3uj9r7d5erm4m03l9&st=xccme536&raw=1");
+  background-image: url("https://www.dropbox.com/scl/fi/aoj29swzrg8fbdi8aii04/benditos-homepage-hero.png?rlkey=xtpmkxmqnhzsxuozta88k8gie&st=alzygj6x&raw=1");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

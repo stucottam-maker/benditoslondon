@@ -113,7 +113,7 @@ function HomePage({ setPage, galleryItems }) {
   return (
     <>
       <section className="hero-section">
-        <div className="hero-overlay"></div>
+  <div className="hero-overlay"></div>
         <div className="hero-content">
           <p className="eyebrow hero-eyebrow">Latin Street Food</p>
           <h1 className="hero-title hero-title-large">
