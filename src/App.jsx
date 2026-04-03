@@ -113,27 +113,31 @@ function HomePage({ setPage, galleryItems }) {
   return (
     <>
       <section className="hero-section">
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          <p className="eyebrow hero-eyebrow">Latin Street Food</p>
-          <h1 className="hero-title hero-title-large">
-            Big flavours.
-            <br />
-            Good times.
-          </h1>
-          <p className="hero-copy hero-copy-light">
-            Bold Latin American street food, cold drinks, and all-day bites worth coming back for.
-          </p>
-          <div className="button-row">
-            <button onClick={() => setPage('menu')} className="btn btn-primary">
-              View Menu
-            </button>
-            <button onClick={() => setPage('visit')} className="btn btn-secondary btn-secondary-light">
-              Follow the Launch
-            </button>
-          </div>
-        </div>
-      </section>
+  <div className="hero-overlay"></div>
+
+  <div className="hero-content">
+    <div className="hero-copy-group">
+      <p className="eyebrow hero-eyebrow">Latin Street Food</p>
+      <h1 className="hero-title hero-title-large">
+        Big flavours.
+        <br />
+        Good times.
+      </h1>
+      <p className="hero-copy hero-copy-light">
+        Bold Latin American street food, cold drinks, and all-day bites worth coming back for.
+      </p>
+    </div>
+
+    <div className="button-row">
+      <button onClick={() => setPage('menu')} className="btn btn-primary">
+        View Menu
+      </button>
+      <button onClick={() => setPage('visit')} className="btn btn-secondary btn-secondary-light">
+        Follow the Launch
+      </button>
+    </div>
+  </div>
+</section>
 
       <section className="container page-section">
         <div className="intro-block">

@@ -199,16 +199,17 @@ img {
   position: relative;
   height: 350px;
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
   background-image: url("https://www.dropbox.com/scl/fi/oploj47wjdzxx4ka3zdf4/hero-image-no-banana.png?rlkey=0oz45uglle7tg3b6idb39lxhp&st=8pmd57rw&raw=1");
   background-size: cover;
-  background-position: center 52%;
+  background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
   border-radius: 2rem;
   margin: 28px auto 0;
   width: min(1120px, calc(100% - 40px));
 }
+
 
 .hero-overlay {
   position: absolute;
@@ -225,11 +226,17 @@ img {
   position: relative;
   z-index: 1;
   color: #f7ebdd;
-  padding: 90px 48px 34px;
+  padding: 34px 48px;
   max-width: 410px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
-
+.hero-copy-group {
+  display: grid;
+  gap: 10px;
+}
 .hero-eyebrow {
   color: rgba(247, 235, 221, 0.82);
 }
