@@ -230,12 +230,25 @@ function VisitPage({ visitInfo }) {
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
             <p className="eyebrow">{item.label}</p>
-            <h3>{item.value}</h3>
+
+            {item.label === 'Follow' ? (
+              <a
+                href="https://www.instagram.com/benditosldn/"
+                target="_blank"
+                rel="noreferrer"
+                className="visit-link"
+              >
+                {item.value}
+              </a>
+            ) : (
+              <h3>{item.value}</h3>
+            )}
           </div>
         ))}
       </div>
     </section>
   );
+}
 }
 
 function ContactPage() {
