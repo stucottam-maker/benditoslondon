@@ -197,7 +197,7 @@ img {
 
 .hero-section {
   position: relative;
-  height: 330px;
+  height: 350px;
   display: flex;
   align-items: flex-end;
   background-image: url("https://www.dropbox.com/scl/fi/2ezrxh2g8zsrn2fey1elc/benditos_steak_clean_text_watermark.png?rlkey=zd06mhfa3uj9r7d5erm4m03l9&st=xccme536&raw=1");
@@ -225,29 +225,28 @@ img {
   position: relative;
   z-index: 1;
   color: #f7ebdd;
-  padding: 56px 36px 28px;
-  max-width: 410px;
+  padding: 58px 40px 30px;
+  max-width: 420px;
 }
-
 .hero-eyebrow {
   color: rgba(247, 235, 221, 0.82);
 }
 
 .hero-title-large {
   color: #f7ebdd;
-  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
   line-height: 0.9;
   font-weight: 900;
   letter-spacing: -0.08em;
   text-transform: uppercase;
-  margin-bottom: 8px;
-  max-width: 6ch;
+  margin-bottom: 10px;
+  max-width: 5.6ch;
 }
 
 .hero-copy-light {
   color: rgba(247, 235, 221, 0.92);
-  max-width: 22rem;
-  font-size: 0.82rem;
+  max-width: 20rem;
+  font-size: 0.8rem;
   line-height: 1.4;
 }
 
