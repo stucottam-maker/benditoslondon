@@ -225,9 +225,10 @@ img {
   position: relative;
   z-index: 1;
   color: #f7ebdd;
-  padding: 82px 44px 30px;
-  max-width: 400px;
+  padding: 96px 52px 34px;
+  max-width: 410px;
 }
+
 
 .hero-eyebrow {
   color: rgba(247, 235, 221, 0.82);
