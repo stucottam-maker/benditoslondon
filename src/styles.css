@@ -197,10 +197,10 @@ img {
 
 .hero-section {
   position: relative;
-  height: 330px;
+  height: 350px;
   display: flex;
   align-items: flex-end;
-  background-image: url("https://www.dropbox.com/scl/fi/aoj29swzrg8fbdi8aii04/benditos-homepage-hero.png?rlkey=xtpmkxmqnhzsxuozta88k8gie&st=alzygj6x&raw=1");
+  background-image: url("https://www.dropbox.com/scl/fi/aoj29swzrg8fbdi8aii04/benditos-homepage-hero.png?rlkey=xtpmkxmqnhzsxuozta88k8gie&st=a38393n6&raw=1");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -215,9 +215,9 @@ img {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(31, 19, 13, 0.88) 0%,
-    rgba(31, 19, 13, 0.56) 40%,
-    rgba(31, 19, 13, 0.18) 100%
+    rgba(31, 19, 13, 0.62) 0%,
+    rgba(31, 19, 13, 0.28) 40%,
+    rgba(31, 19, 13, 0.08) 100%
   );
 }
 
@@ -225,22 +225,23 @@ img {
   position: relative;
   z-index: 1;
   color: #f7ebdd;
-  padding: 58px 40px 30px;
-  max-width: 420px;
+  padding: 56px 36px 28px;
+  max-width: 410px;
 }
+
 .hero-eyebrow {
   color: rgba(247, 235, 221, 0.82);
 }
 
 .hero-title-large {
   color: #f7ebdd;
-  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   line-height: 0.9;
   font-weight: 900;
   letter-spacing: -0.08em;
   text-transform: uppercase;
   margin-bottom: 10px;
-  max-width: 5.6ch;
+  max-width: 6ch;
 }
 
 .hero-copy-light {
@@ -266,7 +267,7 @@ img {
 
 .intro-block {
   max-width: 46rem;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 /* Gallery */
