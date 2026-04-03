@@ -4,12 +4,6 @@ export default function App() {
   const [page, setPage] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const visitInfo = [
-    { label: 'Launching', value: 'London — coming soon' },
-    { label: 'Best for', value: 'Walk-ins, tacos, drinks, all day bites' },
-    { label: 'Follow', value: '@benditosldn' },
-  ];
-
   const galleryItems = [
     {
       title: 'Birria',
@@ -33,6 +27,12 @@ export default function App() {
     },
   ];
 
+  const visitInfo = [
+    { label: 'Launching', value: 'London — coming soon' },
+    { label: 'Best for', value: 'Walk-ins, tacos, drinks, all-day bites' },
+    { label: 'Follow', value: '@benditosldn' },
+  ];
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'menu', label: 'Menu' },
@@ -40,26 +40,17 @@ export default function App() {
     { id: 'contact', label: 'Contact' },
   ];
 
-  const handleNavigate = (target) => {
+  function handleNavigate(target) {
     setPage(target);
     setMobileMenuOpen(false);
-  };
+  }
 
   return (
     <div className="site-shell">
       <header className="site-header">
         <div className="container header-inner">
-          <button onClick={() => handleNavigate('home')} className="brand-button">
+          <button className="brand-button" onClick={() => handleNavigate('home')}>
             BENDITOS
-          </button>
-
-          <button
-            className="mobile-menu-toggle"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            aria-expanded={mobileMenuOpen}
-            aria-label="Toggle menu"
-          >
-            Menu
           </button>
 
           <nav className="nav-desktop">
@@ -73,27 +64,36 @@ export default function App() {
               </button>
             ))}
           </nav>
+
+          <button
+            className="mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle navigation menu"
+          >
+            Menu
+          </button>
         </div>
 
         {mobileMenuOpen && (
           <div className="mobile-menu-panel">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavigate(item.id)}
-                className={page === item.id ? 'mobile-menu-link active' : 'mobile-menu-link'}
-              >
-                {item.label}
-              </button>
-            ))}
+            <div className="container mobile-menu-panel-inner">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavigate(item.id)}
+                  className={page === item.id ? 'mobile-menu-link active' : 'mobile-menu-link'}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </header>
 
       <main>
-        {page === 'home' && (
-          <HomePage setPage={setPage} galleryItems={galleryItems} />
-        )}
+        {page === 'home' && <HomePage setPage={setPage} galleryItems={galleryItems} />}
         {page === 'menu' && <MenuPage />}
         {page === 'visit' && <VisitPage visitInfo={visitInfo} />}
         {page === 'contact' && <ContactPage />}
@@ -112,30 +112,23 @@ export default function App() {
 function HomePage({ setPage, galleryItems }) {
   return (
     <>
-      <section className="hero-background-section">
-        <div className="hero-background-overlay"></div>
-
-        <div className="hero-background-content">
+      <section className="hero-section">
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
           <p className="eyebrow hero-eyebrow">Latin Street Food</p>
-
           <h1 className="hero-title hero-title-large">
             Big flavours.
             <br />
             Good times.
           </h1>
-
           <p className="hero-copy hero-copy-light">
             Bold Latin American street food, cold drinks, and all-day bites worth coming back for.
           </p>
-
           <div className="button-row">
             <button onClick={() => setPage('menu')} className="btn btn-primary">
               View Menu
             </button>
-            <button
-              onClick={() => setPage('visit')}
-              className="btn btn-secondary btn-secondary-light"
-            >
+            <button onClick={() => setPage('visit')} className="btn btn-secondary btn-secondary-light">
               Follow the Launch
             </button>
           </div>
@@ -147,9 +140,9 @@ function HomePage({ setPage, galleryItems }) {
           <h2 className="section-title">Four favourites. One mood.</h2>
         </div>
 
-        <div className="visit-grid">
-          {galleryItems.slice(0, 4).map((item) => (
-            <div key={item.title} className="visit-card image-card">
+        <div className="gallery-grid">
+          {galleryItems.map((item) => (
+            <div key={item.title} className="gallery-card">
               <img src={item.src} alt={item.alt} className="gallery-image" />
               <div className="image-label">
                 <h3>{item.title}</h3>
@@ -193,10 +186,9 @@ function HomePage({ setPage, galleryItems }) {
 
 function MenuPage() {
   return (
-    <section className="container page-section menu-page-editorial">
+    <section className="container page-section menu-page">
       <section className="menu-hero-banner">
         <div className="menu-hero-overlay"></div>
-
         <div className="menu-hero-content">
           <p className="eyebrow menu-hero-eyebrow">Menu</p>
           <h2 className="section-title menu-hero-title">What we’re serving.</h2>
@@ -211,8 +203,8 @@ function MenuPage() {
         <div className="menu-heading-block">Quesadillas</div>
         <div className="menu-heading-block">Ceviches</div>
         <div className="menu-heading-block">Tostadas</div>
-        <div className="menu-heading-block">Fresh Juices</div>
-        <div className="menu-heading-block">Drinks</div>
+        <div className="menu-heading-block menu-heading-small">Fresh Juices</div>
+        <div className="menu-heading-block menu-heading-small">Drinks</div>
       </div>
     </section>
   );
@@ -225,13 +217,12 @@ function VisitPage({ visitInfo }) {
         <p className="eyebrow">Visit</p>
         <h2 className="section-title">Catch us when we land.</h2>
         <p className="intro-copy">
-          Benditos is made for all-day bites, cold drinks, and dropping in
-          whenever the craving hits. Follow along and be first to know when we
-          open.
+          Benditos is made for all-day bites, cold drinks, and dropping in whenever the craving hits.
+          Follow along and be first to know when we open.
         </p>
       </div>
 
-      <div className="visit-grid visit-info-grid">
+      <div className="visit-info-grid">
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
             <p className="eyebrow">{item.label}</p>
@@ -251,8 +242,7 @@ function ContactPage() {
           <p className="eyebrow eyebrow-light">Contact</p>
           <h2 className="contact-title">London — coming soon.</h2>
           <p className="contact-copy">
-            Follow along, watch the food, and be first to know when Benditos
-            lands in London.
+            Follow along, watch the food, and be first to know when Benditos lands in London.
           </p>
         </div>
 
@@ -273,7 +263,6 @@ function ContactPage() {
             <strong>Email</strong>
             <span>hello@benditosldn.com</span>
           </div>
-        
 
           <div className="contact-item">
             <strong>Location</strong>
