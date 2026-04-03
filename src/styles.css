@@ -202,7 +202,7 @@ img {
   align-items: flex-end;
   background-image: url("https://www.dropbox.com/scl/fi/oploj47wjdzxx4ka3zdf4/hero-image-no-banana.png?rlkey=0oz45uglle7tg3b6idb39lxhp&st=8pmd57rw&raw=1");
   background-size: cover;
-  background-position: center;
+  background-position: center 52%;
   background-repeat: no-repeat;
   overflow: hidden;
   border-radius: 2rem;
@@ -225,8 +225,8 @@ img {
   position: relative;
   z-index: 1;
   color: #f7ebdd;
-  padding: 56px 36px 28px;
-  max-width: 410px;
+  padding: 82px 44px 30px;
+  max-width: 400px;
 }
 
 .hero-eyebrow {
@@ -235,13 +235,13 @@ img {
 
 .hero-title-large {
   color: #f7ebdd;
-  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-size: clamp(1.7rem, 2.6vw, 2.35rem);
   line-height: 0.9;
   font-weight: 900;
   letter-spacing: -0.08em;
   text-transform: uppercase;
   margin-bottom: 10px;
-  max-width: 6ch;
+  max-width: 5.4ch;
 }
 
 .hero-copy-light {
@@ -599,7 +599,7 @@ img {
 
   .hero-section {
     width: calc(100% - 24px);
-    height: 380px;
+    height: 370px;
     margin: 18px auto 0;
     border-radius: 1.25rem;
     background-position: center 42%;
