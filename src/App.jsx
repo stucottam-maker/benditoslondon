@@ -226,21 +226,23 @@ function VisitPage({ visitInfo }) {
       <div className="visit-info-grid">
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
-            <p className="eyebrow">{item.label}</p>
-
-            {item.label === 'Follow' ? (
+          <p className="eyebrow">{item.label}</p>
+        
+          {item.label === 'Follow' ? (
+            <h3>
               <a
                 href="https://www.instagram.com/benditosldn/"
                 target="_blank"
                 rel="noreferrer"
-                className="visit-link"
+                className="visit-big-link"
               >
-                {item.value}
+                @benditosldn
               </a>
-            ) : (
-              <h3>{item.value}</h3>
-            )}
-          </div>
+            </h3>
+          ) : (
+            <h3>{item.value}</h3>
+          )}
+        </div>
         ))}
       </div>
     </section>
