@@ -136,10 +136,6 @@ a {
   text-transform: uppercase;
 }
 
-.hero-title {
-  line-height: 0.9;
-}
-
 .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.95;
@@ -435,19 +431,17 @@ a {
 .visit-card h3 {
   font-size: 2rem;
   line-height: 0.95;
+  color: var(--orange);
 }
 
-.visit-card a {
-  color: var(--brown);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-.visit-big-link {
-  color: var(--orange);
+.visit-big-link,
+.visit-card h3 a {
+  color: inherit;
   text-decoration: none;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
 }
 
 /* Contact */

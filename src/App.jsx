@@ -28,7 +28,7 @@ export default function App() {
   ];
 
   const visitInfo = [
-    { label: 'Launching', value: 'London — coming soon' },
+    { label: 'Launching', value: 'London—coming soon' },
     { label: 'Best for', value: 'Walk-ins, tacos, drinks, all-day bites' },
     { label: 'Follow', value: '@benditosldn' },
   ];
@@ -113,28 +113,34 @@ function HomePage({ setPage, galleryItems }) {
   return (
     <>
       <section className="hero-section">
-  <div className="hero-overlay"></div>
+        <div className="hero-overlay"></div>
 
-  <div className="hero-content">
-    <div className="hero-copy-group">
-      <p className="eyebrow hero-eyebrow">Latin Street Food</p>
-      <h1 className="hero-title hero-title-large">
-        Big flavours.
-        <br />
-        Good times.
-      </h1>
-      <p className="hero-copy hero-copy-light">
-        Bold Latin American street food, cold drinks, and all-day bites worth coming back for.
-      </p>
-    </div>
+        <div className="hero-content">
+          <div className="hero-copy-group">
+            <p className="eyebrow hero-eyebrow">Latin Street Food</p>
 
-    <div className="button-row">
-  <button onClick={() => setPage('menu')} className="btn btn-primary">
-    View Menu
-  </button>
-</div>
-  </div>
-</section>
+            <h1 className="hero-title hero-title-large">
+              Big
+              <br />
+              flavours.
+              <br />
+              Good
+              <br />
+              times.
+            </h1>
+
+            <p className="hero-copy hero-copy-light">
+              Bold Latin American street food, cold drinks, and all-day bites worth coming back for.
+            </p>
+          </div>
+
+          <div className="button-row">
+            <button onClick={() => setPage('menu')} className="btn btn-primary">
+              View Menu
+            </button>
+          </div>
+        </div>
+      </section>
 
       <section className="container page-section">
         <div className="intro-block">
@@ -190,6 +196,7 @@ function MenuPage() {
     <section className="container page-section menu-page">
       <section className="menu-hero-banner">
         <div className="menu-hero-overlay"></div>
+
         <div className="menu-hero-content">
           <p className="eyebrow menu-hero-eyebrow">Menu</p>
           <h2 className="section-title menu-hero-title">What we’re serving.</h2>
@@ -226,23 +233,23 @@ function VisitPage({ visitInfo }) {
       <div className="visit-info-grid">
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
-          <p className="eyebrow">{item.label}</p>
-        
-          {item.label === 'Follow' ? (
-            <h3>
-              <a
-                href="https://www.instagram.com/benditosldn/"
-                target="_blank"
-                rel="noreferrer"
-                className="visit-big-link"
-              >
-                @benditosldn
-              </a>
-            </h3>
-          ) : (
-            <h3>{item.value}</h3>
-          )}
-        </div>
+            <p className="eyebrow">{item.label}</p>
+
+            {item.label === 'Follow' ? (
+              <h3>
+                <a
+                  href="https://www.instagram.com/benditosldn/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="visit-big-link"
+                >
+                  @benditosldn
+                </a>
+              </h3>
+            ) : (
+              <h3>{item.value}</h3>
+            )}
+          </div>
         ))}
       </div>
     </section>
