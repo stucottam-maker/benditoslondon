@@ -129,13 +129,10 @@ function HomePage({ setPage, galleryItems }) {
     </div>
 
     <div className="button-row">
-      <button onClick={() => setPage('menu')} className="btn btn-primary">
-        View Menu
-      </button>
-      <button onClick={() => setPage('visit')} className="btn btn-secondary btn-secondary-light">
-        Follow the Launch
-      </button>
-    </div>
+  <button onClick={() => setPage('menu')} className="btn btn-primary">
+    View Menu
+  </button>
+</div>
   </div>
 </section>
 

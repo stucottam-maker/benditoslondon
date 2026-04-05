@@ -159,8 +159,8 @@ a {
 .button-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  padding-top: 20px;
+  gap: 12px;
+  padding-top: 16px;
 }
 
 .btn {
