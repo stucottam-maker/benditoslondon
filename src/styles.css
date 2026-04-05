@@ -274,6 +274,11 @@ img {
   gap: 40px;
 }
 
+.about-content {
+  display: grid;
+  gap: 12px;
+}
+
 .intro-block {
   max-width: 46rem;
   margin-bottom: 28px;
@@ -323,35 +328,48 @@ img {
   font-weight: 900;
 }
 
-/* About cards */
+/* About */
 
-.about-grid {
+.about-carousel {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
-.info-card,
-.visit-card,
-.contact-card {
-  border-radius: 2rem;
-}
-
+.about-slide,
 .info-card {
   background: var(--cream-light);
   border: 1px solid rgba(217, 74, 30, 0.1);
   box-shadow: 0 8px 24px rgba(31, 19, 13, 0.04);
   padding: 22px 18px;
+  border-radius: 1.5rem;
 }
 
+.about-slide h3,
 .info-card h3 {
   font-size: 1.45rem;
   margin-bottom: 10px;
 }
 
+.about-slide p,
 .info-card p {
   font-size: 0.92rem;
   line-height: 1.5;
+}
+
+.about-carousel-dots {
+  display: none;
+}
+
+.about-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(124, 52, 27, 0.22);
+}
+
+.about-dot.active {
+  background: var(--orange);
 }
 
 /* Menu page */
@@ -533,13 +551,19 @@ img {
 /* Tablet */
 
 @media (max-width: 980px) {
-  .about-section,
   .contact-block,
   .visit-info-grid,
-  .about-grid,
   .gallery-grid,
   .menu-headings-only {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+
+  .about-carousel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .nav-desktop {
@@ -620,7 +644,7 @@ img {
   }
 
   .hero-content {
-    max-width: 210px;
+    max-width: 220px;
     padding: 28px 20px 18px;
   }
 
@@ -671,7 +695,6 @@ img {
   }
 
   .about-section {
-    grid-template-columns: 1fr;
     gap: 18px;
   }
 
@@ -679,39 +702,55 @@ img {
     text-align: center;
   }
 
-  .about-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .about-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
     gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .about-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .about-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .about-slide {
+    scroll-snap-align: start;
+    padding: 16px 14px;
+    border-radius: 1rem;
+  }
+
+  .about-slide h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .about-slide p {
+    font-size: 0.8rem;
+    line-height: 1.35;
+    text-align: center;
   }
 
   .gallery-card,
   .visit-card,
-  .info-card,
   .contact-card {
     border-radius: 1.25rem;
   }
 
   .visit-card,
-  .info-card,
   .contact-card {
     padding: 18px;
-  }
-
-  .info-card {
-    padding: 16px 14px;
-    border-radius: 1rem;
-  }
-
-  .info-card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-
-  .info-card p {
-    font-size: 0.78rem;
-    line-height: 1.35;
-    text-align: center;
   }
 
   .gallery-card {

@@ -1,48 +1,68 @@
 import { useState } from 'react';
 
+const elementCards = [
+  {
+    title: 'Fire',
+    text: 'Big flavour, char, heat, and grill-led cooking.',
+  },
+  {
+    title: 'Citrus',
+    text: 'Fresh lime, sharpness, brightness, and lift.',
+  },
+  {
+    title: 'Earth',
+    text: 'Corn, slow-cooked depth, roots, and richness.',
+  },
+  {
+    title: 'Water',
+    text: 'Fresh juices, cold drinks, balance, and reset.',
+  },
+];
+
+const galleryItems = [
+  {
+    title: 'Birria',
+    alt: 'Slow-cooked birria tacos',
+    src: 'https://www.dropbox.com/scl/fi/h2fvqq9qoxkw2fglqcxig/a_digital_photograph_showcases_two_beef_birria_tac.png?rlkey=160t4r9gz3r2nwq6h1ugnn8yh&st=gayadk32&raw=1',
+  },
+  {
+    title: 'Fish Taco',
+    alt: 'Crispy fish taco',
+    src: 'https://www.dropbox.com/scl/fi/u8xau043f7fqofxqhjkz9/benditos_taco_cream_watermark_fresh.png?rlkey=kkf1vy0kw8vp1gyywbkbjq2fk&st=fzwc4rhm&raw=1',
+  },
+  {
+    title: 'Tuna Tostada',
+    alt: 'Tuna tostada',
+    src: 'https://www.dropbox.com/scl/fi/h2936480f05rtdn1sirvo/tuna_tostada_cream_watermark_v2.png?rlkey=oj3ccj6xdfs0zhrak542xanar&st=lc4ojexd&raw=1',
+  },
+  {
+    title: 'Ceviche',
+    alt: 'Fresh ceviche',
+    src: 'https://www.dropbox.com/scl/fi/ga1m334fs5bjee8ewka43/pexels-nano-erdozain-120534369-28448397.jpg?rlkey=31nxg80db5rf7hlz29u39v33a&st=9oi9xb4s&raw=1',
+  },
+];
+
+const visitInfo = [
+  { label: 'Launching', value: 'London — coming soon' },
+  { label: 'Best for', value: 'Walk-ins, tacos, drinks, all-day bites' },
+  { label: 'Follow', value: '@benditosldn' },
+];
+
+const navItems = [
+  { id: 'home', label: 'Home' },
+  { id: 'menu', label: 'Menu' },
+  { id: 'visit', label: 'Visit' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export default function App() {
   const [page, setPage] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const galleryItems = [
-    {
-      title: 'Birria',
-      alt: 'Slow-cooked birria tacos',
-      src: 'https://www.dropbox.com/scl/fi/h2fvqq9qoxkw2fglqcxig/a_digital_photograph_showcases_two_beef_birria_tac.png?rlkey=160t4r9gz3r2nwq6h1ugnn8yh&st=gayadk32&raw=1',
-    },
-    {
-      title: 'Fish Taco',
-      alt: 'Crispy fish taco',
-      src: 'https://www.dropbox.com/scl/fi/u8xau043f7fqofxqhjkz9/benditos_taco_cream_watermark_fresh.png?rlkey=kkf1vy0kw8vp1gyywbkbjq2fk&st=fzwc4rhm&raw=1',
-    },
-    {
-      title: 'Tuna Tostada',
-      alt: 'Tuna tostada',
-      src: 'https://www.dropbox.com/scl/fi/h2936480f05rtdn1sirvo/tuna_tostada_cream_watermark_v2.png?rlkey=oj3ccj6xdfs0zhrak542xanar&st=lc4ojexd&raw=1',
-    },
-    {
-      title: 'Ceviche',
-      alt: 'Fresh ceviche',
-      src: 'https://www.dropbox.com/scl/fi/ga1m334fs5bjee8ewka43/pexels-nano-erdozain-120534369-28448397.jpg?rlkey=31nxg80db5rf7hlz29u39v33a&st=9oi9xb4s&raw=1',
-    },
-  ];
-
-  const visitInfo = [
-    { label: 'Launching', value: 'London — coming soon' },
-    { label: 'Best for', value: 'Walk-ins, tacos, drinks, all-day bites' },
-    { label: 'Follow', value: '@benditosldn' },
-  ];
-
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'menu', label: 'Menu' },
-    { id: 'visit', label: 'Visit' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
   function handleNavigate(target) {
     setPage(target);
     setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   return (
@@ -53,7 +73,7 @@ export default function App() {
             BENDITOS
           </button>
 
-          <nav className="nav-desktop">
+          <nav className="nav-desktop" aria-label="Primary navigation">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -93,7 +113,9 @@ export default function App() {
       </header>
 
       <main>
-        {page === 'home' && <HomePage setPage={setPage} galleryItems={galleryItems} />}
+        {page === 'home' && (
+          <HomePage setPage={setPage} galleryItems={galleryItems} elementCards={elementCards} />
+        )}
         {page === 'menu' && <MenuPage />}
         {page === 'visit' && <VisitPage visitInfo={visitInfo} />}
         {page === 'contact' && <ContactPage />}
@@ -109,11 +131,12 @@ export default function App() {
   );
 }
 
-function HomePage({ setPage, galleryItems }) {
+function HomePage({ setPage, galleryItems, elementCards }) {
   return (
     <>
       <section className="hero-section">
         <div className="hero-overlay"></div>
+
         <div className="hero-content">
           <div className="hero-copy-group">
             <p className="eyebrow hero-eyebrow">Latin Street Food</p>
@@ -161,30 +184,22 @@ function HomePage({ setPage, galleryItems }) {
           <h2 className="section-title">Come hungry. Leave happy.</h2>
         </div>
 
-        <div className="about-grid">
-          {[
-            {
-              title: 'Fire',
-              text: 'Big flavour, char, heat, and grill-led cooking.',
-            },
-            {
-              title: 'Citrus',
-              text: 'Fresh lime, sharpness, brightness, and lift.',
-            },
-            {
-              title: 'Earth',
-              text: 'Corn, slow-cooked depth, roots, and richness.',
-            },
-            {
-              title: 'Water',
-              text: 'Fresh juices, cold drinks, balance, and reset.',
-            },
-          ].map((item) => (
-            <div key={item.title} className="info-card">
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-          ))}
+        <div className="about-content">
+          <div className="about-carousel">
+            {elementCards.map((item) => (
+              <div key={item.title} className="info-card about-slide">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="about-carousel-dots" aria-hidden="true">
+            <span className="about-dot active"></span>
+            <span className="about-dot"></span>
+            <span className="about-dot"></span>
+            <span className="about-dot"></span>
+          </div>
         </div>
       </section>
     </>
@@ -196,6 +211,7 @@ function MenuPage() {
     <section className="container page-section menu-page">
       <section className="menu-hero-banner">
         <div className="menu-hero-overlay"></div>
+
         <div className="menu-hero-content">
           <p className="eyebrow menu-hero-eyebrow">Menu</p>
           <h2 className="section-title menu-hero-title">What we’re serving.</h2>
@@ -220,7 +236,7 @@ function MenuPage() {
 function VisitPage({ visitInfo }) {
   return (
     <section className="container page-section">
-      <div className="intro-block">
+      <div className="intro-block visit-intro">
         <p className="eyebrow">Visit</p>
         <h2 className="section-title">Catch us when we land.</h2>
         <p className="intro-copy">
