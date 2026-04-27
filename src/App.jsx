@@ -45,7 +45,7 @@ const galleryItems = [
 const visitInfo = [
   { label: 'Launching', value: 'London — coming soon' },
   { label: 'Best for', value: 'Walk-ins, tacos, drinks, all-day bites' },
-  { label: 'Follow', value: '@benditosldn' },
+  { label: 'Follow', value: '@benditosldn', isLink: true },
 ];
 
 const navItems = [
@@ -161,7 +161,7 @@ function HomePage({ setPage, galleryItems, elementCards }) {
         </div>
       </section>
 
-      <section className="container page-section">
+      <section className="container page-section favourites-section">
         <div className="intro-block">
           <h2 className="section-title">Four favourites. One mood.</h2>
         </div>
@@ -249,7 +249,20 @@ function VisitPage({ visitInfo }) {
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
             <p className="eyebrow">{item.label}</p>
-            <h3>{item.value}</h3>
+            {item.isLink ? (
+              <h3>
+                <a
+                  href="https://www.instagram.com/benditosldn/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="visit-link"
+                >
+                  {item.value}
+                </a>
+              </h3>
+            ) : (
+              <h3>{item.value}</h3>
+            )}
           </div>
         ))}
       </div>
