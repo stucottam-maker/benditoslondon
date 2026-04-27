@@ -3,25 +3,21 @@ import { useEffect, useState } from 'react';
 const heroSlides = [
   {
     label: 'Birria',
-    alt: 'Slow-cooked birria tacos',
     image:
       'https://www.dropbox.com/scl/fi/h2fvqq9qoxkw2fglqcxig/a_digital_photograph_showcases_two_beef_birria_tac.png?rlkey=160t4r9gz3r2nwq6h1ugnn8yh&st=gayadk32&raw=1',
   },
   {
     label: 'Fish Taco',
-    alt: 'Crispy fish taco',
     image:
       'https://www.dropbox.com/scl/fi/u8xau043f7fqofxqhjkz9/benditos_taco_cream_watermark_fresh.png?rlkey=kkf1vy0kw8vp1gyywbkbjq2fk&st=fzwc4rhm&raw=1',
   },
   {
     label: 'Tuna Tostada',
-    alt: 'Tuna tostada',
     image:
       'https://www.dropbox.com/scl/fi/h2936480f05rtdn1sirvo/tuna_tostada_cream_watermark_v2.png?rlkey=oj3ccj6xdfs0zhrak542xanar&st=lc4ojexd&raw=1',
   },
   {
     label: 'Ceviche',
-    alt: 'Fresh ceviche',
     image:
       'https://www.dropbox.com/scl/fi/ga1m334fs5bjee8ewka43/pexels-nano-erdozain-120534369-28448397.jpg?rlkey=31nxg80db5rf7hlz29u39v33a&st=9oi9xb4s&raw=1',
   },
@@ -134,26 +130,39 @@ export default function App() {
 }
 
 function HomePage({ setPage }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+  const [currentAboutSlide, setCurrentAboutSlide] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5500);
 
     return () => window.clearInterval(timer);
   }, []);
 
-  function goToSlide(index) {
-    setCurrentSlide(index);
+  function goHeroPrev() {
+    setCurrentHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
   }
 
-  function goPrev() {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  function goHeroNext() {
+    setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
   }
 
-  function goNext() {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  function goHeroTo(index) {
+    setCurrentHeroSlide(index);
+  }
+
+  function goAboutPrev() {
+    setCurrentAboutSlide((prev) => (prev - 1 + elementCards.length) % elementCards.length);
+  }
+
+  function goAboutNext() {
+    setCurrentAboutSlide((prev) => (prev + 1) % elementCards.length);
+  }
+
+  function goAboutTo(index) {
+    setCurrentAboutSlide(index);
   }
 
   return (
@@ -163,9 +172,9 @@ function HomePage({ setPage }) {
           {heroSlides.map((slide, index) => (
             <div
               key={slide.label}
-              className={index === currentSlide ? 'hero-slide active' : 'hero-slide'}
+              className={index === currentHeroSlide ? 'hero-slide active' : 'hero-slide'}
               style={{ backgroundImage: `url("${slide.image}")` }}
-              aria-hidden={index !== currentSlide}
+              aria-hidden={index !== currentHeroSlide}
             >
               <div className="hero-overlay"></div>
             </div>
@@ -198,14 +207,14 @@ function HomePage({ setPage }) {
               </div>
 
               <div className="hero-slider-controls">
-                <div className="hero-slide-tag">{heroSlides[currentSlide].label}</div>
+                <div className="hero-slide-tag">{heroSlides[currentHeroSlide].label}</div>
 
                 <div className="hero-dots" aria-label="Hero slides">
                   {heroSlides.map((slide, index) => (
                     <button
                       key={slide.label}
-                      className={index === currentSlide ? 'hero-dot active' : 'hero-dot'}
-                      onClick={() => goToSlide(index)}
+                      className={index === currentHeroSlide ? 'hero-dot active' : 'hero-dot'}
+                      onClick={() => goHeroTo(index)}
                       aria-label={`Show ${slide.label}`}
                     />
                   ))}
@@ -214,10 +223,10 @@ function HomePage({ setPage }) {
             </div>
           </div>
 
-          <button className="hero-arrow hero-arrow-left" onClick={goPrev} aria-label="Previous slide">
+          <button className="hero-arrow hero-arrow-left" onClick={goHeroPrev} aria-label="Previous slide">
             ‹
           </button>
-          <button className="hero-arrow hero-arrow-right" onClick={goNext} aria-label="Next slide">
+          <button className="hero-arrow hero-arrow-right" onClick={goHeroNext} aria-label="Next slide">
             ›
           </button>
         </div>
@@ -230,20 +239,39 @@ function HomePage({ setPage }) {
         </div>
 
         <div className="about-content">
-          <div className="about-carousel">
+          <div className="about-grid-desktop">
             {elementCards.map((item) => (
-              <div key={item.title} className="info-card about-slide-card">
+              <div key={item.title} className="about-card">
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </div>
             ))}
           </div>
 
-          <div className="about-carousel-dots" aria-hidden="true">
-            <span className="about-dot active"></span>
-            <span className="about-dot"></span>
-            <span className="about-dot"></span>
-            <span className="about-dot"></span>
+          <div className="about-slider-mobile">
+            <button className="about-arrow about-arrow-left" onClick={goAboutPrev} aria-label="Previous about card">
+              ‹
+            </button>
+
+            <div className="about-card about-card-mobile">
+              <h3>{elementCards[currentAboutSlide].title}</h3>
+              <p>{elementCards[currentAboutSlide].text}</p>
+            </div>
+
+            <button className="about-arrow about-arrow-right" onClick={goAboutNext} aria-label="Next about card">
+              ›
+            </button>
+          </div>
+
+          <div className="about-dots" aria-label="About cards">
+            {elementCards.map((item, index) => (
+              <button
+                key={item.title}
+                className={index === currentAboutSlide ? 'about-dot active' : 'about-dot'}
+                onClick={() => goAboutTo(index)}
+                aria-label={`Show ${item.title}`}
+              />
+            ))}
           </div>
         </div>
       </section>
