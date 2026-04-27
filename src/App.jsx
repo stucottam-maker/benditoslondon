@@ -23,7 +23,7 @@ const heroSlides = [
   },
 ];
 
-const elementCards = [
+const approachCards = [
   {
     title: 'Fire',
     text: 'Big flavour, char, heat, and grill-led cooking.',
@@ -131,7 +131,7 @@ export default function App() {
 
 function HomePage({ setPage }) {
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
-  const [currentAboutSlide, setCurrentAboutSlide] = useState(0);
+  const [currentApproachSlide, setCurrentApproachSlide] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -153,16 +153,16 @@ function HomePage({ setPage }) {
     setCurrentHeroSlide(index);
   }
 
-  function goAboutPrev() {
-    setCurrentAboutSlide((prev) => (prev - 1 + elementCards.length) % elementCards.length);
+  function goApproachPrev() {
+    setCurrentApproachSlide((prev) => (prev - 1 + approachCards.length) % approachCards.length);
   }
 
-  function goAboutNext() {
-    setCurrentAboutSlide((prev) => (prev + 1) % elementCards.length);
+  function goApproachNext() {
+    setCurrentApproachSlide((prev) => (prev + 1) % approachCards.length);
   }
 
-  function goAboutTo(index) {
-    setCurrentAboutSlide(index);
+  function goApproachTo(index) {
+    setCurrentApproachSlide(index);
   }
 
   return (
@@ -176,7 +176,7 @@ function HomePage({ setPage }) {
               style={{ backgroundImage: `url("${slide.image}")` }}
               aria-hidden={index !== currentHeroSlide}
             >
-              <div className="hero-overlay"></div>
+              <div className="hero-overlay" />
             </div>
           ))}
 
@@ -233,66 +233,78 @@ function HomePage({ setPage }) {
       </section>
 
       <section className="container about-us-section">
-        <div className="about-us-grid">
-          <div className="about-us-lead">
-            <p className="eyebrow">About Us</p>
-            <h2 className="section-title">Rooted in Mexico. Shaped by experience.</h2>
-          </div>
+        <div className="about-us-panel">
+          <div className="about-us-grid">
+            <div className="about-us-lead">
+              <p className="eyebrow">About Us</p>
+              <h2 className="section-title">Rooted in Mexico. Shaped by experience.</h2>
+            </div>
 
-          <div className="about-us-copy">
-            <p>
-              Born from friendship and a shared love of Mexican history, culture, and its
-              extraordinarily varied cuisine, Benditos brings flavour and culture together in a
-              casual, vibrant dining experience. Created by chef friends with experience spanning
-              Mexico, Central America, London, Barcelona, and kitchens around the world, it brings
-              together bold flavour, fresh thinking, and a wider Latin American perspective. With
-              its heart in Mexico, Benditos is a place for bold food, cold drinks, and good times
-              around the table.
-            </p>
+            <div className="about-us-copy">
+              <p>
+                Born from friendship and a shared love of Mexican history, culture, and its
+                extraordinarily varied cuisine, Benditos brings flavour and culture together in a
+                casual, vibrant dining experience. Created by chef friends with experience spanning
+                Mexico, Central America, London, Barcelona, and kitchens around the world, it brings
+                together bold flavour, fresh thinking, and a wider Latin American perspective. With
+                its heart in Mexico, Benditos is a place for bold food, cold drinks, and good times
+                around the table.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="container about-section">
-        <div className="about-lead">
-          <p className="eyebrow">Our Approach</p>
-          <h2 className="section-title">Come hungry. Leave happy.</h2>
-        </div>
-
-        <div className="about-content">
-          <div className="about-grid-desktop">
-            {elementCards.map((item) => (
-              <div key={item.title} className="about-card">
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            ))}
+      <section className="container approach-section">
+        <div className="approach-grid">
+          <div className="approach-lead">
+            <p className="eyebrow">Our Approach</p>
+            <h2 className="section-title">Come hungry. Leave happy.</h2>
           </div>
 
-          <div className="about-slider-mobile">
-            <button className="about-arrow about-arrow-left" onClick={goAboutPrev} aria-label="Previous about card">
-              ‹
-            </button>
-
-            <div className="about-card about-card-mobile">
-              <h3>{elementCards[currentAboutSlide].title}</h3>
-              <p>{elementCards[currentAboutSlide].text}</p>
+          <div className="approach-content">
+            <div className="approach-cards-desktop">
+              {approachCards.map((item) => (
+                <div key={item.title} className="approach-card">
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              ))}
             </div>
 
-            <button className="about-arrow about-arrow-right" onClick={goAboutNext} aria-label="Next about card">
-              ›
-            </button>
-          </div>
-
-          <div className="about-dots" aria-label="About cards">
-            {elementCards.map((item, index) => (
+            <div className="approach-slider-mobile">
               <button
-                key={item.title}
-                className={index === currentAboutSlide ? 'about-dot active' : 'about-dot'}
-                onClick={() => goAboutTo(index)}
-                aria-label={`Show ${item.title}`}
-              />
-            ))}
+                className="approach-arrow approach-arrow-left"
+                onClick={goApproachPrev}
+                aria-label="Previous approach card"
+              >
+                ‹
+              </button>
+
+              <div className="approach-card approach-card-mobile">
+                <h3>{approachCards[currentApproachSlide].title}</h3>
+                <p>{approachCards[currentApproachSlide].text}</p>
+              </div>
+
+              <button
+                className="approach-arrow approach-arrow-right"
+                onClick={goApproachNext}
+                aria-label="Next approach card"
+              >
+                ›
+              </button>
+            </div>
+
+            <div className="approach-dots" aria-label="Approach cards">
+              {approachCards.map((item, index) => (
+                <button
+                  key={item.title}
+                  className={index === currentApproachSlide ? 'approach-dot active' : 'approach-dot'}
+                  onClick={() => goApproachTo(index)}
+                  aria-label={`Show ${item.title}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -304,7 +316,7 @@ function MenuPage() {
   return (
     <section className="container page-section menu-page">
       <section className="menu-hero-banner">
-        <div className="menu-hero-overlay"></div>
+        <div className="menu-hero-overlay" />
 
         <div className="menu-hero-content">
           <p className="eyebrow menu-hero-eyebrow">Menu</p>
@@ -331,7 +343,7 @@ function VisitPage({ visitInfo }) {
   return (
     <section className="container page-section visit-page">
       <section className="visit-hero-banner">
-        <div className="visit-hero-overlay"></div>
+        <div className="visit-hero-overlay" />
 
         <div className="visit-hero-content">
           <p className="eyebrow visit-hero-eyebrow">Visit</p>

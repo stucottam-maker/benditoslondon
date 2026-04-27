@@ -132,7 +132,7 @@ a {
 .section-title,
 .contact-title,
 .visit-card h3,
-.about-card h3 {
+.approach-card h3 {
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: -0.05em;
@@ -146,7 +146,8 @@ a {
 .hero-copy,
 .intro-copy,
 .contact-copy,
-.about-us-copy p {
+.about-us-copy p,
+.approach-card p {
   color: var(--brown);
   line-height: 1.7;
 }
@@ -163,6 +164,7 @@ a {
   padding: 14px 24px;
   border-radius: 999px;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -327,8 +329,8 @@ a {
 /* Sections */
 
 .page-section,
-.about-section,
-.about-us-section {
+.about-us-section,
+.approach-section {
   padding: 52px 0;
   border-top: 1px solid rgba(217, 74, 30, 0.1);
 }
@@ -340,51 +342,62 @@ a {
 
 /* About us */
 
+.about-us-panel {
+  background: var(--cream-light);
+  border: 1px solid rgba(217, 74, 30, 0.1);
+  border-radius: 2rem;
+  padding: 34px 36px;
+  box-shadow: 0 8px 24px rgba(31, 19, 13, 0.04);
+}
+
 .about-us-grid {
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 44px;
   align-items: start;
 }
 
 .about-us-lead .section-title {
-  max-width: 9ch;
+  max-width: 8.5ch;
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
 }
 
 .about-us-copy p {
-  font-size: 1rem;
+  font-size: 0.98rem;
+  line-height: 1.85;
+  max-width: 58ch;
 }
 
-/* About cards */
+/* Approach */
 
-.about-section {
+.approach-grid {
   display: grid;
   grid-template-columns: 0.84fr 1.16fr;
   gap: 48px;
   align-items: start;
 }
 
-.about-lead .section-title {
-  font-size: clamp(2rem, 3.7vw, 3.5rem);
+.approach-lead .section-title {
+  font-size: clamp(2rem, 3.4vw, 3.1rem);
   max-width: 8ch;
 }
 
-.about-content {
+.approach-content {
   display: grid;
   gap: 14px;
 }
 
-.about-grid-desktop {
+.approach-cards-desktop {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
-.about-slider-mobile {
+.approach-slider-mobile {
   display: none;
 }
 
-.about-card {
+.approach-card {
   background: var(--cream-light);
   border: 1px solid rgba(217, 74, 30, 0.1);
   box-shadow: 0 8px 24px rgba(31, 19, 13, 0.04);
@@ -392,21 +405,21 @@ a {
   border-radius: 1.5rem;
 }
 
-.about-card h3 {
+.approach-card h3 {
   font-size: 1.35rem;
   margin-bottom: 10px;
 }
 
-.about-card p {
+.approach-card p {
   font-size: 0.9rem;
   line-height: 1.55;
 }
 
-.about-dots {
+.approach-dots {
   display: none;
 }
 
-.about-dot {
+.approach-dot {
   width: 7px;
   height: 7px;
   border-radius: 999px;
@@ -414,11 +427,11 @@ a {
   padding: 0;
 }
 
-.about-dot.active {
+.approach-dot.active {
   background: var(--orange);
 }
 
-.about-arrow {
+.approach-arrow {
   width: 36px;
   height: 36px;
   border-radius: 999px;
@@ -572,7 +585,6 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
 }
 
 .visit-info-grid {
@@ -692,17 +704,17 @@ a {
   }
 
   .about-us-grid,
-  .about-section,
+  .approach-grid,
   .contact-block {
     grid-template-columns: 1fr;
   }
 
-  .about-grid-desktop {
+  .approach-cards-desktop {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-us-lead .section-title,
-  .about-lead .section-title {
+  .approach-lead .section-title {
     max-width: 100%;
   }
 
@@ -839,8 +851,8 @@ a {
   }
 
   .page-section,
-  .about-section,
-  .about-us-section {
+  .about-us-section,
+  .approach-section {
     padding: 32px 0;
   }
 
@@ -860,18 +872,23 @@ a {
     gap: 16px;
   }
 
+  .about-us-panel {
+    padding: 22px 18px;
+    border-radius: 1.25rem;
+  }
+
   .about-us-grid,
-  .about-section {
+  .approach-grid {
     gap: 20px;
   }
 
   .about-us-lead,
-  .about-lead {
+  .approach-lead {
     text-align: center;
   }
 
   .about-us-lead .section-title,
-  .about-lead .section-title {
+  .approach-lead .section-title {
     max-width: 100%;
   }
 
@@ -880,34 +897,34 @@ a {
     line-height: 1.75;
   }
 
-  .about-grid-desktop {
+  .approach-cards-desktop {
     display: none;
   }
 
-  .about-slider-mobile {
+  .approach-slider-mobile {
     display: grid;
     grid-template-columns: 36px 1fr 36px;
     align-items: center;
     gap: 10px;
   }
 
-  .about-card-mobile {
+  .approach-card-mobile {
     padding: 18px 16px;
     border-radius: 1rem;
     text-align: center;
   }
 
-  .about-card-mobile h3 {
+  .approach-card-mobile h3 {
     font-size: 1.1rem;
     margin-bottom: 8px;
   }
 
-  .about-card-mobile p {
+  .approach-card-mobile p {
     font-size: 0.8rem;
     line-height: 1.35;
   }
 
-  .about-dots {
+  .approach-dots {
     display: flex;
     justify-content: center;
     gap: 8px;
