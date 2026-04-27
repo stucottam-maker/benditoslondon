@@ -313,6 +313,255 @@ function HomePage({ setPage }) {
 }
 
 function MenuPage() {
+  const menuSections = [
+    {
+      title: 'For the Table / Antojitos',
+      items: [
+        {
+          name: 'Guacamole & Totopos',
+          price: '8',
+          description: 'Fresh guacamole, crisp tortilla chips',
+        },
+        {
+          name: 'Pico de Gallo & Totopos',
+          price: '6',
+          description: 'Bright tomato salsa, tortilla chips',
+        },
+        {
+          name: 'Yucatán Sikil Pak & Totopos',
+          price: '7',
+          description: 'Roasted pumpkin seed dip, tortilla chips',
+        },
+        {
+          name: 'Esquites',
+          price: '6',
+          description: 'Mexican street-style corn, lime, chilli',
+        },
+        {
+          name: 'Frijoles Refritos & Totopos',
+          price: '6',
+          description: 'Refried beans, tortilla chips',
+        },
+      ],
+    },
+    {
+      title: 'House Salsas',
+      items: [
+        {
+          name: 'Verde',
+          price: '2',
+          description: 'Fresh, bright, herb-led heat',
+        },
+        {
+          name: 'Roja',
+          price: '2',
+          description: 'Smoky red chilli salsa',
+        },
+        {
+          name: 'Mango Habanero',
+          price: '2',
+          description: 'Sweet fruit, sharp heat',
+        },
+        {
+          name: 'Benditos Hot Sauce',
+          price: '2',
+          description: 'For those who love the salsa que pica',
+        },
+        {
+          name: 'Salsa Tasting Platter',
+          price: '7',
+          description: 'All four house salsas with totopos',
+        },
+      ],
+    },
+    {
+      title: 'Tacos',
+      note: '2 tacos per portion',
+      items: [
+        {
+          name: 'Cochinita Pibil',
+          price: '10',
+          description: 'Slow-cooked pork, onion, coriander',
+        },
+        {
+          name: 'Birria',
+          price: '11',
+          description: 'Slow-cooked beef, served with its broth, coriander',
+        },
+        {
+          name: 'Baja Fish',
+          price: '10',
+          description: 'Crispy fish, slaw, morita mayo',
+        },
+        {
+          name: 'Chicken Tinga',
+          price: '10',
+          description: 'Chipotle chicken, coriander',
+        },
+        {
+          name: 'Taco del Día',
+          price: 'MP',
+          description: 'Ask for today’s special',
+        },
+      ],
+    },
+    {
+      title: 'Quesadillas',
+      items: [
+        {
+          name: 'Build Your Own Quesadilla',
+          price: '11',
+          description: 'Choose any taco filling, Mexican cheese',
+        },
+        {
+          name: 'The Sin Queso',
+          price: '10',
+          description: 'Grilled corn, roasted red pepper, caramelised onion, white bean purée',
+        },
+        {
+          name: 'Quesabirria',
+          price: '12',
+          description: 'Slow-cooked beef, Mexican cheese',
+        },
+        {
+          name: 'Confit Chorizo',
+          price: '11',
+          description: 'Confit chorizo, onion, cheese',
+        },
+      ],
+    },
+    {
+      title: 'From Down South',
+      items: [
+        {
+          name: 'Choripán',
+          price: '11',
+          description: 'Grilled sausage roll, chimichurri',
+        },
+        {
+          name: 'Venezuelan Cachapa',
+          price: '12',
+          description: 'Sweetcorn pancake, Latin soft cheese',
+        },
+        {
+          name: 'Tequeños',
+          price: '8',
+          description: 'Cheese-filled sticks, guasacaca salsa',
+        },
+      ],
+    },
+    {
+      title: 'From the Cold Room',
+      items: [
+        {
+          name: 'Classic Ceviche',
+          price: '12',
+          description: 'White fish, lime, onion, chilli',
+        },
+        {
+          name: 'King Prawn Aguachile Verde',
+          price: '14',
+          description: 'King prawns, green chilli, lime, cucumber',
+        },
+        {
+          name: 'Ceviche Tostada',
+          price: '11',
+          description: 'Crisp tostada, fresh ceviche, bright herbs',
+        },
+        {
+          name: 'Tuna Tostada',
+          price: '12',
+          description: 'Tuna, citrus, chilli, tostada',
+        },
+      ],
+    },
+    {
+      title: 'Desserts',
+      items: [
+        {
+          name: 'Tres Leches Cake',
+          price: '8',
+          description: 'Classic milk-soaked sponge',
+        },
+        {
+          name: 'Churros',
+          price: '7',
+          description: 'Cinnamon sugar, dulce de leche',
+        },
+      ],
+    },
+    {
+      title: 'Cocktails',
+      items: [
+        {
+          name: 'Margarita',
+          price: '11',
+          description: 'Classic / Tommy’s / Chilli',
+        },
+        {
+          name: 'Paloma',
+          price: '11',
+          description: 'Tequila, grapefruit, lime, soda',
+        },
+        {
+          name: 'Pineapple & Miso Highball',
+          price: '12',
+          description: 'Charred pineapple tequila, miso, ginger',
+        },
+        {
+          name: 'Michelada',
+          price: '9',
+          description: 'Beer, lime, spice',
+        },
+      ],
+    },
+    {
+      title: 'Fresh Juices',
+      items: [
+        {
+          name: 'Pineapple & Lime',
+          price: '5',
+          description: '',
+        },
+        {
+          name: 'Watermelon Agua Fresca',
+          price: '5',
+          description: '',
+        },
+        {
+          name: 'Hibiscus Iced Tea',
+          price: '5',
+          description: '',
+        },
+        {
+          name: 'Mango & Passionfruit',
+          price: '5',
+          description: '',
+        },
+      ],
+    },
+    {
+      title: 'Beer & Wine',
+      items: [
+        {
+          name: 'Lager / Pale Ale',
+          price: 'from 6',
+          description: '',
+        },
+        {
+          name: 'House Red / White / Rosé',
+          price: 'from 7',
+          description: '',
+        },
+        {
+          name: 'Sparkling',
+          price: 'from 8',
+          description: '',
+        },
+      ],
+    },
+  ];
+
   return (
     <section className="container page-section menu-page">
       <section className="menu-hero-banner">
@@ -327,13 +576,29 @@ function MenuPage() {
         </div>
       </section>
 
-      <div className="menu-headings-only">
-        <div className="menu-heading-block">Tacos</div>
-        <div className="menu-heading-block">Quesadillas</div>
-        <div className="menu-heading-block">Ceviches</div>
-        <div className="menu-heading-block">Tostadas</div>
-        <div className="menu-heading-block menu-heading-small">Fresh Juices</div>
-        <div className="menu-heading-block menu-heading-small">Drinks</div>
+      <div className="menu-sections">
+        {menuSections.map((section) => (
+          <section key={section.title} className="menu-section-card">
+            <div className="menu-section-header">
+              <h3 className="menu-section-title">{section.title}</h3>
+              {section.note ? <p className="menu-section-note">{section.note}</p> : null}
+            </div>
+
+            <div className="menu-items">
+              {section.items.map((item) => (
+                <div key={item.name} className="menu-item">
+                  <div className="menu-item-top">
+                    <h4 className="menu-item-name">{item.name}</h4>
+                    <span className="menu-item-price">{item.price}</span>
+                  </div>
+                  {item.description ? (
+                    <p className="menu-item-description">{item.description}</p>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </section>
   );
