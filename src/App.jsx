@@ -308,15 +308,28 @@ function MenuPage() {
 
 function VisitPage({ visitInfo }) {
   return (
-    <section className="container page-section">
-      <div className="intro-block visit-intro">
-        <p className="eyebrow">Visit</p>
-        <h2 className="section-title">Catch us when we land.</h2>
-        <p className="intro-copy">
-          Benditos is made for all-day bites, cold drinks, and dropping in whenever the craving hits.
-          Follow along and be first to know when we open.
-        </p>
-      </div>
+    <section className="container page-section visit-page">
+      <section className="visit-hero-banner">
+        <div className="visit-hero-overlay"></div>
+
+        <div className="visit-hero-content">
+          <p className="eyebrow visit-hero-eyebrow">Visit</p>
+          <h2 className="section-title visit-hero-title">Catch us when we land.</h2>
+          <p className="visit-hero-copy">
+            Benditos is built for tacos, cold drinks, all-day bites, and dropping in whenever the craving hits.
+            Follow along and be first to know when we open in London.
+          </p>
+
+          <a
+            href="https://www.instagram.com/benditosldn/"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-primary visit-hero-button"
+          >
+            Follow @benditosldn
+          </a>
+        </div>
+      </section>
 
       <div className="visit-info-grid">
         {visitInfo.map((item) => (
