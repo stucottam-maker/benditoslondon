@@ -232,9 +232,30 @@ function HomePage({ setPage }) {
         </div>
       </section>
 
+      <section className="container about-us-section">
+        <div className="about-us-grid">
+          <div className="about-us-lead">
+            <p className="eyebrow">About Us</p>
+            <h2 className="section-title">Rooted in Mexico. Shaped by experience.</h2>
+          </div>
+
+          <div className="about-us-copy">
+            <p>
+              Born from friendship and a shared love of Mexican history, culture, and its
+              extraordinarily varied cuisine, Benditos brings flavour and culture together in a
+              casual, vibrant dining experience. Created by chef friends with experience spanning
+              Mexico, Central America, London, Barcelona, and kitchens around the world, it brings
+              together bold flavour, fresh thinking, and a wider Latin American perspective. With
+              its heart in Mexico, Benditos is a place for bold food, cold drinks, and good times
+              around the table.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="container about-section">
         <div className="about-lead">
-          <p className="eyebrow">About</p>
+          <p className="eyebrow">Our Approach</p>
           <h2 className="section-title">Come hungry. Leave happy.</h2>
         </div>
 
@@ -316,8 +337,8 @@ function VisitPage({ visitInfo }) {
           <p className="eyebrow visit-hero-eyebrow">Visit</p>
           <h2 className="section-title visit-hero-title">Catch us when we land.</h2>
           <p className="visit-hero-copy">
-            Benditos is built for tacos, cold drinks, all-day bites, and dropping in whenever the craving hits.
-            Follow along and be first to know when we open in London.
+            Benditos is built for tacos, cold drinks, all-day bites, and dropping in whenever the
+            craving hits. Follow along and be first to know when we open in London.
           </p>
 
           <a

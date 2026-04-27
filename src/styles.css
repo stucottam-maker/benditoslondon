@@ -145,7 +145,8 @@ a {
 
 .hero-copy,
 .intro-copy,
-.contact-copy {
+.contact-copy,
+.about-us-copy p {
   color: var(--brown);
   line-height: 1.7;
 }
@@ -326,7 +327,8 @@ a {
 /* Sections */
 
 .page-section,
-.about-section {
+.about-section,
+.about-us-section {
   padding: 52px 0;
   border-top: 1px solid rgba(217, 74, 30, 0.1);
 }
@@ -336,7 +338,24 @@ a {
   margin-bottom: 30px;
 }
 
-/* About */
+/* About us */
+
+.about-us-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.about-us-lead .section-title {
+  max-width: 9ch;
+}
+
+.about-us-copy p {
+  font-size: 1rem;
+}
+
+/* About cards */
 
 .about-section {
   display: grid;
@@ -672,6 +691,7 @@ a {
     grid-template-columns: 1fr 1fr;
   }
 
+  .about-us-grid,
   .about-section,
   .contact-block {
     grid-template-columns: 1fr;
@@ -681,6 +701,7 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .about-us-lead .section-title,
   .about-lead .section-title {
     max-width: 100%;
   }
@@ -818,7 +839,8 @@ a {
   }
 
   .page-section,
-  .about-section {
+  .about-section,
+  .about-us-section {
     padding: 32px 0;
   }
 
@@ -838,16 +860,24 @@ a {
     gap: 16px;
   }
 
+  .about-us-grid,
   .about-section {
     gap: 20px;
   }
 
+  .about-us-lead,
   .about-lead {
     text-align: center;
   }
 
+  .about-us-lead .section-title,
   .about-lead .section-title {
     max-width: 100%;
+  }
+
+  .about-us-copy p {
+    font-size: 0.95rem;
+    line-height: 1.75;
   }
 
   .about-grid-desktop {
