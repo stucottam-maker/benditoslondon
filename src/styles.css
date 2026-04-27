@@ -186,21 +186,33 @@ a {
   color: var(--orange);
 }
 
-/* Hero */
+/* Hero slideshow */
 
-.hero-section {
+.hero-slider-section {
+  margin-top: 28px;
+}
+
+.hero-slider-shell {
   position: relative;
-  height: 380px;
-  display: flex;
-  align-items: stretch;
-  background-image: url("https://www.dropbox.com/scl/fi/oploj47wjdzxx4ka3zdf4/hero-image-no-banana.png?rlkey=0oz45uglle7tg3b6idb39lxhp&st=8pmd57rw&raw=1");
+  width: min(1120px, calc(100% - 40px));
+  height: 420px;
+  margin: 0 auto;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
-  border-radius: 2rem;
-  margin: 28px auto 0;
-  width: min(1120px, calc(100% - 40px));
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
 }
 
 .hero-overlay {
@@ -208,18 +220,18 @@ a {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(31, 19, 13, 0.66) 0%,
-    rgba(31, 19, 13, 0.3) 42%,
+    rgba(31, 19, 13, 0.68) 0%,
+    rgba(31, 19, 13, 0.32) 42%,
     rgba(31, 19, 13, 0.08) 100%
   );
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   color: #f7ebdd;
   padding: 40px 52px 34px;
-  max-width: 430px;
+  max-width: 450px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -238,7 +250,7 @@ a {
 
 .hero-title-large {
   color: #f7ebdd;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2.1rem, 3vw, 3rem);
   line-height: 0.9;
   font-weight: 900;
   letter-spacing: -0.08em;
@@ -249,8 +261,70 @@ a {
 .hero-copy-light {
   color: rgba(247, 235, 221, 0.94);
   max-width: 22rem;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   line-height: 1.45;
+}
+
+.hero-bottom {
+  display: grid;
+  gap: 18px;
+}
+
+.hero-slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.hero-slide-tag {
+  color: rgba(247, 235, 221, 0.94);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+}
+
+.hero-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(247, 235, 221, 0.34);
+  padding: 0;
+}
+
+.hero-dot.active {
+  background: var(--cream-light);
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(247, 235, 221, 0.14);
+  color: #f7ebdd;
+  font-size: 1.8rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.hero-arrow-left {
+  left: 16px;
+}
+
+.hero-arrow-right {
+  right: 16px;
 }
 
 /* Sections */
@@ -261,54 +335,9 @@ a {
   border-top: 1px solid rgba(217, 74, 30, 0.1);
 }
 
-.favourites-section .intro-block,
 .intro-block {
   max-width: 46rem;
   margin-bottom: 30px;
-}
-
-/* Gallery */
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.gallery-card {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-  border-radius: 1.5rem;
-  background: var(--cream-light);
-  box-shadow: 0 8px 28px rgba(31, 19, 13, 0.04);
-}
-
-.gallery-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.image-label {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 12px 14px;
-  background: linear-gradient(
-    to top,
-    rgba(31, 19, 13, 0.75),
-    rgba(31, 19, 13, 0.08),
-    transparent
-  );
-}
-
-.image-label h3 {
-  color: #f7ebdd;
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 900;
 }
 
 /* About */
@@ -336,8 +365,7 @@ a {
   gap: 18px;
 }
 
-.about-slide,
-.info-card {
+.about-slide-card {
   background: var(--cream-light);
   border: 1px solid rgba(217, 74, 30, 0.1);
   box-shadow: 0 8px 24px rgba(31, 19, 13, 0.04);
@@ -345,14 +373,12 @@ a {
   border-radius: 1.5rem;
 }
 
-.about-slide h3,
-.info-card h3 {
+.about-slide-card h3 {
   font-size: 1.35rem;
   margin-bottom: 10px;
 }
 
-.about-slide p,
-.info-card p {
+.about-slide-card p {
   font-size: 0.9rem;
   line-height: 1.55;
 }
@@ -572,7 +598,6 @@ a {
     display: none;
   }
 
-  .gallery-grid,
   .menu-headings-only,
   .visit-info-grid {
     grid-template-columns: 1fr 1fr;
@@ -593,6 +618,10 @@ a {
 
   .contact-block {
     gap: 28px;
+  }
+
+  .hero-slider-shell {
+    height: 390px;
   }
 }
 
@@ -660,17 +689,23 @@ a {
     color: var(--orange);
   }
 
-  .hero-section {
+  .hero-slider-section {
+    margin-top: 18px;
+  }
+
+  .hero-slider-shell {
     width: calc(100% - 24px);
-    height: 280px;
-    margin: 18px auto 0;
+    height: 300px;
     border-radius: 1.25rem;
-    background-position: center 42%;
+  }
+
+  .hero-slide {
+    background-position: center;
   }
 
   .hero-content {
-    max-width: 220px;
-    padding: 30px 20px 18px;
+    max-width: 230px;
+    padding: 28px 20px 18px;
   }
 
   .hero-title-large {
@@ -685,6 +720,10 @@ a {
     max-width: 14rem;
   }
 
+  .hero-bottom {
+    gap: 12px;
+  }
+
   .button-row {
     gap: 10px;
     width: 100%;
@@ -693,6 +732,20 @@ a {
   .btn {
     padding: 10px 15px;
     font-size: 0.88rem;
+  }
+
+  .hero-slider-controls {
+    gap: 12px;
+    align-items: center;
+  }
+
+  .hero-slide-tag {
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-arrow {
+    display: none;
   }
 
   .page-section,
@@ -710,7 +763,6 @@ a {
     line-height: 0.95;
   }
 
-  .gallery-grid,
   .menu-headings-only,
   .visit-info-grid {
     grid-template-columns: 1fr;
@@ -751,25 +803,24 @@ a {
     margin-top: 10px;
   }
 
-  .about-slide {
+  .about-slide-card {
     scroll-snap-align: start;
     padding: 18px 16px;
     border-radius: 1rem;
   }
 
-  .about-slide h3 {
+  .about-slide-card h3 {
     font-size: 1.1rem;
     margin-bottom: 8px;
     text-align: center;
   }
 
-  .about-slide p {
+  .about-slide-card p {
     font-size: 0.8rem;
     line-height: 1.35;
     text-align: center;
   }
 
-  .gallery-card,
   .visit-card,
   .contact-card {
     border-radius: 1.25rem;
@@ -786,24 +837,6 @@ a {
 
   .visit-card .eyebrow {
     margin-bottom: 10px;
-  }
-
-  .gallery-card {
-    aspect-ratio: 1 / 1;
-  }
-
-  .gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .image-label {
-    padding: 12px 14px;
-  }
-
-  .image-label h3 {
-    font-size: 1rem;
   }
 
   .menu-page {
