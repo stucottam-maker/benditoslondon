@@ -149,7 +149,8 @@ a {
 .contact-copy,
 .about-us-copy p,
 .approach-card p,
-.menu-item-description {
+.menu-item-description,
+.instagram-copy {
   color: var(--brown);
   line-height: 1.65;
 }
@@ -332,7 +333,8 @@ a {
 
 .page-section,
 .about-us-section,
-.approach-section {
+.approach-section,
+.instagram-section {
   padding: 38px 0;
   border-top: 1px solid rgba(217, 74, 30, 0.1);
 }
@@ -362,6 +364,16 @@ a {
 .about-us-lead .section-title {
   max-width: 8.5ch;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.about-us-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.about-us-strap {
+  font-weight: 700;
+  color: var(--orange) !important;
 }
 
 .about-us-copy p {
@@ -443,6 +455,27 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
+}
+
+/* Instagram */
+
+.instagram-panel {
+  background: var(--cream-light);
+  border: 1px solid rgba(217, 74, 30, 0.1);
+  border-radius: 1.5rem;
+  padding: 26px 28px;
+  box-shadow: 0 6px 18px rgba(31, 19, 13, 0.04);
+  max-width: 760px;
+}
+
+.instagram-copy {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.instagram-button {
+  display: inline-flex;
 }
 
 /* Menu */
@@ -907,7 +940,8 @@ a {
 
   .page-section,
   .about-us-section,
-  .approach-section {
+  .approach-section,
+  .instagram-section {
     padding: 26px 0;
   }
 
@@ -922,7 +956,8 @@ a {
     gap: 14px;
   }
 
-  .about-us-panel {
+  .about-us-panel,
+  .instagram-panel {
     padding: 18px 16px;
     border-radius: 1.2rem;
   }
@@ -942,7 +977,8 @@ a {
     max-width: 100%;
   }
 
-  .about-us-copy p {
+  .about-us-copy p,
+  .instagram-copy {
     font-size: 0.92rem;
     line-height: 1.7;
   }
