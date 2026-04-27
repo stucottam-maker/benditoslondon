@@ -212,7 +212,7 @@ export default function App() {
       <main>
         {page === 'home' && <HomePage setPage={setPage} />}
         {page === 'menu' && <MenuPage />}
-        {page === 'visit' && <VisitPage visitInfo={visitInfo} />}
+        {page === 'visit' && <VisitPage />}
         {page === 'contact' && <ContactPage />}
       </main>
 
@@ -339,10 +339,15 @@ function HomePage({ setPage }) {
 
             <div className="about-us-copy">
               <p className="about-us-strap">
-                Benditos is a Mexican-rooted kitchen shaped by wider Latin American influence, built on bold flavour, real experience, and good times around the table.
+                Benditos is a Mexican-rooted kitchen shaped by wider Latin American influence, built
+                on bold flavour, real experience, and good times around the table.
               </p>
               <p>
-                Born from friendship and a shared love of Mexican history, culture, and its extraordinarily varied cuisine, Benditos brings flavour and culture together in a casual, vibrant dining experience. Created by chef friends with experience spanning Mexico, Central America, London, Barcelona, and kitchens around the world, it brings together bold flavour, fresh thinking, and a wider Latin American perspective.
+                Born from friendship and a shared love of Mexican history, culture, and its
+                extraordinarily varied cuisine, Benditos brings flavour and culture together in a
+                casual, vibrant dining experience. Created by chef friends with experience spanning
+                Mexico, Central America, London, Barcelona, and kitchens around the world, it brings
+                together bold flavour, fresh thinking, and a wider Latin American perspective.
               </p>
             </div>
           </div>
@@ -405,11 +410,14 @@ function HomePage({ setPage }) {
 
       <section className="container instagram-section">
         <div className="instagram-panel">
-          <p className="eyebrow">Instagram</p>
-          <h2 className="section-title">Follow Benditos</h2>
-          <p className="instagram-copy">
-            A Mexican-rooted kitchen shaped by wider Latin American influence — launch updates, behind the scenes, and what’s coming next.
-          </p>
+          <div className="instagram-content">
+            <p className="eyebrow">Instagram</p>
+            <h2 className="section-title">Follow Benditos</h2>
+            <p className="instagram-copy">
+              A Mexican-rooted kitchen shaped by wider Latin American influence — launch updates,
+              behind the scenes, and what’s coming next.
+            </p>
+          </div>
 
           <a
             href="https://www.instagram.com/benditosldn/"
@@ -455,7 +463,9 @@ function MenuPage() {
                     <h4 className="menu-item-name">{item.name}</h4>
                     <span className="menu-item-price">{item.price}</span>
                   </div>
-                  {item.description ? <p className="menu-item-description">{item.description}</p> : null}
+                  {item.description ? (
+                    <p className="menu-item-description">{item.description}</p>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -466,7 +476,7 @@ function MenuPage() {
   );
 }
 
-function VisitPage({ visitInfo }) {
+function VisitPage() {
   return (
     <section className="container page-section visit-page">
       <section className="visit-hero-banner">
@@ -476,7 +486,8 @@ function VisitPage({ visitInfo }) {
           <p className="eyebrow visit-hero-eyebrow">Visit</p>
           <h2 className="section-title visit-hero-title">Catch us when we land.</h2>
           <p className="visit-hero-copy">
-            Benditos is built for tacos, cold drinks, all-day bites, and dropping in whenever the craving hits. Follow along and be first to know when we open in London.
+            Benditos is built for tacos, cold drinks, all-day bites, and dropping in whenever the
+            craving hits. Follow along and be first to know when we open in London.
           </p>
 
           <a
