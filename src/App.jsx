@@ -191,10 +191,8 @@ function HomePage({ changePage }) {
         </div>
       </div>
 
-      <div className="homeVisual">
-        <div className="heroBannerImage">
-          <span>Tacos · Honey · Chilli · Smoke</span>
-        </div>
+      <div className="heroBannerImage">
+        <span>Tacos · Honey · Chilli · Smoke</span>
       </div>
     </section>
   );

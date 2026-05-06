@@ -152,18 +152,22 @@ button {
 /* HOME */
 
 .homePage {
-  min-height: calc(100vh - 190px);
+  min-height: auto;
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 56px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.homeIntro {
+  max-width: 760px;
 }
 
 .homeIntro h1 {
   margin: 0;
-  max-width: 620px;
+  max-width: 720px;
   color: var(--orange);
-  font-size: clamp(2.9rem, 5.9vw, 5.5rem);
+  font-size: clamp(2.9rem, 6.2vw, 5.6rem);
   line-height: 0.92;
   font-weight: 900;
   text-transform: uppercase;
@@ -232,13 +236,10 @@ button {
   color: var(--cream-light);
 }
 
-.homeVisual {
-  min-width: 0;
-}
-
 .heroBannerImage,
 .honeyBannerImage {
   position: relative;
+  width: 100%;
   min-height: 520px;
   overflow: hidden;
   border-radius: 34px;
@@ -246,7 +247,7 @@ button {
   box-shadow: var(--shadow);
   background:
     linear-gradient(to top, rgba(31, 19, 13, 0.54), rgba(31, 19, 13, 0.04)),
-    url("https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?auto=format&fit=crop&w=1400&q=80");
+    url("https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?auto=format&fit=crop&w=1600&q=80");
   background-size: cover;
   background-position: center;
 }
@@ -520,14 +521,9 @@ button {
 /* RESPONSIVE */
 
 @media (max-width: 920px) {
-  .homePage,
   .textGrid,
   .honeyGrid {
     grid-template-columns: 1fr;
-  }
-
-  .homePage {
-    gap: 34px;
   }
 
   .heroBannerImage {
