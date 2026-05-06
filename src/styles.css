@@ -8,7 +8,7 @@
   --dark: #1f130d;
   --muted: rgba(124, 52, 27, 0.72);
   --line: rgba(124, 52, 27, 0.2);
-  --shadow: 0 24px 60px rgba(31, 19, 13, 0.12);
+  --shadow: 0 24px 60px rgba(31, 19, 13, 0.1);
 }
 
 * {
@@ -48,6 +48,8 @@ button {
   min-height: 100vh;
 }
 
+/* HEADER */
+
 .siteHeader {
   width: min(1120px, calc(100% - 40px));
   margin: 18px auto 0;
@@ -59,10 +61,11 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: rgba(238, 215, 190, 0.82);
+  background: rgba(238, 215, 190, 0.84);
   border: 1px solid var(--line);
   border-radius: 999px;
   backdrop-filter: blur(16px);
+  box-shadow: 0 18px 45px rgba(31, 19, 13, 0.08);
 }
 
 .brandMark,
@@ -102,6 +105,10 @@ button {
   color: var(--cream-light);
 }
 
+.mainNav button.active {
+  box-shadow: 0 10px 24px rgba(217, 74, 30, 0.2);
+}
+
 .mobileMenuButton {
   display: none;
   border: 0;
@@ -114,6 +121,8 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
+
+/* PAGE STRUCTURE */
 
 .pageShell {
   width: min(1120px, calc(100% - 40px));
@@ -128,7 +137,7 @@ button {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  opacity: 0.75;
+  opacity: 0.72;
 }
 
 .eyebrow {
@@ -139,6 +148,8 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.18em;
 }
+
+/* HOME */
 
 .homePage {
   min-height: calc(100vh - 190px);
@@ -152,8 +163,8 @@ button {
 .pageHero h1 {
   margin: 0;
   color: var(--orange);
-  font-size: clamp(4rem, 9vw, 8.6rem);
-  line-height: 0.82;
+  font-size: clamp(3.8rem, 8.4vw, 8rem);
+  line-height: 0.84;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.12em;
@@ -166,29 +177,29 @@ button {
 
 .lead,
 .pageIntro {
-  max-width: 620px;
-  margin: 28px 0 0;
+  max-width: 600px;
+  margin: 26px 0 0;
   color: var(--brown);
-  font-size: clamp(1.05rem, 1.7vw, 1.28rem);
-  line-height: 1.55;
-  font-weight: 700;
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  line-height: 1.6;
+  font-weight: 650;
 }
 
 .buttonRow {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 34px;
+  margin-top: 32px;
 }
 
 .primaryButton,
 .secondaryButton,
 .textButton {
   border: 0;
-  min-height: 52px;
-  padding: 0 24px;
+  min-height: 50px;
+  padding: 0 23px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -224,7 +235,7 @@ button {
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   background:
-    linear-gradient(to top, rgba(31, 19, 13, 0.66), rgba(31, 19, 13, 0.08)),
+    linear-gradient(to top, rgba(31, 19, 13, 0.62), rgba(31, 19, 13, 0.08)),
     url("https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?auto=format&fit=crop&w=1200&q=80");
   background-size: cover;
   background-position: center;
@@ -238,9 +249,9 @@ button {
   display: inline-flex;
   padding: 12px 16px;
   border-radius: 999px;
-  background: rgba(247, 235, 221, 0.9);
+  background: rgba(247, 235, 221, 0.92);
   color: var(--orange);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -261,9 +272,9 @@ button {
 }
 
 .smallInfoGrid h3 {
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   color: var(--orange);
-  font-size: 1rem;
+  font-size: 0.96rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.04em;
@@ -272,17 +283,20 @@ button {
 .smallInfoGrid p {
   margin: 0;
   color: var(--brown);
-  line-height: 1.45;
-  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 650;
 }
+
+/* CONTENT PAGES */
 
 .contentPage {
   min-height: calc(100vh - 230px);
 }
 
 .pageHero {
-  max-width: 980px;
-  margin-bottom: 54px;
+  max-width: 940px;
+  margin-bottom: 48px;
 }
 
 .textGrid {
@@ -302,16 +316,17 @@ button {
 }
 
 .largeTextBlock {
-  padding: clamp(28px, 5vw, 58px);
+  padding: clamp(26px, 4vw, 46px);
 }
 
 .largeTextBlock p,
 .honeyText p {
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   color: var(--brown);
-  font-size: clamp(1.15rem, 2vw, 1.55rem);
-  line-height: 1.5;
-  font-weight: 750;
+  font-size: clamp(0.98rem, 1.15vw, 1.12rem);
+  line-height: 1.72;
+  font-weight: 650;
+  letter-spacing: -0.01em;
 }
 
 .largeTextBlock p:last-child,
@@ -320,47 +335,49 @@ button {
 }
 
 .sideNote {
-  padding: 30px;
+  padding: 28px;
 }
 
 .sideNote h3 {
   margin: 0 0 16px;
   color: var(--orange);
-  font-size: 2.2rem;
-  line-height: 0.9;
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  line-height: 0.95;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.09em;
+  letter-spacing: -0.08em;
 }
 
 .sideNote p {
   margin: 0;
   color: var(--brown);
-  font-size: 1rem;
-  line-height: 1.6;
-  font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  font-weight: 650;
 }
+
+/* MENU PAGE */
 
 .menuLayout {
   display: grid;
-  gap: 26px;
+  gap: 22px;
 }
 
 .menuSection {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: 26px;
   padding: 28px;
   border-radius: 34px;
   background: var(--cream-light);
   border: 1px solid var(--line);
-  box-shadow: 0 18px 50px rgba(31, 19, 13, 0.08);
+  box-shadow: 0 18px 50px rgba(31, 19, 13, 0.07);
 }
 
 .menuSection h2 {
   margin: 0;
   color: var(--orange);
-  font-size: 2.4rem;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
   line-height: 0.9;
   font-weight: 900;
   text-transform: uppercase;
@@ -369,11 +386,11 @@ button {
 
 .menuItems {
   display: grid;
-  gap: 18px;
+  gap: 17px;
 }
 
 .menuItem {
-  padding-bottom: 18px;
+  padding-bottom: 17px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -383,9 +400,9 @@ button {
 }
 
 .menuItem h3 {
-  margin: 0 0 8px;
+  margin: 0 0 7px;
   color: var(--brown);
-  font-size: 1.15rem;
+  font-size: 1.02rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -394,9 +411,12 @@ button {
 .menuItem p {
   margin: 0;
   color: var(--muted);
+  font-size: 0.95rem;
   line-height: 1.55;
-  font-weight: 700;
+  font-weight: 650;
 }
+
+/* HONEY PAGE */
 
 .honeyGrid {
   display: grid;
@@ -407,14 +427,14 @@ button {
 
 .honeyVisual {
   background:
-    linear-gradient(to top, rgba(31, 19, 13, 0.6), rgba(31, 19, 13, 0.08)),
+    linear-gradient(to top, rgba(31, 19, 13, 0.58), rgba(31, 19, 13, 0.08)),
     url("https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=1200&q=80");
   background-size: cover;
   background-position: center;
 }
 
 .honeyText {
-  padding: clamp(28px, 5vw, 54px);
+  padding: clamp(26px, 4vw, 46px);
   background: var(--cream-light);
   border: 1px solid var(--line);
   border-radius: 34px;
@@ -434,16 +454,18 @@ button {
 
 .pantryStrip span {
   display: inline-flex;
-  padding: 12px 15px;
+  padding: 11px 14px;
   border-radius: 999px;
   border: 1px solid var(--line);
   color: var(--brown);
   background: rgba(247, 235, 221, 0.55);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+/* LOCATIONS */
 
 .locationCard {
   max-width: 740px;
@@ -453,8 +475,8 @@ button {
 .locationCard h2 {
   margin: 0 0 18px;
   color: var(--orange);
-  font-size: clamp(2.6rem, 5vw, 5rem);
-  line-height: 0.88;
+  font-size: clamp(2.4rem, 4.6vw, 4.6rem);
+  line-height: 0.9;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.11em;
@@ -463,10 +485,12 @@ button {
 .locationCard p {
   margin: 0;
   color: var(--brown);
-  font-size: 1.16rem;
-  line-height: 1.6;
-  font-weight: 700;
+  font-size: 1.04rem;
+  line-height: 1.65;
+  font-weight: 650;
 }
+
+/* FOOTER */
 
 .footer {
   width: min(1120px, calc(100% - 40px));
@@ -488,7 +512,8 @@ button {
 .footer p {
   margin: 8px 0 0;
   color: rgba(247, 235, 221, 0.74);
-  font-weight: 800;
+  font-size: 0.95rem;
+  font-weight: 750;
 }
 
 .footerNav {
@@ -506,6 +531,8 @@ button {
   background: rgba(247, 235, 221, 0.12);
   color: var(--cream-light);
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 920px) {
   .homePage,
@@ -562,6 +589,7 @@ button {
 
   .mainNav.open {
     display: flex;
+    animation: menuDrop 0.22s ease both;
   }
 
   .mainNav button {
@@ -581,7 +609,7 @@ button {
 
   .homeIntro h1,
   .pageHero h1 {
-    font-size: clamp(3.35rem, 18vw, 6rem);
+    font-size: clamp(3.15rem, 17vw, 5.8rem);
   }
 
   .lead,
@@ -622,5 +650,17 @@ button {
 
   .footerNav {
     justify-content: flex-start;
+  }
+}
+
+@keyframes menuDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
