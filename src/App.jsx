@@ -162,37 +162,57 @@ function App() {
   );
 }
 
+function PageHeader({ eyebrow, title, intro, bannerClass, bannerText }) {
+  return (
+    <>
+      <section className="pageHero">
+        <p className="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        {intro && <p className="pageIntro">{intro}</p>}
+      </section>
+
+      <div className={`pageBanner ${bannerClass}`}>
+        <span>{bannerText}</span>
+      </div>
+    </>
+  );
+}
+
 function HomePage({ changePage }) {
   return (
-    <section className="homePage">
-      <div className="homeIntro">
-        <p className="eyebrow">London — coming soon</p>
+    <section className="contentPage">
+      <PageHeader
+        eyebrow="London — coming soon"
+        title="Latin street food. Mexican soul."
+        intro="Fire, citrus, smoke, honey and chilli — bold Latin street food built for London."
+        bannerClass="homeBanner"
+        bannerText="Tacos · Honey · Chilli · Smoke"
+      />
 
-        <h1>
-          Latin street food.
-          <span>Mexican soul.</span>
-        </h1>
-
-        <p className="lead">
-          Fire, citrus, smoke, honey and chilli — bold Latin street food built
-          for London.
-        </p>
-
-        <div className="buttonRow">
-          <button className="primaryButton" onClick={() => changePage("menu")}>
-            View menu
-          </button>
-          <button
-            className="secondaryButton"
-            onClick={() => changePage("story")}
-          >
-            Our story
-          </button>
-        </div>
+      <div className="homeActions">
+        <button className="primaryButton" onClick={() => changePage("menu")}>
+          View menu
+        </button>
+        <button className="secondaryButton" onClick={() => changePage("story")}>
+          Our story
+        </button>
       </div>
 
-      <div className="heroBannerImage">
-        <span>Tacos · Honey · Chilli · Smoke</span>
+      <div className="homeCards">
+        <article>
+          <h3>Street food</h3>
+          <p>Tacos, quesadillas, ceviche, cold drinks and proper good times.</p>
+        </article>
+
+        <article>
+          <h3>Mexican soul</h3>
+          <p>Chilli, lime, smoke, slow-cooked meats and warm tortillas.</p>
+        </article>
+
+        <article>
+          <h3>Sweet heat</h3>
+          <p>Mexican honey, chilli glazes, sharp dressings and smoky sauces.</p>
+        </article>
       </div>
     </section>
   );
@@ -201,10 +221,13 @@ function HomePage({ changePage }) {
 function StoryPage({ changePage }) {
   return (
     <section className="contentPage">
-      <div className="pageHero">
-        <p className="eyebrow">The story</p>
-        <h1>Big flavour with a Mexican heart.</h1>
-      </div>
+      <PageHeader
+        eyebrow="The story"
+        title="Big flavour with a Mexican heart."
+        intro="Bold, bright food made for messy hands, cold drinks and good times."
+        bannerClass="storyBanner"
+        bannerText="Smoke · Lime · Tortillas · Good times"
+      />
 
       <div className="textGrid">
         <article className="largeTextBlock">
@@ -243,14 +266,13 @@ function StoryPage({ changePage }) {
 function MenuPage() {
   return (
     <section className="contentPage">
-      <div className="pageHero">
-        <p className="eyebrow">Food</p>
-        <h1>Simple food. Big flavour.</h1>
-        <p className="pageIntro">
-          A first look at the Benditos menu direction — tacos, quesadillas,
-          ceviche, sides, sweets and sweet heat.
-        </p>
-      </div>
+      <PageHeader
+        eyebrow="Food"
+        title="Simple food. Big flavour."
+        intro="A first look at the Benditos menu direction — tacos, quesadillas, ceviche, sides, sweets and sweet heat."
+        bannerClass="menuBanner"
+        bannerText="Tacos · Quesadillas · Ceviche · Sweets"
+      />
 
       <div className="menuLayout">
         {menuSections.map((section) => (
@@ -275,40 +297,33 @@ function MenuPage() {
 function HoneyPage({ changePage }) {
   return (
     <section className="contentPage honeyPage">
-      <div className="pageHero">
-        <p className="eyebrow">Mexican honey</p>
-        <h1>Honey, chilli and sweet heat.</h1>
-        <p className="pageIntro">
-          A quiet little sweetness running through the heat — never too much,
-          just enough to bring the flavour alive.
+      <PageHeader
+        eyebrow="Mexican honey"
+        title="Honey, chilli and sweet heat."
+        intro="A quiet little sweetness running through the heat — never too much, just enough to bring the flavour alive."
+        bannerClass="honeyBanner"
+        bannerText="Mexican Honey · Chilli · Sweet Heat"
+      />
+
+      <div className="honeyText fullWidthText">
+        <p>
+          The honey side of Benditos is about balance: sweet, smoky, sharp and
+          spicy, working together rather than fighting for attention.
         </p>
-      </div>
 
-      <div className="honeyGrid">
-        <div className="honeyBannerImage">
-          <span>Mexican Honey & Sweet Heat</span>
-        </div>
+        <p>
+          You’ll find it in chilli honey, honey-lime dressings, smoky glazes,
+          marinades and sauces that bring a little fire to every bite.
+        </p>
 
-        <div className="honeyText">
-          <p>
-            The honey side of Benditos is about balance: sweet, smoky, sharp and
-            spicy, working together rather than fighting for attention.
-          </p>
+        <p>
+          Over time, we’ll build a small Benditos pantry too — honey, sauces,
+          marinades and gift boxes made for home kitchens.
+        </p>
 
-          <p>
-            You’ll find it in chilli honey, honey-lime dressings, smoky glazes,
-            marinades and sauces that bring a little fire to every bite.
-          </p>
-
-          <p>
-            Over time, we’ll build a small Benditos pantry too — honey, sauces,
-            marinades and gift boxes made for home kitchens.
-          </p>
-
-          <button className="primaryButton" onClick={() => changePage("story")}>
-            Read the story
-          </button>
-        </div>
+        <button className="primaryButton" onClick={() => changePage("story")}>
+          Read the story
+        </button>
       </div>
 
       <div className="pantryStrip">
@@ -323,14 +338,13 @@ function HoneyPage({ changePage }) {
 function LocationsPage() {
   return (
     <section className="contentPage locationsPage">
-      <div className="pageHero">
-        <p className="eyebrow">London</p>
-        <h1>Coming soon.</h1>
-        <p className="pageIntro">
-          We’re building Benditos for markets, neighbourhood sites, pop-ups and
-          food lovers across London.
-        </p>
-      </div>
+      <PageHeader
+        eyebrow="London"
+        title="Coming soon."
+        intro="We’re building Benditos for markets, neighbourhood sites, pop-ups and food lovers across London."
+        bannerClass="locationsBanner"
+        bannerText="Markets · Pop-ups · London"
+      />
 
       <div className="locationCard">
         <h2>London — coming soon</h2>
