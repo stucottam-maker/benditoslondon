@@ -162,26 +162,24 @@ function App() {
   );
 }
 
-function PageHeader({ eyebrow, title, intro, bannerClass, bannerText }) {
+function PageHero({ eyebrow, title, intro, bannerClass, bannerText }) {
   return (
-    <>
-      <section className="pageHero">
+    <section className={`pageHeroBanner ${bannerClass}`}>
+      <div className="heroOverlay">
         <p className="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
         {intro && <p className="pageIntro">{intro}</p>}
-      </section>
-
-      <div className={`pageBanner ${bannerClass}`}>
-        <span>{bannerText}</span>
       </div>
-    </>
+
+      <span className="bannerTag">{bannerText}</span>
+    </section>
   );
 }
 
 function HomePage({ changePage }) {
   return (
     <section className="contentPage">
-      <PageHeader
+      <PageHero
         eyebrow="London — coming soon"
         title="Latin street food. Mexican soul."
         intro="Fire, citrus, smoke, honey and chilli — bold Latin street food built for London."
@@ -210,7 +208,7 @@ function HomePage({ changePage }) {
         </article>
 
         <article>
-          <h3>Sweet heat</h3>
+          <h3>Golden heat</h3>
           <p>Mexican honey, chilli glazes, sharp dressings and smoky sauces.</p>
         </article>
       </div>
@@ -221,7 +219,7 @@ function HomePage({ changePage }) {
 function StoryPage({ changePage }) {
   return (
     <section className="contentPage">
-      <PageHeader
+      <PageHero
         eyebrow="The story"
         title="Big flavour with a Mexican heart."
         intro="Bold, bright food made for messy hands, cold drinks and good times."
@@ -238,7 +236,7 @@ function StoryPage({ changePage }) {
 
           <p>
             The food is bold, bright and made for good times: smoky meats, sharp
-            salsas, warm tortillas, cold drinks and sweet heat running through
+            salsas, warm tortillas, cold drinks and golden heat running through
             the menu.
           </p>
 
@@ -266,10 +264,10 @@ function StoryPage({ changePage }) {
 function MenuPage() {
   return (
     <section className="contentPage">
-      <PageHeader
+      <PageHero
         eyebrow="Food"
         title="Simple food. Big flavour."
-        intro="A first look at the Benditos menu direction — tacos, quesadillas, ceviche, sides, sweets and sweet heat."
+        intro="A first look at the Benditos menu direction — tacos, quesadillas, ceviche, sides, sweets and golden heat."
         bannerClass="menuBanner"
         bannerText="Tacos · Quesadillas · Ceviche · Sweets"
       />
@@ -297,18 +295,18 @@ function MenuPage() {
 function HoneyPage({ changePage }) {
   return (
     <section className="contentPage honeyPage">
-      <PageHeader
+      <PageHero
         eyebrow="Mexican honey"
-        title="Honey, chilli and sweet heat."
-        intro="A quiet little sweetness running through the heat — never too much, just enough to bring the flavour alive."
+        title="Honey, chilli and golden heat."
+        intro="Mexican honey brings a little gold to the heat — sweet, floral and rich, used to balance chilli, smoke, lime and fire."
         bannerClass="honeyBanner"
-        bannerText="Mexican Honey · Chilli · Sweet Heat"
+        bannerText="Mexican Honey · Chilli · Golden Heat"
       />
 
       <div className="honeyText fullWidthText">
         <p>
-          The honey side of Benditos is about balance: sweet, smoky, sharp and
-          spicy, working together rather than fighting for attention.
+          The honey side of Benditos is about golden heat: sweet, smoky, sharp
+          and spicy, working together rather than fighting for attention.
         </p>
 
         <p>
@@ -317,8 +315,7 @@ function HoneyPage({ changePage }) {
         </p>
 
         <p>
-          Over time, we’ll build a small Benditos pantry too — honey, sauces,
-          marinades and gift boxes made for home kitchens.
+          Never too sweet. Just enough gold to bring the flavour alive.
         </p>
 
         <button className="primaryButton" onClick={() => changePage("story")}>
@@ -338,7 +335,7 @@ function HoneyPage({ changePage }) {
 function LocationsPage() {
   return (
     <section className="contentPage locationsPage">
-      <PageHeader
+      <PageHero
         eyebrow="London"
         title="Coming soon."
         intro="We’re building Benditos for markets, neighbourhood sites, pop-ups and food lovers across London."
