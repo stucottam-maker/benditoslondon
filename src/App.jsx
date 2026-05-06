@@ -37,6 +37,10 @@ const menuSections = [
         name: "Mushroom & Corn Quesadilla",
         desc: "Roasted mushrooms, corn, chilli, herbs and lime.",
       },
+      {
+        name: "No-Cheese Vegan Quesadilla",
+        desc: "Bean purée, roasted corn, red peppers, onion, herbs and salsa.",
+      },
     ],
   },
   {
@@ -53,6 +57,19 @@ const menuSections = [
     ],
   },
   {
+    title: "Sides",
+    items: [
+      {
+        name: "Salsa Macha",
+        desc: "Crunchy chilli oil with nuts, seeds and deep roasted flavour.",
+      },
+      {
+        name: "Honey-Lime Slaw",
+        desc: "Crisp cabbage, lime, herbs and a little Mexican honey.",
+      },
+    ],
+  },
+  {
     title: "Sweets",
     items: [
       {
@@ -61,6 +78,15 @@ const menuSections = [
       },
     ],
   },
+];
+
+const pantryItems = [
+  "Mexican honey",
+  "Chilli honey",
+  "Salsa macha",
+  "Honey-lime dressing",
+  "Smoky marinades",
+  "Gift boxes",
 ];
 
 function App() {
@@ -191,33 +217,33 @@ function StoryPage({ changePage }) {
     <section className="contentPage">
       <div className="pageHero">
         <p className="eyebrow">The story</p>
-        <h1>One brand, built from two ideas.</h1>
+        <h1>Big flavour with a Mexican heart.</h1>
       </div>
 
       <div className="textGrid">
         <article className="largeTextBlock">
           <p>
-            Benditos began with a love for Mexican flavour — tacos, chilli,
-            lime, smoke, slow-cooked meats and artesanal honey.
+            Benditos is Latin street food with a Mexican heart — tacos, chilli,
+            lime, smoke, slow-cooked meats and a little honey where it belongs.
           </p>
 
           <p>
-            What started as separate ideas has become one brand: Latin street
-            food with Mexican soul.
+            The food is bold, bright and made for good times: smoky meats, sharp
+            salsas, warm tortillas, cold drinks and sweet heat running through
+            the menu.
           </p>
 
           <p>
-            The honey is not a separate concept anymore. It runs through the
-            food in chilli honey, honey-lime dressings, smoky glazes, marinades
-            and future pantry products.
+            From chilli honey to honey-lime dressings and smoky glazes, we use
+            honey to bring balance, depth and a little fire to every bite.
           </p>
         </article>
 
         <aside className="sideNote">
-          <h3>Not fine dining.</h3>
+          <h3>Made for good times.</h3>
           <p>
-            Benditos is casual, bold and full of energy — the kind of food made
-            for markets, neighbourhoods, pop-ups and good nights out.
+            No white tablecloths, no stiff service — just bold food, cold
+            drinks, messy hands and proper flavour.
           </p>
           <button className="textButton" onClick={() => changePage("menu")}>
             See the food
@@ -236,7 +262,7 @@ function MenuPage() {
         <h1>Simple food. Big flavour.</h1>
         <p className="pageIntro">
           A first look at the Benditos menu direction — tacos, quesadillas,
-          ceviche, sweets and sweet heat.
+          ceviche, sides, sweets and sweet heat.
         </p>
       </div>
 
@@ -266,6 +292,10 @@ function HoneyPage({ changePage }) {
       <div className="pageHero">
         <p className="eyebrow">Mexican honey</p>
         <h1>Honey, chilli and sweet heat.</h1>
+        <p className="pageIntro">
+          A quiet little sweetness running through the heat — never too much,
+          just enough to bring the flavour alive.
+        </p>
       </div>
 
       <div className="honeyGrid">
@@ -275,19 +305,18 @@ function HoneyPage({ changePage }) {
 
         <div className="honeyText">
           <p>
-            Part of the Benditos story began with Mexican honey — rich, floral
-            and artesanal.
+            The honey side of Benditos is about balance: sweet, smoky, sharp and
+            spicy, working together rather than fighting for attention.
           </p>
 
           <p>
-            That idea now lives inside the food: chilli honey, honey-lime
-            dressings, smoky marinades, salsa macha and sweet heat.
+            You’ll find it in chilli honey, honey-lime dressings, smoky glazes,
+            marinades and sauces that bring a little fire to every bite.
           </p>
 
           <p>
-            In time, Benditos will also develop a small pantry range for home
-            kitchens: Mexican honey, chilli honey, sauces, marinades and gift
-            boxes.
+            Over time, we’ll build a small Benditos pantry too — honey, sauces,
+            marinades and gift boxes made for home kitchens.
           </p>
 
           <button className="primaryButton" onClick={() => changePage("story")}>
@@ -297,12 +326,9 @@ function HoneyPage({ changePage }) {
       </div>
 
       <div className="pantryStrip">
-        <span>Mexican honey</span>
-        <span>Chilli honey</span>
-        <span>Salsa macha</span>
-        <span>Honey-lime dressing</span>
-        <span>Smoky marinades</span>
-        <span>Gift boxes</span>
+        {pantryItems.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
       </div>
     </section>
   );
