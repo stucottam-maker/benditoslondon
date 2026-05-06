@@ -192,20 +192,8 @@ function HomePage({ changePage }) {
       </div>
 
       <div className="homeVisual">
-        <div className="imageCard mainFoodImage">
+        <div className="heroBannerImage">
           <span>Tacos · Honey · Chilli · Smoke</span>
-        </div>
-
-        <div className="smallInfoGrid">
-          <article>
-            <h3>Street food</h3>
-            <p>Tacos, ceviche, quesadillas and cold drinks.</p>
-          </article>
-
-          <article>
-            <h3>Sweet heat</h3>
-            <p>Mexican honey, chilli, lime and smoke.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -299,7 +287,7 @@ function HoneyPage({ changePage }) {
       </div>
 
       <div className="honeyGrid">
-        <div className="imageCard honeyVisual">
+        <div className="honeyBannerImage">
           <span>Mexican Honey & Sweet Heat</span>
         </div>
 
