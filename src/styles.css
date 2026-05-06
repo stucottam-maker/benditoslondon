@@ -4,6 +4,7 @@
   --cream-soft: #f2dfc9;
   --orange: #d94a1e;
   --honey: #d48924;
+  --gold: #d89a34;
   --brown: #7c341b;
   --dark: #1f130d;
   --muted: rgba(124, 52, 27, 0.72);
@@ -209,7 +210,7 @@ button {
 .heroOverlay .pageIntro {
   max-width: 540px;
   margin: 20px 0 0;
-  color: rgba(247, 235, 221, 0.9);
+  color: rgba(247, 235, 221, 0.92);
   font-size: clamp(0.96rem, 1.15vw, 1.06rem);
   line-height: 1.62;
   font-weight: 650;
@@ -241,8 +242,35 @@ button {
 }
 
 .honeyBanner {
-  background-image: url("https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=1600&q=80");
+  background:
+    radial-gradient(
+      circle at 78% 22%,
+      rgba(255, 244, 230, 0.34),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(217, 74, 30, 0.28),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #d89a34 0%, #c46f1f 42%, #8f3b1e 100%);
+  background-size: cover;
   background-position: center;
+}
+
+.goldenBanner::before {
+  background:
+    linear-gradient(
+      to right,
+      rgba(31, 19, 13, 0.5),
+      rgba(31, 19, 13, 0.2),
+      rgba(31, 19, 13, 0.04)
+    ),
+    linear-gradient(
+      to top,
+      rgba(31, 19, 13, 0.24),
+      rgba(31, 19, 13, 0.02)
+    );
 }
 
 .locationsBanner {

@@ -102,6 +102,7 @@ function App() {
     setActivePage(page);
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.replaceState(null, "", `#${page}`);
   };
 
   return (
@@ -221,8 +222,8 @@ function StoryPage({ changePage }) {
     <section className="contentPage">
       <PageHero
         eyebrow="The story"
-        title="Big flavour with a Mexican heart."
-        intro="Bold, bright food made for messy hands, cold drinks and good times."
+        title="Food with fire, soul and heart."
+        intro="Benditos is built on the kind of food people remember — smoky, bright, messy, generous and full of life."
         bannerClass="storyBanner"
         bannerText="Smoke · Lime · Tortillas · Good times"
       />
@@ -230,19 +231,22 @@ function StoryPage({ changePage }) {
       <div className="textGrid">
         <article className="largeTextBlock">
           <p>
-            Benditos is Latin street food with a Mexican heart — tacos, chilli,
-            lime, smoke, slow-cooked meats and a little honey where it belongs.
+            Benditos comes from a love of the food that brings people together:
+            tacos passed across a table, slow-cooked meats, sharp salsa, warm
+            tortillas, cold drinks and that first bite that makes everyone stop
+            talking for a second.
           </p>
 
           <p>
-            The food is bold, bright and made for good times: smoky meats, sharp
-            salsas, warm tortillas, cold drinks and golden heat running through
-            the menu.
+            It is Latin street food with a Mexican heart — full of smoke,
+            chilli, lime, fire and feeling. The kind of food made for messy
+            hands, loud tables and good nights out.
           </p>
 
           <p>
-            From chilli honey to honey-lime dressings and smoky glazes, we use
-            honey to bring balance, depth and a little fire to every bite.
+            Honey sits quietly inside the flavour, not as a gimmick, but as
+            balance. A little golden heat against the chilli, a little sweetness
+            against the smoke, a little depth in every bite.
           </p>
         </article>
 
@@ -250,7 +254,7 @@ function StoryPage({ changePage }) {
           <h3>Made for good times.</h3>
           <p>
             No white tablecloths, no stiff service — just bold food, cold
-            drinks, messy hands and proper flavour.
+            drinks, warm tortillas and proper flavour.
           </p>
           <button className="textButton" onClick={() => changePage("menu")}>
             See the food
@@ -296,26 +300,29 @@ function HoneyPage({ changePage }) {
   return (
     <section className="contentPage honeyPage">
       <PageHero
-        eyebrow="Mexican honey"
-        title="Honey, chilli and golden heat."
-        intro="Mexican honey brings a little gold to the heat — sweet, floral and rich, used to balance chilli, smoke, lime and fire."
-        bannerClass="honeyBanner"
+        eyebrow="Benditos Miel y Sabores"
+        title="Golden heat."
+        intro="Artisanal Mexican honey rooted in culture, nature and the craft of the hive."
+        bannerClass="honeyBanner goldenBanner"
         bannerText="Mexican Honey · Chilli · Golden Heat"
       />
 
       <div className="honeyText fullWidthText">
         <p>
-          The honey side of Benditos is about golden heat: sweet, smoky, sharp
-          and spicy, working together rather than fighting for attention.
+          Benditos Miel y Sabores comes from a love of Mexico’s indigenous
+          culture — the land, the rituals, the food, the colour and the deep
+          respect for nature.
         </p>
 
         <p>
-          You’ll find it in chilli honey, honey-lime dressings, smoky glazes,
-          marinades and sauces that bring a little fire to every bite.
+          It is also rooted in apiculture: the craft of the hive, the work of
+          the bees and the beauty of honey in its most natural form.
         </p>
 
         <p>
-          Never too sweet. Just enough gold to bring the flavour alive.
+          Golden, floral, earthy and full of body — our honey is artisanal,
+          natural and full of character. No nasties, no shortcuts, just the best
+          of the hive.
         </p>
 
         <button className="primaryButton" onClick={() => changePage("story")}>
