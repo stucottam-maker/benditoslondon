@@ -50,6 +50,16 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(217, 74, 30, 0.45);
+  outline-offset: 4px;
+}
+
 a {
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -105,11 +115,11 @@ p {
 }
 
 .nav-desktop {
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 22px;
-  min-width: 0;
 }
 
 .nav-link,
@@ -120,12 +130,18 @@ p {
 }
 
 .nav-link {
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
   font-size: 0.66rem;
   letter-spacing: 0.14em;
   white-space: nowrap;
 }
 
-.nav-link.active,
+.nav-link.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
 .mobile-menu-link.active {
   color: var(--orange);
 }
@@ -570,7 +586,8 @@ p {
 }
 
 .page-hero-miel {
-  background: linear-gradient(135deg, var(--brown), var(--orange), var(--gold));
+  background-image: url("https://www.dropbox.com/scl/fi/zxqpwol6ooru6g02t3wzn/240_F_202788682_7y8OwKwin0kmDz4H1UI0XGtKRQAWKXxI.jpg?rlkey=uumwmhmn05ns18tlnz7w1u9kf&st=xnnmmyqp&raw=1");
+  background-position: center;
 }
 
 .page-hero-spanish {
@@ -584,6 +601,15 @@ p {
     rgba(31, 19, 13, 0.8) 0%,
     rgba(31, 19, 13, 0.46) 46%,
     rgba(31, 19, 13, 0.12) 100%
+  );
+}
+
+.page-hero-miel .page-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(31, 19, 13, 0.78) 0%,
+    rgba(124, 52, 27, 0.44) 48%,
+    rgba(216, 154, 40, 0.12) 100%
   );
 }
 
@@ -1042,6 +1068,10 @@ p {
     min-height: 235px;
     margin-bottom: 18px;
     border-radius: 1.2rem;
+  }
+
+  .page-hero-miel {
+    background-position: center;
   }
 
   .page-hero-spanish {
