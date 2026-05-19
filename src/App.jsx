@@ -14,10 +14,10 @@ const pageRoutes = {
 const routePaths = {
   home: '/',
   menu: '/menu',
-  miel: '/miel',
+  miel: '/artisan mexican honey',
   visit: '/visit',
   contact: '/contact',
-  es: '/es',
+  es: '/productores',
 };
 
 const navItems = [
