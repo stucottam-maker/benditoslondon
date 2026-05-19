@@ -249,7 +249,7 @@ export default function App() {
       <main>
         {page === 'home' && <HomePage setPage={setPage} />}
         {page === 'menu' && <MenuPage />}
-        {page === 'miel' && <MielPage />}
+        {page === 'Artisanal Mexican Honey' && <MielPage />}
         {page === 'visit' && <VisitPage />}
         {page === 'contact' && <ContactPage />}
       </main>
