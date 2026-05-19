@@ -23,10 +23,10 @@ const routePaths = {
 const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'menu', label: 'Menu' },
-  { id: 'miel', label: 'Miel' },
+  { id: 'miel', label: 'Artisan Mexican Honey' },
   { id: 'visit', label: 'Visit' },
   { id: 'contact', label: 'Contact' },
-  { id: 'es', label: 'ES' },
+  { id: 'es', label: 'Productores' },
 ];
 
 const heroSlides = [
