@@ -23,6 +23,15 @@ function getPageFromPath() {
   return pageRoutes[window.location.pathname] || 'home';
 }
 
+const navItems = [
+  { id: 'home', label: 'Home' },
+  { id: 'menu', label: 'Menu' },
+  { id: 'miel', label: 'Miel' },
+  { id: 'visit', label: 'Visit' },
+  { id: 'contact', label: 'Contact' },
+  { id: 'es', label: 'ES' },
+];
+
 const heroSlides = [
   {
     label: 'Birria',
@@ -46,15 +55,6 @@ const heroSlides = [
   },
 ];
 
-const navItems = [
-  { id: 'home', label: 'Home' },
-  { id: 'menu', label: 'Menu' },
-  { id: 'miel', label: 'Artisanal Mexican Honey' },
-  { id: 'visit', label: 'Visit' },
-  { id: 'contact', label: 'Contact' },
-  { id: 'es', label: 'ES' },
-];
-
 const approachCards = [
   {
     title: 'Fire',
@@ -62,15 +62,15 @@ const approachCards = [
   },
   {
     title: 'Citrus',
-    text: 'Lime, sharpness, brightness and lift.',
+    text: 'Lime, brightness, acidity and lift.',
   },
   {
     title: 'Earth',
-    text: 'Corn, slow cooking, roots and richness.',
+    text: 'Corn, slow cooking, roots, depth and richness.',
   },
   {
     title: 'Honey',
-    text: 'Golden Mexican sweetness for glazes, drinks and pantry goods.',
+    text: 'Mexican sweetness for glazes, drinks and pantry goods.',
   },
 ];
 
@@ -85,7 +85,7 @@ const mielCards = [
   },
   {
     title: 'Glazes & Marinades',
-    text: 'Honey-led flavour for chicken, pork belly, squash, ribs, vegetables and grill cooking.',
+    text: 'Honey-led flavour for chicken, pork belly, squash, vegetables and grill cooking.',
   },
   {
     title: 'Drinks & Syrups',
@@ -101,30 +101,30 @@ const mielCards = [
   },
 ];
 
-const spanishCards = [
+const producerCards = [
   {
-    title: 'Miel Cruda',
-    text: 'Miel artesanal, natural y llena de carácter, seleccionada por su origen, aroma y sabor.',
+    title: 'Miel Artesanal',
+    text: 'Miel natural mexicana con carácter, origen, aroma y trazabilidad.',
   },
   {
-    title: 'Miel Picante',
-    text: 'Miel mexicana con chile, creada para tacos, pollo, quesos, marinados y cocina con fuego.',
+    title: 'Productores y Apicultores',
+    text: 'Buscamos colaborar con personas, familias y proyectos que respetan la colmena, la tierra y el proceso.',
   },
   {
-    title: 'Glaseados y Marinados',
-    text: 'Dulzor, humo, acidez y picante para carnes, verduras, salsas y cocina de parrilla.',
+    title: 'Origen y Territorio',
+    text: 'Cada miel cuenta una historia distinta: flores, clima, región, temporada, paisaje y trabajo humano.',
   },
   {
-    title: 'Bebidas y Cocteles',
-    text: 'Miel para margaritas, palomas, aguas frescas, jarabes y futuras fermentaciones.',
+    title: 'Mercado Gastronómico',
+    text: 'Queremos conectar la miel mexicana con chefs, restaurantes, cafeterías, tiendas y experiencias en Londres.',
   },
   {
-    title: 'Despensa Mexicana',
-    text: 'Salsas, salsa macha, caramelos de miel, productos de temporada y futuras cajas de regalo.',
+    title: 'Productos con Valor',
+    text: 'Miel cruda, miel picante, glaseados, salsas, bebidas y productos de despensa con identidad.',
   },
   {
-    title: 'Catas y Experiencias',
-    text: 'Catas de miel, maridajes, eventos, mercados, colaboraciones y experiencias con sabor.',
+    title: 'Relaciones a Largo Plazo',
+    text: 'Queremos construir colaboraciones honestas, cuidadas, sostenibles y con respeto por el origen.',
   },
 ];
 
@@ -138,14 +138,14 @@ const wholesaleTags = [
   'Independent retailers',
 ];
 
-const spanishWholesaleTags = [
-  'Restaurantes',
-  'Cafeterías',
-  'Panaderías',
-  'Coctelerías',
-  'Delis',
-  'Mercados gastronómicos',
-  'Tiendas independientes',
+const producerTags = [
+  'Productores',
+  'Apicultores',
+  'Cooperativas',
+  'Proyectos familiares',
+  'Miel artesanal',
+  'Origen mexicano',
+  'Colaboraciones',
 ];
 
 const visitInfo = [
@@ -270,9 +270,7 @@ export default function App() {
 
     window.addEventListener('popstate', handlePopState);
 
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   function handleNavigate(target) {
@@ -388,8 +386,8 @@ function HomePage({ setPage }) {
 
   return (
     <>
-      <section className="hero-slider-section">
-        <div className="hero-slider-shell">
+      <section className="hero-section">
+        <div className="hero-shell">
           {heroSlides.map((slide, index) => (
             <div
               key={slide.label}
@@ -402,43 +400,45 @@ function HomePage({ setPage }) {
           ))}
 
           <div className="hero-content">
-            <div className="hero-copy-group">
-              <p className="eyebrow hero-eyebrow">Latin Street Food · Benditos Miel</p>
-              <h1 className="hero-title hero-title-large">
+            <div className="hero-main">
+              <p className="eyebrow eyebrow-light">Latin street food · Benditos Miel</p>
+
+              <h1 className="hero-title">
                 Big flavours.
                 <br />
                 Good times.
               </h1>
-              <p className="hero-copy hero-copy-light">
+
+              <p className="hero-copy">
                 Bold Latin street food, cold drinks, Mexican honey and pantry goods — from tacos
                 and birria to hot honey, glazes and small-batch flavour drops.
               </p>
             </div>
 
-            <div className="hero-bottom">
+            <div className="hero-actions">
               <div className="button-row hero-button-row">
                 <button onClick={() => setPage('menu')} className="btn btn-primary">
                   View Menu
                 </button>
 
-                <button onClick={() => setPage('miel')} className="btn btn-secondary btn-secondary-light">
+                <button onClick={() => setPage('miel')} className="btn btn-ghost-light">
                   Benditos Miel
                 </button>
 
-                <button onClick={() => setPage('visit')} className="btn btn-secondary btn-secondary-light">
+                <button onClick={() => setPage('visit')} className="btn btn-ghost-light">
                   Follow the Launch
                 </button>
               </div>
 
-              <div className="hero-slider-controls">
-                <div className="hero-slide-tag">{heroSlides[currentHeroSlide].label}</div>
+              <div className="hero-controls">
+                <span>{heroSlides[currentHeroSlide].label}</span>
 
                 <div className="hero-dots" aria-label="Hero slides">
                   {heroSlides.map((slide, index) => (
                     <button
                       key={slide.label}
-                      className={index === currentHeroSlide ? 'hero-dot active' : 'hero-dot'}
                       onClick={() => goHeroTo(index)}
+                      className={index === currentHeroSlide ? 'dot active' : 'dot'}
                       aria-label={`Show ${slide.label}`}
                     />
                   ))}
@@ -450,53 +450,53 @@ function HomePage({ setPage }) {
           <button className="hero-arrow hero-arrow-left" onClick={goHeroPrev} aria-label="Previous slide">
             ‹
           </button>
+
           <button className="hero-arrow hero-arrow-right" onClick={goHeroNext} aria-label="Next slide">
             ›
           </button>
         </div>
       </section>
 
-      <section className="container about-us-section">
-        <div className="about-us-panel">
-          <div className="about-us-grid">
-            <div className="about-us-lead">
-              <p className="eyebrow">About Us</p>
-              <h2 className="section-title">Rooted in Mexico. Built for London.</h2>
-            </div>
+      <section className="container section">
+        <div className="split-card">
+          <div>
+            <p className="eyebrow">About Us</p>
+            <h2 className="section-title">Rooted in Mexico. Built for London.</h2>
+          </div>
 
-            <div className="about-us-copy">
-              <p className="about-us-strap">
-                Benditos brings together Latin street food and Mexican honey through fire, citrus,
-                smoke and golden sweetness.
-              </p>
+          <div className="copy-stack">
+            <p className="lead-copy">
+              Benditos brings together Latin street food and Mexican honey through fire, citrus,
+              smoke and golden sweetness.
+            </p>
 
-              <p>
-                Born from friendship and a shared love of Mexican history, culture and food,
-                Benditos is a Mexican-rooted kitchen shaped by wider Latin American influence.
-                It began with tacos, birria, ceviche, salsas and good times around the table.
-              </p>
+            <p>
+              Born from friendship and a shared love of Mexican history, culture and food,
+              Benditos is a Mexican-rooted kitchen shaped by wider Latin American influence.
+              It began with tacos, birria, ceviche, salsas and good times around the table.
+            </p>
 
-              <p>
-                The honey idea started separately: a celebration of Mexican honey, origin, aroma,
-                flavour and craft. Now it lives inside Benditos as Benditos Miel — our golden thread
-                running through glazes, drinks, pantry goods, tastings and future retail drops.
-              </p>
-            </div>
+            <p>
+              The honey idea started separately: a celebration of Mexican honey, origin, aroma,
+              flavour and craft. Now it lives inside Benditos as Benditos Miel — our golden thread
+              running through glazes, drinks, pantry goods, tastings and future retail drops.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="container miel-feature-section">
-        <div className="miel-feature-panel">
+      <section className="container section">
+        <div className="gold-panel">
           <div>
             <p className="eyebrow eyebrow-light">Benditos Miel</p>
-            <h2 className="section-title miel-feature-title">Golden origins. Miel & sabores.</h2>
+            <h2 className="section-title light-title">Golden origins. Miel & sabores.</h2>
           </div>
 
-          <div className="miel-feature-copy">
+          <div className="copy-stack light-copy">
             <p>
-              Our Mexican honey story gives Benditos a deeper ingredient identity — raw honey, hot
-              honey, glazes, marinades, drinks, sauces and pantry goods with flavour, place and purpose.
+              Our Mexican honey story gives Benditos a deeper ingredient identity — raw honey,
+              hot honey, glazes, marinades, drinks, sauces and pantry goods with flavour, place
+              and purpose.
             </p>
 
             <button onClick={() => setPage('miel')} className="btn btn-light">
@@ -506,52 +506,44 @@ function HomePage({ setPage }) {
         </div>
       </section>
 
-      <section className="container approach-section">
-        <div className="approach-grid">
-          <div className="approach-lead">
+      <section className="container section">
+        <div className="split-card clean-card">
+          <div>
             <p className="eyebrow">Our Approach</p>
             <h2 className="section-title">Come hungry. Leave happy.</h2>
           </div>
 
-          <div className="approach-content">
-            <div className="approach-cards-desktop">
+          <div className="approach-area">
+            <div className="approach-grid-desktop">
               {approachCards.map((item) => (
-                <div key={item.title} className="approach-card">
+                <div key={item.title} className="mini-card">
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </div>
               ))}
             </div>
 
-            <div className="approach-slider-mobile">
-              <button
-                className="approach-arrow approach-arrow-left"
-                onClick={goApproachPrev}
-                aria-label="Previous approach card"
-              >
+            <div className="approach-mobile">
+              <button onClick={goApproachPrev} className="small-arrow" aria-label="Previous approach card">
                 ‹
               </button>
 
-              <div className="approach-card approach-card-mobile">
+              <div className="mini-card mobile-mini-card">
                 <h3>{approachCards[currentApproachSlide].title}</h3>
                 <p>{approachCards[currentApproachSlide].text}</p>
               </div>
 
-              <button
-                className="approach-arrow approach-arrow-right"
-                onClick={goApproachNext}
-                aria-label="Next approach card"
-              >
+              <button onClick={goApproachNext} className="small-arrow" aria-label="Next approach card">
                 ›
               </button>
             </div>
 
-            <div className="approach-dots" aria-label="Approach cards">
+            <div className="mobile-dots">
               {approachCards.map((item, index) => (
                 <button
                   key={item.title}
-                  className={index === currentApproachSlide ? 'approach-dot active' : 'approach-dot'}
                   onClick={() => goApproachTo(index)}
+                  className={index === currentApproachSlide ? 'dot orange-dot active' : 'dot orange-dot'}
                   aria-label={`Show ${item.title}`}
                 />
               ))}
@@ -560,65 +552,38 @@ function HomePage({ setPage }) {
         </div>
       </section>
 
-      <section className="container instagram-section">
-        <div className="instagram-panel">
-          <div className="instagram-content">
-            <p className="eyebrow">Instagram</p>
-            <h2 className="section-title">Follow Benditos</h2>
-            <p className="instagram-copy">
-              Launch updates, behind the scenes, tacos, salsas, honey drops, markets and what’s
-              coming next.
-            </p>
-          </div>
-
-          <a
-            href="https://www.instagram.com/benditosldn/"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary instagram-button"
-          >
-            @benditosldn
-          </a>
-        </div>
-      </section>
+      <InstagramPanel />
     </>
   );
 }
 
 function MenuPage() {
   return (
-    <section className="container page-section menu-page">
-      <section className="menu-hero-banner">
-        <div className="menu-hero-overlay" />
+    <section className="container page">
+      <PageHero
+        type="menu"
+        eyebrow="Menu"
+        title="What we’re serving."
+        copy="Bold, fresh, fire-led food built for sharing, grabbing and coming back for — with Mexican honey appearing in glazes, drinks and specials."
+      />
 
-        <div className="menu-hero-content">
-          <p className="eyebrow menu-hero-eyebrow">Menu</p>
-          <h2 className="section-title menu-hero-title">What we’re serving.</h2>
-          <p className="menu-hero-copy">
-            Bold, fresh, fire-led food built for sharing, grabbing and coming back for — with Mexican
-            honey appearing in glazes, drinks and specials.
-          </p>
-        </div>
-      </section>
-
-      <div className="menu-sections">
+      <div className="menu-grid">
         {menuSections.map((section) => (
-          <section key={section.title} className="menu-section-card">
-            <div className="menu-section-header">
-              <h3 className="menu-section-title">{section.title}</h3>
-              {section.note ? <p className="menu-section-note">{section.note}</p> : null}
+          <section key={section.title} className="menu-card">
+            <div className="menu-card-header">
+              <h3>{section.title}</h3>
+              {section.note && <p>{section.note}</p>}
             </div>
 
             <div className="menu-items">
               {section.items.map((item) => (
                 <div key={item.name} className="menu-item">
                   <div className="menu-item-top">
-                    <h4 className="menu-item-name">{item.name}</h4>
-                    <span className="menu-item-price">{item.price}</span>
+                    <h4>{item.name}</h4>
+                    <span>{item.price}</span>
                   </div>
-                  {item.description ? (
-                    <p className="menu-item-description">{item.description}</p>
-                  ) : null}
+
+                  {item.description && <p>{item.description}</p>}
                 </div>
               ))}
             </div>
@@ -631,68 +596,156 @@ function MenuPage() {
 
 function MielPage() {
   return (
-    <section className="container page-section miel-page">
-      <section className="miel-hero-banner">
-        <div className="miel-hero-overlay" />
+    <section className="container page">
+      <PageHero
+        type="miel"
+        eyebrow="Benditos Miel"
+        title="Golden origins. Miel & sabores."
+        copy="Mexican honey, hot honey and bold pantry goods — built for tacos, cocktails, kitchens, markets and good times."
+      />
 
-        <div className="miel-hero-content">
-          <p className="eyebrow miel-hero-eyebrow">Benditos Miel</p>
-          <h2 className="section-title miel-hero-title">Golden origins. Miel & sabores.</h2>
-          <p className="miel-hero-copy">
-            Mexican honey, hot honey and bold pantry goods — built for tacos, cocktails, kitchens,
-            markets and good times.
-          </p>
-        </div>
-      </section>
-
-      <div className="miel-intro-panel">
+      <div className="split-card">
         <div>
           <p className="eyebrow">The idea</p>
           <h2 className="section-title">Not a separate brand. A Benditos flavour story.</h2>
         </div>
 
-        <div className="miel-intro-copy">
+        <div className="copy-stack">
           <p>
-            The original honey idea began with a simple thought: Mexican honey deserves to be treated
-            as more than a sweetener. It has origin, aroma, colour, season, landscape and story.
+            The original honey idea began with a simple thought: Mexican honey deserves to be
+            treated as more than a sweetener. It has origin, aroma, colour, season, landscape
+            and story.
           </p>
 
           <p>
-            Now that idea lives inside Benditos as Benditos Miel — not as a separate company, but as
-            a golden thread running through our food, drinks, glazes, pantry goods, tastings and
-            future retail drops.
+            Now that idea lives inside Benditos as Benditos Miel — not as a separate company,
+            but as a golden thread running through our food, drinks, glazes, pantry goods,
+            tastings and future retail drops.
           </p>
         </div>
       </div>
 
-      <div className="miel-card-grid">
+      <div className="card-grid">
         {mielCards.map((item) => (
-          <div key={item.title} className="miel-card">
+          <div key={item.title} className="feature-card">
             <h3>{item.title}</h3>
             <p>{item.text}</p>
           </div>
         ))}
       </div>
 
-      <div className="miel-wholesale-panel">
+      <div className="orange-panel">
         <div>
           <p className="eyebrow eyebrow-light">Wholesale</p>
-          <h2 className="section-title miel-wholesale-title">For chefs, makers and retailers.</h2>
+          <h2 className="section-title light-title">For chefs, makers and retailers.</h2>
         </div>
 
-        <div className="miel-wholesale-copy">
+        <div className="copy-stack light-copy">
           <p>
-            Benditos Miel is being developed for restaurants, cafés, bakeries, cocktail bars, delis,
-            food halls and independent retailers looking for Mexican honey, hot honey, glazes and
-            pantry goods with stronger origin, character and flavour.
+            Benditos Miel is being developed for restaurants, cafés, bakeries, cocktail bars,
+            delis, food halls and independent retailers looking for Mexican honey, hot honey,
+            glazes and pantry goods with stronger origin, character and flavour.
           </p>
 
-          <div className="miel-wholesale-tags">
-            {wholesaleTags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
+          <TagList items={wholesaleTags} />
         </div>
+      </div>
+    </section>
+  );
+}
+
+function SpanishPage() {
+  return (
+    <section className="container page spanish-page">
+      <PageHero
+        type="spanish"
+        eyebrow="Benditos Miel"
+        title="Miel mexicana. Origen, respeto y sabor."
+        copy="Benditos Miel nace del amor por México, la apicultura y los productos naturales. Buscamos crear un puente entre productores mexicanos de miel artesanal y el mercado gastronómico en Londres, celebrando el origen, el trabajo de las abejas y la riqueza de cada territorio."
+      />
+
+      <div className="split-card">
+        <div>
+          <p className="eyebrow">Nuestra visión</p>
+          <h2 className="section-title">Un puente entre México y Londres.</h2>
+        </div>
+
+        <div className="copy-stack">
+          <p>
+            Queremos trabajar con productores, apicultores, cooperativas y proyectos mexicanos
+            que cuidan la tierra, respetan la colmena y entienden la miel como un producto vivo:
+            con historia, temporada, aroma y carácter.
+          </p>
+
+          <p>
+            Nuestro objetivo es llevar miel mexicana artesanal a restaurantes, cocinas, tiendas,
+            cafeterías y experiencias gastronómicas en Londres, manteniendo siempre una conexión
+            clara con su origen.
+          </p>
+
+          <p>
+            No buscamos una miel genérica. Buscamos miel con identidad: miel que hable de su
+            territorio, de sus flores, de sus abejas y de las manos que la producen.
+          </p>
+        </div>
+      </div>
+
+      <div className="brown-panel">
+        <p className="eyebrow eyebrow-light">Más que importar miel</p>
+        <h2 className="section-title light-title">Queremos contar su origen.</h2>
+        <p>
+          Cada miel tiene una historia distinta: la floración, el clima, la región, la colmena
+          y el trabajo de quien la produce. Benditos Miel quiere llevar esas historias a chefs,
+          tiendas, cafeterías y clientes que valoran productos naturales, artesanales y con carácter.
+        </p>
+      </div>
+
+      <div className="card-grid">
+        {producerCards.map((item) => (
+          <div key={item.title} className="feature-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="orange-panel">
+        <div>
+          <p className="eyebrow eyebrow-light">Colaboraciones</p>
+          <h2 className="section-title light-title">
+            Para productores, apicultores y proyectos mexicanos.
+          </h2>
+        </div>
+
+        <div className="copy-stack light-copy">
+          <p>
+            Si produces miel artesanal en México y te interesa llevar tu producto a Londres,
+            queremos conocerte.
+          </p>
+
+          <p>
+            Benditos Miel busca colaborar con productores que trabajan con respeto por la naturaleza,
+            la colmena y el origen. Nuestro objetivo es presentar la miel mexicana de forma cuidada,
+            honesta y gastronómica.
+          </p>
+
+          <TagList items={producerTags} />
+        </div>
+      </div>
+
+      <div className="contact-strip">
+        <div>
+          <p className="eyebrow">Hablemos</p>
+          <h2 className="section-title">De México a Londres, con respeto.</h2>
+          <p>
+            Si eres productor, apicultor, cooperativa o proyecto mexicano de miel artesanal,
+            escríbenos para explorar una colaboración.
+          </p>
+        </div>
+
+        <a href="mailto:hello@benditosldn.com" className="btn btn-primary">
+          hello@benditosldn.com
+        </a>
       </div>
     </section>
   );
@@ -700,41 +753,31 @@ function MielPage() {
 
 function VisitPage() {
   return (
-    <section className="container page-section visit-page">
-      <section className="visit-hero-banner">
-        <div className="visit-hero-overlay" />
+    <section className="container page">
+      <PageHero
+        type="visit"
+        eyebrow="Visit"
+        title="Catch us when we land."
+        copy="Benditos is built for tacos, cold drinks, all-day bites, honey tastings and dropping in whenever the craving hits."
+      >
+        <a
+          href="https://www.instagram.com/benditosldn/"
+          target="_blank"
+          rel="noreferrer"
+          className="btn btn-primary"
+        >
+          Follow @benditosldn
+        </a>
+      </PageHero>
 
-        <div className="visit-hero-content">
-          <p className="eyebrow visit-hero-eyebrow">Visit</p>
-          <h2 className="section-title visit-hero-title">Catch us when we land.</h2>
-          <p className="visit-hero-copy">
-            Benditos is built for tacos, cold drinks, all-day bites, honey tastings and dropping in
-            whenever the craving hits.
-          </p>
-
-          <a
-            href="https://www.instagram.com/benditosldn/"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary visit-hero-button"
-          >
-            Follow @benditosldn
-          </a>
-        </div>
-      </section>
-
-      <div className="visit-info-grid">
+      <div className="visit-grid">
         {visitInfo.map((item) => (
           <div key={item.label} className="visit-card">
             <p className="eyebrow">{item.label}</p>
+
             {item.isLink ? (
               <h3>
-                <a
-                  href="https://www.instagram.com/benditosldn/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="visit-link"
-                >
+                <a href="https://www.instagram.com/benditosldn/" target="_blank" rel="noreferrer">
                   {item.value}
                 </a>
               </h3>
@@ -750,139 +793,97 @@ function VisitPage() {
 
 function ContactPage() {
   return (
-    <section className="container page-section">
-      <div className="contact-block">
+    <section className="container page">
+      <div className="contact-panel">
         <div>
           <p className="eyebrow eyebrow-light">Contact</p>
           <h2 className="contact-title">London — coming soon.</h2>
-          <p className="contact-copy">
+          <p>
             Follow along, watch the food and be first to know when Benditos lands in London.
           </p>
         </div>
 
         <div className="contact-card">
-          <div className="contact-item">
-            <strong>Instagram</strong>
-            <a
-              href="https://www.instagram.com/benditosldn/"
-              target="_blank"
-              rel="noreferrer"
-              className="contact-link"
-            >
+          <ContactItem label="Instagram">
+            <a href="https://www.instagram.com/benditosldn/" target="_blank" rel="noreferrer">
               @benditosldn
             </a>
-          </div>
+          </ContactItem>
 
-          <div className="contact-item">
-            <strong>Email</strong>
+          <ContactItem label="Email">
             <span>hello@benditosldn.com</span>
-          </div>
+          </ContactItem>
 
-          <div className="contact-item">
-            <strong>Location</strong>
+          <ContactItem label="Location">
             <span>London, UK</span>
-          </div>
+          </ContactItem>
 
-          <div className="contact-item">
-            <strong>Enquiries</strong>
-            <span>Markets, events, honey, wholesale and collaborations</span>
-          </div>
+          <ContactItem label="Enquiries">
+            <span>Markets, events, honey, wholesale, producers and collaborations</span>
+          </ContactItem>
         </div>
       </div>
     </section>
   );
 }
 
-function SpanishPage() {
+function PageHero({ type, eyebrow, title, copy, children }) {
   return (
-    <section className="container page-section spanish-page">
-      <section className="spanish-hero-banner">
-        <div className="spanish-hero-overlay" />
+    <section className={`page-hero page-hero-${type}`}>
+      <div className="page-hero-overlay" />
 
-        <div className="spanish-hero-content">
-          <p className="eyebrow spanish-hero-eyebrow">Benditos Miel</p>
-          <h2 className="section-title spanish-hero-title">
-            Miel mexicana. Sabores vivos. Raíces profundas.
-          </h2>
-          <p className="spanish-hero-copy">
-            Nacido del amor por la cultura mexicana, la apicultura y los sabores naturales,
-            Benditos Miel celebra la miel artesanal de México como algo más que un endulzante:
-            como origen, aroma, territorio y tradición.
-          </p>
-        </div>
-      </section>
+      <div className="page-hero-content">
+        <p className="eyebrow eyebrow-light">{eyebrow}</p>
+        <h1 className="page-hero-title">{title}</h1>
+        <p className="page-hero-copy">{copy}</p>
 
-      <div className="spanish-intro-panel">
-        <div>
-          <p className="eyebrow">Nuestra historia</p>
-          <h2 className="section-title">Un hilo dorado de México a Londres.</h2>
-        </div>
-
-        <div className="spanish-intro-copy">
-          <p>
-            Benditos Miel nace de un amor profundo por México: su tierra, sus rituales,
-            sus mercados, sus colores y su respeto por la naturaleza.
-          </p>
-
-          <p>
-            También nace de la apicultura: el trabajo de las abejas, el cuidado de la colmena
-            y la belleza de la miel en su forma más natural.
-          </p>
-
-          <p>
-            Hoy esta historia vive dentro de Benditos, como un hilo dorado que conecta nuestra
-            comida, nuestras bebidas, nuestras salsas y nuestros futuros productos de despensa.
-          </p>
-        </div>
-      </div>
-
-      <div className="spanish-statement-panel">
-        <p className="eyebrow eyebrow-light">Miel y sabores</p>
-        <h2 className="section-title spanish-statement-title">
-          No es solo miel. Es una forma de contar el sabor de México.
-        </h2>
-      </div>
-
-      <div className="spanish-card-grid">
-        {spanishCards.map((item) => (
-          <div key={item.title} className="spanish-card">
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="spanish-wholesale-panel">
-        <div>
-          <p className="eyebrow eyebrow-light">Para profesionales</p>
-          <h2 className="section-title spanish-wholesale-title">
-            Para chefs, creadores y tiendas.
-          </h2>
-        </div>
-
-        <div className="spanish-wholesale-copy">
-          <p>
-            Benditos Miel se está desarrollando para restaurantes, cafeterías, panaderías,
-            coctelerías, delis, mercados gastronómicos y tiendas independientes que buscan
-            miel mexicana, miel picante, glaseados y productos de despensa con origen,
-            carácter y sabor.
-          </p>
-
-          <div className="spanish-wholesale-tags">
-            {spanishWholesaleTags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="spanish-closing-panel">
-        <h2 className="section-title spanish-closing-title">De México a Londres.</h2>
-        <p>
-          Benditos Miel lleva consigo el trabajo de las abejas, la riqueza de la tierra
-          y el sabor de una cultura viva.
-        </p>
+        {children && <div className="page-hero-actions">{children}</div>}
       </div>
     </section>
+  );
+}
+
+function TagList({ items }) {
+  return (
+    <div className="tag-list">
+      {items.map((item) => (
+        <span key={item}>{item}</span>
+      ))}
+    </div>
+  );
+}
+
+function InstagramPanel() {
+  return (
+    <section className="container section">
+      <div className="instagram-panel">
+        <div>
+          <p className="eyebrow">Instagram</p>
+          <h2 className="section-title">Follow Benditos</h2>
+          <p>
+            Launch updates, behind the scenes, tacos, salsas, honey drops, markets and what’s
+            coming next.
+          </p>
+        </div>
+
+        <a
+          href="https://www.instagram.com/benditosldn/"
+          target="_blank"
+          rel="noreferrer"
+          className="btn btn-primary"
+        >
+          @benditosldn
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function ContactItem({ label, children }) {
+  return (
+    <div className="contact-item">
+      <strong>{label}</strong>
+      {children}
+    </div>
   );
 }
