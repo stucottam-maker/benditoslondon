@@ -1,5 +1,28 @@
 import { useEffect, useState } from 'react';
 
+const pageRoutes = {
+  '/': 'home',
+  '/menu': 'menu',
+  '/artisanal-mexican-honey': 'miel',
+  '/miel': 'miel',
+  '/visit': 'visit',
+  '/contact': 'contact',
+  '/es': 'es',
+};
+
+const routePaths = {
+  home: '/',
+  menu: '/menu',
+  miel: '/artisanal-mexican-honey',
+  visit: '/visit',
+  contact: '/contact',
+  es: '/es',
+};
+
+function getPageFromPath() {
+  return pageRoutes[window.location.pathname] || 'home';
+}
+
 const heroSlides = [
   {
     label: 'Birria',
@@ -236,12 +259,28 @@ const menuSections = [
 ];
 
 export default function App() {
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState(getPageFromPath);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    function handlePopState() {
+      setPage(getPageFromPath());
+      setMobileMenuOpen(false);
+    }
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
   function handleNavigate(target) {
+    const nextPath = routePaths[target] || '/';
+
     setPage(target);
     setMobileMenuOpen(false);
+    window.history.pushState({}, '', nextPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
