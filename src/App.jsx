@@ -5,10 +5,10 @@ const pageRoutes = {
   '/': 'home',
   '/menu': 'menu',
   '/miel': 'miel',
-  '/artisanal-mexican-honey': 'miel',
+  '/artisanal-mexican-honey': 'Artisan mexican honey',
   '/visit': 'visit',
   '/contact': 'contact',
-  '/es': 'es',
+  '/es': 'Productores',
 };
 
 const routePaths = {
