@@ -232,9 +232,9 @@ a {
   position: relative;
   z-index: 2;
   color: #f7ebdd;
-  padding: 30px 40px 24px;
-  max-width: 500px;
-  height: 100%;
+  padding: 34px 40px 34px;
+  max-width: 520px;
+  min-height: 430px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -982,13 +982,14 @@ a {
 
   .hero-slider-shell {
     width: calc(100% - 24px);
-    height: 330px;
+    min-height: 420px;
     border-radius: 1.2rem;
   }
 
   .hero-content {
-    max-width: 255px;
-    padding: 24px 18px 16px;
+    max-width: 265px;
+    min-height: 420px;
+    padding: 24px 18px 24px;
   }
 
   .hero-title-large {

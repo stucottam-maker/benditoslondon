@@ -26,7 +26,7 @@ const heroSlides = [
 const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'menu', label: 'Menu' },
-  { id: 'miel', label: 'Miel' },
+  { id: 'miel', label: 'Artisanal Mexican Honey' },
   { id: 'visit', label: 'Visit' },
   { id: 'contact', label: 'Contact' },
 ];
