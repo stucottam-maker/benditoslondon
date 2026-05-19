@@ -562,19 +562,21 @@ a {
   background-image: url("https://www.dropbox.com/scl/fi/blt8bfiv0fzdjlpmzci2f/istockphoto-2176660544-612x612.jpg?rlkey=0t6za0ddo9f0uo0di7pvrpmqn&st=re915b3s&raw=1");
 }
 
-.miel-hero-banner,
-.spanish-hero-banner {
+.miel-hero-banner {
   background: linear-gradient(135deg, var(--brown), var(--orange), var(--gold));
 }
 
 .spanish-hero-banner {
   min-height: 340px;
+  background-image: url("https://www.dropbox.com/scl/fi/n55d0yc74tp187mzn4cuq/682bc47455c71.jpg?rlkey=v0ivym1xx6h53o55ib6k56573&st=o6d8owp0&raw=1");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .menu-hero-overlay,
 .visit-hero-overlay,
-.miel-hero-overlay,
-.spanish-hero-overlay {
+.miel-hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -586,14 +588,14 @@ a {
 }
 
 .spanish-hero-overlay {
-  background:
-    radial-gradient(circle at 82% 16%, rgba(247, 235, 221, 0.26), transparent 28%),
-    linear-gradient(
-      90deg,
-      rgba(31, 19, 13, 0.78) 0%,
-      rgba(31, 19, 13, 0.42) 48%,
-      rgba(31, 19, 13, 0.1) 100%
-    );
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 19, 13, 0.72) 0%,
+    rgba(124, 52, 27, 0.42) 48%,
+    rgba(216, 154, 40, 0.12) 100%
+  );
 }
 
 .menu-hero-content,
@@ -733,7 +735,7 @@ a {
   line-height: 1.4;
 }
 
-/* Miel page */
+/* Miel + Spanish pages */
 
 .miel-intro-panel,
 .spanish-intro-panel {
@@ -1249,6 +1251,7 @@ a {
     min-height: 360px;
     border-radius: 1.2rem;
     margin-bottom: 18px;
+    background-position: center;
   }
 
   .menu-hero-content,
