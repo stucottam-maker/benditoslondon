@@ -1,17 +1,15 @@
-import "./App.css";
-
 const honeyImage =
   "https://www.dropbox.com/scl/fi/s4us44letybfugzljsy16/1000_F_322399633_ZXVpTR7wm6iMfVqgKtGUKHpjDT6SVb2v.jpg?rlkey=oq27bmp8cqhd0oczo12e17hxw&st=krgzg6s0&dl=1";
 
 export default function App() {
   return (
-    <main className="site">
-      <header className="nav">
-        <a href="/" className="logo">
+    <main className="page">
+      <header className="header">
+        <a className="logo" href="/">
           Benditos
         </a>
 
-        <nav className="navLinks">
+        <nav className="nav">
           <a href="#story">Story</a>
           <a href="#honey">Honey</a>
           <a href="#trade">Trade</a>
@@ -20,7 +18,7 @@ export default function App() {
       </header>
 
       <section className="hero">
-        <div className="heroContent">
+        <div className="heroTextBlock">
           <p className="eyebrow">Benditos Miel y Sabores</p>
 
           <h1>
@@ -30,21 +28,22 @@ export default function App() {
           </h1>
 
           <p className="heroText">
-            Artisanal Mexican honey, hot honey and natural sweet glazes, rooted
-            in the craft of the hive and the deep flavours of Mexico.
+            Mexican honey, hot honey and bold pantry goods — built for tacos,
+            cocktails, kitchens, markets and good times.
           </p>
 
-          <div className="heroButtons">
-            <a href="#contact" className="btn btnRed">
+          <div className="heroActions">
+            <a href="#contact" className="button primary">
               Honey enquiries
             </a>
-            <a href="#story" className="btn btnGhost">
+
+            <a href="#story" className="button secondary">
               Our story
             </a>
           </div>
         </div>
 
-        <div className="heroNote">
+        <div className="heroCard">
           <p>
             Golden, floral, earthy and full of body. No nasties, no shortcuts,
             just the best of the hive.
@@ -52,13 +51,13 @@ export default function App() {
         </div>
       </section>
 
-      <section className="story" id="story">
-        <div className="storyTitle">
+      <section className="section split" id="story">
+        <div>
           <p className="eyebrow">Rooted in Mexico</p>
           <h2>Honey with soul</h2>
         </div>
 
-        <div className="storyCopy">
+        <div className="copy">
           <p>
             Benditos Miel y Sabores comes from a love of Mexico’s indigenous
             culture — the land, the rituals, the food, the colour and the deep
@@ -77,14 +76,14 @@ export default function App() {
         </div>
       </section>
 
-      <section className="products" id="honey">
-        <div className="sectionHead">
+      <section className="section" id="honey">
+        <div className="sectionIntro">
           <p className="eyebrow">Miel y sabores</p>
           <h2>Made for chefs, shops and sweet things</h2>
         </div>
 
-        <div className="productGrid">
-          <article className="productCard">
+        <div className="grid">
+          <article className="card">
             <span>01</span>
             <h3>Mexican honey</h3>
             <p>
@@ -93,7 +92,7 @@ export default function App() {
             </p>
           </article>
 
-          <article className="productCard">
+          <article className="card">
             <span>02</span>
             <h3>Hot honey</h3>
             <p>
@@ -102,7 +101,7 @@ export default function App() {
             </p>
           </article>
 
-          <article className="productCard">
+          <article className="card">
             <span>03</span>
             <h3>Glazes & sauces</h3>
             <p>
@@ -113,15 +112,15 @@ export default function App() {
         </div>
       </section>
 
-      <section className="trade" id="trade">
+      <section className="tradeSection" id="trade">
         <div className="tradePanel">
           <div
-            className="imageCard"
+            className="photoCard"
             style={{ backgroundImage: `url(${honeyImage})` }}
           >
-            <div className="imageBadge">Honey enquiries</div>
+            <span className="photoLabel">Honey enquiries</span>
 
-            <div className="imageOverlay">
+            <div className="photoOverlay">
               <p>
                 For Mexican honey, hot honey, glazes, pastry goods, tastings,
                 chef samples, wholesale or retail enquiries, get in touch.
@@ -132,28 +131,31 @@ export default function App() {
           </div>
 
           <div className="tradeCopy">
-            <p className="eyebrow eyebrowLight">Wholesale & retail</p>
+            <p className="eyebrow light">Wholesale & retail</p>
 
-            <h2>Bring Mexican honey to your kitchen, shop or menu.</h2>
+            <h2>For chefs, makers and retailers.</h2>
 
             <p>
-              We are building supply for chefs, restaurants, cafés, bakeries,
-              delis, independents and retail partners looking for something
-              natural, warm and full of character.
+              We are building supply for restaurants, cafés, bakeries, cocktail
+              bars, delis, food halls and independent retailers looking for
+              Mexican honey, hot honey, glazes and pantry goods with stronger
+              origin, character and flavour.
             </p>
 
             <div className="pills">
-              <span>Chef samples</span>
-              <span>Retail jars</span>
-              <span>Hot honey</span>
-              <span>Glazes</span>
-              <span>Wholesale</span>
+              <span>Restaurants</span>
+              <span>Cafés</span>
+              <span>Bakeries</span>
+              <span>Cocktail bars</span>
+              <span>Delis</span>
+              <span>Food halls</span>
+              <span>Independent retailers</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="contact" id="contact">
+      <section className="section contact" id="contact">
         <div>
           <p className="eyebrow">Contact</p>
           <h2>Let’s talk honey</h2>
@@ -161,7 +163,7 @@ export default function App() {
 
         <div className="contactCard">
           <p>
-            For wholesale, retail, tasting, chef samples or collaboration
+            For wholesale, retail, tastings, chef samples or collaboration
             enquiries, email:
           </p>
 
@@ -171,7 +173,7 @@ export default function App() {
 
       <footer className="footer">
         <p>Benditos Miel y Sabores</p>
-        <p>Mexican honey, hot honey and natural sweet glazes.</p>
+        <p>Mexican honey, hot honey and natural pantry goods.</p>
       </footer>
     </main>
   );

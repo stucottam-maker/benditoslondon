@@ -1,21 +1,21 @@
 :root {
-  --cream: #f3e1c4;
-  --cream-light: #fff2d7;
+  --cream: #f3e2c9;
+  --creamLight: #fff3dc;
   --red: #dc3b1d;
-  --red-dark: #7a2516;
-  --brown: #642315;
-  --text: #7a2b1b;
+  --redDark: #7a2516;
+  --redDeep: #50180f;
+  --text: #762819;
   --white: #fff8ec;
-  --container: 1240px;
-  --radius-md: 24px;
-  --radius-lg: 36px;
-  --radius-xl: 48px;
-  --pill: 999px;
-  --shadow-soft: 0 20px 55px rgba(80, 31, 14, 0.12);
-  --shadow-card: 0 14px 36px rgba(80, 31, 14, 0.1);
-}
 
-/* RESET */
+  --container: 1240px;
+  --pill: 999px;
+  --radiusMd: 24px;
+  --radiusLg: 36px;
+  --radiusXl: 48px;
+
+  --shadowSoft: 0 22px 60px rgba(80, 31, 14, 0.13);
+  --shadowCard: 0 14px 36px rgba(80, 31, 14, 0.1);
+}
 
 * {
   box-sizing: border-box;
@@ -29,8 +29,7 @@ body {
   margin: 0;
   background: var(--cream);
   color: var(--text);
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.55;
 }
 
@@ -45,56 +44,62 @@ h3 {
   margin: 0;
 }
 
-/* PAGE */
-
-.site {
+.page {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 8% 4%, rgba(243, 201, 111, 0.42), transparent 30%),
-    radial-gradient(circle at 92% 18%, rgba(220, 59, 29, 0.1), transparent 32%),
+    radial-gradient(circle at 8% 4%, rgba(243, 201, 111, 0.38), transparent 30%),
+    radial-gradient(circle at 92% 20%, rgba(220, 59, 29, 0.1), transparent 34%),
     var(--cream);
 }
 
-/* NAV */
+/* HEADER */
 
-.nav {
+.header {
   width: min(var(--container), calc(100% - 48px));
   margin: 0 auto;
-  padding: 26px 0;
+  padding: 28px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 24px;
 }
 
 .logo {
-  color: var(--red-dark);
-  font-size: 1.05rem;
+  color: var(--redDark);
+  font-size: 1.15rem;
   font-weight: 950;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   text-decoration: none;
 }
 
-.navLinks {
+.nav {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 10px;
 }
 
-.navLinks a {
-  color: var(--red-dark);
-  font-size: 0.78rem;
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 11px 18px;
+  border-radius: var(--pill);
+  background: var(--red);
+  color: var(--creamLight);
+  font-size: 0.75rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  opacity: 0.82;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.navLinks a:hover {
-  opacity: 1;
+.nav a:hover {
+  transform: translateY(-2px);
+  background: #c83218;
 }
 
 /* TYPE */
@@ -103,7 +108,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--red-dark);
+  color: var(--redDark);
   font-size: 0.72rem;
   font-weight: 950;
   letter-spacing: 0.25em;
@@ -114,11 +119,11 @@ h3 {
   content: "";
   width: 28px;
   height: 2px;
-  background: currentColor;
   border-radius: var(--pill);
+  background: currentColor;
 }
 
-.eyebrowLight {
+.eyebrow.light {
   color: rgba(255, 248, 236, 0.82);
 }
 
@@ -131,12 +136,13 @@ h2 {
 
 h1 {
   margin-top: 22px;
-  color: var(--cream-light);
+  color: var(--creamLight);
   font-size: clamp(5rem, 12vw, 11rem);
   line-height: 0.8;
 }
 
 h2 {
+  margin-top: 18px;
   color: var(--red);
   font-size: clamp(3rem, 6vw, 6.5rem);
   line-height: 0.9;
@@ -145,15 +151,15 @@ h2 {
 h3 {
   color: var(--red);
   font-size: 1.05rem;
-  line-height: 1.1;
   font-weight: 950;
+  line-height: 1.1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
 /* BUTTONS */
 
-.btn {
+.button {
   min-height: 50px;
   padding: 14px 24px;
   border-radius: var(--pill);
@@ -162,28 +168,25 @@ h3 {
   justify-content: center;
   font-weight: 950;
   text-decoration: none;
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.btn:hover {
+.button:hover {
   transform: translateY(-2px);
 }
 
-.btnRed {
+.button.primary {
   background: var(--red);
-  color: var(--cream-light);
+  color: var(--creamLight);
   box-shadow: 0 12px 26px rgba(95, 28, 14, 0.18);
 }
 
-.btnRed:hover {
+.button.primary:hover {
   background: #c83218;
 }
 
-.btnGhost {
-  color: var(--red-dark);
+.button.secondary {
+  color: var(--redDark);
   background: rgba(255, 242, 216, 0.42);
   border: 1px solid rgba(120, 37, 23, 0.22);
 }
@@ -192,20 +195,20 @@ h3 {
 
 .hero {
   width: min(var(--container), calc(100% - 48px));
-  margin: 0 auto;
   min-height: 680px;
+  margin: 0 auto;
   padding: clamp(32px, 5vw, 64px);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radiusXl);
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 48px;
   align-items: end;
-  position: relative;
-  overflow: hidden;
   background:
     radial-gradient(circle at 20% 20%, rgba(255, 246, 216, 0.42), transparent 26%),
     linear-gradient(135deg, #d48b22 0%, #e5a52c 48%, #9c431c 100%);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadowSoft);
 }
 
 .hero::after {
@@ -220,8 +223,8 @@ h3 {
   pointer-events: none;
 }
 
-.heroContent,
-.heroNote {
+.heroTextBlock,
+.heroCard {
   position: relative;
   z-index: 2;
 }
@@ -235,89 +238,80 @@ h3 {
   font-weight: 500;
 }
 
-.heroButtons {
+.heroActions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 34px;
 }
 
-.heroNote {
+.heroCard {
   padding: 32px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radiusLg);
   background: rgba(255, 242, 216, 0.18);
   border: 1px solid rgba(255, 242, 216, 0.28);
   backdrop-filter: blur(10px);
 }
 
-.heroNote p {
-  color: var(--cream-light);
+.heroCard p {
+  color: var(--creamLight);
   font-size: 1.12rem;
   line-height: 1.55;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* STORY */
+/* SECTIONS */
 
-.story {
+.section {
   width: min(var(--container), calc(100% - 48px));
   margin: 0 auto;
-  padding: 108px 0 86px;
+  padding: 96px 0;
+}
+
+.split {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 72px;
   align-items: start;
 }
 
-.storyTitle h2 {
-  margin-top: 18px;
-}
-
-.storyCopy {
+.copy {
   display: grid;
   gap: 22px;
   max-width: 780px;
 }
 
-.storyCopy p {
-  color: var(--text);
+.copy p {
   font-size: clamp(1.08rem, 1.45vw, 1.28rem);
   line-height: 1.68;
 }
 
-/* PRODUCTS */
-
-.products {
-  width: min(var(--container), calc(100% - 48px));
-  margin: 0 auto;
-  padding: 72px 0 44px;
-}
-
-.sectionHead {
+.sectionIntro {
   max-width: 960px;
   margin-bottom: 40px;
 }
 
-.sectionHead h2 {
-  margin-top: 18px;
-  color: var(--red-dark);
+.sectionIntro h2 {
+  color: var(--redDark);
 }
 
-.productGrid {
+/* CARDS */
+
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 
-.productCard {
+.card {
   min-height: 200px;
   padding: 30px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radiusMd);
   background: rgba(255, 242, 216, 0.68);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadowCard);
 }
 
-.productCard span {
+.card span {
   display: inline-flex;
   margin-bottom: 22px;
   color: rgba(122, 43, 27, 0.36);
@@ -326,35 +320,33 @@ h3 {
   letter-spacing: 0.16em;
 }
 
-.productCard p {
+.card p {
   margin-top: 12px;
-  color: var(--text);
-  line-height: 1.55;
 }
 
 /* TRADE */
 
-.trade {
-  padding: 64px 0 108px;
+.tradeSection {
+  padding: 48px 0 108px;
 }
 
 .tradePanel {
   width: min(var(--container), calc(100% - 48px));
   margin: 0 auto;
   padding: clamp(24px, 4vw, 48px);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radiusXl);
   background: var(--red);
-  color: var(--cream-light);
+  color: var(--creamLight);
   display: grid;
   grid-template-columns: 1.35fr 0.9fr;
   gap: 42px;
   align-items: center;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadowSoft);
 }
 
-.imageCard {
-  position: relative;
+.photoCard {
   min-height: 400px;
+  position: relative;
   overflow: hidden;
   border-radius: 30px;
   background-size: cover;
@@ -364,21 +356,17 @@ h3 {
     0 18px 36px rgba(75, 22, 12, 0.2);
 }
 
-.imageCard::before {
+.photoCard::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
     radial-gradient(circle at 22% 18%, rgba(255, 195, 66, 0.22), transparent 36%),
-    linear-gradient(
-      180deg,
-      rgba(50, 18, 10, 0.02),
-      rgba(50, 18, 10, 0.48)
-    );
+    linear-gradient(180deg, rgba(50, 18, 10, 0.02), rgba(50, 18, 10, 0.48));
   pointer-events: none;
 }
 
-.imageBadge {
+.photoLabel {
   position: absolute;
   top: 28px;
   left: 30px;
@@ -386,7 +374,7 @@ h3 {
   padding: 9px 15px;
   border-radius: var(--pill);
   background: rgba(255, 242, 216, 0.86);
-  color: var(--red-dark);
+  color: var(--redDark);
   font-size: 0.68rem;
   font-weight: 950;
   letter-spacing: 0.22em;
@@ -394,7 +382,7 @@ h3 {
   backdrop-filter: blur(8px);
 }
 
-.imageOverlay {
+.photoOverlay {
   position: absolute;
   left: 28px;
   right: 28px;
@@ -410,32 +398,30 @@ h3 {
   gap: 24px;
 }
 
-.imageOverlay p {
+.photoOverlay p {
   max-width: 560px;
-  color: var(--red-dark);
+  color: var(--redDark);
   font-size: 1rem;
   line-height: 1.55;
-  font-weight: 560;
+  font-weight: 600;
 }
 
-.imageOverlay a {
+.photoOverlay a {
   flex-shrink: 0;
   min-height: 48px;
   padding: 14px 22px;
   border-radius: var(--pill);
   background: var(--red);
-  color: var(--cream-light);
+  color: var(--creamLight);
   font-weight: 950;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 24px rgba(95, 28, 14, 0.18);
 }
 
 .tradeCopy h2 {
-  margin-top: 18px;
-  color: var(--cream-light);
+  color: var(--creamLight);
   font-size: clamp(3rem, 5.3vw, 6.4rem);
 }
 
@@ -457,7 +443,7 @@ h3 {
   padding: 8px 15px;
   border-radius: var(--pill);
   border: 1px solid rgba(255, 248, 236, 0.36);
-  color: var(--cream-light);
+  color: var(--creamLight);
   font-size: 0.72rem;
   font-weight: 950;
   letter-spacing: 0.12em;
@@ -467,25 +453,22 @@ h3 {
 /* CONTACT */
 
 .contact {
-  width: min(var(--container), calc(100% - 48px));
-  margin: 0 auto;
-  padding: 20px 0 108px;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 42px;
   align-items: end;
+  padding-top: 24px;
 }
 
 .contact h2 {
-  margin-top: 18px;
-  color: var(--red-dark);
+  color: var(--redDark);
 }
 
 .contactCard {
   padding: 34px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radiusLg);
   background: rgba(255, 242, 216, 0.72);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadowCard);
 }
 
 .contactCard p {
@@ -519,7 +502,7 @@ h3 {
 
 @media (max-width: 1050px) {
   .hero,
-  .story,
+  .split,
   .tradePanel,
   .contact {
     grid-template-columns: 1fr;
@@ -529,34 +512,35 @@ h3 {
     min-height: auto;
   }
 
-  .heroNote {
+  .heroCard {
     max-width: 620px;
   }
 
-  .productGrid {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 760px) {
-  .nav,
+  .header,
   .hero,
-  .story,
-  .products,
+  .section,
   .tradePanel,
-  .contact,
   .footer {
     width: calc(100% - 32px);
   }
 
-  .nav {
+  .header {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .navLinks {
+  .nav {
     flex-wrap: wrap;
-    gap: 14px;
+  }
+
+  .nav a {
+    padding: 10px 15px;
   }
 
   .hero {
@@ -572,34 +556,33 @@ h3 {
     font-size: clamp(3.1rem, 16vw, 5.8rem);
   }
 
-  .heroButtons {
+  .heroActions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .btn {
+  .button {
     width: 100%;
   }
 
-  .story {
+  .section {
     padding: 72px 0;
+  }
+
+  .split {
     gap: 34px;
   }
 
-  .products {
-    padding: 56px 0 32px;
-  }
-
-  .productGrid {
+  .grid {
     grid-template-columns: 1fr;
   }
 
-  .productCard {
+  .card {
     min-height: auto;
     padding: 24px;
   }
 
-  .trade {
+  .tradeSection {
     padding: 42px 0 72px;
   }
 
@@ -608,17 +591,17 @@ h3 {
     border-radius: 32px;
   }
 
-  .imageCard {
+  .photoCard {
     min-height: 470px;
     border-radius: 26px;
   }
 
-  .imageBadge {
+  .photoLabel {
     top: 20px;
     left: 20px;
   }
 
-  .imageOverlay {
+  .photoOverlay {
     left: 18px;
     right: 18px;
     bottom: 18px;
@@ -627,13 +610,9 @@ h3 {
     align-items: flex-start;
   }
 
-  .imageOverlay a {
+  .photoOverlay a {
     width: 100%;
     text-align: center;
-  }
-
-  .contact {
-    padding-bottom: 72px;
   }
 
   .contactCard {
