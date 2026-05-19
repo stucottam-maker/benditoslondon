@@ -8,6 +8,8 @@
   --gold: #d89a28;
 }
 
+/* Reset */
+
 * {
   box-sizing: border-box;
 }
@@ -50,6 +52,8 @@ a {
   color: inherit;
 }
 
+/* Layout */
+
 .site-shell {
   min-height: 100vh;
   overflow-x: hidden;
@@ -67,7 +71,7 @@ a {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(238, 215, 190, 0.92);
+  background: rgba(238, 215, 190, 0.94);
   border-bottom: 1px solid rgba(217, 74, 30, 0.12);
 }
 
@@ -89,6 +93,7 @@ a {
 .nav-desktop {
   display: flex;
   gap: 28px;
+  align-items: center;
 }
 
 .nav-link {
@@ -107,7 +112,7 @@ a {
   display: none;
 }
 
-/* Shared */
+/* Shared type */
 
 .eyebrow {
   text-transform: uppercase;
@@ -118,7 +123,7 @@ a {
 }
 
 .eyebrow-light {
-  color: rgba(247, 235, 221, 0.78);
+  color: rgba(247, 235, 221, 0.82);
 }
 
 .hero-title,
@@ -152,13 +157,19 @@ a {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 20px;
   border-radius: 999px;
-  font-weight: 700;
+  font-weight: 800;
   text-decoration: none;
+  line-height: 1;
+  min-height: 44px;
 }
 
 .btn-primary {
@@ -174,11 +185,11 @@ a {
 
 .btn-secondary-light {
   border: 1px solid rgba(247, 235, 221, 0.72);
-  color: #f7ebdd;
+  color: var(--cream-light);
 }
 
 .btn-secondary-light:hover {
-  background: #f7ebdd;
+  background: var(--cream-light);
   color: var(--orange);
 }
 
@@ -197,15 +208,17 @@ a {
 .hero-slider-shell {
   position: relative;
   width: min(1120px, calc(100% - 40px));
-  height: 390px;
+  min-height: 460px;
   margin: 0 auto;
   border-radius: 1.75rem;
   overflow: hidden;
+  background: var(--dark);
 }
 
 .hero-slide {
   position: absolute;
   inset: 0;
+  min-height: 460px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -222,19 +235,19 @@ a {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(31, 19, 13, 0.72) 0%,
-    rgba(31, 19, 13, 0.34) 44%,
-    rgba(31, 19, 13, 0.08) 100%
+    rgba(31, 19, 13, 0.76) 0%,
+    rgba(31, 19, 13, 0.48) 42%,
+    rgba(31, 19, 13, 0.14) 100%
   );
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  color: #f7ebdd;
-  padding: 34px 40px 34px;
-  max-width: 520px;
-  min-height: 430px;
+  color: var(--cream-light);
+  min-height: 460px;
+  padding: 38px 40px;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -242,31 +255,31 @@ a {
 
 .hero-copy-group {
   display: grid;
-  gap: 8px;
+  gap: 12px;
 }
 
 .hero-eyebrow {
-  color: rgba(247, 235, 221, 0.84);
-  margin-bottom: 2px;
+  color: rgba(247, 235, 221, 0.86);
+  margin-bottom: 0;
 }
 
 .hero-title-large {
-  color: #f7ebdd;
-  font-size: clamp(2.1rem, 3.8vw, 4.2rem);
-  line-height: 0.88;
+  color: var(--cream-light);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 0.86;
   max-width: 6.2ch;
 }
 
 .hero-copy-light {
-  color: rgba(247, 235, 221, 0.94);
-  max-width: 27rem;
-  font-size: 0.92rem;
-  line-height: 1.45;
+  color: rgba(247, 235, 221, 0.96);
+  max-width: 31rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .hero-bottom {
   display: grid;
-  gap: 14px;
+  gap: 18px;
 }
 
 .hero-slider-controls {
@@ -288,12 +301,16 @@ a {
   gap: 8px;
 }
 
+.hero-dot,
+.approach-dot {
+  border-radius: 999px;
+  padding: 0;
+}
+
 .hero-dot {
   width: 8px;
   height: 8px;
-  border-radius: 999px;
   background: rgba(247, 235, 221, 0.34);
-  padding: 0;
 }
 
 .hero-dot.active {
@@ -308,8 +325,8 @@ a {
   width: 38px;
   height: 38px;
   border-radius: 999px;
-  background: rgba(247, 235, 221, 0.14);
-  color: #f7ebdd;
+  background: rgba(247, 235, 221, 0.16);
+  color: var(--cream-light);
   font-size: 1.6rem;
   line-height: 1;
   display: inline-flex;
@@ -337,14 +354,15 @@ a {
   border-top: 1px solid rgba(217, 74, 30, 0.1);
 }
 
-/* Cards */
+/* Card base */
 
 .about-us-panel,
 .instagram-panel,
 .menu-section-card,
 .visit-card,
 .miel-intro-panel,
-.miel-card {
+.miel-card,
+.approach-card {
   background: var(--cream-light);
   border: 1px solid rgba(217, 74, 30, 0.1);
   box-shadow: 0 6px 18px rgba(31, 19, 13, 0.04);
@@ -354,14 +372,14 @@ a {
 
 .about-us-panel {
   border-radius: 1.5rem;
-  padding: 26px 28px;
+  padding: 30px;
 }
 
 .about-us-grid,
 .approach-grid {
   display: grid;
   grid-template-columns: 0.88fr 1.12fr;
-  gap: 30px;
+  gap: 34px;
   align-items: start;
 }
 
@@ -373,30 +391,30 @@ a {
 
 .about-us-copy {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .about-us-strap {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--orange) !important;
 }
 
 .about-us-copy p {
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   line-height: 1.75;
-  max-width: 60ch;
+  max-width: 62ch;
 }
 
-/* Miel feature */
+/* Homepage Miel feature */
 
 .miel-feature-panel {
   background: linear-gradient(135deg, var(--brown), var(--orange), var(--gold));
   color: var(--cream-light);
   border-radius: 1.75rem;
-  padding: 32px 34px;
+  padding: 34px;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: 30px;
+  gap: 34px;
   align-items: center;
   box-shadow: 0 16px 30px rgba(217, 74, 30, 0.14);
 }
@@ -412,7 +430,7 @@ a {
 }
 
 .miel-feature-copy p {
-  color: rgba(247, 235, 221, 0.92);
+  color: rgba(247, 235, 221, 0.94);
   line-height: 1.7;
   max-width: 58ch;
 }
@@ -435,9 +453,6 @@ a {
 }
 
 .approach-card {
-  background: var(--cream-light);
-  border: 1px solid rgba(217, 74, 30, 0.1);
-  box-shadow: 0 6px 18px rgba(31, 19, 13, 0.04);
   padding: 18px 16px;
   border-radius: 1.25rem;
 }
@@ -459,9 +474,7 @@ a {
 .approach-dot {
   width: 7px;
   height: 7px;
-  border-radius: 999px;
   background: rgba(124, 52, 27, 0.22);
-  padding: 0;
 }
 
 .approach-dot.active {
@@ -484,7 +497,7 @@ a {
 
 .instagram-panel {
   border-radius: 1.5rem;
-  padding: 26px 28px;
+  padding: 30px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -519,7 +532,7 @@ a {
 .visit-hero-banner,
 .miel-hero-banner {
   position: relative;
-  min-height: 250px;
+  min-height: 270px;
   border-radius: 1.5rem;
   overflow: hidden;
   margin-bottom: 22px;
@@ -550,9 +563,9 @@ a {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(31, 19, 13, 0.78) 0%,
-    rgba(31, 19, 13, 0.42) 45%,
-    rgba(31, 19, 13, 0.14) 100%
+    rgba(31, 19, 13, 0.8) 0%,
+    rgba(31, 19, 13, 0.45) 45%,
+    rgba(31, 19, 13, 0.12) 100%
   );
 }
 
@@ -561,24 +574,24 @@ a {
 .miel-hero-content {
   position: relative;
   z-index: 1;
-  padding: 30px 28px 24px;
-  max-width: 610px;
+  padding: 34px 30px 28px;
+  max-width: 630px;
 }
 
 .menu-hero-eyebrow,
 .visit-hero-eyebrow,
 .miel-hero-eyebrow {
-  color: rgba(247, 235, 221, 0.82);
+  color: rgba(247, 235, 221, 0.84);
 }
 
 .menu-hero-title,
 .visit-hero-title,
 .miel-hero-title {
-  color: #f7ebdd;
-  margin-bottom: 8px;
+  color: var(--cream-light);
+  margin-bottom: 10px;
   max-width: 10ch;
   line-height: 0.9;
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-size: clamp(2rem, 3.8vw, 3.3rem);
 }
 
 .miel-hero-title {
@@ -588,10 +601,10 @@ a {
 .menu-hero-copy,
 .visit-hero-copy,
 .miel-hero-copy {
-  color: rgba(247, 235, 221, 0.9);
+  color: rgba(247, 235, 221, 0.92);
   max-width: 34rem;
-  line-height: 1.45;
-  font-size: 0.9rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .visit-hero-copy {
@@ -671,14 +684,14 @@ a {
   line-height: 1.4;
 }
 
-/* Miel */
+/* Miel page */
 
 .miel-intro-panel {
   border-radius: 1.5rem;
-  padding: 26px 28px;
+  padding: 30px;
   display: grid;
   grid-template-columns: 0.88fr 1.12fr;
-  gap: 30px;
+  gap: 34px;
   align-items: start;
   margin-bottom: 22px;
 }
@@ -689,14 +702,14 @@ a {
 
 .miel-intro-copy {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .miel-intro-copy p {
   color: var(--brown);
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   line-height: 1.75;
-  max-width: 60ch;
+  max-width: 62ch;
 }
 
 .miel-card-grid {
@@ -730,10 +743,10 @@ a {
   background: var(--orange);
   color: var(--cream-light);
   border-radius: 1.75rem;
-  padding: 34px;
+  padding: 38px;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: 34px;
+  gap: 36px;
   align-items: center;
   box-shadow: 0 16px 30px rgba(217, 74, 30, 0.16);
   overflow: hidden;
@@ -805,10 +818,10 @@ a {
   background: var(--orange);
   color: var(--cream-light);
   border-radius: 1.75rem;
-  padding: 32px 34px;
+  padding: 34px;
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
-  gap: 30px;
+  gap: 34px;
   align-items: center;
   box-shadow: 0 16px 30px rgba(217, 74, 30, 0.16);
 }
@@ -820,7 +833,7 @@ a {
 }
 
 .contact-copy {
-  color: rgba(247, 235, 221, 0.88);
+  color: rgba(247, 235, 221, 0.9);
   font-size: 0.95rem;
 }
 
@@ -904,10 +917,6 @@ a {
     max-width: 100%;
   }
 
-  .hero-slider-shell {
-    height: 360px;
-  }
-
   .miel-card-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -929,10 +938,6 @@ a {
     font-size: 1.95rem;
   }
 
-  .nav-desktop {
-    display: none;
-  }
-
   .mobile-menu-toggle {
     display: inline-flex;
     align-items: center;
@@ -942,7 +947,7 @@ a {
     border-radius: 999px;
     color: var(--orange);
     background: rgba(247, 235, 221, 0.82);
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-size: 0.78rem;
@@ -969,7 +974,7 @@ a {
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-size: 0.82rem;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   .mobile-menu-link.active {
@@ -982,26 +987,34 @@ a {
 
   .hero-slider-shell {
     width: calc(100% - 24px);
-    min-height: 420px;
+    min-height: 440px;
     border-radius: 1.2rem;
   }
 
+  .hero-slide {
+    min-height: 440px;
+  }
+
   .hero-content {
-    max-width: 265px;
-    min-height: 420px;
-    padding: 24px 18px 24px;
+    min-height: 440px;
+    max-width: 285px;
+    padding: 26px 18px 24px;
   }
 
   .hero-title-large {
-    font-size: 1.8rem;
-    line-height: 0.9;
-    max-width: 5.5ch;
+    font-size: 2rem;
+    line-height: 0.88;
+    max-width: 5.8ch;
   }
 
   .hero-copy-light {
-    font-size: 0.76rem;
-    line-height: 1.32;
-    max-width: 15rem;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    max-width: 16rem;
+  }
+
+  .hero-bottom {
+    gap: 14px;
   }
 
   .button-row {
@@ -1012,6 +1025,7 @@ a {
   .btn {
     padding: 9px 14px;
     font-size: 0.8rem;
+    min-height: 40px;
   }
 
   .hero-arrow {
@@ -1043,7 +1057,7 @@ a {
   .miel-intro-panel,
   .miel-wholesale-panel,
   .miel-feature-panel {
-    padding: 18px 16px;
+    padding: 20px 16px;
     border-radius: 1.2rem;
   }
 
@@ -1100,7 +1114,7 @@ a {
   .menu-hero-banner,
   .visit-hero-banner,
   .miel-hero-banner {
-    min-height: 220px;
+    min-height: 230px;
     border-radius: 1.2rem;
     margin-bottom: 18px;
   }
@@ -1108,22 +1122,22 @@ a {
   .menu-hero-content,
   .visit-hero-content,
   .miel-hero-content {
-    max-width: 260px;
-    padding: 22px 15px 16px;
+    max-width: 285px;
+    padding: 24px 16px 18px;
   }
 
   .menu-hero-title,
   .visit-hero-title,
   .miel-hero-title {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 
   .menu-hero-copy,
   .visit-hero-copy,
   .miel-hero-copy {
-    font-size: 0.8rem;
-    line-height: 1.32;
-    max-width: 15rem;
+    font-size: 0.82rem;
+    line-height: 1.36;
+    max-width: 16rem;
   }
 
   .menu-sections,
