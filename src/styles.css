@@ -92,9 +92,11 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 28px;
 }
 
 .brand-button {
+  flex-shrink: 0;
   font-size: clamp(2rem, 3vw, 2.5rem);
   font-weight: 950;
   line-height: 0.9;
@@ -105,7 +107,9 @@ p {
 .nav-desktop {
   display: flex;
   align-items: center;
-  gap: 26px;
+  justify-content: flex-end;
+  gap: 22px;
+  min-width: 0;
 }
 
 .nav-link,
@@ -116,8 +120,9 @@ p {
 }
 
 .nav-link {
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
 }
 
 .nav-link.active,
@@ -128,6 +133,17 @@ p {
 .mobile-menu-toggle,
 .mobile-menu-panel {
   display: none;
+}
+
+@media (max-width: 1120px) {
+  .nav-desktop {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
 }
 
 /* Typography */
