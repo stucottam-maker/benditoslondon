@@ -155,8 +155,8 @@ a {
 
 .button-row {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 10px;
+  flex-wrap: nowrap;
   align-items: center;
 }
 
@@ -164,12 +164,13 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px;
+  padding: 12px 18px;
   border-radius: 999px;
   font-weight: 800;
   text-decoration: none;
   line-height: 1;
   min-height: 44px;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -208,7 +209,7 @@ a {
 .hero-slider-shell {
   position: relative;
   width: min(1120px, calc(100% - 40px));
-  min-height: 460px;
+  min-height: 390px;
   margin: 0 auto;
   border-radius: 1.75rem;
   overflow: hidden;
@@ -218,7 +219,7 @@ a {
 .hero-slide {
   position: absolute;
   inset: 0;
-  min-height: 460px;
+  min-height: 390px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -245,9 +246,9 @@ a {
   position: relative;
   z-index: 2;
   color: var(--cream-light);
-  min-height: 460px;
-  padding: 38px 40px;
-  max-width: 560px;
+  min-height: 390px;
+  padding: 34px 40px 30px;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -255,7 +256,7 @@ a {
 
 .hero-copy-group {
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .hero-eyebrow {
@@ -265,7 +266,7 @@ a {
 
 .hero-title-large {
   color: var(--cream-light);
-  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-size: clamp(2.4rem, 4.2vw, 4.2rem);
   line-height: 0.86;
   max-width: 6.2ch;
 }
@@ -273,13 +274,13 @@ a {
 .hero-copy-light {
   color: rgba(247, 235, 221, 0.96);
   max-width: 31rem;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.92rem;
+  line-height: 1.42;
 }
 
 .hero-bottom {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .hero-slider-controls {
@@ -920,6 +921,18 @@ a {
   .miel-card-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .hero-slider-shell {
+    min-height: 420px;
+  }
+
+  .hero-slide {
+    min-height: 420px;
+  }
+
+  .hero-content {
+    min-height: 420px;
+  }
 }
 
 /* Mobile */
@@ -1020,6 +1033,7 @@ a {
   .button-row {
     gap: 8px;
     width: 100%;
+    flex-wrap: wrap;
   }
 
   .btn {
