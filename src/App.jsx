@@ -635,6 +635,23 @@ function MielPage() {
       </div>
 
       <div className="orange-panel">
+      <div className="contact-strip honey-contact-strip">
+  <div>
+    <p className="eyebrow">Honey enquiries</p>
+    <h2 className="section-title">Wholesale, kitchens and collaborations.</h2>
+    <p>
+      For Mexican honey, hot honey, glazes, pantry goods, tastings, chef samples,
+      wholesale or retail enquiries, get in touch.
+    </p>
+  </div>
+
+  <a
+    href="mailto:hello@benditosldn.com?subject=Benditos%20Miel%20Enquiry"
+    className="btn btn-primary"
+  >
+    Contact Benditos Miel
+  </a>
+</div>
         <div>
           <p className="eyebrow eyebrow-light">Wholesale</p>
           <h2 className="section-title light-title">For chefs, makers and retailers.</h2>

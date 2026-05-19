@@ -768,7 +768,7 @@ p {
   text-decoration: none;
 }
 
-/* Spanish contact */
+/* Contact strips */
 
 .contact-strip {
   margin-top: 22px;
@@ -788,6 +788,14 @@ p {
 .contact-strip p {
   max-width: 54ch;
   color: var(--brown);
+}
+
+.honey-contact-strip {
+  border-left: 8px solid var(--gold);
+}
+
+.honey-contact-strip .section-title {
+  max-width: 12ch;
 }
 
 /* Footer */
@@ -1069,6 +1077,11 @@ p {
 
   .contact-strip .btn {
     width: fit-content;
+  }
+
+  .honey-contact-strip {
+    border-left: 0;
+    border-top: 8px solid var(--gold);
   }
 
   .footer-inner {
