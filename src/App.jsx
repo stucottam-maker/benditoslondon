@@ -695,8 +695,8 @@ function SpanishPage() {
           </p>
         </div>
 
-        <a href="mailto:hello@benditosldn.com" className="btn btn-primary">
-          hello@benditosldn.com
+        <a href="mailto:hola@benditos.co.uk" className="btn btn-primary">
+          hola@benditos.co.uk
         </a>
       </div>
     </section>
@@ -743,7 +743,7 @@ function ContactPage() {
           </ContactItem>
 
           <ContactItem label="Email">
-            <span>hello@benditosldn.com</span>
+            <span>hola@benditos.co.uk</span>
           </ContactItem>
 
           <ContactItem label="Location">
