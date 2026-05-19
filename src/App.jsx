@@ -7,6 +7,7 @@ const pageRoutes = {
   '/miel': 'miel',
   '/visit': 'visit',
   '/contact': 'contact',
+  '/productores': 'es',
   '/es': 'es',
 };
 
@@ -16,7 +17,7 @@ const routePaths = {
   miel: '/artisanal-mexican-honey',
   visit: '/visit',
   contact: '/contact',
-  es: '/es',
+  es: '/productores',
 };
 
 function getPageFromPath() {
@@ -29,7 +30,7 @@ const navItems = [
   { id: 'miel', label: 'Miel' },
   { id: 'visit', label: 'Visit' },
   { id: 'contact', label: 'Contact' },
-  { id: 'es', label: 'ES' },
+  { id: 'es', label: 'Productores' },
 ];
 
 const heroSlides = [
