@@ -126,7 +126,11 @@ const menuSections = [
         price: '10',
         description: 'Charred chicken, chipotle, Mexican honey glaze, coriander',
       },
-      { name: 'Honey-Glazed Pork Belly', price: '11', description: 'Crisp pork belly, chilli honey, pickled onion' },
+      {
+        name: 'Honey-Glazed Pork Belly',
+        price: '11',
+        description: 'Crisp pork belly, chilli honey, pickled onion',
+      },
       { name: 'Taco del Día', price: 'MP', description: 'Ask for today’s special' },
     ],
   },
@@ -140,7 +144,11 @@ const menuSections = [
         description: 'Grilled corn, roasted red pepper, caramelised onion, white bean purée',
       },
       { name: 'Quesabirria', price: '12', description: 'Slow-cooked beef, Mexican cheese' },
-      { name: 'Miso-Honey Squash', price: '11', description: 'Roasted squash, miso honey, corn, onion, herbs' },
+      {
+        name: 'Miso-Honey Squash',
+        price: '11',
+        description: 'Roasted squash, miso honey, corn, onion, herbs',
+      },
     ],
   },
   {
@@ -249,7 +257,7 @@ export default function App() {
       <main>
         {page === 'home' && <HomePage setPage={setPage} />}
         {page === 'menu' && <MenuPage />}
-        {page === 'Artisanal Mexican Honey' && <MielPage />}
+        {page === 'miel' && <MielPage />}
         {page === 'visit' && <VisitPage />}
         {page === 'contact' && <ContactPage />}
       </main>
@@ -339,10 +347,7 @@ function HomePage({ setPage }) {
                   Benditos Miel
                 </button>
 
-                <button
-                  onClick={() => setPage('visit')}
-                  className="btn btn-secondary btn-secondary-light"
-                >
+                <button onClick={() => setPage('visit')} className="btn btn-secondary btn-secondary-light">
                   Follow the Launch
                 </button>
               </div>
