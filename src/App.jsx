@@ -29,6 +29,7 @@ const navItems = [
   { id: 'miel', label: 'Artisanal Mexican Honey' },
   { id: 'visit', label: 'Visit' },
   { id: 'contact', label: 'Contact' },
+  { id: 'es', label: 'ES' },
 ];
 
 const approachCards = [
@@ -77,6 +78,33 @@ const mielCards = [
   },
 ];
 
+const spanishCards = [
+  {
+    title: 'Miel Cruda',
+    text: 'Miel artesanal, natural y llena de carácter, seleccionada por su origen, aroma y sabor.',
+  },
+  {
+    title: 'Miel Picante',
+    text: 'Miel mexicana con chile, creada para tacos, pollo, quesos, marinados y cocina con fuego.',
+  },
+  {
+    title: 'Glaseados y Marinados',
+    text: 'Dulzor, humo, acidez y picante para carnes, verduras, salsas y cocina de parrilla.',
+  },
+  {
+    title: 'Bebidas y Cocteles',
+    text: 'Miel para margaritas, palomas, aguas frescas, jarabes y futuras fermentaciones.',
+  },
+  {
+    title: 'Despensa Mexicana',
+    text: 'Salsas, salsa macha, caramelos de miel, productos de temporada y futuras cajas de regalo.',
+  },
+  {
+    title: 'Catas y Experiencias',
+    text: 'Catas de miel, maridajes, eventos, mercados, colaboraciones y experiencias con sabor.',
+  },
+];
+
 const wholesaleTags = [
   'Restaurants',
   'Cafés',
@@ -85,6 +113,16 @@ const wholesaleTags = [
   'Delis',
   'Food halls',
   'Independent retailers',
+];
+
+const spanishWholesaleTags = [
+  'Restaurantes',
+  'Cafeterías',
+  'Panaderías',
+  'Coctelerías',
+  'Delis',
+  'Mercados gastronómicos',
+  'Tiendas independientes',
 ];
 
 const visitInfo = [
@@ -255,11 +293,12 @@ export default function App() {
       </header>
 
       <main>
-        {page === 'home' && <HomePage setPage={setPage} />}
+        {page === 'home' && <HomePage setPage={handleNavigate} />}
         {page === 'menu' && <MenuPage />}
         {page === 'miel' && <MielPage />}
         {page === 'visit' && <VisitPage />}
         {page === 'contact' && <ContactPage />}
+        {page === 'es' && <SpanishPage />}
       </main>
 
       <footer className="site-footer">
@@ -338,7 +377,7 @@ function HomePage({ setPage }) {
             </div>
 
             <div className="hero-bottom">
-              <div className="button-row">
+              <div className="button-row hero-button-row">
                 <button onClick={() => setPage('menu')} className="btn btn-primary">
                   View Menu
                 </button>
@@ -599,9 +638,7 @@ function MielPage() {
       <div className="miel-wholesale-panel">
         <div>
           <p className="eyebrow eyebrow-light">Wholesale</p>
-          <h2 className="section-title miel-wholesale-title">
-            For chefs, makers and retailers.
-          </h2>
+          <h2 className="section-title miel-wholesale-title">For chefs, makers and retailers.</h2>
         </div>
 
         <div className="miel-wholesale-copy">
@@ -712,6 +749,100 @@ function ContactPage() {
             <span>Markets, events, honey, wholesale and collaborations</span>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function SpanishPage() {
+  return (
+    <section className="container page-section spanish-page">
+      <section className="spanish-hero-banner">
+        <div className="spanish-hero-overlay" />
+
+        <div className="spanish-hero-content">
+          <p className="eyebrow spanish-hero-eyebrow">Benditos Miel</p>
+          <h2 className="section-title spanish-hero-title">
+            Miel mexicana. Sabores vivos. Raíces profundas.
+          </h2>
+          <p className="spanish-hero-copy">
+            Nacido del amor por la cultura mexicana, la apicultura y los sabores naturales,
+            Benditos Miel celebra la miel artesanal de México como algo más que un endulzante:
+            como origen, aroma, territorio y tradición.
+          </p>
+        </div>
+      </section>
+
+      <div className="spanish-intro-panel">
+        <div>
+          <p className="eyebrow">Nuestra historia</p>
+          <h2 className="section-title">Un hilo dorado de México a Londres.</h2>
+        </div>
+
+        <div className="spanish-intro-copy">
+          <p>
+            Benditos Miel nace de un amor profundo por México: su tierra, sus rituales,
+            sus mercados, sus colores y su respeto por la naturaleza.
+          </p>
+
+          <p>
+            También nace de la apicultura: el trabajo de las abejas, el cuidado de la colmena
+            y la belleza de la miel en su forma más natural.
+          </p>
+
+          <p>
+            Hoy esta historia vive dentro de Benditos, como un hilo dorado que conecta nuestra
+            comida, nuestras bebidas, nuestras salsas y nuestros futuros productos de despensa.
+          </p>
+        </div>
+      </div>
+
+      <div className="spanish-statement-panel">
+        <p className="eyebrow eyebrow-light">Miel y sabores</p>
+        <h2 className="section-title spanish-statement-title">
+          No es solo miel. Es una forma de contar el sabor de México.
+        </h2>
+      </div>
+
+      <div className="spanish-card-grid">
+        {spanishCards.map((item) => (
+          <div key={item.title} className="spanish-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="spanish-wholesale-panel">
+        <div>
+          <p className="eyebrow eyebrow-light">Para profesionales</p>
+          <h2 className="section-title spanish-wholesale-title">
+            Para chefs, creadores y tiendas.
+          </h2>
+        </div>
+
+        <div className="spanish-wholesale-copy">
+          <p>
+            Benditos Miel se está desarrollando para restaurantes, cafeterías, panaderías,
+            coctelerías, delis, mercados gastronómicos y tiendas independientes que buscan
+            miel mexicana, miel picante, glaseados y productos de despensa con origen,
+            carácter y sabor.
+          </p>
+
+          <div className="spanish-wholesale-tags">
+            {spanishWholesaleTags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="spanish-closing-panel">
+        <h2 className="section-title spanish-closing-title">De México a Londres.</h2>
+        <p>
+          Benditos Miel lleva consigo el trabajo de las abejas, la riqueza de la tierra
+          y el sabor de una cultura viva.
+        </p>
       </div>
     </section>
   );

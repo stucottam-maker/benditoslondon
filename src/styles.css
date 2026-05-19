@@ -92,14 +92,14 @@ a {
 
 .nav-desktop {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   align-items: center;
 }
 
 .nav-link {
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-size: 0.68rem;
   color: var(--brown);
 }
 
@@ -248,7 +248,7 @@ a {
   color: var(--cream-light);
   min-height: 390px;
   padding: 34px 40px 30px;
-  max-width: 640px;
+  max-width: 660px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -281,6 +281,10 @@ a {
 .hero-bottom {
   display: grid;
   gap: 16px;
+}
+
+.hero-button-row {
+  max-width: 100%;
 }
 
 .hero-slider-controls {
@@ -363,7 +367,10 @@ a {
 .visit-card,
 .miel-intro-panel,
 .miel-card,
-.approach-card {
+.approach-card,
+.spanish-intro-panel,
+.spanish-card,
+.spanish-closing-panel {
   background: var(--cream-light);
   border: 1px solid rgba(217, 74, 30, 0.1);
   box-shadow: 0 6px 18px rgba(31, 19, 13, 0.04);
@@ -525,13 +532,15 @@ a {
 
 .menu-page,
 .visit-page,
-.miel-page {
+.miel-page,
+.spanish-page {
   padding-top: 36px;
 }
 
 .menu-hero-banner,
 .visit-hero-banner,
-.miel-hero-banner {
+.miel-hero-banner,
+.spanish-hero-banner {
   position: relative;
   min-height: 270px;
   border-radius: 1.5rem;
@@ -553,13 +562,19 @@ a {
   background-image: url("https://www.dropbox.com/scl/fi/blt8bfiv0fzdjlpmzci2f/istockphoto-2176660544-612x612.jpg?rlkey=0t6za0ddo9f0uo0di7pvrpmqn&st=re915b3s&raw=1");
 }
 
-.miel-hero-banner {
+.miel-hero-banner,
+.spanish-hero-banner {
   background: linear-gradient(135deg, var(--brown), var(--orange), var(--gold));
+}
+
+.spanish-hero-banner {
+  min-height: 340px;
 }
 
 .menu-hero-overlay,
 .visit-hero-overlay,
-.miel-hero-overlay {
+.miel-hero-overlay,
+.spanish-hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -570,24 +585,43 @@ a {
   );
 }
 
+.spanish-hero-overlay {
+  background:
+    radial-gradient(circle at 82% 16%, rgba(247, 235, 221, 0.26), transparent 28%),
+    linear-gradient(
+      90deg,
+      rgba(31, 19, 13, 0.78) 0%,
+      rgba(31, 19, 13, 0.42) 48%,
+      rgba(31, 19, 13, 0.1) 100%
+    );
+}
+
 .menu-hero-content,
 .visit-hero-content,
-.miel-hero-content {
+.miel-hero-content,
+.spanish-hero-content {
   position: relative;
   z-index: 1;
   padding: 34px 30px 28px;
   max-width: 630px;
 }
 
+.spanish-hero-content {
+  padding: 38px 34px 34px;
+  max-width: 720px;
+}
+
 .menu-hero-eyebrow,
 .visit-hero-eyebrow,
-.miel-hero-eyebrow {
+.miel-hero-eyebrow,
+.spanish-hero-eyebrow {
   color: rgba(247, 235, 221, 0.84);
 }
 
 .menu-hero-title,
 .visit-hero-title,
-.miel-hero-title {
+.miel-hero-title,
+.spanish-hero-title {
   color: var(--cream-light);
   margin-bottom: 10px;
   max-width: 10ch;
@@ -599,13 +633,27 @@ a {
   max-width: 11ch;
 }
 
+.spanish-hero-title {
+  max-width: 11ch;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.86;
+  margin-bottom: 14px;
+}
+
 .menu-hero-copy,
 .visit-hero-copy,
-.miel-hero-copy {
+.miel-hero-copy,
+.spanish-hero-copy {
   color: rgba(247, 235, 221, 0.92);
   max-width: 34rem;
   line-height: 1.5;
   font-size: 0.95rem;
+}
+
+.spanish-hero-copy {
+  max-width: 42rem;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 .visit-hero-copy {
@@ -687,7 +735,8 @@ a {
 
 /* Miel page */
 
-.miel-intro-panel {
+.miel-intro-panel,
+.spanish-intro-panel {
   border-radius: 1.5rem;
   padding: 30px;
   display: grid;
@@ -697,35 +746,45 @@ a {
   margin-bottom: 22px;
 }
 
-.miel-intro-panel .section-title {
+.miel-intro-panel .section-title,
+.spanish-intro-panel .section-title {
   max-width: 10ch;
 }
 
-.miel-intro-copy {
+.spanish-intro-panel .section-title {
+  max-width: 9ch;
+}
+
+.miel-intro-copy,
+.spanish-intro-copy {
   display: grid;
   gap: 14px;
 }
 
-.miel-intro-copy p {
+.miel-intro-copy p,
+.spanish-intro-copy p {
   color: var(--brown);
   font-size: 0.96rem;
   line-height: 1.75;
   max-width: 62ch;
 }
 
-.miel-card-grid {
+.miel-card-grid,
+.spanish-card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 22px;
 }
 
-.miel-card {
+.miel-card,
+.spanish-card {
   padding: 22px 20px;
   border-radius: 1.35rem;
 }
 
-.miel-card h3 {
+.miel-card h3,
+.spanish-card h3 {
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: -0.05em;
@@ -734,13 +793,15 @@ a {
   margin-bottom: 10px;
 }
 
-.miel-card p {
+.miel-card p,
+.spanish-card p {
   color: var(--brown);
   font-size: 0.86rem;
   line-height: 1.5;
 }
 
-.miel-wholesale-panel {
+.miel-wholesale-panel,
+.spanish-wholesale-panel {
   background: var(--orange);
   color: var(--cream-light);
   border-radius: 1.75rem;
@@ -753,32 +814,41 @@ a {
   overflow: hidden;
 }
 
-.miel-wholesale-title {
+.spanish-wholesale-panel {
+  margin-bottom: 22px;
+}
+
+.miel-wholesale-title,
+.spanish-wholesale-title {
   color: var(--cream-light);
   max-width: 9ch;
   font-size: clamp(2.3rem, 4.6vw, 4.5rem);
   line-height: 0.88;
 }
 
-.miel-wholesale-copy {
+.miel-wholesale-copy,
+.spanish-wholesale-copy {
   display: grid;
   gap: 18px;
 }
 
-.miel-wholesale-copy p {
+.miel-wholesale-copy p,
+.spanish-wholesale-copy p {
   color: rgba(247, 235, 221, 0.92);
   font-size: 0.98rem;
   line-height: 1.7;
   max-width: 58ch;
 }
 
-.miel-wholesale-tags {
+.miel-wholesale-tags,
+.spanish-wholesale-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.miel-wholesale-tags span {
+.miel-wholesale-tags span,
+.spanish-wholesale-tags span {
   border: 1px solid rgba(247, 235, 221, 0.36);
   color: var(--cream-light);
   border-radius: 999px;
@@ -787,6 +857,38 @@ a {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+/* Spanish page */
+
+.spanish-statement-panel {
+  background: var(--brown);
+  color: var(--cream-light);
+  border-radius: 1.5rem;
+  padding: 30px;
+  margin-bottom: 22px;
+}
+
+.spanish-statement-title {
+  color: var(--cream-light);
+  max-width: 16ch;
+}
+
+.spanish-closing-panel {
+  border-radius: 1.5rem;
+  padding: 30px;
+}
+
+.spanish-closing-title {
+  max-width: 9ch;
+  margin-bottom: 14px;
+}
+
+.spanish-closing-panel p {
+  color: var(--brown);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 54ch;
 }
 
 /* Visit */
@@ -902,7 +1004,9 @@ a {
   .contact-block,
   .miel-intro-panel,
   .miel-wholesale-panel,
-  .miel-feature-panel {
+  .miel-feature-panel,
+  .spanish-intro-panel,
+  .spanish-wholesale-panel {
     grid-template-columns: 1fr;
   }
 
@@ -914,11 +1018,14 @@ a {
   .approach-lead .section-title,
   .miel-intro-panel .section-title,
   .miel-wholesale-title,
-  .miel-feature-title {
+  .miel-feature-title,
+  .spanish-intro-panel .section-title,
+  .spanish-wholesale-title {
     max-width: 100%;
   }
 
-  .miel-card-grid {
+  .miel-card-grid,
+  .spanish-card-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1010,7 +1117,7 @@ a {
 
   .hero-content {
     min-height: 440px;
-    max-width: 285px;
+    max-width: 292px;
     padding: 26px 18px 24px;
   }
 
@@ -1070,7 +1177,11 @@ a {
   .instagram-panel,
   .miel-intro-panel,
   .miel-wholesale-panel,
-  .miel-feature-panel {
+  .miel-feature-panel,
+  .spanish-intro-panel,
+  .spanish-wholesale-panel,
+  .spanish-statement-panel,
+  .spanish-closing-panel {
     padding: 20px 16px;
     border-radius: 1.2rem;
   }
@@ -1121,7 +1232,8 @@ a {
 
   .menu-page,
   .visit-page,
-  .miel-page {
+  .miel-page,
+  .spanish-page {
     padding-top: 18px;
   }
 
@@ -1133,6 +1245,12 @@ a {
     margin-bottom: 18px;
   }
 
+  .spanish-hero-banner {
+    min-height: 360px;
+    border-radius: 1.2rem;
+    margin-bottom: 18px;
+  }
+
   .menu-hero-content,
   .visit-hero-content,
   .miel-hero-content {
@@ -1140,10 +1258,21 @@ a {
     padding: 24px 16px 18px;
   }
 
+  .spanish-hero-content {
+    max-width: 292px;
+    padding: 26px 18px 24px;
+  }
+
   .menu-hero-title,
   .visit-hero-title,
   .miel-hero-title {
     font-size: 1.9rem;
+  }
+
+  .spanish-hero-title {
+    font-size: 2rem;
+    line-height: 0.88;
+    max-width: 10ch;
   }
 
   .menu-hero-copy,
@@ -1154,9 +1283,16 @@ a {
     max-width: 16rem;
   }
 
+  .spanish-hero-copy {
+    font-size: 0.84rem;
+    line-height: 1.45;
+    max-width: 17rem;
+  }
+
   .menu-sections,
   .visit-info-grid,
-  .miel-card-grid {
+  .miel-card-grid,
+  .spanish-card-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
@@ -1164,17 +1300,20 @@ a {
   .menu-section-card,
   .visit-card,
   .miel-card,
+  .spanish-card,
   .contact-card {
     padding: 16px 14px;
     border-radius: 1.1rem;
   }
 
-  .miel-wholesale-title {
+  .miel-wholesale-title,
+  .spanish-wholesale-title {
     max-width: 8.5ch;
     font-size: clamp(2rem, 12vw, 3.4rem);
   }
 
-  .miel-wholesale-copy p {
+  .miel-wholesale-copy p,
+  .spanish-wholesale-copy p {
     font-size: 0.92rem;
     line-height: 1.65;
   }
