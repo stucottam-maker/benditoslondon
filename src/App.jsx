@@ -581,19 +581,22 @@ function MielPage() {
         copy="Mexican honey, hot honey and bold pantry goods — built for tacos, cocktails, kitchens, markets and good times."
       />
 
-      <SplitCard eyebrow="The idea" title="Not a separate brand. A Benditos flavour story.">
-        <p>
-          The original honey idea began with a simple thought: Mexican honey deserves to be
-          treated as more than a sweetener. It has origin, aroma, colour, season, landscape
-          and story.
-        </p>
+<SplitCard eyebrow="Rooted in nature" title="Miel with body, origin and soul.">
+  <p className="lead-copy">
+    Benditos Miel comes from a love of Mexico’s indigenous culture — the land, the rituals,
+    the food, the colour and the deep respect for nature.
+  </p>
 
-        <p>
-          Now that idea lives inside Benditos as Benditos Miel — not as a separate company,
-          but as a golden thread running through our food, drinks, glazes, pantry goods,
-          tastings and future retail drops.
-        </p>
-      </SplitCard>
+  <p>
+    It is also rooted in apiculture: the craft of the hive, the work of the bees and the
+    beauty of honey in its most natural form.
+  </p>
+
+  <p>
+    Golden, floral, earthy and full of body — our honey is artisanal, natural and full of
+    character. No nasties, no shortcuts, just the best of the hive.
+  </p>
+</SplitCard>
 
       <FeatureGrid items={mielCards} />
 
