@@ -656,7 +656,7 @@ function ContactPage() {
           <div className="contact-card">
             <div className="contact-item">
               <strong>Email</strong>
-              <a href="mailto:hello@benditosldn.com">hello@benditosldn.com</a>
+              <a href="mailto:hola@benditos.co.uk">hola@benditos.co.uk</a>
             </div>
 
             <div className="contact-item">
