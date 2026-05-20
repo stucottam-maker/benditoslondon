@@ -543,7 +543,7 @@ function HoneyPage() {
             </p>
           </div>
 
-          <a href="mailto:hello@benditosldn.com" className="btn btn-primary">
+          <a href="mailto:hola@benditos.co.uk" className="btn btn-primary">
             Contact Benditos Miel
           </a>
         </div>
