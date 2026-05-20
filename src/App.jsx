@@ -466,7 +466,7 @@ className="melodisa-image"
               <span>Tastings</span>
             </div>
 
-            <a href="mailto:hello@benditosldn.com" className="btn btn-light">
+            <a href="mailto:hola@benditos.co.uk" className="btn btn-light">
               Enquire about Melodisa
             </a>
           </div>
