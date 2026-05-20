@@ -597,7 +597,42 @@ function MielPage() {
     character. No nasties, no shortcuts, just the best of the hive.
   </p>
 </SplitCard>
+<section className="section">
+  <div className="container">
+    <div className="melodisa-panel">
+      <div>
+        <p className="eyebrow eyebrow-light">Melodisa Hidromiel</p>
 
+        <h2 className="melodisa-title">
+          No es vino. No es pulque. Es hidromiel.
+        </h2>
+      </div>
+
+      <div className="melodisa-copy">
+        <p>
+          <strong>Melodisa is a fermented honey drink with Mexican soul</strong>{" "}
+          — light, bright, naturally different and full of character.
+        </p>
+
+        <p>
+          Made for curious drinkers, taco nights, tastings, markets and sunny
+          afternoons.
+        </p>
+
+        <div className="melodisa-tags">
+          <span>Hidromiel</span>
+          <span>Fermented honey</span>
+          <span>Mexican drink</span>
+          <span>Tastings</span>
+        </div>
+
+        <a href="mailto:hello@benditosldn.com" className="btn btn-light">
+          Enquire about Melodisa
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
       <FeatureGrid items={mielCards} />
 
       <div className="orange-panel">
