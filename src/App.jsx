@@ -427,11 +427,17 @@ function MelodisaSection() {
       <div className="container">
         <div className="melodisa-product-panel">
           <div className="melodisa-image-wrap">
-            <img
-              src="/melodisa.jpg"
-              alt="Melodisa Hidromiel bottle"
-              className="melodisa-image"
-            />
+          
+      
+          <img
+
+src="https://www.dropbox.com/scl/fi/j7wv3g1yflmnbady3p7c8/Screenshot-2026-05-20-at-09.32.04.png?rlkey=ay0f700qfqh719785sju3tzju&st=32xmu4z7&raw=1"
+
+alt="Melodisa Hidromiel bottle"
+
+className="melodisa-image"
+
+/>
           </div>
 
           <div className="melodisa-product-copy">
