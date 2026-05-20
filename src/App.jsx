@@ -1,853 +1,174 @@
-import { useEffect, useState } from 'react';
-import './styles.css';
-
-const pageRoutes = {
-  '/': 'home',
-  '/menu': 'menu',
-  '/miel': 'miel',
-  '/artisanal-mexican-honey': 'Artisan mexican honey',
-  '/visit': 'visit',
-  '/contact': 'contact',
-  '/es': 'Productores',
-};
-
-const routePaths = {
-  home: '/',
-  menu: '/menu',
-  miel: '/artisan mexican honey',
-  visit: '/visit',
-  contact: '/contact',
-  es: '/productores',
-};
-
-const navItems = [
-  { id: 'home', label: 'Home' },
-  { id: 'menu', label: 'Menu' },
-  { id: 'miel', label: 'Artisan Mexican Honey' },
-  { id: 'visit', label: 'Visit' },
-  { id: 'contact', label: 'Contact' },
-  { id: 'es', label: 'Productores' },
-];
+import { useEffect, useMemo, useState } from "react";
 
 const heroSlides = [
   {
-    label: 'Birria',
+    label: "Latin street food · Benditos Miel",
+    title: "Big flavours. Good times.",
+    copy:
+      "Bold Latin street food, cold drinks, Mexican honey and pantry goods — from tacos and birria to hot honey, glazes and small-batch flavour drops.",
     image:
-      'https://www.dropbox.com/scl/fi/h2fvqq9qoxkw2fglqcxig/a_digital_photograph_showcases_two_beef_birria_tac.png?rlkey=160t4r9gz3r2nwq6h1ugnn8yh&st=gayadk32&raw=1',
+      "https://www.dropbox.com/scl/fi/0a9e7h6gjhqpi489xt2fj/birriaceviche.png?rlkey=9mh8ew59rqvynqn8dk026z3ri&st=68e49qqq&raw=1",
+    tag: "Birria",
   },
   {
-    label: 'Fish Taco',
+    label: "Tacos · Salsas · Drinks",
+    title: "Rooted in Mexico. Built for London.",
+    copy:
+      "A Mexican-rooted kitchen shaped by Latin flavours, friendship, fire, citrus, smoke and good times around the table.",
     image:
-      'https://www.dropbox.com/scl/fi/u8xau043f7fqofxqhjkz9/benditos_taco_cream_watermark_fresh.png?rlkey=kkf1vy0kw8vp1gyywbkbjq2fk&st=fzwc4rhm&raw=1',
+      "https://www.dropbox.com/scl/fi/blt8bfiv0fzdjlpmzci2f/istockphoto-2176660544-612x612.jpg?rlkey=0t6za0ddo9f0uo0di7pvrpmqn&st=re915b3s&raw=1",
+    tag: "Benditos",
   },
-  {
-    label: 'Tuna Tostada',
-    image:
-      'https://www.dropbox.com/scl/fi/h2936480f05rtdn1sirvo/tuna_tostada_cream_watermark_v2.png?rlkey=oj3ccj6xdfs0zhrak542xanar&st=lc4ojexd&raw=1',
-  },
-  {
-    label: 'Ceviche',
-    image:
-      'https://www.dropbox.com/scl/fi/ga1m334fs5bjee8ewka43/pexels-nano-erdozain-120534369-28448397.jpg?rlkey=31nxg80db5rf7hlz29u39v33a&st=9oi9xb4s&raw=1',
-  },
-];
-
-const approachCards = [
-  { title: 'Fire', text: 'Char, smoke, heat and grill-led cooking.' },
-  { title: 'Citrus', text: 'Lime, brightness, acidity and lift.' },
-  { title: 'Earth', text: 'Corn, slow cooking, roots, depth and richness.' },
-  { title: 'Honey', text: 'Mexican sweetness for glazes, drinks and pantry goods.' },
-];
-
-const mielCards = [
-  {
-    title: 'Raw Mexican Honey',
-    text: 'Artesanal honey selected for flavour, origin, aroma and natural character.',
-  },
-  {
-    title: 'Hot Honey',
-    text: 'Mexican honey with chilli heat, built for tacos, fried food, cheese and marinades.',
-  },
-  {
-    title: 'Glazes & Marinades',
-    text: 'Honey-led flavour for chicken, pork belly, squash, vegetables and grill cooking.',
-  },
-  {
-    title: 'Drinks & Syrups',
-    text: 'Honey for margaritas, palomas, agua frescas, highballs and future honey ferments.',
-  },
-  {
-    title: 'Pantry Goods',
-    text: 'Salsa macha, sauces, honey caramel, small-batch drops and future gift boxes.',
-  },
-  {
-    title: 'Tastings & Events',
-    text: 'Honey flights, taco pairings, hot honey tastings, markets and collaborations.',
-  },
-];
-
-const producerCards = [
-  {
-    title: 'Miel Artesanal',
-    text: 'Miel natural mexicana con carácter, origen, aroma y trazabilidad.',
-  },
-  {
-    title: 'Productores y Apicultores',
-    text: 'Buscamos colaborar con personas, familias y proyectos que respetan la colmena, la tierra y el proceso.',
-  },
-  {
-    title: 'Origen y Territorio',
-    text: 'Cada miel cuenta una historia distinta: flores, clima, región, temporada, paisaje y trabajo humano.',
-  },
-  {
-    title: 'Mercado Gastronómico',
-    text: 'Queremos conectar la miel mexicana con chefs, restaurantes, cafeterías, tiendas y experiencias en Londres.',
-  },
-  {
-    title: 'Productos con Valor',
-    text: 'Miel cruda, miel picante, glaseados, salsas, bebidas y productos de despensa con identidad.',
-  },
-  {
-    title: 'Relaciones a Largo Plazo',
-    text: 'Queremos construir colaboraciones honestas, cuidadas, sostenibles y con respeto por el origen.',
-  },
-];
-
-const wholesaleTags = [
-  'Restaurants',
-  'Cafés',
-  'Bakeries',
-  'Cocktail bars',
-  'Delis',
-  'Food halls',
-  'Independent retailers',
-];
-
-const producerTags = [
-  'Productores',
-  'Apicultores',
-  'Cooperativas',
-  'Proyectos familiares',
-  'Miel artesanal',
-  'Origen mexicano',
-  'Colaboraciones',
-];
-
-const visitInfo = [
-  { label: 'Launching', value: 'London — coming soon' },
-  { label: 'Best for', value: 'Walk-ins, tacos, drinks, all-day bites' },
-  { label: 'Follow', value: '@benditosldn', isLink: true },
 ];
 
 const menuSections = [
   {
-    title: 'For the Table / Antojitos',
+    title: "Tacos",
+    note: "Corn tortillas, salsas, pickles and proper heat.",
     items: [
-      { name: 'Guacamole & Totopos', price: '8', description: 'Fresh guacamole, crisp tortilla chips' },
-      { name: 'Pico de Gallo & Totopos', price: '6', description: 'Bright tomato salsa, tortilla chips' },
-      { name: 'Yucatán Sikil Pak & Totopos', price: '7', description: 'Roasted pumpkin seed dip, tortilla chips' },
-      { name: 'Esquites', price: '6', description: 'Mexican street-style corn, lime, chilli' },
-      { name: 'Frijoles Refritos & Totopos', price: '6', description: 'Refried beans, tortilla chips' },
+      {
+        name: "Birria taco",
+        price: "£8.5",
+        desc: "Slow cooked beef, consommé, onion, coriander and salsa.",
+      },
+      {
+        name: "Pork belly chicharrón",
+        price: "£8",
+        desc: "Crispy pork belly, salsa, herbs and lime.",
+      },
+      {
+        name: "Chicken pastor",
+        price: "£7.5",
+        desc: "Achiote, pineapple, chilli, onion and coriander.",
+      },
     ],
   },
   {
-    title: 'House Salsas',
+    title: "Seafood",
+    note: "Bright, fresh, citrusy and made for cold drinks.",
     items: [
-      { name: 'Verde', price: '2', description: 'Fresh, bright, herb-led heat' },
-      { name: 'Roja', price: '2', description: 'Smoky red chilli salsa' },
-      { name: 'Mango Habanero', price: '2', description: 'Sweet fruit, sharp heat' },
-      { name: 'Benditos Hot Sauce', price: '2', description: 'For those who love the salsa que pica' },
-      { name: 'Salsa Tasting Platter', price: '7', description: 'All four house salsas with totopos' },
+      {
+        name: "Ceviche tostada",
+        price: "£9",
+        desc: "Fish, lime, chilli, onion, herbs and tostada crunch.",
+      },
+      {
+        name: "Tempura prawn taco",
+        price: "£8.5",
+        desc: "Crispy prawn, salsa, crema and pickles.",
+      },
+      {
+        name: "Coco prawn taco",
+        price: "£8.5",
+        desc: "King prawn, coconut, chilli and lime.",
+      },
     ],
   },
   {
-    title: 'Tacos',
-    note: '2 tacos per portion',
+    title: "Sides",
+    note: "Corn, potatoes, cabbage, beans and market bits.",
     items: [
-      { name: 'Cochinita Pibil', price: '10', description: 'Slow-cooked pork, onion, coriander' },
-      { name: 'Birria', price: '11', description: 'Slow-cooked beef, served with its broth, coriander' },
-      { name: 'Baja Fish', price: '10', description: 'Crispy fish, honey-lime slaw, morita mayo' },
-      { name: 'Chipotle Honey Chicken', price: '10', description: 'Charred chicken, chipotle, Mexican honey glaze, coriander' },
-      { name: 'Honey-Glazed Pork Belly', price: '11', description: 'Crisp pork belly, chilli honey, pickled onion' },
-      { name: 'Taco del Día', price: 'MP', description: 'Ask for today’s special' },
+      {
+        name: "Elote",
+        price: "£5.5",
+        desc: "Corn, crema, cheese, chilli and lime.",
+      },
+      {
+        name: "Hispi cabbage",
+        price: "£6",
+        desc: "Charred cabbage, salsa macha and herbs.",
+      },
+      {
+        name: "Pink fir potatoes",
+        price: "£5",
+        desc: "Crispy potatoes, aioli and chilli salt.",
+      },
     ],
   },
   {
-    title: 'Quesadillas',
+    title: "Drinks & sweets",
+    note: "Cold drinks, honey drops and sweet things.",
     items: [
-      { name: 'Build Your Own Quesadilla', price: '11', description: 'Choose any taco filling, Mexican cheese' },
-      { name: 'The Sin Queso', price: '10', description: 'Grilled corn, roasted red pepper, caramelised onion, white bean purée' },
-      { name: 'Quesabirria', price: '12', description: 'Slow-cooked beef, Mexican cheese' },
-      { name: 'Miso-Honey Squash', price: '11', description: 'Roasted squash, miso honey, corn, onion, herbs' },
-    ],
-  },
-  {
-    title: 'From Down South',
-    items: [
-      { name: 'Choripán', price: '11', description: 'Grilled sausage roll, chimichurri' },
-      { name: 'Venezuelan Cachapa', price: '12', description: 'Sweetcorn pancake, Latin soft cheese' },
-      { name: 'Tequeños', price: '8', description: 'Cheese-filled sticks, guasacaca salsa' },
-    ],
-  },
-  {
-    title: 'From the Cold Room',
-    items: [
-      { name: 'Classic Ceviche', price: '12', description: 'White fish, lime, onion, chilli' },
-      { name: 'King Prawn Aguachile Verde', price: '14', description: 'King prawns, green chilli, lime, cucumber' },
-      { name: 'Ceviche Tostada', price: '11', description: 'Crisp tostada, fresh ceviche, bright herbs' },
-      { name: 'Tuna Tostada', price: '12', description: 'Tuna, citrus, chilli, tostada' },
-    ],
-  },
-  {
-    title: 'Desserts',
-    items: [
-      { name: 'Tres Leches Cake', price: '8', description: 'Classic milk-soaked sponge' },
-      { name: 'Churros', price: '7', description: 'Cinnamon sugar, Mexican honey caramel' },
-    ],
-  },
-  {
-    title: 'Cocktails',
-    items: [
-      { name: 'Margarita', price: '11', description: 'Classic / Tommy’s / Chilli' },
-      { name: 'Honey Picante Margarita', price: '12', description: 'Tequila, lime, chilli, Mexican honey' },
-      { name: 'Paloma', price: '11', description: 'Tequila, grapefruit, lime, soda' },
-      { name: 'Honey Paloma', price: '12', description: 'Tequila, grapefruit, lime, Mexican honey' },
-      { name: 'Pineapple & Miso Highball', price: '12', description: 'Charred pineapple tequila, miso, ginger' },
-      { name: 'Michelada', price: '9', description: 'Beer, lime, spice' },
-    ],
-  },
-  {
-    title: 'Fresh Juices',
-    items: [
-      { name: 'Pineapple & Lime', price: '5' },
-      { name: 'Watermelon Agua Fresca', price: '5' },
-      { name: 'Hibiscus Iced Tea', price: '5' },
-      { name: 'Mango & Passionfruit', price: '5' },
+      {
+        name: "Agua fresca",
+        price: "£4",
+        desc: "Seasonal fruit, lime and fresh herbs.",
+      },
+      {
+        name: "Honey paloma",
+        price: "£9",
+        desc: "Tequila, grapefruit, lime and Benditos honey.",
+      },
+      {
+        name: "Mochi selection",
+        price: "£6",
+        desc: "Green tea, chocolate, mango passion fruit or coconut.",
+      },
     ],
   },
 ];
 
+const honeyCards = [
+  {
+    title: "Raw Mexican honey",
+    copy:
+      "Artesanal honey selected for flower, origin, aroma and natural character.",
+  },
+  {
+    title: "Hot honey",
+    copy:
+      "Mexican honey with chilli heat, built for tacos, fried food, cheese and marinades.",
+  },
+  {
+    title: "Glazes & marinades",
+    copy:
+      "Honey-led flavour for chicken, pork belly, squash, vegetables and grill cooking.",
+  },
+  {
+    title: "Drinks & syrups",
+    copy:
+      "Honey for margaritas, palomas, agua frescas, highballs and future honey ferments.",
+  },
+  {
+    title: "Pantry goods",
+    copy:
+      "Salsa macha, sauces, honey caramel, small-batch drops and future gift boxes.",
+  },
+  {
+    title: "Tastings & events",
+    copy:
+      "Honey flights, taco pairings, hot honey tastings, markets and collaborations.",
+  },
+];
+
+const producerTags = [
+  "Apicultores",
+  "Cooperativas",
+  "Miel cruda",
+  "Miel artesanal",
+  "Origen mexicano",
+  "Comercio honesto",
+  "Colaboraciones",
+];
+
+const routes = {
+  "/": "home",
+  "/menu": "menu",
+  "/artisanal-mexican-honey": "honey",
+  "/miel": "productores",
+  "/visit": "visit",
+  "/contact": "contact",
+};
+
 function getPageFromPath() {
-  return pageRoutes[window.location.pathname] || 'home';
+  const path = window.location.pathname;
+  return routes[path] || "home";
 }
 
-export default function App() {
-  const [page, setPage] = useState(getPageFromPath);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handlePopState = () => {
-      setPage(getPageFromPath());
-      setMobileMenuOpen(false);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
-
-  function handleNavigate(target) {
-    const nextPath = routePaths[target] || '/';
-
-    setPage(target);
-    setMobileMenuOpen(false);
-    window.history.pushState({}, '', nextPath);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  return (
-    <div className="site-shell">
-      <SiteHeader
-        currentPage={page}
-        mobileMenuOpen={mobileMenuOpen}
-        onToggleMobileMenu={() => setMobileMenuOpen((open) => !open)}
-        onNavigate={handleNavigate}
-      />
-
-      <main>
-        {page === 'home' && <HomePage onNavigate={handleNavigate} />}
-        {page === 'menu' && <MenuPage />}
-        {page === 'miel' && <MielPage />}
-        {page === 'visit' && <VisitPage />}
-        {page === 'contact' && <ContactPage />}
-        {page === 'es' && <SpanishPage />}
-      </main>
-
-      <SiteFooter />
-    </div>
-  );
-}
-
-function SiteHeader({ currentPage, mobileMenuOpen, onToggleMobileMenu, onNavigate }) {
-  return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <button className="brand-button" onClick={() => onNavigate('home')}>
-          Benditos
-        </button>
-
-        <nav className="nav-desktop" aria-label="Primary navigation">
-          <NavigationLinks currentPage={currentPage} onNavigate={onNavigate} />
-        </nav>
-
-        <button
-          className="mobile-menu-toggle"
-          onClick={onToggleMobileMenu}
-          aria-expanded={mobileMenuOpen}
-          aria-label="Toggle navigation menu"
-        >
-          Menu
-        </button>
-      </div>
-
-      {mobileMenuOpen && (
-        <div className="mobile-menu-panel">
-          <div className="container mobile-menu-panel-inner">
-            <NavigationLinks
-              currentPage={currentPage}
-              onNavigate={onNavigate}
-              className="mobile-menu-link"
-              activeClassName="mobile-menu-link active"
-            />
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
-
-function NavigationLinks({
-  currentPage,
-  onNavigate,
-  className = 'nav-link',
-  activeClassName = 'nav-link active',
-}) {
-  return navItems.map((item) => (
-    <button
-      key={item.id}
-      onClick={() => onNavigate(item.id)}
-      className={currentPage === item.id ? activeClassName : className}
-    >
-      {item.label}
-    </button>
-  ));
-}
-
-function HomePage({ onNavigate }) {
-  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
-  const [currentApproachSlide, setCurrentApproachSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5500);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const goHeroPrev = () =>
-    setCurrentHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-
-  const goHeroNext = () =>
-    setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
-
-  const goApproachPrev = () =>
-    setCurrentApproachSlide((prev) => (prev - 1 + approachCards.length) % approachCards.length);
-
-  const goApproachNext = () =>
-    setCurrentApproachSlide((prev) => (prev + 1) % approachCards.length);
-
-  return (
-    <>
-      <section className="hero-section">
-        <div className="hero-shell">
-          {heroSlides.map((slide, index) => (
-            <HeroSlide key={slide.label} slide={slide} isActive={index === currentHeroSlide} />
-          ))}
-
-          <div className="hero-content">
-            <div className="hero-main">
-              <p className="eyebrow eyebrow-light">Latin street food · Benditos Miel</p>
-
-              <h1 className="hero-title">
-                Big flavours.
-                <br />
-                Good times.
-              </h1>
-
-              <p className="hero-copy">
-                Bold Latin street food, cold drinks, Mexican honey and pantry goods — from tacos
-                and birria to hot honey, glazes and small-batch flavour drops.
-              </p>
-            </div>
-
-            <div className="hero-actions">
-              <div className="button-row hero-button-row">
-                <button onClick={() => onNavigate('menu')} className="btn btn-primary">
-                  View Menu
-                </button>
-
-                <button onClick={() => onNavigate('miel')} className="btn btn-ghost-light">
-                  Benditos Miel
-                </button>
-
-                <button onClick={() => onNavigate('visit')} className="btn btn-ghost-light">
-                  Follow the Launch
-                </button>
-              </div>
-
-              <CarouselControls
-                label={heroSlides[currentHeroSlide].label}
-                items={heroSlides}
-                currentIndex={currentHeroSlide}
-                onSelect={setCurrentHeroSlide}
-              />
-            </div>
-          </div>
-
-          <button className="hero-arrow hero-arrow-left" onClick={goHeroPrev} aria-label="Previous slide">
-            ‹
-          </button>
-
-          <button className="hero-arrow hero-arrow-right" onClick={goHeroNext} aria-label="Next slide">
-            ›
-          </button>
-        </div>
-      </section>
-
-      <section className="container section">
-        <SplitCard eyebrow="About Us" title="Rooted in Mexico. Built for London.">
-          <p className="lead-copy">
-            Benditos brings together Latin street food and Mexican honey through fire, citrus,
-            smoke and golden sweetness.
-          </p>
-
-          <p>
-            Born from friendship and a shared love of Mexican history, culture and food,
-            Benditos is a Mexican-rooted kitchen shaped by wider Latin American influence.
-            It began with tacos, birria, ceviche, salsas and good times around the table.
-          </p>
-
-          <p>
-            The honey idea started separately: a celebration of Mexican honey, origin, aroma,
-            flavour and craft. Now it lives inside Benditos as Benditos Miel — our golden thread
-            running through glazes, drinks, pantry goods, tastings and future retail drops.
-          </p>
-        </SplitCard>
-      </section>
-
-      <section className="container section">
-        <div className="gold-panel">
-          <div>
-            <p className="eyebrow eyebrow-light">Benditos Miel</p>
-            <h2 className="section-title light-title">Golden origins. Miel & sabores.</h2>
-          </div>
-
-          <div className="copy-stack light-copy">
-            <p>
-              Our Mexican honey story gives Benditos a deeper ingredient identity — raw honey,
-              hot honey, glazes, marinades, drinks, sauces and pantry goods with flavour, place
-              and purpose.
-            </p>
-
-            <button onClick={() => onNavigate('miel')} className="btn btn-light">
-              Explore Benditos Miel
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="container section">
-        <SplitCard eyebrow="Our Approach" title="Come hungry. Leave happy." className="clean-card">
-          <div className="approach-area">
-            <div className="approach-grid-desktop">
-              {approachCards.map((item) => (
-                <MiniCard key={item.title} {...item} />
-              ))}
-            </div>
-
-            <div className="approach-mobile">
-              <button onClick={goApproachPrev} className="small-arrow" aria-label="Previous approach card">
-                ‹
-              </button>
-
-              <MiniCard className="mobile-mini-card" {...approachCards[currentApproachSlide]} />
-
-              <button onClick={goApproachNext} className="small-arrow" aria-label="Next approach card">
-                ›
-              </button>
-            </div>
-
-            <Dots
-              items={approachCards}
-              currentIndex={currentApproachSlide}
-              onSelect={setCurrentApproachSlide}
-              className="dot orange-dot"
-            />
-          </div>
-        </SplitCard>
-      </section>
-
-      <InstagramPanel />
-    </>
-  );
-}
-
-function HeroSlide({ slide, isActive }) {
-  return (
-    <div
-      className={isActive ? 'hero-slide active' : 'hero-slide'}
-      style={{ backgroundImage: `url("${slide.image}")` }}
-      aria-hidden={!isActive}
-    >
-      <div className="hero-overlay" />
-    </div>
-  );
-}
-
-function CarouselControls({ label, items, currentIndex, onSelect }) {
-  return (
-    <div className="hero-controls">
-      <span>{label}</span>
-      <Dots items={items} currentIndex={currentIndex} onSelect={onSelect} />
-    </div>
-  );
-}
-
-function Dots({ items, currentIndex, onSelect, className = 'dot' }) {
-  return (
-    <div className="mobile-dots hero-dots" aria-label="Carousel slides">
-      {items.map((item, index) => (
-        <button
-          key={item.label || item.title}
-          onClick={() => onSelect(index)}
-          className={index === currentIndex ? `${className} active` : className}
-          aria-label={`Show ${item.label || item.title}`}
-        />
-      ))}
-    </div>
-  );
-}
-
-function MenuPage() {
-  return (
-    <section className="container page">
-      <PageHero
-        type="menu"
-        eyebrow="Menu"
-        title="What we’re serving."
-        copy="Bold, fresh, fire-led food built for sharing, grabbing and coming back for — with Mexican honey appearing in glazes, drinks and specials."
-      />
-
-      <div className="menu-grid">
-        {menuSections.map((section) => (
-          <MenuSection key={section.title} section={section} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function MenuSection({ section }) {
-  return (
-    <section className="menu-card">
-      <div className="menu-card-header">
-        <h3>{section.title}</h3>
-        {section.note && <p>{section.note}</p>}
-      </div>
-
-      <div className="menu-items">
-        {section.items.map((item) => (
-          <div key={item.name} className="menu-item">
-            <div className="menu-item-top">
-              <h4>{item.name}</h4>
-              <span>{item.price}</span>
-            </div>
-
-            {item.description && <p>{item.description}</p>}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function MielPage() {
-  return (
-    <section className="container page">
-      <PageHero
-        type="miel"
-        eyebrow="Benditos Miel"
-        title="Golden origins. Miel & sabores."
-        copy="Mexican honey, hot honey and bold pantry goods — built for tacos, cocktails, kitchens, markets and good times."
-      />
-
-<SplitCard eyebrow="Rooted in nature" title="Miel with body, origin and soul.">
-  <p className="lead-copy">
-    Benditos Miel comes from a love of Mexico’s indigenous culture — the land, the rituals,
-    the food, the colour and the deep respect for nature.
-  </p>
-
-  <p>
-    It is also rooted in apiculture: the craft of the hive, the work of the bees and the
-    beauty of honey in its most natural form.
-  </p>
-
-  <p>
-    Golden, floral, earthy and full of body — our honey is artisanal, natural and full of
-    character. No nasties, no shortcuts, just the best of the hive.
-  </p>
-</SplitCard>
-<section className="section">
-  <div className="container">
-    <div className="melodisa-panel">
-      <div>
-        <p className="eyebrow eyebrow-light">Melodisa Hidromiel</p>
-
-        <h2 className="melodisa-title">
-          No es vino. No es pulque. Es hidromiel.
-        </h2>
-      </div>
-
-      <div className="melodisa-copy">
-        <p>
-          <strong>Melodisa is a fermented honey drink with Mexican soul</strong>{" "}
-          — light, bright, naturally different and full of character.
-        </p>
-
-        <p>
-          Made for curious drinkers, taco nights, tastings, markets and sunny
-          afternoons.
-        </p>
-
-        <div className="melodisa-tags">
-          <span>Hidromiel</span>
-          <span>Fermented honey</span>
-          <span>Mexican drink</span>
-          <span>Tastings</span>
-        </div>
-
-        <a href="mailto:hello@benditosldn.com" className="btn btn-light">
-          Enquire about Melodisa
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-      <FeatureGrid items={mielCards} />
-
-      <div className="orange-panel">
-        <div>
-          <p className="eyebrow eyebrow-light">Wholesale</p>
-          <h2 className="section-title light-title">For chefs, makers and retailers.</h2>
-        </div>
-
-        <div className="copy-stack light-copy">
-          <p>
-            Benditos Miel is being developed for restaurants, cafés, bakeries, cocktail bars,
-            delis, food halls and independent retailers looking for Mexican honey, hot honey,
-            glazes and pantry goods with stronger origin, character and flavour.
-          </p>
-
-          <TagList items={wholesaleTags} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SpanishPage() {
-  return (
-    <section className="container page spanish-page">
-      <PageHero
-        type="spanish"
-        eyebrow="Benditos Miel"
-        title="Miel mexicana. Origen, respeto y sabor."
-        copy="Benditos Miel nace del amor por México, la apicultura y los productos naturales. Buscamos crear un puente entre productores mexicanos de miel artesanal y el mercado gastronómico en Londres, celebrando el origen, el trabajo de las abejas y la riqueza de cada territorio."
-      />
-
-      <SplitCard eyebrow="Nuestra visión" title="Un puente entre México y Londres.">
-        <p>
-          Queremos trabajar con productores, apicultores, cooperativas y proyectos mexicanos
-          que cuidan la tierra, respetan la colmena y entienden la miel como un producto vivo:
-          con historia, temporada, aroma y carácter.
-        </p>
-
-        <p>
-          Nuestro objetivo es llevar miel mexicana artesanal a restaurantes, cocinas, tiendas,
-          cafeterías y experiencias gastronómicas en Londres, manteniendo siempre una conexión
-          clara con su origen.
-        </p>
-
-        <p>
-          No buscamos una miel genérica. Buscamos miel con identidad: miel que hable de su
-          territorio, de sus flores, de sus abejas y de las manos que la producen.
-        </p>
-      </SplitCard>
-
-      <div className="brown-panel">
-        <p className="eyebrow eyebrow-light">Más que importar miel</p>
-        <h2 className="section-title light-title">Queremos contar su origen.</h2>
-        <p>
-          Cada miel tiene una historia distinta: la floración, el clima, la región, la colmena
-          y el trabajo de quien la produce. Benditos Miel quiere llevar esas historias a chefs,
-          tiendas, cafeterías y clientes que valoran productos naturales, artesanales y con carácter.
-        </p>
-      </div>
-
-      <FeatureGrid items={producerCards} />
-
-      <div className="orange-panel">
-        <div>
-          <p className="eyebrow eyebrow-light">Colaboraciones</p>
-          <h2 className="section-title light-title">
-            Para productores, apicultores y proyectos mexicanos.
-          </h2>
-        </div>
-
-        <div className="copy-stack light-copy">
-          <p>
-            Si produces miel artesanal en México y te interesa llevar tu producto a Londres,
-            queremos conocerte.
-          </p>
-
-          <p>
-            Benditos Miel busca colaborar con productores que trabajan con respeto por la naturaleza,
-            la colmena y el origen. Nuestro objetivo es presentar la miel mexicana de forma cuidada,
-            honesta y gastronómica.
-          </p>
-
-          <TagList items={producerTags} />
-        </div>
-      </div>
-
-      <div className="contact-strip">
-        <div>
-          <p className="eyebrow">Hablemos</p>
-          <h2 className="section-title">De México a Londres, con respeto.</h2>
-          <p>
-            Si eres productor, apicultor, cooperativa o proyecto mexicano de miel artesanal,
-            escríbenos para explorar una colaboración.
-          </p>
-        </div>
-
-        <a href="mailto:hola@benditos.co.uk" className="btn btn-primary">
-          hola@benditos.co.uk
-        </a>
-      </div>
-    </section>
-  );
-}
-
-function VisitPage() {
-  return (
-    <section className="container page">
-      <PageHero
-        type="visit"
-        eyebrow="Visit"
-        title="Catch us when we land."
-        copy="Benditos is built for tacos, cold drinks, all-day bites, honey tastings and dropping in whenever the craving hits."
-      >
-        <InstagramButton />
-      </PageHero>
-
-      <div className="visit-grid">
-        {visitInfo.map((item) => (
-          <div key={item.label} className="visit-card">
-            <p className="eyebrow">{item.label}</p>
-            <h3>{item.isLink ? <InstagramLink>{item.value}</InstagramLink> : item.value}</h3>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ContactPage() {
-  return (
-    <section className="container page">
-      <div className="contact-panel">
-        <div>
-          <p className="eyebrow eyebrow-light">Contact</p>
-          <h2 className="contact-title">London — coming soon.</h2>
-          <p>Follow along, watch the food and be first to know when Benditos lands in London.</p>
-        </div>
-
-        <div className="contact-card">
-          <ContactItem label="Instagram">
-            <InstagramLink>@benditosldn</InstagramLink>
-          </ContactItem>
-
-          <ContactItem label="Email">
-            <span>hola@benditos.co.uk</span>
-          </ContactItem>
-
-          <ContactItem label="Location">
-            <span>London, UK</span>
-          </ContactItem>
-
-          <ContactItem label="Enquiries">
-            <span>Markets, events, honey, wholesale, producers and collaborations</span>
-          </ContactItem>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PageHero({ type, eyebrow, title, copy, children }) {
-  return (
-    <section className={`page-hero page-hero-${type}`}>
-      <div className="page-hero-overlay" />
-
-      <div className="page-hero-content">
-        <p className="eyebrow eyebrow-light">{eyebrow}</p>
-        <h1 className="page-hero-title">{title}</h1>
-        <p className="page-hero-copy">{copy}</p>
-        {children && <div className="page-hero-actions">{children}</div>}
-      </div>
-    </section>
-  );
-}
-
-function SplitCard({ eyebrow, title, children, className = '' }) {
-  return (
-    <div className={`split-card ${className}`.trim()}>
-      <div>
-        <p className="eyebrow">{eyebrow}</p>
-        <h2 className="section-title">{title}</h2>
-      </div>
-
-      <div className="copy-stack">{children}</div>
-    </div>
-  );
-}
-
-function FeatureGrid({ items }) {
-  return (
-    <div className="card-grid">
-      {items.map((item) => (
-        <FeatureCard key={item.title} {...item} />
-      ))}
-    </div>
-  );
-}
-
-function FeatureCard({ title, text }) {
-  return (
-    <div className="feature-card">
-      <h3>{title}</h3>
-      <p>{text}</p>
-    </div>
-  );
-}
-
-function MiniCard({ title, text, className = '' }) {
-  return (
-    <div className={`mini-card ${className}`.trim()}>
-      <h3>{title}</h3>
-      <p>{text}</p>
-    </div>
-  );
+function goTo(path) {
+  window.history.pushState({}, "", path);
+  window.dispatchEvent(new PopStateEvent("popstate"));
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function TagList({ items }) {
@@ -860,62 +181,534 @@ function TagList({ items }) {
   );
 }
 
-function InstagramPanel() {
+function Header({ page }) {
+  const links = [
+    ["Home", "/"],
+    ["Menu", "/menu"],
+    ["Artisanal Mexican Honey", "/artisanal-mexican-honey"],
+    ["Visit", "/visit"],
+    ["Contact", "/contact"],
+    ["Productores", "/miel"],
+  ];
+
+  const [open, setOpen] = useState(false);
+
   return (
-    <section className="container section">
-      <div className="instagram-panel">
-        <div>
-          <p className="eyebrow">Instagram</p>
-          <h2 className="section-title">Follow Benditos</h2>
-          <p>
-            Launch updates, behind the scenes, tacos, salsas, honey drops, markets and what’s
-            coming next.
-          </p>
+    <header className="site-header">
+      <div className="container header-inner">
+        <button className="brand-button" onClick={() => goTo("/")}>
+          Benditos
+        </button>
+
+        <nav className="nav-desktop">
+          {links.map(([label, path]) => (
+            <button
+              key={path}
+              className={`nav-link ${routes[path] === page ? "active" : ""}`}
+              onClick={() => goTo(path)}
+            >
+              {label}
+            </button>
+          ))}
+        </nav>
+
+        <button className="mobile-menu-toggle" onClick={() => setOpen(!open)}>
+          Menu
+        </button>
+      </div>
+
+      {open && (
+        <div className="mobile-menu-panel">
+          <div className="container mobile-menu-panel-inner">
+            {links.map(([label, path]) => (
+              <button
+                key={path}
+                className={`mobile-menu-link ${
+                  routes[path] === page ? "active" : ""
+                }`}
+                onClick={() => {
+                  setOpen(false);
+                  goTo(path);
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function HomePage() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(
+      () => setActive((current) => (current + 1) % heroSlides.length),
+      4500
+    );
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = heroSlides[active];
+
+  return (
+    <>
+      <section className="hero-section">
+        <div className="hero-shell">
+          {heroSlides.map((item, index) => (
+            <div
+              key={item.title}
+              className={`hero-slide ${active === index ? "active" : ""}`}
+              style={{ backgroundImage: `url(${item.image})` }}
+            />
+          ))}
+
+          <div className="hero-overlay" />
+
+          <button
+            className="hero-arrow hero-arrow-left"
+            onClick={() =>
+              setActive((active - 1 + heroSlides.length) % heroSlides.length)
+            }
+          >
+            ‹
+          </button>
+
+          <button
+            className="hero-arrow hero-arrow-right"
+            onClick={() => setActive((active + 1) % heroSlides.length)}
+          >
+            ›
+          </button>
+
+          <div className="hero-content">
+            <div className="hero-main">
+              <p className="eyebrow eyebrow-light">{slide.label}</p>
+              <h1 className="hero-title">{slide.title}</h1>
+              <p className="hero-copy">{slide.copy}</p>
+
+              <div className="button-row">
+                <button className="btn btn-primary" onClick={() => goTo("/menu")}>
+                  View Menu
+                </button>
+                <button
+                  className="btn btn-ghost-light"
+                  onClick={() => goTo("/artisanal-mexican-honey")}
+                >
+                  Benditos Miel
+                </button>
+              </div>
+            </div>
+
+            <div className="hero-controls">
+              <span>{slide.tag}</span>
+              <div className="hero-dots">
+                {heroSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`dot ${active === index ? "active" : ""}`}
+                    onClick={() => setActive(index)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container split-card">
+          <div>
+            <p className="eyebrow">About us</p>
+            <h2 className="section-title">
+              Rooted in Mexico. Built for London.
+            </h2>
+          </div>
+
+          <div className="copy-stack">
+            <p className="lead-copy">
+              Benditos brings together Latin street food and Mexican honey
+              through fire, citrus, smoke and golden sweetness.
+            </p>
+
+            <p>
+              Born from friendship and a shared love of Mexican history, culture
+              and food, Benditos is a Mexican-rooted kitchen shaped by wider
+              Latin American influence.
+            </p>
+
+            <p>
+              The honey idea started separately: a celebration of Mexican honey,
+              origin, aroma, flavour and craft. Now it lives inside Benditos as
+              Benditos Miel.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container gold-panel">
+          <div>
+            <p className="eyebrow eyebrow-light">Benditos Miel</p>
+            <h2 className="section-title light-title">
+              Golden heat. Wild sweetness.
+            </h2>
+          </div>
+
+          <div className="copy-stack light-copy">
+            <p>
+              Mexican honey, hot honey and bold pantry goods — built for tacos,
+              cocktails, kitchens, markets and good times.
+            </p>
+
+            <button
+              className="btn btn-light"
+              onClick={() => goTo("/artisanal-mexican-honey")}
+            >
+              Explore Mexican Honey
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function MenuPage() {
+  return (
+    <section className="page">
+      <div className="container">
+        <div className="page-hero page-hero-menu">
+          <div className="page-hero-overlay" />
+          <div className="page-hero-content">
+            <p className="eyebrow eyebrow-light">Food menu</p>
+            <h1 className="page-hero-title">Tacos. Birria. Ceviche.</h1>
+            <p className="page-hero-copy">
+              A tight Latin street food menu built around fire, citrus, salsas,
+              slow cooking and cold drinks.
+            </p>
+          </div>
         </div>
 
-        <InstagramButton />
+        <div className="menu-grid">
+          {menuSections.map((section) => (
+            <article className="menu-card" key={section.title}>
+              <div className="menu-card-header">
+                <h3>{section.title}</h3>
+                <p>{section.note}</p>
+              </div>
+
+              <div className="menu-items">
+                {section.items.map((item) => (
+                  <div className="menu-item" key={item.name}>
+                    <div className="menu-item-top">
+                      <h4>{item.name}</h4>
+                      <span>{item.price}</span>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function InstagramButton() {
+function MelodisaSection() {
   return (
-    <a
-      href="https://www.instagram.com/benditosldn/"
-      target="_blank"
-      rel="noreferrer"
-      className="btn btn-primary"
-    >
-      @benditosldn
-    </a>
-  );
-}
+    <section className="section">
+      <div className="container">
+        <div className="melodisa-product-panel">
+          <div className="melodisa-image-wrap">
+            <img
+              src="/melodisa.jpg"
+              alt="Melodisa Hidromiel bottle"
+              className="melodisa-image"
+            />
+          </div>
 
-function InstagramLink({ children }) {
-  return (
-    <a href="https://www.instagram.com/benditosldn/" target="_blank" rel="noreferrer">
-      {children}
-    </a>
-  );
-}
+          <div className="melodisa-product-copy">
+            <p className="eyebrow eyebrow-light">Melodisa Hidromiel</p>
 
-function ContactItem({ label, children }) {
-  return (
-    <div className="contact-item">
-      <strong>{label}</strong>
-      {children}
-    </div>
-  );
-}
+            <h2 className="melodisa-title">
+              No es vino. No es pulque. Es hidromiel.
+            </h2>
 
-function SiteFooter() {
-  return (
-    <footer className="site-footer">
-      <div className="container footer-inner">
-        <p>© Benditos</p>
-        <p>Latin street food · Benditos Miel · Mexican pantry goods</p>
+            <p>
+              <strong>
+                Melodisa is a fermented honey drink with Mexican soul.
+              </strong>{" "}
+              Light, bright, naturally different and full of character.
+            </p>
+
+            <p>
+              Made for curious drinkers, taco nights, tastings, markets and
+              sunny afternoons.
+            </p>
+
+            <div className="melodisa-tags">
+              <span>Hidromiel</span>
+              <span>Fermented honey</span>
+              <span>Mexican drink</span>
+              <span>Tastings</span>
+            </div>
+
+            <a href="mailto:hello@benditosldn.com" className="btn btn-light">
+              Enquire about Melodisa
+            </a>
+          </div>
+        </div>
       </div>
-    </footer>
+    </section>
+  );
+}
+
+function HoneyPage() {
+  return (
+    <section className="page">
+      <div className="container">
+        <div className="page-hero page-hero-miel">
+          <div className="page-hero-overlay" />
+          <div className="page-hero-content">
+            <p className="eyebrow eyebrow-light">Benditos Miel</p>
+            <h1 className="page-hero-title">
+              Golden origins. Miel & sabores.
+            </h1>
+            <p className="page-hero-copy">
+              Mexican honey, hot honey and bold pantry goods — built for tacos,
+              cocktails, kitchens, markets and good times.
+            </p>
+          </div>
+        </div>
+
+        <div className="split-card">
+          <div>
+            <p className="eyebrow">Rooted in nature</p>
+            <h2 className="section-title">Miel with body, origin and soul.</h2>
+          </div>
+
+          <div className="copy-stack">
+            <p className="lead-copy">
+              Benditos Miel comes from a love of Mexico’s indigenous culture —
+              the land, the rituals, the food, the colour and the deep respect
+              for nature.
+            </p>
+
+            <p>
+              It is also rooted in apiculture: the craft of the hive, the work
+              of the bees and the beauty of honey in its most natural form.
+            </p>
+
+            <p>
+              Golden, floral, earthy and full of body — our honey is artisanal,
+              natural and full of character. No nasties, no shortcuts, just the
+              best of the hive.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <MelodisaSection />
+
+      <div className="container">
+        <div className="card-grid">
+          {honeyCards.map((card) => (
+            <article className="feature-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>{card.copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="contact-strip honey-contact-strip">
+          <div>
+            <p className="eyebrow">Honey enquiries</p>
+            <h2 className="section-title">For chefs, makers and retailers.</h2>
+            <p>
+              For Mexican honey, hot honey, glazes, pantry goods, tastings, chef
+              samples, wholesale or retail enquiries, get in touch.
+            </p>
+          </div>
+
+          <a href="mailto:hello@benditosldn.com" className="btn btn-primary">
+            Contact Benditos Miel
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProductoresPage() {
+  return (
+    <section className="page">
+      <div className="container">
+        <div className="page-hero page-hero-spanish">
+          <div className="page-hero-overlay" />
+          <div className="page-hero-content">
+            <p className="eyebrow eyebrow-light">Productores</p>
+            <h1 className="page-hero-title">De México a Londres.</h1>
+            <p className="page-hero-copy">
+              Buscamos colaborar con apicultores, cooperativas y productores
+              mexicanos que trabajan con respeto por la colmena, la tierra y el
+              origen.
+            </p>
+          </div>
+        </div>
+
+        <div className="orange-panel">
+          <div>
+            <p className="eyebrow eyebrow-light">Hablemos</p>
+            <h2 className="section-title light-title">
+              Miel mexicana con historia, origen y carácter.
+            </h2>
+          </div>
+
+          <div className="copy-stack light-copy">
+            <p>
+              Benditos Miel busca presentar en Londres miel mexicana honesta,
+              artesanal y gastronómica.
+            </p>
+
+            <p>
+              Si eres productor, apicultor, cooperativa o proyecto mexicano de
+              miel, escríbenos para explorar una colaboración.
+            </p>
+
+            <TagList items={producerTags} />
+
+            <a href="mailto:hello@benditosldn.com" className="btn btn-light">
+              hello@benditosldn.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VisitPage() {
+  return (
+    <section className="page">
+      <div className="container">
+        <div className="page-hero page-hero-visit">
+          <div className="page-hero-overlay" />
+          <div className="page-hero-content">
+            <p className="eyebrow eyebrow-light">Visit</p>
+            <h1 className="page-hero-title">Markets. Pop-ups. Future home.</h1>
+            <p className="page-hero-copy">
+              Benditos is being built for London food markets, collaborations,
+              events, tastings and a future neighbourhood taqueria.
+            </p>
+          </div>
+        </div>
+
+        <div className="visit-grid">
+          <article className="visit-card">
+            <h3>Pop-ups</h3>
+            <p>Collaborations, market dates and special events coming soon.</p>
+          </article>
+
+          <article className="visit-card">
+            <h3>Tastings</h3>
+            <p>Honey tastings, hot honey pairings and Melodisa previews.</p>
+          </article>
+
+          <article className="visit-card">
+            <h3>Follow</h3>
+            <p>
+              Follow the launch on Instagram for drops, menus and locations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactPage() {
+  return (
+    <section className="page">
+      <div className="container">
+        <div className="contact-panel">
+          <div>
+            <p className="eyebrow eyebrow-light">Contact</p>
+            <h1 className="contact-title">Let’s talk tacos, honey and good times.</h1>
+            <p>
+              For markets, pop-ups, restaurant enquiries, honey samples,
+              Melodisa, collaborations or producer conversations, get in touch.
+            </p>
+          </div>
+
+          <div className="contact-card">
+            <div className="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:hello@benditosldn.com">hello@benditosldn.com</a>
+            </div>
+
+            <div className="contact-item">
+              <strong>Instagram</strong>
+              <span>@benditosldn</span>
+            </div>
+
+            <div className="contact-item">
+              <strong>Location</strong>
+              <span>London</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AppContent({ page }) {
+  return useMemo(() => {
+    switch (page) {
+      case "menu":
+        return <MenuPage />;
+      case "honey":
+        return <HoneyPage />;
+      case "productores":
+        return <ProductoresPage />;
+      case "visit":
+        return <VisitPage />;
+      case "contact":
+        return <ContactPage />;
+      default:
+        return <HomePage />;
+    }
+  }, [page]);
+}
+
+export default function App() {
+  const [page, setPage] = useState(getPageFromPath());
+
+  useEffect(() => {
+    const onChange = () => setPage(getPageFromPath());
+
+    window.addEventListener("popstate", onChange);
+    return () => window.removeEventListener("popstate", onChange);
+  }, []);
+
+  return (
+    <main className="site-shell">
+      <Header page={page} />
+      <AppContent page={page} />
+
+      <footer className="site-footer">
+        <div className="container footer-inner">
+          <p>Benditos</p>
+          <p>Latin street food · Mexican honey · Hidromiel · London</p>
+        </div>
+      </footer>
+    </main>
   );
 }

@@ -86,7 +86,6 @@ p {
   line-height: 0.9;
   letter-spacing: -0.08em;
   text-transform: uppercase;
-  text-decoration: none;
 }
 
 .nav-desktop {
@@ -101,7 +100,6 @@ p {
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  text-decoration: none;
 }
 
 .nav-link.active,
@@ -308,14 +306,6 @@ p {
   background: var(--cream-light);
 }
 
-.orange-dot {
-  background: rgba(217, 74, 30, 0.22);
-}
-
-.orange-dot.active {
-  background: var(--orange);
-}
-
 .hero-arrow {
   position: absolute;
   z-index: 3;
@@ -341,7 +331,7 @@ p {
   right: 14px;
 }
 
-/* LAYOUT SECTIONS */
+/* LAYOUT */
 
 .section,
 .page {
@@ -434,172 +424,6 @@ p {
   background: var(--orange);
 }
 
-.brown-panel {
-  margin: 22px 0;
-  background: var(--brown);
-}
-
-.brown-panel p {
-  max-width: 58ch;
-  color: rgba(247, 235, 221, 0.9);
-  font-size: 0.98rem;
-  margin-top: 16px;
-}
-
-/* MELODISA HIDROMIEL */
-
-.melodisa-panel {
-  margin-top: 22px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.75rem;
-  padding: 36px;
-  color: var(--cream-light);
-  background:
-    radial-gradient(circle at 82% 18%, rgba(247, 235, 221, 0.2), transparent 28%),
-    linear-gradient(135deg, var(--orange), var(--brown) 58%, var(--dark));
-  box-shadow: 0 16px 30px rgba(217, 74, 30, 0.14);
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 36px;
-  align-items: center;
-}
-
-.melodisa-panel::after {
-  content: "";
-  position: absolute;
-  right: -120px;
-  bottom: -160px;
-  width: 360px;
-  height: 360px;
-  border-radius: 999px;
-  background: rgba(247, 235, 221, 0.1);
-  pointer-events: none;
-}
-
-.melodisa-panel > * {
-  position: relative;
-  z-index: 1;
-}
-
-.melodisa-title {
-  max-width: 9ch;
-  color: var(--cream-light);
-  font-size: clamp(2.4rem, 5vw, 4.8rem);
-  line-height: 0.88;
-  font-weight: 950;
-  letter-spacing: -0.055em;
-  text-transform: uppercase;
-}
-
-.melodisa-copy {
-  display: grid;
-  gap: 14px;
-  color: rgba(247, 235, 221, 0.92);
-}
-
-.melodisa-copy p {
-  max-width: 58ch;
-  color: rgba(247, 235, 221, 0.92);
-  font-size: 0.98rem;
-}
-
-.melodisa-copy strong {
-  color: var(--cream-light);
-  font-weight: 900;
-}
-
-.melodisa-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.melodisa-tags span {
-  border: 1px solid rgba(247, 235, 221, 0.36);
-  border-radius: 999px;
-  padding: 8px 12px;
-  color: var(--cream-light);
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.melodisa-panel .btn-light {
-  margin-top: 4px;
-}
-
-/* APPROACH */
-
-.approach-area {
-  display: grid;
-  gap: 12px;
-}
-
-.approach-grid-desktop {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.approach-mobile,
-.mobile-dots {
-  display: none;
-}
-
-.mini-card {
-  min-height: 130px;
-  padding: 18px 16px;
-  border-radius: 1.25rem;
-  background: var(--cream-light);
-  border: 1px solid rgba(217, 74, 30, 0.1);
-}
-
-.mini-card h3,
-.feature-card h3 {
-  color: var(--orange);
-  font-size: 1.15rem;
-  font-weight: 950;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.mini-card p,
-.feature-card p {
-  color: var(--brown);
-  font-size: 0.86rem;
-  line-height: 1.5;
-}
-
-.small-arrow {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  color: var(--orange);
-  background: rgba(217, 74, 30, 0.08);
-  font-size: 1.4rem;
-}
-
-/* INSTAGRAM */
-
-.instagram-panel {
-  border-radius: 1.5rem;
-  padding: 30px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: end;
-}
-
-.instagram-panel p {
-  max-width: 760px;
-  color: var(--brown);
-}
-
 /* PAGE HEROES */
 
 .page-hero {
@@ -625,9 +449,6 @@ p {
 
 .page-hero-miel {
   background-image: url("https://www.dropbox.com/scl/fi/zxqpwol6ooru6g02t3wzn/240_F_202788682_7y8OwKwin0kmDz4H1UI0XGtKRQAWKXxI.jpg?rlkey=uumwmhmn05ns18tlnz7w1u9kf&st=z5thsz7u&raw=1");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .page-hero-spanish {
@@ -646,19 +467,11 @@ p {
   );
 }
 
-.page-hero-miel .page-hero-overlay {
-  background: linear-gradient(
-    90deg,
-    rgba(31, 19, 13, 0.76) 0%,
-    rgba(124, 52, 27, 0.42) 48%,
-    rgba(216, 154, 40, 0.12) 100%
-  );
-}
-
+.page-hero-miel .page-hero-overlay,
 .page-hero-spanish .page-hero-overlay {
   background: linear-gradient(
     90deg,
-    rgba(31, 19, 13, 0.72) 0%,
+    rgba(31, 19, 13, 0.76) 0%,
     rgba(124, 52, 27, 0.42) 48%,
     rgba(216, 154, 40, 0.12) 100%
   );
@@ -686,10 +499,6 @@ p {
   line-height: 1.55;
 }
 
-.page-hero-actions {
-  margin-top: 18px;
-}
-
 /* CARDS */
 
 .card-grid {
@@ -704,15 +513,91 @@ p {
   padding: 22px 20px;
 }
 
-/* TAGS */
+.feature-card h3 {
+  color: var(--orange);
+  font-size: 1.15rem;
+  font-weight: 950;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 8px;
+}
 
-.tag-list {
+.feature-card p {
+  color: var(--brown);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+/* MELODISA */
+
+.melodisa-product-panel {
+  margin-top: 22px;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(247, 235, 221, 0.2), transparent 28%),
+    linear-gradient(135deg, var(--orange), var(--brown) 58%, var(--dark));
+  box-shadow: 0 16px 30px rgba(217, 74, 30, 0.14);
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: stretch;
+}
+
+.melodisa-image-wrap {
+  min-height: 430px;
+  background: var(--cream-light);
+  overflow: hidden;
+}
+
+.melodisa-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.melodisa-product-copy {
+  padding: 36px;
+  color: var(--cream-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.melodisa-title {
+  max-width: 9ch;
+  color: var(--cream-light);
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.88;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.melodisa-product-copy p {
+  max-width: 58ch;
+  color: rgba(247, 235, 221, 0.92);
+  font-size: 0.98rem;
+}
+
+.melodisa-product-copy p + p {
+  margin-top: 12px;
+}
+
+.melodisa-product-copy strong {
+  color: var(--cream-light);
+  font-weight: 900;
+}
+
+.melodisa-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 18px;
 }
 
-.tag-list span {
+.melodisa-tags span {
   border: 1px solid rgba(247, 235, 221, 0.36);
   border-radius: 999px;
   padding: 8px 12px;
@@ -721,6 +606,10 @@ p {
   font-weight: 850;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.melodisa-product-copy .btn {
+  margin-top: 18px;
 }
 
 /* MENU */
@@ -781,7 +670,6 @@ p {
   color: var(--orange);
   font-size: 0.94rem;
   font-weight: 850;
-  line-height: 1.2;
 }
 
 .menu-item span {
@@ -817,11 +705,30 @@ p {
   letter-spacing: -0.05em;
   line-height: 1;
   text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
-.visit-card a {
+.visit-card p {
   color: var(--brown);
-  text-underline-offset: 3px;
+}
+
+/* TAGS */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-list span {
+  border: 1px solid rgba(247, 235, 221, 0.36);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--cream-light);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* CONTACT */
@@ -877,7 +784,7 @@ p {
   text-decoration: none;
 }
 
-/* CONTACT STRIPS */
+/* CONTACT STRIP */
 
 .contact-strip {
   margin-top: 22px;
@@ -887,6 +794,8 @@ p {
   grid-template-columns: 1fr auto;
   gap: 24px;
   align-items: end;
+  background: var(--cream-light);
+  border: 1px solid rgba(217, 74, 30, 0.1);
 }
 
 .contact-strip .section-title {
@@ -901,10 +810,6 @@ p {
 
 .honey-contact-strip {
   border-left: 8px solid var(--gold);
-}
-
-.honey-contact-strip .section-title {
-  max-width: 12ch;
 }
 
 /* FOOTER */
@@ -977,19 +882,9 @@ p {
   .split-card,
   .gold-panel,
   .orange-panel,
-  .melodisa-panel,
+  .melodisa-product-panel,
   .contact-panel {
     grid-template-columns: 1fr;
-  }
-
-  .split-card .section-title,
-  .light-title,
-  .melodisa-title {
-    max-width: 100%;
-  }
-
-  .approach-grid-desktop {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .card-grid {
@@ -1005,6 +900,10 @@ p {
   .hero-slide,
   .hero-content {
     min-height: 420px;
+  }
+
+  .melodisa-image-wrap {
+    min-height: 360px;
   }
 }
 
@@ -1046,12 +945,12 @@ p {
     border-radius: 1.2rem;
   }
 
-  .hero-slide {
+  .hero-slide,
+  .hero-content {
     min-height: 440px;
   }
 
   .hero-content {
-    min-height: 440px;
     max-width: 292px;
     padding: 26px 18px 24px;
   }
@@ -1083,57 +982,13 @@ p {
     display: none;
   }
 
-  .hero-controls {
-    font-size: 0.62rem;
-  }
-
   .split-card,
   .gold-panel,
   .orange-panel,
-  .brown-panel,
-  .instagram-panel,
-  .melodisa-panel,
   .contact-panel,
   .contact-strip {
     padding: 20px 16px;
     border-radius: 1.2rem;
-  }
-
-  .split-card,
-  .melodisa-panel {
-    gap: 18px;
-  }
-
-  .melodisa-title {
-    font-size: clamp(2rem, 9vw, 3.1rem);
-  }
-
-  .melodisa-tags span {
-    font-size: 0.66rem;
-  }
-
-  .approach-grid-desktop {
-    display: none;
-  }
-
-  .approach-mobile {
-    display: grid;
-    grid-template-columns: 34px 1fr 34px;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .mobile-mini-card {
-    text-align: center;
-  }
-
-  .mobile-dots {
-    display: flex;
-    justify-content: center;
-  }
-
-  .instagram-panel {
-    grid-template-columns: 1fr;
   }
 
   .page-hero {
@@ -1144,12 +999,10 @@ p {
 
   .page-hero-miel {
     min-height: 300px;
-    background-position: center;
   }
 
   .page-hero-spanish {
     min-height: 380px;
-    background-position: center;
   }
 
   .page-hero-content {
@@ -1184,8 +1037,24 @@ p {
     border-radius: 1.1rem;
   }
 
-  .orange-panel {
-    gap: 20px;
+  .melodisa-product-panel {
+    border-radius: 1.2rem;
+  }
+
+  .melodisa-product-copy {
+    padding: 20px 16px;
+  }
+
+  .melodisa-title {
+    font-size: clamp(2rem, 9vw, 3.1rem);
+  }
+
+  .melodisa-image-wrap {
+    min-height: 320px;
+  }
+
+  .melodisa-tags span {
+    font-size: 0.66rem;
   }
 
   .contact-panel {
@@ -1199,10 +1068,6 @@ p {
   .contact-strip {
     grid-template-columns: 1fr;
     gap: 18px;
-  }
-
-  .contact-strip .btn {
-    width: fit-content;
   }
 
   .honey-contact-strip {
