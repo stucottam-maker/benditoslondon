@@ -590,8 +590,8 @@ function ProductoresPage() {
 
             <TagList items={producerTags} />
 
-            <a href="mailto:hello@benditosldn.com" className="btn btn-light">
-              hello@benditosldn.com
+            <a href="mailto:hola@benditos.co.uk" className="btn btn-light">
+            hola@benditos.co.uk
             </a>
           </div>
         </div>
