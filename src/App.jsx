@@ -428,11 +428,13 @@ function MelodisaSection() {
         <div className="melodisa-product-panel">
         <div className="melodisa-image-wrap">
 
-<img
+        <img
 
-  src="https://www.dropbox.com/scl/fi/66gtf0y1yq4qy561t71az/a_clean_minimalist_advertising_poster_scene_a_bo.png?rlkey=a88okayyt8scl21fa6m03g7u0&st=5660eoi3&raw=1"
-  alt="Melodisa Hidromiel bottle"
-  className="melodisa-image"
+src="https://www.dropbox.com/scl/fi/66gtf0y1yq4qy561t71az/a_clean_minimalist_advertising_poster_scene_a_bo.png?rlkey=a88okayyt8scl21fa6m03g7u0&st=5660eoi3&raw=1"
+
+alt="Melodisa Hidromiel bottle"
+
+className="melodisa-image"
 
 />
 
