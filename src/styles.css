@@ -551,20 +551,33 @@ p {
 }
 
 .melodisa-image-wrap {
+
   min-height: 430px;
-  background: var(--cream-light);
+
+  background:
+
+    linear-gradient(rgba(143, 180, 196, 0.9), rgba(143, 180, 196, 0.9));
+
   overflow: hidden;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
 }
 
 .melodisa-image {
+
   width: 100%;
+
   height: 100%;
+
   object-fit: contain;
+
   object-position: center;
-  background: #8fb4c4;
+
 }
 
 .melodisa-product-copy {
