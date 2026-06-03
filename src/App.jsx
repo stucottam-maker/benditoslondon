@@ -438,7 +438,7 @@ function MelodisaSection() {
             <p className="eyebrow eyebrow-light">Melodisa Hidromiel</p>
 
             <h2 className="melodisa-title">
-              No es vino. No es pulque. Es hidromiel.
+              It's not Wine. It's not Pulque. It's defintely not beer. This is hidromiel.
             </h2>
 
             <p>
