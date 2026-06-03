@@ -431,7 +431,7 @@ function MelodisaSection() {
       
           <img
 
-src="https://www.dropbox.com/scl/fi/j7wv3g1yflmnbady3p7c8/Screenshot-2026-05-20-at-09.32.04.png?rlkey=ay0f700qfqh719785sju3tzju&st=32xmu4z7&raw=1"
+src="https://www.dropbox.com/scl/fi/66gtf0y1yq4qy561t71az/a_clean_minimalist_advertising_poster_scene_a_bo.png?rlkey=a88okayyt8scl21fa6m03g7u0&st=5660eoi3&dl=0"
 
 alt="Melodisa Hidromiel bottle"
 
