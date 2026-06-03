@@ -426,26 +426,19 @@ function MelodisaSection() {
     <section className="section">
       <div className="container">
         <div className="melodisa-product-panel">
-        <div className="melodisa-image-wrap">
-
-        <img
-
-src="https://www.dropbox.com/scl/fi/66gtf0y1yq4qy561t71az/a_clean_minimalist_advertising_poster_scene_a_bo.png?rlkey=a88okayyt8scl21fa6m03g7u0&st=5660eoi3&raw=1"
-
-alt="Melodisa Hidromiel bottle"
-
-className="melodisa-image"
-
-/>
-
-</div>
+          <div className="melodisa-image-wrap">
+            <img
+              src="https://www.dropbox.com/scl/fi/66gtf0y1yq4qy561t71az/a_clean_minimalist_advertising_poster_scene_a_bo.png?rlkey=a88okayyt8scl21fa6m03g7u0&st=5660eoi3&raw=1"
+              alt="Melodisa Hidromiel bottle"
+              className="melodisa-image"
+            />
           </div>
 
           <div className="melodisa-product-copy">
             <p className="eyebrow eyebrow-light">Melodisa Hidromiel</p>
 
             <h2 className="melodisa-title">
-              It's not Wine. It's not Pulque. This is hidromiel.
+              No es vino. No es pulque. Es hidromiel.
             </h2>
 
             <p>
@@ -467,7 +460,7 @@ className="melodisa-image"
               <span>Tastings</span>
             </div>
 
-            <a href="mailto:hola@benditos.co.uk" className="btn btn-light">
+            <a href="mailto:hello@benditosldn.com" className="btn btn-light">
               Enquire about Melodisa
             </a>
           </div>
