@@ -1300,64 +1300,77 @@ function MelodisaPage({
       <PageHero
         eyebrow={
           isMexico
-            ? "Productores"
-            : "Producers"
+            ? "Hidromiel artesanal mexicana"
+            : "Mexican craft mead"
         }
         title="Melodisa"
         copy={
           isMexico
-            ? "Miel mexicana con historia, origen y propósito."
-            : "Mexican honey with history, origin and purpose."
+            ? "Hidromiel mexicana con identidad propia, elaborada con miel, creatividad y respeto por el proceso."
+            : "Mexican mead with its own identity, made with honey, creativity and respect for the process."
         }
-        src={honeycombCloseup}
-        label="Melodisa honeycomb"
+        src={melodisaBottles}
+        label="Botellas de hidromiel Melodisa"
       />
 
-      <section className="section intro-grid">
-        <div>
+      <section className="section melodisa-brand">
+        <div className="melodisa-brand__logo">
+          <img
+            src={melodisaLogo}
+            alt="Melodisa Hidromiel Artesanal"
+          />
+        </div>
+
+        <div className="melodisa-brand__copy">
           <p className="eyebrow">
             {isMexico
-              ? "De la colmena a la mesa"
-              : "From hive to table"}
+              ? "Una bebida con personalidad"
+              : "A drink with personality"}
           </p>
 
           <h2>
             {isMexico
-              ? "Una colaboración con raíces mexicanas."
-              : "A collaboration rooted in Mexico."}
+              ? "Miel fermentada, sabores inesperados."
+              : "Fermented honey, unexpected flavours."}
           </h2>
-        </div>
 
-        <p className="large-copy">
-          {isMexico
-            ? "Melodisa nace del respeto por las abejas, la tierra y las personas que hacen posible cada cosecha. Su miel refleja las flores, el clima, la temporada y la diversidad natural de México."
-            : "Melodisa begins with respect for bees, land and the people behind every harvest. Its honey reflects the flowers, climate, season and natural diversity of Mexico."}
-        </p>
+          <p>
+            {isMexico
+              ? "Melodisa transforma la miel en una bebida contemporánea, expresiva y llena de carácter. Cada etiqueta representa una interpretación distinta de la hidromiel."
+              : "Melodisa transforms honey into a contemporary, expressive drink full of character. Each label represents a different interpretation of mead."}
+          </p>
+        </div>
       </section>
 
       <section className="story section">
         <ImagePanel
-          src={honeyTable}
-          label="Melodisa honey"
+          src={melodisaSonata}
+          label="Botella Melodisa Sonata"
         />
 
         <div className="story__copy">
           <p className="eyebrow">
             {isMexico
-              ? "Por qué trabajamos juntos"
-              : "Why we work together"}
+              ? "Hidromiel mexicana"
+              : "Mexican mead"}
           </p>
 
           <h2>
             {isMexico
-              ? "Compartimos una misma forma de entender los ingredientes."
-              : "We share the same way of understanding ingredients."}
+              ? "De la miel nace una bebida completamente distinta."
+              : "Honey becomes something completely different."}
           </h2>
 
           <p>
             {isMexico
-              ? "Conocer su origen, respetar el proceso y dejar que el sabor hable por sí mismo."
-              : "Know where they come from, respect the process and let the flavour speak for itself."}
+              ? "La hidromiel se obtiene mediante la fermentación de miel y agua. Melodisa desarrolla distintas expresiones combinando ingredientes, estilos y perfiles aromáticos propios."
+              : "Mead is produced by fermenting honey and water. Melodisa creates different expressions through distinctive ingredients, styles and aromatic profiles."}
+          </p>
+
+          <p>
+            {isMexico
+              ? "En Benditos queremos presentar estas bebidas junto a nuestra cocina, explorar maridajes y crear nuevas colaboraciones alrededor de la miel."
+              : "At Benditos, we want to serve these drinks alongside our food, explore pairings and build new collaborations around honey."}
           </p>
 
           <a
@@ -1371,11 +1384,40 @@ function MelodisaPage({
         </div>
       </section>
 
+      <section className="melodisa-award section">
+        <div className="melodisa-award__copy">
+          <p className="eyebrow">
+            {isMexico
+              ? "Reconocimiento"
+              : "Recognition"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Medalla de bronce en Copa Hidromiel México."
+              : "Bronze medal at Copa Hidromiel México."}
+          </h2>
+
+          <p>
+            {isMexico
+              ? "Melodisa Ópera recibió la medalla de bronce en la categoría amateur de la Copa Hidromiel México 2025."
+              : "Melodisa Ópera received a bronze medal in the amateur category at Copa Hidromiel México 2025."}
+          </p>
+        </div>
+
+        <div className="melodisa-award__image">
+          <img
+            src={melodisaAward}
+            alt="Medalla de bronce de Melodisa Ópera en Copa Hidromiel México"
+          />
+        </div>
+      </section>
+
       <section className="quote-section section">
         <blockquote>
           {isMexico
-            ? "“Cada cosecha cuenta la historia del lugar donde nació.”"
-            : "“Every harvest tells the story of where it was born.”"}
+            ? "“Miel, fermentación y creatividad mexicana.”"
+            : "“Honey, fermentation and Mexican creativity.”"}
         </blockquote>
       </section>
 
@@ -1386,8 +1428,8 @@ function MelodisaPage({
 
         <h2>
           {isMexico
-            ? "Dos proyectos. Una misma raíz."
-            : "Two projects. One shared root."}
+            ? "Dos proyectos unidos por la miel."
+            : "Two projects connected by honey."}
         </h2>
 
         <Button
