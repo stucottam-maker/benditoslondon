@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import "./styles.css";
+
 import birriaTacos from "./birria-tacos.jpeg";
 import tunaTostada from "./tuna-tostada.jpeg";
 import sharingTable from "./benditos-sharing-table.jpg";
@@ -8,11 +9,9 @@ import honeyTable from "./honey-table.jpg";
 import honeycombCloseup from "./honeycomb-closeup.jpg";
 
 const FORM_ENDPOINT = "https://formspree.io/f/mvzjwqeg";
-
 const UK_INSTAGRAM = "https://instagram.com/benditosldn";
 const MX_INSTAGRAM = "https://instagram.com/benditosldn";
 const MELODISA_INSTAGRAM = "https://instagram.com/mielysabores_mx";
-
 const WHATSAPP_URL = "https://wa.me/";
 
 const regions = {
@@ -354,14 +353,18 @@ const mxMenu = [
 ];
 
 function getRoute(pathname) {
-  const clean = pathname.replace(/\/+$/, "") || "/";
+  const clean =
+    pathname.replace(/\/+$/, "") || "/";
 
   const isMexico =
-    clean === "/mx" || clean.startsWith("/mx/");
+    clean === "/mx" ||
+    clean.startsWith("/mx/");
 
-  const region = isMexico ? "mx" : "uk";
+  const region =
+    isMexico ? "mx" : "uk";
 
-  const base = regions[region].base;
+  const base =
+    regions[region].base;
 
   const relative =
     clean === base || clean === "/"
@@ -376,28 +379,42 @@ function getRoute(pathname) {
 }
 
 function useNavigation() {
-  const [pathname, setPathname] = useState(
-    window.location.pathname
-  );
+  const [pathname, setPathname] =
+    useState(window.location.pathname);
 
   useEffect(() => {
     const syncPath = () => {
-      setPathname(window.location.pathname);
+      setPathname(
+        window.location.pathname
+      );
     };
 
-    window.addEventListener("popstate", syncPath);
+    window.addEventListener(
+      "popstate",
+      syncPath
+    );
 
     return () => {
-      window.removeEventListener("popstate", syncPath);
+      window.removeEventListener(
+        "popstate",
+        syncPath
+      );
     };
   }, []);
 
   const navigate = (path) => {
-    if (path === window.location.pathname) {
+    if (
+      path ===
+      window.location.pathname
+    ) {
       return;
     }
 
-    window.history.pushState({}, "", path);
+    window.history.pushState(
+      {},
+      "",
+      path
+    );
 
     setPathname(path);
 
@@ -449,20 +466,35 @@ function AppLink({
   );
 }
 
-function routePath(region, page = "") {
-  const base = regions[region].base;
+function routePath(
+  region,
+  page = ""
+) {
+  const base =
+    regions[region].base;
 
-  if (!page || page === "/") {
+  if (
+    !page ||
+    page === "/"
+  ) {
     return base || "/";
   }
 
-  return `${base}/${page.replace(/^\/+/, "")}`;
+  return `${base}/${page.replace(
+    /^\/+/,
+    ""
+  )}`;
 }
 
-function Header({ route, navigate }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+function Header({
+  route,
+  navigate,
+}) {
+  const [menuOpen, setMenuOpen] =
+    useState(false);
 
-  const copy = regions[route.region];
+  const copy =
+    regions[route.region];
 
   const pages = [
     ["home", ""],
@@ -475,15 +507,21 @@ function Header({ route, navigate }) {
   ];
 
   const switchTo =
-    route.region === "uk" ? "/mx" : "/";
+    route.region === "uk"
+      ? "/mx"
+      : "/";
 
   return (
     <header className="site-header">
       <AppLink
-        to={routePath(route.region)}
+        to={routePath(
+          route.region
+        )}
         navigate={navigate}
         className="brand"
-        onClick={() => setMenuOpen(false)}
+        onClick={() => {
+          setMenuOpen(false);
+        }}
       >
         <span className="brand__mark">
           B
@@ -506,7 +544,9 @@ function Header({ route, navigate }) {
         aria-label="Toggle navigation"
         aria-expanded={menuOpen}
         onClick={() => {
-          setMenuOpen((current) => !current);
+          setMenuOpen(
+            (current) => !current
+          );
         }}
       >
         <span />
@@ -515,36 +555,44 @@ function Header({ route, navigate }) {
 
       <nav
         className={`nav ${
-          menuOpen ? "nav--open" : ""
+          menuOpen
+            ? "nav--open"
+            : ""
         }`}
       >
-        {pages.map(([label, slug]) => {
-          const path = routePath(
-            route.region,
-            slug
-          );
+        {pages.map(
+          ([label, slug]) => {
+            const path =
+              routePath(
+                route.region,
+                slug
+              );
 
-          const active =
-            slug === ""
-              ? route.relative === "/"
-              : route.relative === `/${slug}`;
+            const active =
+              slug === ""
+                ? route.relative === "/"
+                : route.relative ===
+                  `/${slug}`;
 
-          return (
-            <AppLink
-              key={label}
-              to={path}
-              navigate={navigate}
-              className={
-                active ? "active" : ""
-              }
-              onClick={() => {
-                setMenuOpen(false);
-              }}
-            >
-              {copy.nav[label]}
-            </AppLink>
-          );
-        })}
+            return (
+              <AppLink
+                key={label}
+                to={path}
+                navigate={navigate}
+                className={
+                  active
+                    ? "active"
+                    : ""
+                }
+                onClick={() => {
+                  setMenuOpen(false);
+                }}
+              >
+                {copy.nav[label]}
+              </AppLink>
+            );
+          }
+        )}
 
         <AppLink
           to={switchTo}
@@ -563,8 +611,12 @@ function Header({ route, navigate }) {
   );
 }
 
-function Footer({ region, navigate }) {
-  const copy = regions[region];
+function Footer({
+  region,
+  navigate,
+}) {
+  const copy =
+    regions[region];
 
   return (
     <footer className="footer">
@@ -580,21 +632,30 @@ function Footer({ region, navigate }) {
 
       <div className="footer__links">
         <AppLink
-          to={routePath(region, "menu")}
+          to={routePath(
+            region,
+            "menu"
+          )}
           navigate={navigate}
         >
           {copy.nav.menu}
         </AppLink>
 
         <AppLink
-          to={routePath(region, "honey")}
+          to={routePath(
+            region,
+            "honey"
+          )}
           navigate={navigate}
         >
           {copy.nav.honey}
         </AppLink>
 
         <AppLink
-          to={routePath(region, "melodisa")}
+          to={routePath(
+            region,
+            "melodisa"
+          )}
           navigate={navigate}
         >
           Melodisa
@@ -615,7 +676,9 @@ function Footer({ region, navigate }) {
 
       <div className="footer__bottom">
         <span>
-          © {new Date().getFullYear()} Benditos.
+          ©{" "}
+          {new Date().getFullYear()}{" "}
+          Benditos.
         </span>
 
         <span>
@@ -629,7 +692,7 @@ function Footer({ region, navigate }) {
 }
 
 function ImagePanel({
-  label,
+  label = "",
   className = "",
   src = "",
 }) {
@@ -640,7 +703,7 @@ function ImagePanel({
       {src ? (
         <img
           src={src}
-          alt=""
+          alt={label}
         />
       ) : (
         <span>
@@ -676,61 +739,64 @@ function HomePage({
   region,
   navigate,
 }) {
-  const copy = regions[region];
+  const copy =
+    regions[region];
 
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
-  const principles = isMexico
-    ? [
-        [
-          "01",
-          "Fuego",
-          "Brasas, tiempo y paciencia para construir sabores profundos.",
-        ],
+  const principles =
+    isMexico
+      ? [
+          [
+            "01",
+            "Fuego",
+            "Brasas, tiempo y paciencia para construir sabores profundos.",
+          ],
 
-        [
-          "02",
-          "Cítricos",
-          "Limón, naranja y toronja para dar frescura y equilibrio.",
-        ],
+          [
+            "02",
+            "Cítricos",
+            "Limón, naranja y toronja para dar frescura y equilibrio.",
+          ],
 
-        [
-          "03",
-          "Tierra",
-          "Maíz, chiles, semillas y productos conectados con sus raíces.",
-        ],
+          [
+            "03",
+            "Tierra",
+            "Maíz, chiles, semillas y productos conectados con sus raíces.",
+          ],
 
-        [
-          "04",
-          "Miel",
-          "Miel mexicana en glaseados, bebidas, salsas y marinados.",
-        ],
-      ]
-    : [
-        [
-          "01",
-          "Fire",
-          "Char, patience and slow cooking for deep, layered flavour.",
-        ],
+          [
+            "04",
+            "Miel",
+            "Miel mexicana en glaseados, bebidas, salsas y marinados.",
+          ],
+        ]
+      : [
+          [
+            "01",
+            "Fire",
+            "Char, patience and slow cooking for deep, layered flavour.",
+          ],
 
-        [
-          "02",
-          "Citrus",
-          "Lime, orange and grapefruit bringing freshness and balance.",
-        ],
+          [
+            "02",
+            "Citrus",
+            "Lime, orange and grapefruit bringing freshness and balance.",
+          ],
 
-        [
-          "03",
-          "Earth",
-          "Corn, chillies, seeds and ingredients connected to their roots.",
-        ],
+          [
+            "03",
+            "Earth",
+            "Corn, chillies, seeds and ingredients connected to their roots.",
+          ],
 
-        [
-          "04",
-          "Honey",
-          "Mexican honey in glazes, drinks, sauces and marinades.",
-        ],
-      ];
+          [
+            "04",
+            "Honey",
+            "Mexican honey in glazes, drinks, sauces and marinades.",
+          ],
+        ];
 
   return (
     <main>
@@ -774,11 +840,8 @@ function HomePage({
 
         <ImagePanel
           className="hero__image"
-          label={
-            isMexico
-              ? "HERO IMAGE · BENDITOS MEXICALI"
-              : "HERO IMAGE · BENDITOS LONDON"
-          }
+          src={birriaTacos}
+          label="Benditos birria tacos"
         />
       </section>
 
@@ -830,7 +893,11 @@ function HomePage({
 
       <section className="principles section">
         {principles.map(
-          ([number, title, text]) => (
+          ([
+            number,
+            title,
+            text,
+          ]) => (
             <article
               className="principle"
               key={title}
@@ -853,11 +920,8 @@ function HomePage({
 
       <section className="split-feature section">
         <ImagePanel
-          label={
-            isMexico
-              ? "IMAGE · TACOS Y BRASAS"
-              : "IMAGE · TACOS AND FIRE"
-          }
+          src={sharingTable}
+          label="Benditos sharing table"
         />
 
         <div className="split-feature__content">
@@ -936,11 +1000,8 @@ function HomePage({
         </div>
 
         <ImagePanel
-          label={
-            isMexico
-              ? "IMAGE · MIEL / COLMENA"
-              : "IMAGE · HONEY / HIVE"
-          }
+          src={honeyTable}
+          label="Mexican honey"
         />
       </section>
 
@@ -955,11 +1016,13 @@ function HomePage({
 function MenuPage({
   region,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
-  const menu = isMexico
-    ? mxMenu
-    : ukMenu;
+  const menu =
+    isMexico
+      ? mxMenu
+      : ukMenu;
 
   return (
     <main>
@@ -979,11 +1042,8 @@ function MenuPage({
             ? "Platos para compartir, tacos para repetir y bebidas con mucho carácter."
             : "Food for sharing, tacos worth repeating and drinks with plenty of character."
         }
-        label={
-          isMexico
-            ? "IMAGE · MESA BENDITOS"
-            : "IMAGE · BENDITOS TABLE"
-        }
+        src={tunaTostada}
+        label="Benditos tuna tostada"
       />
 
       <section className="menu-section section">
@@ -1002,43 +1062,45 @@ function MenuPage({
         </div>
 
         <div className="menu-columns">
-          {menu.map((section) => (
-            <article
-              className="menu-group"
-              key={section.title}
-            >
-              <h2>
-                {section.title}
-              </h2>
+          {menu.map(
+            (section) => (
+              <article
+                className="menu-group"
+                key={section.title}
+              >
+                <h2>
+                  {section.title}
+                </h2>
 
-              {section.items.map(
-                ([
-                  name,
-                  price,
-                  description,
-                ]) => (
-                  <div
-                    className="menu-item"
-                    key={name}
-                  >
-                    <div className="menu-item__top">
-                      <h3>
-                        {name}
-                      </h3>
+                {section.items.map(
+                  ([
+                    name,
+                    price,
+                    description,
+                  ]) => (
+                    <div
+                      className="menu-item"
+                      key={name}
+                    >
+                      <div className="menu-item__top">
+                        <h3>
+                          {name}
+                        </h3>
 
-                      <strong>
-                        {price}
-                      </strong>
+                        <strong>
+                          {price}
+                        </strong>
+                      </div>
+
+                      <p>
+                        {description}
+                      </p>
                     </div>
-
-                    <p>
-                      {description}
-                    </p>
-                  </div>
-                )
-              )}
-            </article>
-          ))}
+                  )
+                )}
+              </article>
+            )
+          )}
         </div>
       </section>
     </main>
@@ -1049,71 +1111,73 @@ function HoneyPage({
   region,
   navigate,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
-  const cards = isMexico
-    ? [
-        [
-          "Miel cruda",
-          "Aromas y sabores que cambian según la floración, la temporada y la región.",
-        ],
+  const cards =
+    isMexico
+      ? [
+          [
+            "Miel cruda",
+            "Aromas y sabores que cambian según la floración, la temporada y la región.",
+          ],
 
-        [
-          "Miel picante",
-          "Miel y chile para tacos, pollo, cerdo, quesadillas y mucho más.",
-        ],
+          [
+            "Miel picante",
+            "Miel y chile para tacos, pollo, cerdo, quesadillas y mucho más.",
+          ],
 
-        [
-          "Glaseados",
-          "Brillo, caramelización y capas de sabor en carnes y verduras.",
-        ],
+          [
+            "Glaseados",
+            "Brillo, caramelización y capas de sabor en carnes y verduras.",
+          ],
 
-        [
-          "Bebidas",
-          "Margaritas, palomas, jarabes y aguas frescas con mayor profundidad.",
-        ],
+          [
+            "Bebidas",
+            "Margaritas, palomas, jarabes y aguas frescas con mayor profundidad.",
+          ],
 
-        [
-          "Despensa",
-          "Salsa macha, miel picante, glaseados y pequeños productos para casa.",
-        ],
+          [
+            "Despensa",
+            "Salsa macha, miel picante, glaseados y pequeños productos para casa.",
+          ],
 
-        [
-          "Colaboración",
-          "Recetas creadas junto a productores que respetan su entorno.",
-        ],
-      ]
-    : [
-        [
-          "Raw honey",
-          "Aromas and flavours shaped by blossom, season and region.",
-        ],
+          [
+            "Colaboración",
+            "Recetas creadas junto a productores que respetan su entorno.",
+          ],
+        ]
+      : [
+          [
+            "Raw honey",
+            "Aromas and flavours shaped by blossom, season and region.",
+          ],
 
-        [
-          "Hot honey",
-          "Honey and chilli for tacos, chicken, pork, quesadillas and more.",
-        ],
+          [
+            "Hot honey",
+            "Honey and chilli for tacos, chicken, pork, quesadillas and more.",
+          ],
 
-        [
-          "Glazes",
-          "Shine, caramelisation and layered flavour on meat and vegetables.",
-        ],
+          [
+            "Glazes",
+            "Shine, caramelisation and layered flavour on meat and vegetables.",
+          ],
 
-        [
-          "Drinks",
-          "Margaritas, palomas, syrups and soft drinks with extra depth.",
-        ],
+          [
+            "Drinks",
+            "Margaritas, palomas, syrups and soft drinks with extra depth.",
+          ],
 
-        [
-          "Pantry",
-          "Salsa macha, hot honey, glazes and small-batch products.",
-        ],
+          [
+            "Pantry",
+            "Salsa macha, hot honey, glazes and small-batch products.",
+          ],
 
-        [
-          "Collaboration",
-          "Recipes created with producers who respect their environment.",
-        ],
-      ];
+          [
+            "Collaboration",
+            "Recipes created with producers who respect their environment.",
+          ],
+        ];
 
   return (
     <main>
@@ -1133,11 +1197,8 @@ function HoneyPage({
             ? "Miel mexicana seleccionada por su sabor, procedencia y capacidad para transformar un plato."
             : "Mexican honey selected for its flavour, origin and ability to transform a dish."
         }
-        label={
-          isMexico
-            ? "IMAGE · MIEL CRUDA"
-            : "IMAGE · RAW HONEY"
-        }
+        src={honeyTable}
+        label="Mexican honey and honeycomb"
       />
 
       <section className="section intro-grid">
@@ -1164,7 +1225,10 @@ function HoneyPage({
 
       <section className="editorial-grid section">
         {cards.map(
-          ([title, text], index) => (
+          ([
+            title,
+            text,
+          ], index) => (
             <article key={title}>
               <span>
                 0{index + 1}
@@ -1184,11 +1248,8 @@ function HoneyPage({
 
       <section className="split-feature section">
         <ImagePanel
-          label={
-            isMexico
-              ? "IMAGE · MIEL PICANTE"
-              : "IMAGE · HOT HONEY"
-          }
+          src={honeycombCloseup}
+          label="Honeycomb close-up"
         />
 
         <div className="split-feature__content">
@@ -1231,7 +1292,8 @@ function MelodisaPage({
   region,
   navigate,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
   return (
     <main>
@@ -1247,11 +1309,8 @@ function MelodisaPage({
             ? "Miel mexicana con historia, origen y propósito."
             : "Mexican honey with history, origin and purpose."
         }
-        label={
-          isMexico
-            ? "IMAGE · MELODISA / PRODUCTORA"
-            : "IMAGE · MELODISA / PRODUCER"
-        }
+        src={honeycombCloseup}
+        label="Melodisa honeycomb"
       />
 
       <section className="section intro-grid">
@@ -1278,11 +1337,8 @@ function MelodisaPage({
 
       <section className="story section">
         <ImagePanel
-          label={
-            isMexico
-              ? "IMAGE · APIARIO / FLORACIÓN"
-              : "IMAGE · APIARY / BLOSSOM"
-          }
+          src={honeyTable}
+          label="Melodisa honey"
         />
 
         <div className="story__copy">
@@ -1354,7 +1410,8 @@ function AboutPage({
   region,
   navigate,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
   return (
     <main>
@@ -1370,20 +1427,14 @@ function AboutPage({
             ? "Cocina mexicana de raíces profundas, creada con curiosidad, respeto y muchas ganas de compartir."
             : "Latin street food with Mexican soul, built with curiosity, respect and a love of sharing."
         }
-        label={
-          isMexico
-            ? "IMAGE · EQUIPO / COCINA"
-            : "IMAGE · TEAM / KITCHEN"
-        }
+        src={guestsImage}
+        label="Guests enjoying Benditos"
       />
 
       <section className="story section">
         <ImagePanel
-          label={
-            isMexico
-              ? "IMAGE · FUEGO / COCINERO"
-              : "IMAGE · FIRE / CHEF"
-          }
+          src={sharingTable}
+          label="Benditos shared table"
         />
 
         <div className="story__copy">
@@ -1426,7 +1477,8 @@ function VisitPage({
   region,
   navigate,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
   return (
     <main>
@@ -1446,11 +1498,8 @@ function VisitPage({
             ? "Estamos preparando nuestro nuevo espacio. Muy pronto compartiremos la dirección y la fecha de apertura."
             : "We are preparing our next London home. Follow along for dates, location and launch news."
         }
-        label={
-          isMexico
-            ? "IMAGE · MEXICALI / EXTERIOR"
-            : "IMAGE · LONDON / EXTERIOR"
-        }
+        src={guestsImage}
+        label="Benditos guests"
       />
 
       <section className="visit-grid section">
@@ -1527,7 +1576,8 @@ function VisitPage({
 function ContactPage({
   region,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
   return (
     <main>
@@ -1547,11 +1597,8 @@ function ContactPage({
             ? "Colaboraciones, prensa, eventos o preguntas sobre nuestra apertura en Mexicali."
             : "Collaborations, press, events or questions about Benditos."
         }
-        label={
-          isMexico
-            ? "IMAGE · DETALLE DE MESA"
-            : "IMAGE · TABLE DETAIL"
-        }
+        src={sharingTable}
+        label="Benditos dining table"
       />
 
       <section className="contact section">
@@ -1671,7 +1718,8 @@ function PageHero({
   eyebrow,
   title,
   copy,
-  label,
+  label = "",
+  src = "",
 }) {
   return (
     <section className="page-hero">
@@ -1691,6 +1739,7 @@ function PageHero({
 
       <ImagePanel
         label={label}
+        src={src}
       />
     </section>
   );
@@ -1700,7 +1749,8 @@ function LaunchSection({
   region,
   navigate,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
   return (
     <section className="launch-block section">
@@ -1757,7 +1807,8 @@ function NotFound({
   region,
   navigate,
 }) {
-  const isMexico = region === "mx";
+  const isMexico =
+    region === "mx";
 
   return (
     <main className="not-found section">
@@ -1794,7 +1845,8 @@ export default function App() {
     [pathname]
   );
 
-  const copy = regions[route.region];
+  const copy =
+    regions[route.region];
 
   useEffect(() => {
     document.documentElement.lang =
@@ -1810,7 +1862,9 @@ export default function App() {
 
     if (!description) {
       description =
-        document.createElement("meta");
+        document.createElement(
+          "meta"
+        );
 
       description.name =
         "description";
