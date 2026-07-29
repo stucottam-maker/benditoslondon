@@ -11,7 +11,7 @@ import honeycombCloseup from "./honeycomb-closeup.jpg";
 import melodisaBottles from "./melodisa-bottles.jpg";
 import melodisaLogo from "./melodisa-logo.jpg";
 import melodisaAward from "./melodisa-award.jpg";
-import melodisaSonata from "./melodisa-sonata.jpg";
+import melodisaSonata from "./melodisa-sonata.jpeg";
 
 const FORM_ENDPOINT = "https://formspree.io/f/mvzjwqeg";
 const UK_INSTAGRAM = "https://instagram.com/benditosldn";
