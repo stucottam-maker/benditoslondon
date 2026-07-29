@@ -1,714 +1,1890 @@
 import { useEffect, useMemo, useState } from "react";
+import "./styles.css";
 
-const heroSlides = [
-  {
-    label: "Latin street food · Benditos Miel",
-    title: "Big flavours. Good times.",
-    copy:
-      "Bold Latin street food, cold drinks, Mexican honey and pantry goods — from tacos and birria to hot honey, glazes and small-batch flavour drops.",
-    image:
-      "https://www.dropbox.com/scl/fi/0a9e7h6gjhqpi489xt2fj/birriaceviche.png?rlkey=9mh8ew59rqvynqn8dk026z3ri&st=68e49qqq&raw=1",
-    tag: "Birria",
-  },
-  {
-    label: "Tacos · Salsas · Drinks",
-    title: "Rooted in Mexico. Built for London.",
-    copy:
-      "A Mexican-rooted kitchen shaped by Latin flavours, friendship, fire, citrus, smoke and good times around the table.",
-    image:
-      "https://www.dropbox.com/scl/fi/blt8bfiv0fzdjlpmzci2f/istockphoto-2176660544-612x612.jpg?rlkey=0t6za0ddo9f0uo0di7pvrpmqn&st=re915b3s&raw=1",
-    tag: "Benditos",
-  },
-];
+const FORM_ENDPOINT = "https://formspree.io/f/mvzjwqeg";
 
-const menuSections = [
-  {
-    title: "Tacos",
-    note: "Corn tortillas, salsas, pickles and proper heat.",
-    items: [
-      {
-        name: "Birria taco",
-        price: "£8.5",
-        desc: "Slow cooked beef, consommé, onion, coriander and salsa.",
-      },
-      {
-        name: "Pork belly chicharrón",
-        price: "£8",
-        desc: "Crispy pork belly, salsa, herbs and lime.",
-      },
-      {
-        name: "Chicken pastor",
-        price: "£7.5",
-        desc: "Achiote, pineapple, chilli, onion and coriander.",
-      },
-    ],
-  },
-  {
-    title: "Seafood",
-    note: "Bright, fresh, citrusy and made for cold drinks.",
-    items: [
-      {
-        name: "Ceviche tostada",
-        price: "£9",
-        desc: "Fish, lime, chilli, onion, herbs and tostada crunch.",
-      },
-      {
-        name: "Tempura prawn taco",
-        price: "£8.5",
-        desc: "Crispy prawn, salsa, crema and pickles.",
-      },
-      {
-        name: "Coco prawn taco",
-        price: "£8.5",
-        desc: "King prawn, coconut, chilli and lime.",
-      },
-    ],
-  },
-  {
-    title: "Sides",
-    note: "Corn, potatoes, cabbage, beans and market bits.",
-    items: [
-      {
-        name: "Elote",
-        price: "£5.5",
-        desc: "Corn, crema, cheese, chilli and lime.",
-      },
-      {
-        name: "Hispi cabbage",
-        price: "£6",
-        desc: "Charred cabbage, salsa macha and herbs.",
-      },
-      {
-        name: "Pink fir potatoes",
-        price: "£5",
-        desc: "Crispy potatoes, aioli and chilli salt.",
-      },
-    ],
-  },
-  {
-    title: "Drinks & sweets",
-    note: "Cold drinks, honey drops and sweet things.",
-    items: [
-      {
-        name: "Agua fresca",
-        price: "£4",
-        desc: "Seasonal fruit, lime and fresh herbs.",
-      },
-      {
-        name: "Honey paloma",
-        price: "£9",
-        desc: "Tequila, grapefruit, lime and Benditos honey.",
-      },
-      {
-        name: "Mochi selection",
-        price: "£6",
-        desc: "Green tea, chocolate, mango passion fruit or coconut.",
-      },
-    ],
-  },
-];
+const UK_INSTAGRAM = "https://instagram.com/benditosldn";
+const MX_INSTAGRAM = "https://instagram.com/benditosldn";
+const MELODISA_INSTAGRAM = "https://instagram.com/mielysabores_mx";
 
-const honeyCards = [
-  {
-    title: "Raw Mexican honey",
-    copy:
-      "Artesanal honey selected for flower, origin, aroma and natural character.",
-  },
-  {
-    title: "Hot honey",
-    copy:
-      "Mexican honey with chilli heat, built for tacos, fried food, cheese and marinades.",
-  },
-  {
-    title: "Glazes & marinades",
-    copy:
-      "Honey-led flavour for chicken, pork belly, squash, vegetables and grill cooking.",
-  },
-  {
-    title: "Drinks & syrups",
-    copy:
-      "Honey for margaritas, palomas, agua frescas, highballs and future honey ferments.",
-  },
-  {
-    title: "Pantry goods",
-    copy:
-      "Salsa macha, sauces, honey caramel, small-batch drops and future gift boxes.",
-  },
-  {
-    title: "Tastings & events",
-    copy:
-      "Honey flights, taco pairings, hot honey tastings, markets and collaborations.",
-  },
-];
+const WHATSAPP_URL = "https://wa.me/";
 
-const producerTags = [
-  "Apicultores",
-  "Cooperativas",
-  "Miel cruda",
-  "Miel artesanal",
-  "Origen mexicano",
-  "Comercio honesto",
-  "Colaboraciones",
-];
+const regions = {
+  uk: {
+    code: "UK",
+    base: "",
+    location: "London",
+    locale: "en-GB",
 
-const routes = {
-  "/": "home",
-  "/menu": "menu",
-  "/artisanal-mexican-honey": "honey",
-  "/miel": "productores",
-  "/visit": "visit",
-  "/contact": "contact",
+    metaTitle: "Benditos | Latin street food in London",
+
+    metaDescription:
+      "Benditos brings Latin street food, Mexican soul, big flavours and good times to London.",
+
+    brandLine: "Latin street food. Mexican soul.",
+
+    heroEyebrow: "London · Coming soon",
+
+    heroTitle: "Big flavours. Good times.",
+
+    heroCopy:
+      "A lively menu built around corn, fire, citrus, slow cooking and proper cravings.",
+
+    primaryCta: "Explore the menu",
+    secondaryCta: "Our story",
+
+    nav: {
+      home: "Home",
+      menu: "Menu",
+      honey: "Honey",
+      melodisa: "Melodisa",
+      about: "About",
+      visit: "Visit",
+      contact: "Contact",
+    },
+  },
+
+  mx: {
+    code: "MX",
+    base: "/mx",
+    location: "Mexicali",
+    locale: "es-MX",
+
+    metaTitle: "Benditos Mexicali | Cocina mexicana",
+
+    metaDescription:
+      "Benditos Mexicali: tacos, brasas, cítricos, antojitos y miel mexicana. Próximamente en Mexicali, Baja California.",
+
+    brandLine: "Cocina mexicana. Mucho carácter.",
+
+    heroEyebrow: "Próximamente en Mexicali",
+
+    heroTitle: "Fuego, maíz y sabor sin fronteras.",
+
+    heroCopy:
+      "Cocina mexicana con raíces, carácter y mucho antojo. Brasas, cítricos, salsas y miel mexicana en una propuesta creada para compartir.",
+
+    primaryCta: "Ver el menú",
+    secondaryCta: "Nuestra historia",
+
+    nav: {
+      home: "Inicio",
+      menu: "Menú",
+      honey: "Nuestra miel",
+      melodisa: "Melodisa",
+      about: "Nosotros",
+      visit: "Visítanos",
+      contact: "Contacto",
+    },
+  },
 };
 
-function getPageFromPath() {
-  const path = window.location.pathname;
-  return routes[path] || "home";
+const ukMenu = [
+  {
+    title: "Antojitos",
+
+    items: [
+      [
+        "Guacamole & totopos",
+        "£8",
+        "Avocado, lime, coriander and house-made totopos.",
+      ],
+
+      [
+        "Sikil pak",
+        "£7",
+        "Yucatecan pumpkin seed dip, roasted tomato and chilli.",
+      ],
+
+      [
+        "Esquites",
+        "£6",
+        "Charred corn, chipotle mayo, cheese and salsa macha.",
+      ],
+
+      [
+        "Refried beans & totopos",
+        "£6",
+        "Creamy beans, cheese and chilli oil.",
+      ],
+    ],
+  },
+
+  {
+    title: "Tacos · 2 per order",
+
+    items: [
+      [
+        "Cochinita pibil",
+        "£10",
+        "Achiote pork, pickled red onion and habanero.",
+      ],
+
+      [
+        "Birria",
+        "£11",
+        "Slow-cooked beef, onion, coriander and consommé.",
+      ],
+
+      [
+        "Baja fish",
+        "£10",
+        "Crisp fish, slaw, crema and salsa.",
+      ],
+
+      [
+        "Chipotle honey chicken",
+        "£10",
+        "Charred chicken, chipotle, honey and pickles.",
+      ],
+
+      [
+        "Honey-glazed pork belly",
+        "£11",
+        "Caramelised pork, chilli and citrus.",
+      ],
+    ],
+  },
+
+  {
+    title: "Quesadillas",
+
+    items: [
+      [
+        "Build your own",
+        "£11",
+        "Cheese and your choice of filling.",
+      ],
+
+      [
+        "Quesabirria",
+        "£12",
+        "Birria, cheese, onion, coriander and consommé.",
+      ],
+
+      [
+        "Miso-honey squash",
+        "£11",
+        "Roasted squash, miso, honey and seeds.",
+      ],
+    ],
+  },
+
+  {
+    title: "From the sea",
+
+    items: [
+      [
+        "Classic ceviche",
+        "£12",
+        "Fresh fish, lime, onion, chilli and coriander.",
+      ],
+
+      [
+        "King prawn aguachile",
+        "£14",
+        "Prawn, cucumber, green chilli and citrus.",
+      ],
+
+      [
+        "Tuna tostada",
+        "£12",
+        "Tuna, avocado, cucumber and house salsa.",
+      ],
+    ],
+  },
+
+  {
+    title: "Sweet",
+
+    items: [
+      [
+        "Tres leches",
+        "£8",
+        "Soft sponge, cream and cinnamon.",
+      ],
+
+      [
+        "Churros",
+        "£7",
+        "Cinnamon sugar and honey caramel.",
+      ],
+    ],
+  },
+];
+
+const mxMenu = [
+  {
+    title: "Antojitos",
+
+    items: [
+      [
+        "Guacamole y totopos",
+        "$145",
+        "Aguacate, limón, cilantro y totopos recién hechos.",
+      ],
+
+      [
+        "Sikil pak",
+        "$130",
+        "Dip yucateco de pepita, tomate asado y chile.",
+      ],
+
+      [
+        "Esquites",
+        "$120",
+        "Maíz asado, mayonesa de chipotle, queso y salsa macha.",
+      ],
+
+      [
+        "Frijoles refritos y totopos",
+        "$110",
+        "Frijoles cremosos, queso y aceite de chile.",
+      ],
+    ],
+  },
+
+  {
+    title: "Tacos · 2 piezas",
+
+    items: [
+      [
+        "Cochinita pibil",
+        "$175",
+        "Cerdo al achiote, cebolla morada y habanero.",
+      ],
+
+      [
+        "Birria",
+        "$190",
+        "Res cocinada lentamente, cebolla, cilantro y consomé.",
+      ],
+
+      [
+        "Pescado estilo Baja",
+        "$180",
+        "Pescado crujiente, col, crema y salsa.",
+      ],
+
+      [
+        "Pollo con chipotle y miel",
+        "$175",
+        "Pollo a las brasas, chipotle, miel y encurtidos.",
+      ],
+
+      [
+        "Panceta glaseada con miel",
+        "$190",
+        "Cerdo caramelizado, chile y cítricos.",
+      ],
+    ],
+  },
+
+  {
+    title: "Quesadillas",
+
+    items: [
+      [
+        "Arma la tuya",
+        "$185",
+        "Quesillo y el relleno que elijas.",
+      ],
+
+      [
+        "Quesabirria",
+        "$205",
+        "Birria, quesillo, cebolla, cilantro y consomé.",
+      ],
+
+      [
+        "Calabaza con miso y miel",
+        "$185",
+        "Calabaza asada, miso, miel y semillas.",
+      ],
+    ],
+  },
+
+  {
+    title: "Del mar",
+
+    items: [
+      [
+        "Ceviche clásico",
+        "$215",
+        "Pescado fresco, limón, cebolla, chile y cilantro.",
+      ],
+
+      [
+        "Aguachile verde de camarón",
+        "$245",
+        "Camarón, pepino, chile verde y cítricos.",
+      ],
+
+      [
+        "Tostada de atún",
+        "$225",
+        "Atún, aguacate, pepino y salsa de la casa.",
+      ],
+    ],
+  },
+
+  {
+    title: "Postres",
+
+    items: [
+      [
+        "Tres leches",
+        "$135",
+        "Bizcocho suave, crema y canela.",
+      ],
+
+      [
+        "Churros",
+        "$125",
+        "Azúcar, canela y caramelo de miel.",
+      ],
+    ],
+  },
+];
+
+function getRoute(pathname) {
+  const clean = pathname.replace(/\/+$/, "") || "/";
+
+  const isMexico =
+    clean === "/mx" || clean.startsWith("/mx/");
+
+  const region = isMexico ? "mx" : "uk";
+
+  const base = regions[region].base;
+
+  const relative =
+    clean === base || clean === "/"
+      ? "/"
+      : clean.slice(base.length) || "/";
+
+  return {
+    clean,
+    region,
+    relative,
+  };
 }
 
-function goTo(path) {
-  window.history.pushState({}, "", path);
-  window.dispatchEvent(new PopStateEvent("popstate"));
-  window.scrollTo({ top: 0, behavior: "smooth" });
+function useNavigation() {
+  const [pathname, setPathname] = useState(
+    window.location.pathname
+  );
+
+  useEffect(() => {
+    const syncPath = () => {
+      setPathname(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", syncPath);
+
+    return () => {
+      window.removeEventListener("popstate", syncPath);
+    };
+  }, []);
+
+  const navigate = (path) => {
+    if (path === window.location.pathname) {
+      return;
+    }
+
+    window.history.pushState({}, "", path);
+
+    setPathname(path);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return {
+    pathname,
+    navigate,
+  };
 }
 
-function TagList({ items }) {
+function AppLink({
+  to,
+  navigate,
+  children,
+  className = "",
+  onClick,
+}) {
   return (
-    <div className="tag-list">
-      {items.map((item) => (
-        <span key={item}>{item}</span>
-      ))}
-    </div>
+    <a
+      href={to}
+      className={className}
+      onClick={(event) => {
+        if (
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+
+        navigate(to);
+
+        if (onClick) {
+          onClick();
+        }
+      }}
+    >
+      {children}
+    </a>
   );
 }
 
-function Header({ page }) {
-  const links = [
-    ["Home", "/"],
-    ["Menu", "/menu"],
-    ["Artisanal Mexican Honey", "/artisanal-mexican-honey"],
-    ["Visit", "/visit"],
-    ["Contact", "/contact"],
-    ["Productores", "/miel"],
+function routePath(region, page = "") {
+  const base = regions[region].base;
+
+  if (!page || page === "/") {
+    return base || "/";
+  }
+
+  return `${base}/${page.replace(/^\/+/, "")}`;
+}
+
+function Header({ route, navigate }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const copy = regions[route.region];
+
+  const pages = [
+    ["home", ""],
+    ["menu", "menu"],
+    ["honey", "honey"],
+    ["melodisa", "melodisa"],
+    ["about", "about"],
+    ["visit", "visit"],
+    ["contact", "contact"],
   ];
 
-  const [open, setOpen] = useState(false);
+  const switchTo =
+    route.region === "uk" ? "/mx" : "/";
 
   return (
     <header className="site-header">
-      <div className="container header-inner">
-        <button className="brand-button" onClick={() => goTo("/")}>
-          Benditos
-        </button>
+      <AppLink
+        to={routePath(route.region)}
+        navigate={navigate}
+        className="brand"
+        onClick={() => setMenuOpen(false)}
+      >
+        <span className="brand__mark">
+          B
+        </span>
 
-        <nav className="nav-desktop">
-          {links.map(([label, path]) => (
-            <button
-              key={path}
-              className={`nav-link ${routes[path] === page ? "active" : ""}`}
-              onClick={() => goTo(path)}
+        <span className="brand__text">
+          <strong>
+            BENDITOS
+          </strong>
+
+          <small>
+            {copy.location}
+          </small>
+        </span>
+      </AppLink>
+
+      <button
+        type="button"
+        className="menu-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded={menuOpen}
+        onClick={() => {
+          setMenuOpen((current) => !current);
+        }}
+      >
+        <span />
+        <span />
+      </button>
+
+      <nav
+        className={`nav ${
+          menuOpen ? "nav--open" : ""
+        }`}
+      >
+        {pages.map(([label, slug]) => {
+          const path = routePath(
+            route.region,
+            slug
+          );
+
+          const active =
+            slug === ""
+              ? route.relative === "/"
+              : route.relative === `/${slug}`;
+
+          return (
+            <AppLink
+              key={label}
+              to={path}
+              navigate={navigate}
+              className={
+                active ? "active" : ""
+              }
+              onClick={() => {
+                setMenuOpen(false);
+              }}
             >
-              {label}
-            </button>
-          ))}
-        </nav>
+              {copy.nav[label]}
+            </AppLink>
+          );
+        })}
 
-        <button className="mobile-menu-toggle" onClick={() => setOpen(!open)}>
-          Menu
-        </button>
-      </div>
-
-      {open && (
-        <div className="mobile-menu-panel">
-          <div className="container mobile-menu-panel-inner">
-            {links.map(([label, path]) => (
-              <button
-                key={path}
-                className={`mobile-menu-link ${
-                  routes[path] === page ? "active" : ""
-                }`}
-                onClick={() => {
-                  setOpen(false);
-                  goTo(path);
-                }}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+        <AppLink
+          to={switchTo}
+          navigate={navigate}
+          className="region-switch"
+          onClick={() => {
+            setMenuOpen(false);
+          }}
+        >
+          {route.region === "uk"
+            ? "MX"
+            : "UK"}
+        </AppLink>
+      </nav>
     </header>
   );
 }
 
-function HomePage() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(
-      () => setActive((current) => (current + 1) % heroSlides.length),
-      4500
-    );
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const slide = heroSlides[active];
+function Footer({ region, navigate }) {
+  const copy = regions[region];
 
   return (
-    <>
-      <section className="hero-section">
-        <div className="hero-shell">
-          {heroSlides.map((item, index) => (
-            <div
-              key={item.title}
-              className={`hero-slide ${active === index ? "active" : ""}`}
-              style={{ backgroundImage: `url(${item.image})` }}
-            />
-          ))}
+    <footer className="footer">
+      <div>
+        <p className="eyebrow">
+          {copy.location}
+        </p>
 
-          <div className="hero-overlay" />
+        <h2>
+          {copy.brandLine}
+        </h2>
+      </div>
 
-          <button
-            className="hero-arrow hero-arrow-left"
-            onClick={() =>
-              setActive((active - 1 + heroSlides.length) % heroSlides.length)
-            }
-          >
-            ‹
-          </button>
+      <div className="footer__links">
+        <AppLink
+          to={routePath(region, "menu")}
+          navigate={navigate}
+        >
+          {copy.nav.menu}
+        </AppLink>
 
-          <button
-            className="hero-arrow hero-arrow-right"
-            onClick={() => setActive((active + 1) % heroSlides.length)}
-          >
-            ›
-          </button>
+        <AppLink
+          to={routePath(region, "honey")}
+          navigate={navigate}
+        >
+          {copy.nav.honey}
+        </AppLink>
 
-          <div className="hero-content">
-            <div className="hero-main">
-              <p className="eyebrow eyebrow-light">{slide.label}</p>
-              <h1 className="hero-title">{slide.title}</h1>
-              <p className="hero-copy">{slide.copy}</p>
+        <AppLink
+          to={routePath(region, "melodisa")}
+          navigate={navigate}
+        >
+          Melodisa
+        </AppLink>
 
-              <div className="button-row">
-                <button className="btn btn-primary" onClick={() => goTo("/menu")}>
-                  View Menu
-                </button>
-                <button
-                  className="btn btn-ghost-light"
-                  onClick={() => goTo("/artisanal-mexican-honey")}
-                >
-                  Benditos Miel
-                </button>
-              </div>
-            </div>
+        <a
+          href={
+            region === "uk"
+              ? UK_INSTAGRAM
+              : MX_INSTAGRAM
+          }
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram
+        </a>
+      </div>
 
-            <div className="hero-controls">
-              <span>{slide.tag}</span>
-              <div className="hero-dots">
-                {heroSlides.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`dot ${active === index ? "active" : ""}`}
-                    onClick={() => setActive(index)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="footer__bottom">
+        <span>
+          © {new Date().getFullYear()} Benditos.
+        </span>
 
-      <section className="section">
-        <div className="container split-card">
-          <div>
-            <p className="eyebrow">About us</p>
-            <h2 className="section-title">
-              Rooted in Mexico. Built for London.
-            </h2>
-          </div>
+        <span>
+          {region === "uk"
+            ? "London, United Kingdom"
+            : "Mexicali, Baja California"}
+        </span>
+      </div>
+    </footer>
+  );
+}
 
-          <div className="copy-stack">
-            <p className="lead-copy">
-              Benditos brings together Latin street food and Mexican honey
-              through fire, citrus, smoke and golden sweetness.
-            </p>
+function ImagePanel({
+  label,
+  className = "",
+  src = "",
+}) {
+  return (
+    <div
+      className={`image-panel ${className}`}
+    >
+      {src ? (
+        <img
+          src={src}
+          alt=""
+        />
+      ) : (
+        <span>
+          {label}
+        </span>
+      )}
+    </div>
+  );
+}
 
-            <p>
-              Born from friendship and a shared love of Mexican history, culture
-              and food, Benditos is a Mexican-rooted kitchen shaped by wider
-              Latin American influence.
-            </p>
+function Button({
+  to,
+  navigate,
+  children,
+  secondary = false,
+}) {
+  return (
+    <AppLink
+      to={to}
+      navigate={navigate}
+      className={`button ${
+        secondary
+          ? "button--secondary"
+          : ""
+      }`}
+    >
+      {children}
+    </AppLink>
+  );
+}
 
-            <p>
-              The honey idea started separately: a celebration of Mexican honey,
-              origin, aroma, flavour and craft. Now it lives inside Benditos as
-              Benditos Miel.
-            </p>
-          </div>
-        </div>
-      </section>
+function HomePage({
+  region,
+  navigate,
+}) {
+  const copy = regions[region];
 
-      <section className="section">
-        <div className="container gold-panel">
-          <div>
-            <p className="eyebrow eyebrow-light">Benditos Miel</p>
-            <h2 className="section-title light-title">
-              Golden heat. Wild sweetness.
-            </h2>
-          </div>
+  const isMexico = region === "mx";
 
-          <div className="copy-stack light-copy">
-            <p>
-              Mexican honey, hot honey and bold pantry goods — built for tacos,
-              cocktails, kitchens, markets and good times.
-            </p>
+  const principles = isMexico
+    ? [
+        [
+          "01",
+          "Fuego",
+          "Brasas, tiempo y paciencia para construir sabores profundos.",
+        ],
 
-            <button
-              className="btn btn-light"
-              onClick={() => goTo("/artisanal-mexican-honey")}
+        [
+          "02",
+          "Cítricos",
+          "Limón, naranja y toronja para dar frescura y equilibrio.",
+        ],
+
+        [
+          "03",
+          "Tierra",
+          "Maíz, chiles, semillas y productos conectados con sus raíces.",
+        ],
+
+        [
+          "04",
+          "Miel",
+          "Miel mexicana en glaseados, bebidas, salsas y marinados.",
+        ],
+      ]
+    : [
+        [
+          "01",
+          "Fire",
+          "Char, patience and slow cooking for deep, layered flavour.",
+        ],
+
+        [
+          "02",
+          "Citrus",
+          "Lime, orange and grapefruit bringing freshness and balance.",
+        ],
+
+        [
+          "03",
+          "Earth",
+          "Corn, chillies, seeds and ingredients connected to their roots.",
+        ],
+
+        [
+          "04",
+          "Honey",
+          "Mexican honey in glazes, drinks, sauces and marinades.",
+        ],
+      ];
+
+  return (
+    <main>
+      <section className="hero">
+        <div className="hero__content">
+          <p className="eyebrow">
+            {copy.heroEyebrow}
+          </p>
+
+          <h1>
+            {copy.heroTitle}
+          </h1>
+
+          <p className="hero__copy">
+            {copy.heroCopy}
+          </p>
+
+          <div className="actions">
+            <Button
+              to={routePath(
+                region,
+                "menu"
+              )}
+              navigate={navigate}
             >
-              Explore Mexican Honey
-            </button>
+              {copy.primaryCta}
+            </Button>
+
+            <Button
+              to={routePath(
+                region,
+                "about"
+              )}
+              navigate={navigate}
+              secondary
+            >
+              {copy.secondaryCta}
+            </Button>
           </div>
+        </div>
+
+        <ImagePanel
+          className="hero__image"
+          label={
+            isMexico
+              ? "HERO IMAGE · BENDITOS MEXICALI"
+              : "HERO IMAGE · BENDITOS LONDON"
+          }
+        />
+      </section>
+
+      <section className="marquee">
+        {(isMexico
+          ? [
+              "BRASAS",
+              "MAÍZ",
+              "CÍTRICOS",
+              "CHILE",
+              "MIEL",
+            ]
+          : [
+              "FIRE",
+              "CORN",
+              "CITRUS",
+              "CHILLI",
+              "HONEY",
+            ]
+        ).map((item) => (
+          <span key={item}>
+            {item}
+            <i>✦</i>
+          </span>
+        ))}
+      </section>
+
+      <section className="section intro-grid">
+        <div>
+          <p className="eyebrow">
+            {isMexico
+              ? "Nuestra manera de cocinar"
+              : "Our approach"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Ingredientes con origen. Comida con carácter."
+              : "Ingredients with roots. Food with character."}
+          </h2>
+        </div>
+
+        <p className="large-copy">
+          {isMexico
+            ? "Benditos reúne recetas mexicanas, cocina a las brasas y una visión contemporánea que respeta el producto. Aquí venimos a comer con las manos, probar salsas y pedir otro taco."
+            : "Benditos brings together Latin street food, Mexican soul and a modern approach that respects the ingredient. Come hungry, eat with your hands and order another taco."}
+        </p>
+      </section>
+
+      <section className="principles section">
+        {principles.map(
+          ([number, title, text]) => (
+            <article
+              className="principle"
+              key={title}
+            >
+              <span>
+                {number}
+              </span>
+
+              <h3>
+                {title}
+              </h3>
+
+              <p>
+                {text}
+              </p>
+            </article>
+          )
+        )}
+      </section>
+
+      <section className="split-feature section">
+        <ImagePanel
+          label={
+            isMexico
+              ? "IMAGE · TACOS Y BRASAS"
+              : "IMAGE · TACOS AND FIRE"
+          }
+        />
+
+        <div className="split-feature__content">
+          <p className="eyebrow">
+            {isMexico
+              ? "Hecho para compartir"
+              : "Made for sharing"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Una mesa llena sabe mejor."
+              : "A full table tastes better."}
+          </h2>
+
+          <p>
+            {isMexico
+              ? "Tacos, antojitos, ceviches, quesadillas, salsas y bebidas pensados para poner al centro, compartir y volver a pedir."
+              : "Tacos, antojitos, ceviche, quesadillas, salsas and drinks designed for the middle of the table."}
+          </p>
+
+          <Button
+            to={routePath(
+              region,
+              "menu"
+            )}
+            navigate={navigate}
+          >
+            {copy.nav.menu}
+          </Button>
         </div>
       </section>
-    </>
-  );
-}
 
-function MenuPage() {
-  return (
-    <section className="page">
-      <div className="container">
-        <div className="page-hero page-hero-menu">
-          <div className="page-hero-overlay" />
-          <div className="page-hero-content">
-            <p className="eyebrow eyebrow-light">Food menu</p>
-            <h1 className="page-hero-title">Tacos. Birria. Ceviche.</h1>
-            <p className="page-hero-copy">
-              A tight Latin street food menu built around fire, citrus, salsas,
-              slow cooking and cold drinks.
-            </p>
+      <section className="honey-banner section">
+        <div>
+          <p className="eyebrow">
+            {isMexico
+              ? "Miel mexicana"
+              : "Mexican honey"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "No sólo para el postre."
+              : "Not just for dessert."}
+          </h2>
+
+          <p>
+            {isMexico
+              ? "La usamos para equilibrar el picante, caramelizar, marinar y crear bebidas con más textura y profundidad."
+              : "We use it to balance heat, glaze, marinate and create drinks with greater texture and depth."}
+          </p>
+
+          <div className="actions">
+            <Button
+              to={routePath(
+                region,
+                "honey"
+              )}
+              navigate={navigate}
+            >
+              {copy.nav.honey}
+            </Button>
+
+            <Button
+              to={routePath(
+                region,
+                "melodisa"
+              )}
+              navigate={navigate}
+              secondary
+            >
+              Melodisa
+            </Button>
           </div>
         </div>
 
-        <div className="menu-grid">
-          {menuSections.map((section) => (
-            <article className="menu-card" key={section.title}>
-              <div className="menu-card-header">
-                <h3>{section.title}</h3>
-                <p>{section.note}</p>
-              </div>
+        <ImagePanel
+          label={
+            isMexico
+              ? "IMAGE · MIEL / COLMENA"
+              : "IMAGE · HONEY / HIVE"
+          }
+        />
+      </section>
 
-              <div className="menu-items">
-                {section.items.map((item) => (
-                  <div className="menu-item" key={item.name}>
-                    <div className="menu-item-top">
-                      <h4>{item.name}</h4>
-                      <span>{item.price}</span>
+      <LaunchSection
+        region={region}
+        navigate={navigate}
+      />
+    </main>
+  );
+}
+
+function MenuPage({
+  region,
+}) {
+  const isMexico = region === "mx";
+
+  const menu = isMexico
+    ? mxMenu
+    : ukMenu;
+
+  return (
+    <main>
+      <PageHero
+        eyebrow={
+          isMexico
+            ? "Benditos Mexicali"
+            : "Benditos London"
+        }
+        title={
+          isMexico
+            ? "Menú"
+            : "Menu"
+        }
+        copy={
+          isMexico
+            ? "Platos para compartir, tacos para repetir y bebidas con mucho carácter."
+            : "Food for sharing, tacos worth repeating and drinks with plenty of character."
+        }
+        label={
+          isMexico
+            ? "IMAGE · MESA BENDITOS"
+            : "IMAGE · BENDITOS TABLE"
+        }
+      />
+
+      <section className="menu-section section">
+        <div className="menu-notice">
+          <strong>
+            {isMexico
+              ? "Menú de lanzamiento"
+              : "Launch menu"}
+          </strong>
+
+          <p>
+            {isMexico
+              ? "Los precios son provisionales y podrán ajustarse antes de la apertura. Avísanos sobre cualquier alergia o restricción alimentaria."
+              : "Prices and dishes may change before launch. Please tell us about any allergies or dietary requirements."}
+          </p>
+        </div>
+
+        <div className="menu-columns">
+          {menu.map((section) => (
+            <article
+              className="menu-group"
+              key={section.title}
+            >
+              <h2>
+                {section.title}
+              </h2>
+
+              {section.items.map(
+                ([
+                  name,
+                  price,
+                  description,
+                ]) => (
+                  <div
+                    className="menu-item"
+                    key={name}
+                  >
+                    <div className="menu-item__top">
+                      <h3>
+                        {name}
+                      </h3>
+
+                      <strong>
+                        {price}
+                      </strong>
                     </div>
-                    <p>{item.desc}</p>
+
+                    <p>
+                      {description}
+                    </p>
                   </div>
-                ))}
-              </div>
+                )
+              )}
             </article>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
 
-function MelodisaSection() {
+function HoneyPage({
+  region,
+  navigate,
+}) {
+  const isMexico = region === "mx";
+
+  const cards = isMexico
+    ? [
+        [
+          "Miel cruda",
+          "Aromas y sabores que cambian según la floración, la temporada y la región.",
+        ],
+
+        [
+          "Miel picante",
+          "Miel y chile para tacos, pollo, cerdo, quesadillas y mucho más.",
+        ],
+
+        [
+          "Glaseados",
+          "Brillo, caramelización y capas de sabor en carnes y verduras.",
+        ],
+
+        [
+          "Bebidas",
+          "Margaritas, palomas, jarabes y aguas frescas con mayor profundidad.",
+        ],
+
+        [
+          "Despensa",
+          "Salsa macha, miel picante, glaseados y pequeños productos para casa.",
+        ],
+
+        [
+          "Colaboración",
+          "Recetas creadas junto a productores que respetan su entorno.",
+        ],
+      ]
+    : [
+        [
+          "Raw honey",
+          "Aromas and flavours shaped by blossom, season and region.",
+        ],
+
+        [
+          "Hot honey",
+          "Honey and chilli for tacos, chicken, pork, quesadillas and more.",
+        ],
+
+        [
+          "Glazes",
+          "Shine, caramelisation and layered flavour on meat and vegetables.",
+        ],
+
+        [
+          "Drinks",
+          "Margaritas, palomas, syrups and soft drinks with extra depth.",
+        ],
+
+        [
+          "Pantry",
+          "Salsa macha, hot honey, glazes and small-batch products.",
+        ],
+
+        [
+          "Collaboration",
+          "Recipes created with producers who respect their environment.",
+        ],
+      ];
+
   return (
-    <section className="section">
-      <div className="container">
-        <div className="melodisa-product-panel">
-          <div className="melodisa-image-wrap">
-            <img
-              src="https://www.dropbox.com/scl/fi/66gtf0y1yq4qy561t71az/a_clean_minimalist_advertising_poster_scene_a_bo.png?rlkey=a88okayyt8scl21fa6m03g7u0&st=5660eoi3&raw=1"
-              alt="Melodisa Hidromiel bottle"
-              className="melodisa-image"
-            />
-          </div>
+    <main>
+      <PageHero
+        eyebrow={
+          isMexico
+            ? "Un ingrediente central"
+            : "A central ingredient"
+        }
+        title={
+          isMexico
+            ? "Nuestra miel"
+            : "Honey"
+        }
+        copy={
+          isMexico
+            ? "Miel mexicana seleccionada por su sabor, procedencia y capacidad para transformar un plato."
+            : "Mexican honey selected for its flavour, origin and ability to transform a dish."
+        }
+        label={
+          isMexico
+            ? "IMAGE · MIEL CRUDA"
+            : "IMAGE · RAW HONEY"
+        }
+      />
 
-          <div className="melodisa-product-copy">
-            <p className="eyebrow eyebrow-light">Melodisa Hidromiel</p>
+      <section className="section intro-grid">
+        <div>
+          <p className="eyebrow">
+            {isMexico
+              ? "Más que dulzor"
+              : "More than sweetness"}
+          </p>
 
-            <h2 className="melodisa-title">
-              It's not Wine. It's not Pulque. It's defintely not beer. This is hidromiel.
-            </h2>
-
-            <p>
-              <strong>
-                Melodisa is a fermented honey drink with Mexican soul.
-              </strong>{" "}
-              Light, bright, naturally different and full of character.
-            </p>
-
-            <p>
-              Made for curious drinkers, taco nights, tastings, markets and
-              sunny afternoons.
-            </p>
-
-            <div className="melodisa-tags">
-              <span>Hidromiel</span>
-              <span>Fermented honey</span>
-              <span>Mexican drink</span>
-              <span>Tastings</span>
-            </div>
-
-            <a href="mailto:hola@benditos.co.uk" className="btn btn-light">
-              Enquire about Melodisa
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function HoneyPage() {
-  return (
-    <section className="page">
-      <div className="container">
-        <div className="page-hero page-hero-miel">
-          <div className="page-hero-overlay" />
-          <div className="page-hero-content">
-            <p className="eyebrow eyebrow-light">Benditos Miel</p>
-            <h1 className="page-hero-title">
-              Golden origins. Miel & sabores.
-            </h1>
-            <p className="page-hero-copy">
-              Mexican honey, hot honey and bold pantry goods — built for tacos,
-              cocktails, kitchens, markets and good times.
-            </p>
-          </div>
+          <h2>
+            {isMexico
+              ? "Equilibrio, profundidad y carácter."
+              : "Balance, depth and character."}
+          </h2>
         </div>
 
-        <div className="split-card">
-          <div>
-            <p className="eyebrow">Rooted in nature</p>
-            <h2 className="section-title">Miel with body, origin and soul.</h2>
-          </div>
+        <p className="large-copy">
+          {isMexico
+            ? "En Benditos, la miel no está reservada para los postres. La utilizamos para equilibrar el picante, dar profundidad a marinados, caramelizar carnes y verduras, preparar bebidas y crear salsas propias."
+            : "At Benditos, honey is not reserved for dessert. We use it to balance heat, deepen marinades, glaze meat and vegetables, build drinks and create our own sauces."}
+        </p>
+      </section>
 
-          <div className="copy-stack">
-            <p className="lead-copy">
-              Benditos Miel comes from a love of Mexico’s indigenous culture —
-              the land, the rituals, the food, the colour and the deep respect
-              for nature.
-            </p>
+      <section className="editorial-grid section">
+        {cards.map(
+          ([title, text], index) => (
+            <article key={title}>
+              <span>
+                0{index + 1}
+              </span>
 
-            <p>
-              It is also rooted in apiculture: the craft of the hive, the work
-              of the bees and the beauty of honey in its most natural form.
-            </p>
+              <h3>
+                {title}
+              </h3>
 
-            <p>
-              Golden, floral, earthy and full of body — our honey is artisanal,
-              natural and full of character. No nasties, no shortcuts, just the
-              best of the hive.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <MelodisaSection />
-
-      <div className="container">
-        <div className="card-grid">
-          {honeyCards.map((card) => (
-            <article className="feature-card" key={card.title}>
-              <h3>{card.title}</h3>
-              <p>{card.copy}</p>
+              <p>
+                {text}
+              </p>
             </article>
-          ))}
+          )
+        )}
+      </section>
+
+      <section className="split-feature section">
+        <ImagePanel
+          label={
+            isMexico
+              ? "IMAGE · MIEL PICANTE"
+              : "IMAGE · HOT HONEY"
+          }
+        />
+
+        <div className="split-feature__content">
+          <p className="eyebrow">
+            {isMexico
+              ? "De la cocina a tu casa"
+              : "From our kitchen to yours"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Productos Benditos con miel mexicana."
+              : "Benditos products made with Mexican honey."}
+          </h2>
+
+          <p>
+            {isMexico
+              ? "Estamos desarrollando una pequeña línea de miel picante, salsas, glaseados y productos de despensa."
+              : "We are developing a small line of hot honey, sauces, glazes and pantry products."}
+          </p>
+
+          <Button
+            to={routePath(
+              region,
+              "contact"
+            )}
+            navigate={navigate}
+          >
+            {isMexico
+              ? "Recibir novedades"
+              : "Get updates"}
+          </Button>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function MelodisaPage({
+  region,
+  navigate,
+}) {
+  const isMexico = region === "mx";
+
+  return (
+    <main>
+      <PageHero
+        eyebrow={
+          isMexico
+            ? "Productores"
+            : "Producers"
+        }
+        title="Melodisa"
+        copy={
+          isMexico
+            ? "Miel mexicana con historia, origen y propósito."
+            : "Mexican honey with history, origin and purpose."
+        }
+        label={
+          isMexico
+            ? "IMAGE · MELODISA / PRODUCTORA"
+            : "IMAGE · MELODISA / PRODUCER"
+        }
+      />
+
+      <section className="section intro-grid">
+        <div>
+          <p className="eyebrow">
+            {isMexico
+              ? "De la colmena a la mesa"
+              : "From hive to table"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Una colaboración con raíces mexicanas."
+              : "A collaboration rooted in Mexico."}
+          </h2>
         </div>
 
-        <div className="contact-strip honey-contact-strip">
-          <div>
-            <p className="eyebrow">Honey enquiries</p>
-            <h2 className="section-title">For chefs, makers and retailers.</h2>
-            <p>
-              For Mexican honey, hot honey, glazes, pantry goods, tastings, chef
-              samples, wholesale or retail enquiries, get in touch.
-            </p>
-          </div>
+        <p className="large-copy">
+          {isMexico
+            ? "Melodisa nace del respeto por las abejas, la tierra y las personas que hacen posible cada cosecha. Su miel refleja las flores, el clima, la temporada y la diversidad natural de México."
+            : "Melodisa begins with respect for bees, land and the people behind every harvest. Its honey reflects the flowers, climate, season and natural diversity of Mexico."}
+        </p>
+      </section>
 
-          <a href="mailto:hola@benditos.co.uk" className="btn btn-primary">
-            Contact Benditos Miel
+      <section className="story section">
+        <ImagePanel
+          label={
+            isMexico
+              ? "IMAGE · APIARIO / FLORACIÓN"
+              : "IMAGE · APIARY / BLOSSOM"
+          }
+        />
+
+        <div className="story__copy">
+          <p className="eyebrow">
+            {isMexico
+              ? "Por qué trabajamos juntos"
+              : "Why we work together"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Compartimos una misma forma de entender los ingredientes."
+              : "We share the same way of understanding ingredients."}
+          </h2>
+
+          <p>
+            {isMexico
+              ? "Conocer su origen, respetar el proceso y dejar que el sabor hable por sí mismo."
+              : "Know where they come from, respect the process and let the flavour speak for itself."}
+          </p>
+
+          <a
+            className="button"
+            href={MELODISA_INSTAGRAM}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram
           </a>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="quote-section section">
+        <blockquote>
+          {isMexico
+            ? "“Cada cosecha cuenta la historia del lugar donde nació.”"
+            : "“Every harvest tells the story of where it was born.”"}
+        </blockquote>
+      </section>
+
+      <section className="center-cta section">
+        <p className="eyebrow">
+          Melodisa × Benditos
+        </p>
+
+        <h2>
+          {isMexico
+            ? "Dos proyectos. Una misma raíz."
+            : "Two projects. One shared root."}
+        </h2>
+
+        <Button
+          to={routePath(
+            region,
+            "honey"
+          )}
+          navigate={navigate}
+        >
+          {isMexico
+            ? "Explorar nuestra miel"
+            : "Explore our honey"}
+        </Button>
+      </section>
+    </main>
   );
 }
 
-function ProductoresPage() {
+function AboutPage({
+  region,
+  navigate,
+}) {
+  const isMexico = region === "mx";
+
   return (
-    <section className="page">
-      <div className="container">
-        <div className="page-hero page-hero-spanish">
-          <div className="page-hero-overlay" />
-          <div className="page-hero-content">
-            <p className="eyebrow eyebrow-light">Productores</p>
-            <h1 className="page-hero-title">De México a Londres.</h1>
-            <p className="page-hero-copy">
-              Buscamos colaborar con apicultores, cooperativas y productores
-              mexicanos que trabajan con respeto por la colmena, la tierra y el
-              origen.
-            </p>
-          </div>
+    <main>
+      <PageHero
+        eyebrow={
+          isMexico
+            ? "Nuestra historia"
+            : "Our story"
+        }
+        title="Benditos"
+        copy={
+          isMexico
+            ? "Cocina mexicana de raíces profundas, creada con curiosidad, respeto y muchas ganas de compartir."
+            : "Latin street food with Mexican soul, built with curiosity, respect and a love of sharing."
+        }
+        label={
+          isMexico
+            ? "IMAGE · EQUIPO / COCINA"
+            : "IMAGE · TEAM / KITCHEN"
+        }
+      />
+
+      <section className="story section">
+        <ImagePanel
+          label={
+            isMexico
+              ? "IMAGE · FUEGO / COCINERO"
+              : "IMAGE · FIRE / CHEF"
+          }
+        />
+
+        <div className="story__copy">
+          <p className="eyebrow">
+            {isMexico
+              ? "Nacido entre cocinas"
+              : "Born in kitchens"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Tradición sin quedarse quieta."
+              : "Tradition that keeps moving."}
+          </h2>
+
+          <p>
+            {isMexico
+              ? "Benditos nace de una vida entre cocinas y del deseo de crear un lugar donde la comida mexicana pueda sentirse familiar y, al mismo tiempo, descubrir nuevas combinaciones."
+              : "Benditos comes from a life spent in kitchens and a desire to make food that feels familiar while still finding new combinations."}
+          </p>
+
+          <Button
+            to={routePath(
+              region,
+              "menu"
+            )}
+            navigate={navigate}
+          >
+            {isMexico
+              ? "Ver lo que cocinamos"
+              : "See what we cook"}
+          </Button>
         </div>
+      </section>
+    </main>
+  );
+}
 
-        <div className="orange-panel">
-          <div>
-            <p className="eyebrow eyebrow-light">Hablemos</p>
-            <h2 className="section-title light-title">
-              Miel mexicana con historia, origen y carácter.
-            </h2>
-          </div>
+function VisitPage({
+  region,
+  navigate,
+}) {
+  const isMexico = region === "mx";
 
-          <div className="copy-stack light-copy">
-            <p>
-              Benditos Miel busca presentar en Londres miel mexicana honesta,
-              artesanal y gastronómica.
-            </p>
+  return (
+    <main>
+      <PageHero
+        eyebrow={
+          isMexico
+            ? "Próximamente"
+            : "Coming soon"
+        }
+        title={
+          isMexico
+            ? "Visítanos en Mexicali"
+            : "Find us in London"
+        }
+        copy={
+          isMexico
+            ? "Estamos preparando nuestro nuevo espacio. Muy pronto compartiremos la dirección y la fecha de apertura."
+            : "We are preparing our next London home. Follow along for dates, location and launch news."
+        }
+        label={
+          isMexico
+            ? "IMAGE · MEXICALI / EXTERIOR"
+            : "IMAGE · LONDON / EXTERIOR"
+        }
+      />
 
-            <p>
-              Si eres productor, apicultor, cooperativa o proyecto mexicano de
-              miel, escríbenos para explorar una colaboración.
-            </p>
+      <section className="visit-grid section">
+        <article>
+          <p className="eyebrow">
+            {isMexico
+              ? "Ubicación"
+              : "Location"}
+          </p>
 
-            <TagList items={producerTags} />
+          <h2>
+            {isMexico
+              ? "Mexicali, Baja California"
+              : "London, United Kingdom"}
+          </h2>
 
-            <a href="mailto:hola@benditos.co.uk" className="btn btn-light">
-            hola@benditos.co.uk
+          <p>
+            {isMexico
+              ? "Dirección por anunciar."
+              : "Location to be announced."}
+          </p>
+        </article>
+
+        <article>
+          <p className="eyebrow">
+            {isMexico
+              ? "Horario"
+              : "Opening hours"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Próximamente"
+              : "Coming soon"}
+          </h2>
+
+          <p>
+            {isMexico
+              ? "Síguenos para conocer los horarios."
+              : "Follow us for opening days and times."}
+          </p>
+        </article>
+
+        <article>
+          <p className="eyebrow">
+            {isMexico
+              ? "Novedades"
+              : "Updates"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Sé de los primeros."
+              : "Be first to know."}
+          </h2>
+
+          <Button
+            to={routePath(
+              region,
+              "contact"
+            )}
+            navigate={navigate}
+          >
+            {isMexico
+              ? "Quiero enterarme"
+              : "Keep me posted"}
+          </Button>
+        </article>
+      </section>
+    </main>
+  );
+}
+
+function ContactPage({
+  region,
+}) {
+  const isMexico = region === "mx";
+
+  return (
+    <main>
+      <PageHero
+        eyebrow={
+          isMexico
+            ? "Hablemos"
+            : "Let’s talk"
+        }
+        title={
+          isMexico
+            ? "Contacto"
+            : "Contact"
+        }
+        copy={
+          isMexico
+            ? "Colaboraciones, prensa, eventos o preguntas sobre nuestra apertura en Mexicali."
+            : "Collaborations, press, events or questions about Benditos."
+        }
+        label={
+          isMexico
+            ? "IMAGE · DETALLE DE MESA"
+            : "IMAGE · TABLE DETAIL"
+        }
+      />
+
+      <section className="contact section">
+        <div className="contact__intro">
+          <p className="eyebrow">
+            {isMexico
+              ? "Escríbenos"
+              : "Get in touch"}
+          </p>
+
+          <h2>
+            {isMexico
+              ? "Nos encantará saber de ti."
+              : "We would love to hear from you."}
+          </h2>
+
+          <div className="contact__links">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp ↗
+            </a>
+
+            <a
+              href={
+                isMexico
+                  ? MX_INSTAGRAM
+                  : UK_INSTAGRAM
+              }
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram ↗
             </a>
           </div>
         </div>
-      </div>
-    </section>
+
+        <form
+          className="contact-form"
+          action={FORM_ENDPOINT}
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="region"
+            value={
+              isMexico
+                ? "Mexicali"
+                : "London"
+            }
+          />
+
+          <label>
+            {isMexico
+              ? "Nombre"
+              : "Name"}
+
+            <input
+              type="text"
+              name="name"
+              required
+            />
+          </label>
+
+          <label>
+            {isMexico
+              ? "Correo electrónico"
+              : "Email"}
+
+            <input
+              type="email"
+              name="email"
+              required
+            />
+          </label>
+
+          <label>
+            {isMexico
+              ? "Teléfono"
+              : "Phone"}
+
+            <input
+              type="tel"
+              name="phone"
+            />
+          </label>
+
+          <label>
+            {isMexico
+              ? "Mensaje"
+              : "Message"}
+
+            <textarea
+              name="message"
+              rows="6"
+              required
+            />
+          </label>
+
+          <button
+            className="button"
+            type="submit"
+          >
+            {isMexico
+              ? "Enviar mensaje"
+              : "Send message"}
+          </button>
+        </form>
+      </section>
+    </main>
   );
 }
 
-function VisitPage() {
+function PageHero({
+  eyebrow,
+  title,
+  copy,
+  label,
+}) {
   return (
-    <section className="page">
-      <div className="container">
-        <div className="page-hero page-hero-visit">
-          <div className="page-hero-overlay" />
-          <div className="page-hero-content">
-            <p className="eyebrow eyebrow-light">Visit</p>
-            <h1 className="page-hero-title">Markets. Pop-ups. Future home.</h1>
-            <p className="page-hero-copy">
-              Benditos is being built for London food markets, collaborations,
-              events, tastings and a future neighbourhood taqueria.
-            </p>
-          </div>
-        </div>
+    <section className="page-hero">
+      <div className="page-hero__copy">
+        <p className="eyebrow">
+          {eyebrow}
+        </p>
 
-        <div className="visit-grid">
-          <article className="visit-card">
-            <h3>Pop-ups</h3>
-            <p>Collaborations, market dates and special events coming soon.</p>
-          </article>
+        <h1>
+          {title}
+        </h1>
 
-          <article className="visit-card">
-            <h3>Tastings</h3>
-            <p>Honey tastings, hot honey pairings and Melodisa previews.</p>
-          </article>
-
-          <article className="visit-card">
-            <h3>Follow</h3>
-            <p>
-              Follow the launch on Instagram for drops, menus and locations.
-            </p>
-          </article>
-        </div>
+        <p>
+          {copy}
+        </p>
       </div>
+
+      <ImagePanel
+        label={label}
+      />
     </section>
   );
 }
 
-function ContactPage() {
+function LaunchSection({
+  region,
+  navigate,
+}) {
+  const isMexico = region === "mx";
+
   return (
-    <section className="page">
-      <div className="container">
-        <div className="contact-panel">
-          <div>
-            <p className="eyebrow eyebrow-light">Contact</p>
-            <h1 className="contact-title">Let’s talk tacos, honey and good times.</h1>
-            <p>
-              For markets, pop-ups, restaurant enquiries, honey samples,
-              Melodisa, collaborations or producer conversations, get in touch.
-            </p>
-          </div>
+    <section className="launch-block section">
+      <p className="eyebrow">
+        {isMexico
+          ? "Mexicali · Baja California"
+          : "London · United Kingdom"}
+      </p>
 
-          <div className="contact-card">
-            <div className="contact-item">
-              <strong>Email</strong>
-              <a href="mailto:hola@benditos.co.uk">hola@benditos.co.uk</a>
-            </div>
+      <h2>
+        {isMexico
+          ? "Algo bueno se está cocinando."
+          : "Something good is cooking."}
+      </h2>
 
-            <div className="contact-item">
-              <strong>Instagram</strong>
-              <span>@benditosldn</span>
-            </div>
+      <p>
+        {isMexico
+          ? "Síguenos para descubrir la ubicación, la fecha de apertura y todo lo que estamos preparando."
+          : "Follow us for locations, launch dates and everything we are preparing."}
+      </p>
 
-            <div className="contact-item">
-              <strong>Location</strong>
-              <span>London</span>
-            </div>
-          </div>
-        </div>
+      <div className="actions">
+        <a
+          className="button"
+          href={
+            isMexico
+              ? MX_INSTAGRAM
+              : UK_INSTAGRAM
+          }
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram
+        </a>
+
+        <Button
+          to={routePath(
+            region,
+            "contact"
+          )}
+          navigate={navigate}
+          secondary
+        >
+          {isMexico
+            ? "Recibir novedades"
+            : "Get updates"}
+        </Button>
       </div>
     </section>
   );
 }
 
-function AppContent({ page }) {
-  return useMemo(() => {
-    switch (page) {
-      case "menu":
-        return <MenuPage />;
-      case "honey":
-        return <HoneyPage />;
-      case "productores":
-        return <ProductoresPage />;
-      case "visit":
-        return <VisitPage />;
-      case "contact":
-        return <ContactPage />;
-      default:
-        return <HomePage />;
-    }
-  }, [page]);
+function NotFound({
+  region,
+  navigate,
+}) {
+  const isMexico = region === "mx";
+
+  return (
+    <main className="not-found section">
+      <p className="eyebrow">
+        404
+      </p>
+
+      <h1>
+        {isMexico
+          ? "Esta página no existe."
+          : "This page does not exist."}
+      </h1>
+
+      <Button
+        to={routePath(region)}
+        navigate={navigate}
+      >
+        {isMexico
+          ? "Volver al inicio"
+          : "Back home"}
+      </Button>
+    </main>
+  );
 }
 
 export default function App() {
-  const [page, setPage] = useState(getPageFromPath());
+  const {
+    pathname,
+    navigate,
+  } = useNavigation();
+
+  const route = useMemo(
+    () => getRoute(pathname),
+    [pathname]
+  );
+
+  const copy = regions[route.region];
 
   useEffect(() => {
-    const onChange = () => setPage(getPageFromPath());
+    document.documentElement.lang =
+      copy.locale;
 
-    window.addEventListener("popstate", onChange);
-    return () => window.removeEventListener("popstate", onChange);
-  }, []);
+    document.title =
+      copy.metaTitle;
+
+    let description =
+      document.querySelector(
+        'meta[name="description"]'
+      );
+
+    if (!description) {
+      description =
+        document.createElement("meta");
+
+      description.name =
+        "description";
+
+      document.head.appendChild(
+        description
+      );
+    }
+
+    description.content =
+      copy.metaDescription;
+  }, [copy]);
+
+  const pages = {
+    "/": (
+      <HomePage
+        region={route.region}
+        navigate={navigate}
+      />
+    ),
+
+    "/menu": (
+      <MenuPage
+        region={route.region}
+      />
+    ),
+
+    "/honey": (
+      <HoneyPage
+        region={route.region}
+        navigate={navigate}
+      />
+    ),
+
+    "/melodisa": (
+      <MelodisaPage
+        region={route.region}
+        navigate={navigate}
+      />
+    ),
+
+    "/about": (
+      <AboutPage
+        region={route.region}
+        navigate={navigate}
+      />
+    ),
+
+    "/visit": (
+      <VisitPage
+        region={route.region}
+        navigate={navigate}
+      />
+    ),
+
+    "/contact": (
+      <ContactPage
+        region={route.region}
+      />
+    ),
+  };
 
   return (
-    <main className="site-shell">
-      <Header page={page} />
-      <AppContent page={page} />
+    <div className="site-shell">
+      <Header
+        route={route}
+        navigate={navigate}
+      />
 
-      <footer className="site-footer">
-        <div className="container footer-inner">
-          <p>Benditos</p>
-          <p>Latin street food · Mexican honey · Hidromiel · London</p>
-        </div>
-      </footer>
-    </main>
+      {pages[route.relative] || (
+        <NotFound
+          region={route.region}
+          navigate={navigate}
+        />
+      )}
+
+      <Footer
+        region={route.region}
+        navigate={navigate}
+      />
+    </div>
   );
 }
