@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import "./styles.css";
+import birriaTacos from "./birria-tacos.jpeg";
+import tunaTostada from "./tuna-tostada.jpeg";
+import sharingTable from "./benditos-sharing-table.jpg";
+import guestsImage from "./benditos-guests.jpg";
+import honeyTable from "./honey-table.jpg";
+import honeycombCloseup from "./honeycomb-closeup.jpg";
 
 const FORM_ENDPOINT = "https://formspree.io/f/mvzjwqeg";
 
