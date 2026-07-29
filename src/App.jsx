@@ -8,6 +8,11 @@ import guestsImage from "./benditos-guests.jpg";
 import honeyTable from "./honey-table.jpg";
 import honeycombCloseup from "./honeycomb-closeup.jpg";
 
+import melodisaBottles from "./melodisa-bottles.jpg";
+import melodisaLogo from "./melodisa-logo.jpg";
+import melodisaAward from "./melodisa-award.jpg";
+import melodisaSonata from "./melodisa-sonata.jpg";
+
 const FORM_ENDPOINT = "https://formspree.io/f/mvzjwqeg";
 const UK_INSTAGRAM = "https://instagram.com/benditosldn";
 const MX_INSTAGRAM = "https://instagram.com/benditosldn";
