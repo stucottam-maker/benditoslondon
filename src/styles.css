@@ -714,61 +714,97 @@ textarea {
 }
 
 .melodisa-intro {
-  width: min(1040px, calc(100% - 48px));
+
+  width: min(980px, calc(100% - 48px));
+
   margin: 0 auto;
 
   display: grid;
+
   grid-template-columns: 0.9fr 1.1fr;
+
+  align-items: stretch;
 
   overflow: hidden;
 
   border: 1px solid var(--line);
+
   background: var(--cream);
+
 }
 
 .melodisa-intro__image {
-  height: 450px;
-  padding: 22px;
+
+  height: 420px;
+
+  padding: 20px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   overflow: hidden;
 
   background:
+
     linear-gradient(
+
       145deg,
+
       #9d3f29 0%,
+
       #74432f 50%,
+
       #34432e 100%
+
     );
+
 }
 
 .melodisa-intro__image img {
+
   width: 100%;
+
   height: 100%;
+
   object-fit: contain;
+
+  object-position: center;
+
   background: #eeefe9;
+
 }
 
 .melodisa-intro__content {
-  min-height: 450px;
-  padding: clamp(42px, 5vw, 64px);
+
+  min-height: 420px;
+
+  padding: 58px 58px 46px;
 
   display: flex;
+
   flex-direction: column;
-  justify-content: center;
+
+  justify-content: flex-start;
+
   align-items: flex-start;
+
 }
 
 .melodisa-logo-frame {
-  width: 190px;
-  height: 62px;
-  margin-bottom: 25px;
+
+  width: 178px;
+
+  height: 58px;
+
+  margin: 0 0 24px;
 
   overflow: hidden;
+
   background: #bd8e19;
+
 }
 
 .melodisa-logo {
@@ -787,21 +823,33 @@ textarea {
 }
 
 .melodisa-intro__lead {
-  font-family: "Fraunces", serif;
-  font-size: clamp(20px, 1.9vw, 24px) !important;
-  line-height: 1.4 !important;
+
+  max-width: 490px;
+
+  margin-bottom: 15px !important;
+
 }
 
 .melodisa-intro__content p:not(.eyebrow) {
-  max-width: 520px;
-  margin: 0 0 18px;
 
-  font-size: 16px;
-  line-height: 1.68;
+  max-width: 500px;
+
+  margin-bottom: 15px;
+
+  font-size: 15px;
+
+  line-height: 1.62;
+
 }
+.melodisa-intro__content .eyebrow {
 
+  margin-bottom: 10px;
+
+}
 .melodisa-actions {
-  margin-top: 9px;
+
+  margin-top: 6px;
+
 }
 
 .melodisa-statement {
@@ -1271,9 +1319,17 @@ textarea {
     margin-bottom: 22px;
   }
 
-  .melodisa-intro h1 {
-    font-size: clamp(40px, 12vw, 54px);
-  }
+ .melodisa-intro h1 {
+
+  max-width: 500px;
+
+  margin: 0 0 18px;
+
+  font-size: clamp(40px, 3.8vw, 56px);
+
+  line-height: 0.98;
+
+}
 
   .melodisa-actions {
     width: 100%;
