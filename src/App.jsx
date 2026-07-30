@@ -54,7 +54,7 @@ const regions = {
     metaTitle: "Benditos Mexicali | Cocina mexicana",
     metaDescription:
       "Benditos Mexicali: tacos, brasas, cítricos, antojitos y miel mexicana. Próximamente en Mexicali, Baja California.",
-    brandLine: "Cocina mexicana. Mucho carácter.",
+    brandLine: "Cocina mexicana con mucho carácter.",
     heroEyebrow: "Próximamente en Mexicali",
     heroTitle: "Fuego, maíz y sabor sin fronteras.",
     heroCopy:
