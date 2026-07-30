@@ -1293,165 +1293,293 @@ function HoneyPage({
   );
 }
 
-function MelodisaPage({
-  region,
-  navigate,
-}) {
-  const isMexico =
-    region === "mx";
+function MelodisaPage() {
 
   return (
-    <main>
-      <PageHero
-        eyebrow={
-          isMexico
-            ? "Hidromiel artesanal mexicana"
-            : "Mexican craft mead"
-        }
-        title="Melodisa"
-        copy={
-          isMexico
-            ? "Hidromiel mexicana con identidad propia, elaborada con miel, creatividad y respeto por el proceso."
-            : "Mexican mead with its own identity, made with honey, creativity and respect for the process."
-        }
-        src={melodisaBottles}
-        label="Botellas de hidromiel Melodisa"
-      />
 
-      <section className="section melodisa-brand">
-        <div className="melodisa-brand__logo">
+    <main className="melodisa-page">
+
+      {/* Introduction */}
+
+      <section className="melodisa-intro">
+
+        <div className="melodisa-intro__image">
+
           <img
-            src={melodisaLogo}
-            alt="Melodisa Hidromiel Artesanal"
+
+            src={melodisaBottle}
+
+            alt="Bottle of Melodisa Mexican mead"
+
           />
+
         </div>
 
-        <div className="melodisa-brand__copy">
-          <p className="eyebrow">
-            {isMexico
-              ? "Una bebida con personalidad"
-              : "A drink with personality"}
-          </p>
+        <div className="melodisa-intro__content">
 
-          <h2>
-            {isMexico
-              ? "Miel fermentada, sabores inesperados."
-              : "Fermented honey, unexpected flavours."}
-          </h2>
+          <img
+
+            src={melodisaLogo}
+
+            alt="Melodisa Hidromiel"
+
+            className="melodisa-logo"
+
+          />
+
+          <p className="eyebrow">Hidromiel mexicana</p>
+
+          <h1>
+
+            Ancient tradition,
+
+            <br />
+
+            made in Mexico.
+
+          </h1>
+
+          <p className="melodisa-intro__lead">
+
+            Melodisa transforms Mexican honey into expressive,
+
+            award-winning mead made with patience, imagination and
+
+            respect for the ingredients.
+
+          </p>
 
           <p>
-            {isMexico
-              ? "Melodisa transforma la miel en una bebida contemporánea, expresiva y llena de carácter. Cada etiqueta representa una interpretación distinta de la hidromiel."
-              : "Melodisa transforms honey into a contemporary, expressive drink full of character. Each label represents a different interpretation of mead."}
+
+            Rooted in one of the world’s oldest fermented drinks,
+
+            Melodisa brings the tradition into the present through
+
+            carefully selected honey, fruit, botanicals and distinctly
+
+            Mexican flavours.
+
           </p>
+
+          <div className="melodisa-actions">
+
+            <a
+
+              href="https://www.instagram.com/melodisa.mx/"
+
+              target="_blank"
+
+              rel="noreferrer"
+
+              className="button"
+
+            >
+
+              Discover Melodisa
+
+            </a>
+
+            <a href="/miel" className="button button--secondary">
+
+              Explore our honey
+
+            </a>
+
+          </div>
+
         </div>
+
       </section>
 
-      <section className="story section">
-        <ImagePanel
-          src={melodisaSonata}
-          label="Botella Melodisa Sonata"
-        />
+      {/* Brand statement */}
 
-        <div className="story__copy">
-          <p className="eyebrow">
-            {isMexico
-              ? "Hidromiel mexicana"
-              : "Mexican mead"}
-          </p>
+      <section className="melodisa-statement">
 
-          <h2>
-            {isMexico
-              ? "De la miel nace una bebida completamente distinta."
-              : "Honey becomes something completely different."}
-          </h2>
+        <p className="eyebrow">Honey, time and fermentation</p>
 
-          <p>
-            {isMexico
-              ? "La hidromiel se obtiene mediante la fermentación de miel y agua. Melodisa desarrolla distintas expresiones combinando ingredientes, estilos y perfiles aromáticos propios."
-              : "Mead is produced by fermenting honey and water. Melodisa creates different expressions through distinctive ingredients, styles and aromatic profiles."}
-          </p>
+        <h2>
 
-          <p>
-            {isMexico
-              ? "En Benditos queremos presentar estas bebidas junto a nuestra cocina, explorar maridajes y crear nuevas colaboraciones alrededor de la miel."
-              : "At Benditos, we want to serve these drinks alongside our food, explore pairings and build new collaborations around honey."}
-          </p>
+          A drink shaped by the character of Mexican honey.
 
-          <a
-            className="button"
-            href={MELODISA_INSTAGRAM}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Instagram
-          </a>
-        </div>
+        </h2>
+
+        <p>
+
+          Every batch begins with honey. Its aroma, origin and natural
+
+          complexity provide the foundation for a drink that sits
+
+          somewhere between wine, tradition and experimentation.
+
+        </p>
+
       </section>
 
-      <section className="melodisa-award section">
+      {/* Process */}
+
+      <section className="melodisa-feature">
+
+        <div className="melodisa-feature__content">
+
+          <p className="eyebrow">From hive to bottle</p>
+
+          <h2>Made slowly and with intention.</h2>
+
+          <p>
+
+            Honey is blended with water and fermented carefully,
+
+            allowing its floral, fruity and earthy characteristics to
+
+            develop naturally.
+
+          </p>
+
+          <p>
+
+            The result is a layered drink that can be bright and fresh,
+
+            rich and warming, or delicately aromatic depending on the
+
+            honey and ingredients used.
+
+          </p>
+
+        </div>
+
+        <div className="melodisa-feature__image">
+
+          <img
+
+            src={melodisaHoney}
+
+            alt="Mexican honey used to produce Melodisa mead"
+
+          />
+
+        </div>
+
+      </section>
+
+      {/* Award */}
+
+      <section className="melodisa-award">
+
         <div className="melodisa-award__copy">
-          <p className="eyebrow">
-            {isMexico
-              ? "Reconocimiento"
-              : "Recognition"}
-          </p>
 
-          <h2>
-            {isMexico
-              ? "Medalla de bronce en Copa Hidromiel México."
-              : "Bronze medal at Copa Hidromiel México."}
-          </h2>
+          <p className="eyebrow">International recognition</p>
+
+          <h2>Award-winning Mexican mead.</h2>
 
           <p>
-            {isMexico
-              ? "Melodisa Ópera recibió la medalla de bronce en la categoría amateur de la Copa Hidromiel México 2025."
-              : "Melodisa Ópera received a bronze medal in the amateur category at Copa Hidromiel México 2025."}
+
+            Melodisa has received recognition for the quality,
+
+            personality and craftsmanship of its meads, helping bring
+
+            Mexican hidromiel to a wider audience.
+
           </p>
+
         </div>
 
         <div className="melodisa-award__image">
+
           <img
+
             src={melodisaAward}
-            alt="Medalla de bronce de Melodisa Ópera en Copa Hidromiel México"
+
+            alt="Melodisa receiving an award for Mexican mead"
+
           />
+
         </div>
+
       </section>
 
-      <section className="quote-section section">
-        <blockquote>
-          {isMexico
-            ? "“Miel, fermentación y creatividad mexicana.”"
-            : "“Honey, fermentation and Mexican creativity.”"}
-        </blockquote>
+      {/* Final feature */}
+
+      <section className="melodisa-feature melodisa-feature--reverse">
+
+        <div className="melodisa-feature__content">
+
+          <p className="eyebrow">Benditos × Melodisa</p>
+
+          <h2>Part of our story of Mexican honey.</h2>
+
+          <p>
+
+            Melodisa represents the creativity, knowledge and
+
+            craftsmanship behind the Mexican producers we want to
+
+            celebrate through Benditos.
+
+          </p>
+
+          <p>
+
+            Their work shows that honey is more than a sweetener. It is
+
+            an ingredient shaped by landscape, season and culture.
+
+          </p>
+
+          <a href="/contact" className="button">
+
+            Make an enquiry
+
+          </a>
+
+        </div>
+
+        <div className="melodisa-feature__image">
+
+          <img
+
+            src={melodisaPour}
+
+            alt="Melodisa Mexican mead being poured"
+
+          />
+
+        </div>
+
       </section>
 
-      <section className="center-cta section">
-        <p className="eyebrow">
-          Melodisa × Benditos
-        </p>
+      {/* Closing CTA */}
 
-        <h2>
-          {isMexico
-            ? "Dos proyectos unidos por la miel."
-            : "Two projects connected by honey."}
-        </h2>
+      <section className="melodisa-cta">
 
-        <Button
-          to={routePath(
-            region,
-            "honey"
-          )}
-          navigate={navigate}
-        >
-          {isMexico
-            ? "Explorar nuestra miel"
-            : "Explore our honey"}
-        </Button>
+        <p className="eyebrow">From Mexico to London</p>
+
+        <h2>Honey with origin, flavour and purpose.</h2>
+
+        <div className="melodisa-actions melodisa-actions--center">
+
+          <a href="/miel" className="button">
+
+            Explore Benditos honey
+
+          </a>
+
+          <a href="/contact" className="button button--secondary">
+
+            Contact us
+
+          </a>
+
+        </div>
+
       </section>
+
     </main>
+
   );
+
 }
+
+export default MelodisaPage;
 
 function AboutPage({
   region,
