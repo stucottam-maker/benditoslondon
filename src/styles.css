@@ -1180,12 +1180,15 @@ textarea {
   }
 
   .melodisa-intro__image {
-    height: 350px;
+    height: 330px;
   }
 
-  .melodisa-intro__content {
+    .melodisa-intro__content {
+
     min-height: 0;
-    padding: 50px 40px 58px;
+
+    padding: 48px 40px 54px;
+
   }
 
   .melodisa-feature__content {
