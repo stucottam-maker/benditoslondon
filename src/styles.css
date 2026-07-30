@@ -1421,3 +1421,251 @@ textarea {
     height: 290px;
   }
 }
+/* ========================================
+   GLOBAL IMAGE SIZE CORRECTION
+   Keep this at the bottom of styles.css
+======================================== */
+
+/* Normal image behaviour */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Homepage hero */
+.hero {
+  min-height: 620px;
+}
+
+.hero__image {
+  min-height: 620px;
+  max-height: 720px;
+  overflow: hidden;
+}
+
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Interior page heroes */
+.page-hero {
+  min-height: 520px;
+}
+
+.page-hero .image-panel {
+  min-height: 520px;
+  max-height: 620px;
+  overflow: hidden;
+}
+
+.page-hero .image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* General image panels */
+.image-panel {
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Split content sections */
+.split-feature .image-panel,
+.story .image-panel {
+  min-height: 0;
+  height: 560px;
+  max-height: 560px;
+}
+
+/* Honey feature image */
+.honey-banner .image-panel {
+  min-height: 0;
+  height: 540px;
+  max-height: 540px;
+}
+
+/* Prevent stretched images inside cards */
+.split-feature .image-panel img,
+.story .image-panel img,
+.honey-banner .image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Melodisa logo banner */
+.melodisa-hero {
+  height: 260px;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.melodisa-hero img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Melodisa bottle section */
+.melodisa-intro {
+  width: min(1100px, calc(100% - 48px));
+  margin: 65px auto;
+}
+
+.melodisa-intro-image {
+  height: 500px;
+  min-height: 0;
+  padding: 30px;
+}
+
+.melodisa-intro-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Melodisa award photo */
+.melodisa-award {
+  width: min(820px, calc(100% - 48px));
+}
+
+.melodisa-award-image {
+  height: 420px;
+  min-height: 0;
+}
+
+.melodisa-award-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Gallery images */
+.melodisa-gallery img {
+  height: 360px;
+  object-fit: cover;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1080px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__image {
+    min-height: 0;
+    height: 500px;
+  }
+
+  .page-hero {
+    min-height: auto;
+  }
+
+  .page-hero .image-panel {
+    min-height: 0;
+    height: 460px;
+  }
+
+  .split-feature .image-panel,
+  .story .image-panel,
+  .honey-banner .image-panel {
+    height: 480px;
+    max-height: 480px;
+  }
+
+  .melodisa-intro-image {
+    height: 450px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 720px) {
+  .hero__image {
+    height: 360px;
+    min-height: 0;
+  }
+
+  .page-hero .image-panel {
+    height: 340px;
+    min-height: 0;
+  }
+
+  .split-feature .image-panel,
+  .story .image-panel,
+  .honey-banner .image-panel {
+    height: 360px;
+    min-height: 0;
+    max-height: 360px;
+  }
+
+  .melodisa-hero {
+    height: 170px;
+  }
+
+  .melodisa-intro-image {
+    height: 340px;
+    padding: 18px;
+  }
+
+  .melodisa-award-image {
+    height: 260px;
+  }
+
+  .melodisa-gallery img {
+    height: 280px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .hero__image {
+    height: 310px;
+  }
+
+  .page-hero .image-panel {
+    height: 290px;
+  }
+
+  .split-feature .image-panel,
+  .story .image-panel,
+  .honey-banner .image-panel {
+    height: 310px;
+    max-height: 310px;
+  }
+
+  .melodisa-hero {
+    height: 145px;
+  }
+
+  .melodisa-intro-image {
+    height: 300px;
+  }
+
+  .melodisa-award-image {
+    height: 230px;
+  }
+}
