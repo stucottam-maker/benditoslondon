@@ -27,8 +27,10 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+
   color: var(--ink);
   background: var(--paper);
+
   font-family: "DM Sans", sans-serif;
 }
 
@@ -38,9 +40,8 @@ a {
 
 img {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
 }
 
 button,
@@ -51,10 +52,12 @@ textarea {
 
 .site-shell {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* Header */
+/* ========================================
+   HEADER
+======================================== */
 
 .site-header {
   position: sticky;
@@ -70,6 +73,7 @@ textarea {
   gap: 28px;
 
   border-bottom: 1px solid var(--line);
+
   background: rgba(255, 250, 240, 0.94);
   backdrop-filter: blur(16px);
 }
@@ -79,6 +83,7 @@ textarea {
   align-items: center;
   gap: 12px;
 
+  color: inherit;
   text-decoration: none;
 }
 
@@ -121,7 +126,9 @@ textarea {
   opacity: 0.64;
 }
 
-/* Navigation */
+/* ========================================
+   NAVIGATION
+======================================== */
 
 .nav {
   display: flex;
@@ -176,7 +183,9 @@ textarea {
   display: none;
 }
 
-/* Shared typography */
+/* ========================================
+   SHARED TYPOGRAPHY
+======================================== */
 
 .hero h1,
 .page-hero h1,
@@ -188,7 +197,10 @@ textarea {
 .center-cta h2,
 .contact h2,
 .footer h2,
-.not-found h1 {
+.not-found h1,
+.melodisa-intro h1,
+.melodisa-intro h2,
+.melodisa-award h2 {
   font-family: "Fraunces", serif;
   font-weight: 600;
   letter-spacing: -0.05em;
@@ -211,7 +223,9 @@ textarea {
   padding-block: clamp(78px, 9vw, 145px);
 }
 
-/* Hero */
+/* ========================================
+   HERO
+======================================== */
 
 .hero,
 .page-hero {
@@ -231,7 +245,9 @@ textarea {
 
 .hero__content,
 .page-hero__copy {
-  padding: clamp(72px, 9vw, 145px) clamp(28px, 7vw, 110px);
+  padding:
+    clamp(72px, 9vw, 145px)
+    clamp(28px, 7vw, 110px);
 
   display: flex;
   flex-direction: column;
@@ -260,7 +276,21 @@ textarea {
   line-height: 1.65;
 }
 
-/* Image placeholders */
+.hero__image,
+.page-hero .image-panel {
+  min-height: 100%;
+}
+
+.hero__image img,
+.page-hero .image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================
+   IMAGE PANELS
+======================================== */
 
 .image-panel {
   min-height: 430px;
@@ -268,6 +298,8 @@ textarea {
 
   display: grid;
   place-items: center;
+
+  overflow: hidden;
 
   color: rgba(255, 255, 255, 0.82);
 
@@ -285,11 +317,15 @@ textarea {
   letter-spacing: 0.2em;
 }
 
-.hero__image {
-  min-height: 100%;
+.image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Buttons */
+/* ========================================
+   BUTTONS
+======================================== */
 
 .actions {
   display: flex;
@@ -330,7 +366,9 @@ textarea {
   background: transparent;
 }
 
-/* Marquee */
+/* ========================================
+   MARQUEE
+======================================== */
 
 .marquee {
   min-height: 74px;
@@ -363,7 +401,9 @@ textarea {
   font-style: normal;
 }
 
-/* Intro */
+/* ========================================
+   INTRO
+======================================== */
 
 .intro-grid {
   display: grid;
@@ -395,7 +435,9 @@ textarea {
   line-height: 1.25;
 }
 
-/* Principles */
+/* ========================================
+   PRINCIPLES
+======================================== */
 
 .principles {
   padding-top: 0;
@@ -441,7 +483,9 @@ textarea {
   opacity: 0.76;
 }
 
-/* Split feature and story */
+/* ========================================
+   SPLIT FEATURES
+======================================== */
 
 .split-feature,
 .story {
@@ -477,7 +521,9 @@ textarea {
   min-height: 680px;
 }
 
-/* Honey section */
+/* ========================================
+   HONEY SECTION
+======================================== */
 
 .honey-banner {
   display: grid;
@@ -524,7 +570,9 @@ textarea {
   min-height: 620px;
 }
 
-/* Launch and centre CTA */
+/* ========================================
+   LAUNCH AND CENTRE CTA
+======================================== */
 
 .launch-block,
 .center-cta {
@@ -543,7 +591,9 @@ textarea {
   line-height: 1.7;
 }
 
-/* Menu */
+/* ========================================
+   MENU
+======================================== */
 
 .menu-notice {
   padding: 24px 0;
@@ -613,7 +663,9 @@ textarea {
   white-space: nowrap;
 }
 
-/* Editorial cards */
+/* ========================================
+   EDITORIAL CARDS
+======================================== */
 
 .editorial-grid {
   padding-top: 0;
@@ -634,7 +686,9 @@ textarea {
   border-right: 0;
 }
 
-/* Quote */
+/* ========================================
+   QUOTE
+======================================== */
 
 .quote-section {
   max-width: 1100px;
@@ -651,7 +705,9 @@ textarea {
   letter-spacing: -0.04em;
 }
 
-/* Visit */
+/* ========================================
+   VISIT
+======================================== */
 
 .visit-grid {
   padding-top: 0;
@@ -677,7 +733,9 @@ textarea {
   font-size: 36px;
 }
 
-/* Contact */
+/* ========================================
+   CONTACT
+======================================== */
 
 .contact {
   display: grid;
@@ -731,7 +789,217 @@ textarea {
   justify-self: start;
 }
 
-/* 404 */
+/* ========================================
+   MELODISA PAGE
+======================================== */
+
+.melodisa-page {
+  background: var(--paper);
+}
+
+/* Melodisa logo hero */
+
+.melodisa-hero {
+  width: 100%;
+  min-height: 390px;
+  height: min(58vh, 610px);
+  padding: clamp(50px, 7vw, 90px) 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #bd8e19;
+}
+
+.melodisa-hero img {
+  width: min(700px, 76vw);
+  max-width: 100%;
+  max-height: 240px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* Bottle and introduction */
+
+.melodisa-intro {
+  width: min(var(--content), calc(100% - 44px));
+  margin: clamp(50px, 7vw, 100px) auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  overflow: hidden;
+
+  background: var(--cream);
+}
+
+.melodisa-intro-image {
+  min-height: 620px;
+  padding: clamp(24px, 3vw, 44px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a44228 0%,
+      #7a422e 48%,
+      #35432f 100%
+    );
+}
+
+.melodisa-intro-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 650px;
+
+  object-fit: contain;
+
+  background: #f0f1ed;
+}
+
+.melodisa-intro-content {
+  min-height: 620px;
+  padding: clamp(50px, 7vw, 105px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.melodisa-intro-content h1,
+.melodisa-intro-content h2 {
+  max-width: 620px;
+  margin: 12px 0 26px;
+
+  font-size: clamp(48px, 5.5vw, 84px);
+  line-height: 0.98;
+}
+
+.melodisa-intro-content p:not(.eyebrow) {
+  max-width: 580px;
+  margin: 0 0 26px;
+
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.melodisa-intro-content .button {
+  margin-top: 4px;
+}
+
+/* Melodisa awards */
+
+.melodisa-award {
+  width: min(1120px, calc(100% - 44px));
+  margin: clamp(65px, 9vw, 125px) auto;
+
+  text-align: center;
+}
+
+.melodisa-award-copy {
+  max-width: 740px;
+  margin: 0 auto 42px;
+}
+
+.melodisa-award h2 {
+  margin: 12px auto 20px;
+
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1;
+}
+
+.melodisa-award p:not(.eyebrow) {
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.melodisa-award-image {
+  width: 100%;
+  height: clamp(360px, 50vw, 620px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #cb941c;
+}
+
+.melodisa-award-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* Alternative class support */
+
+.melodisa-logo {
+  width: min(700px, 76vw);
+  max-height: 240px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.melodisa-bottle {
+  width: 100%;
+  height: 100%;
+  max-height: 650px;
+
+  object-fit: contain;
+}
+
+.melodisa-award-photo {
+  width: 100%;
+  max-height: 620px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* Melodisa gallery */
+
+.melodisa-gallery {
+  width: min(var(--content), calc(100% - 44px));
+  margin: 0 auto clamp(70px, 9vw, 130px);
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.melodisa-gallery figure {
+  margin: 0;
+
+  overflow: hidden;
+
+  background: var(--cream);
+}
+
+.melodisa-gallery img {
+  width: 100%;
+  height: clamp(320px, 38vw, 520px);
+
+  object-fit: cover;
+}
+
+/* ========================================
+   404
+======================================== */
 
 .not-found {
   min-height: 70vh;
@@ -750,7 +1018,9 @@ textarea {
   line-height: 0.95;
 }
 
-/* Footer */
+/* ========================================
+   FOOTER
+======================================== */
 
 .footer {
   padding:
@@ -796,7 +1066,9 @@ textarea {
   opacity: 0.62;
 }
 
-/* Tablet */
+/* ========================================
+   TABLET
+======================================== */
 
 @media (max-width: 1080px) {
   .menu-toggle {
@@ -885,9 +1157,24 @@ textarea {
   .editorial-grid article:nth-child(2n) {
     border-right: 0;
   }
+
+  .melodisa-intro {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .melodisa-intro-image,
+  .melodisa-intro-content {
+    min-height: 560px;
+  }
+
+  .melodisa-intro-content {
+    padding: 55px 48px;
+  }
 }
 
-/* Mobile */
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 720px) {
   .site-header {
@@ -980,6 +1267,69 @@ textarea {
     gap: 65px;
   }
 
+  .melodisa-hero {
+    min-height: 280px;
+    height: 42vh;
+    max-height: 400px;
+    padding: 45px 20px;
+  }
+
+  .melodisa-hero img,
+  .melodisa-logo {
+    width: min(520px, 88vw);
+    max-height: 160px;
+  }
+
+  .melodisa-intro {
+    width: 100%;
+    margin: 0;
+
+    grid-template-columns: 1fr;
+  }
+
+  .melodisa-intro-image {
+    min-height: 0;
+    height: 450px;
+    padding: 24px;
+  }
+
+  .melodisa-intro-image img,
+  .melodisa-bottle {
+    max-height: 402px;
+  }
+
+  .melodisa-intro-content {
+    min-height: 0;
+    padding: 60px 24px 70px;
+  }
+
+  .melodisa-intro-content h1,
+  .melodisa-intro-content h2 {
+    font-size: clamp(45px, 13vw, 68px);
+  }
+
+  .melodisa-award {
+    width: calc(100% - 32px);
+    margin: 65px auto;
+  }
+
+  .melodisa-award-copy {
+    margin-bottom: 30px;
+  }
+
+  .melodisa-award-image {
+    height: 360px;
+  }
+
+  .melodisa-gallery {
+    width: calc(100% - 32px);
+    grid-template-columns: 1fr;
+  }
+
+  .melodisa-gallery img {
+    height: 340px;
+  }
+
   .footer {
     grid-template-columns: 1fr;
     padding-inline: 24px;
@@ -987,5 +1337,39 @@ textarea {
 
   .footer__bottom {
     flex-direction: column;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .melodisa-hero {
+    min-height: 250px;
+    height: 36vh;
+  }
+
+  .melodisa-hero img,
+  .melodisa-logo {
+    width: 88vw;
+    max-height: 125px;
+  }
+
+  .melodisa-intro-image {
+    height: 370px;
+  }
+
+  .melodisa-intro-image img,
+  .melodisa-bottle {
+    max-height: 325px;
+  }
+
+  .melodisa-award-image {
+    height: 280px;
+  }
+
+  .melodisa-gallery img {
+    height: 290px;
   }
 }
